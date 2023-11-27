@@ -1354,7 +1354,7 @@ codeunit 50000 Tble83
     //Table36 End
 
     //Codeunit825 Start
-    [EventSubscriber(ObjectType::Codeunit, 825, 'OnPostLedgerEntryOnBeforeGenJnlPostLine', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales Post Invoice Events", 'OnPostLedgerEntryOnBeforeGenJnlPostLine', '', false, false)]
     local procedure OnPostLedgerEntryOnBeforeGenJnlPostLine(var GenJnlLine: Record "Gen. Journal Line"; var SalesHeader: Record "Sales Header"; var TotalSalesLine: Record "Sales Line"; var TotalSalesLineLCY: Record "Sales Line"; PreviewMode: Boolean; SuppressCommit: Boolean; var GenJnlPostLine: Codeunit "Gen. Jnl.-Post Line")
     var
         Rec_Customer: Record Customer;
@@ -1364,7 +1364,7 @@ codeunit 50000 Tble83
     end;
     //Codeunit825 End
     //Table81 Start
-    [EventSubscriber(ObjectType::Table, 81, 'OnAfterCopyGenJnlLineFromSalesHeader', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterCopyGenJnlLineFromSalesHeader', '', false, false)]
     local procedure OnAfterCopyGenJnlLineFromSalesHeader(SalesHeader: Record "Sales Header"; var GenJournalLine: Record "Gen. Journal Line")
     var
         Rec_Customer: Record Customer;
@@ -1373,7 +1373,7 @@ codeunit 50000 Tble83
         GenJournalLine."Parent Group" := Rec_Customer."Parent Group";
     end;
 
-    [EventSubscriber(ObjectType::Table, 81, 'OnAfterAccountNoOnValidateGetCustomerAccount', '', false, false)]
+    [EventSubscriber(ObjectType::Table, Database::"Gen. Journal Line", 'OnAfterAccountNoOnValidateGetCustomerAccount', '', false, false)]
     local procedure OnAfterAccountNoOnValidateGetCustomerAccount(var GenJournalLine: Record "Gen. Journal Line"; var Customer: Record Customer; CallingFieldNo: Integer)
     begin
         GenJournalLine."Parent Group" := Customer."Parent Group";
@@ -1384,7 +1384,7 @@ codeunit 50000 Tble83
     //Table81 End
 
     //Codeunit12 Start
-    [EventSubscriber(ObjectType::Codeunit, 12, 'OnAfterInitCustLedgEntry', '', false, false)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Gen. Jnl.-Post Line", 'OnAfterInitCustLedgEntry', '', false, false)]
     local procedure OnAfterInitCustLedgEntry(var CustLedgerEntry: Record "Cust. Ledger Entry"; GenJournalLine: Record "Gen. Journal Line"; var GLRegister: Record "G/L Register")
     begin
         CustLedgerEntry."Parent Group" := GenJournalLine."Parent Group";

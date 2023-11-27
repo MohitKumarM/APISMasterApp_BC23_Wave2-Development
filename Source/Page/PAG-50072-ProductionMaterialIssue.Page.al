@@ -350,7 +350,7 @@ page 50072 "Production Material Issue"
                             recItemJournal.RESET;
                             recItemJournal.SETRANGE("Journal Template Name", recInventorySetup."Material Issue Entry Template");
                             recItemJournal.SETRANGE("Journal Batch Name", recInventorySetup."Material Issue Entry Batch");
-                            PAGE.RUN(393, recItemJournal);
+                            PAGE.RUN(Page::"Item Reclass. Journal", recItemJournal);
                             /*
                             CLEAR(pgItemTransfer);
                             pgItemTransfer.SETTABLEVIEW(recItemJournal);

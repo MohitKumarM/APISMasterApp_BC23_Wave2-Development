@@ -166,18 +166,18 @@ page 50046 "Customer Groups"
                 EntryNo := EntryNo + 1
             else
                 EntryNo := 1;
-            if Rec_Customer."Parent Group" <> Rec_Customer."No." then begin
-                Rec.Init();
-                rec."Entry No." := EntryNo;
-                Rec.Code := Rec_Customer."No.";
-                rec."Parent Group" := Rec_Customer."Parent Group";
-                Rec.Name := Rec_Customer.Name;
-                Rec."Balance LCY" := Rec_Customer."Balance (LCY)";
-                rec.Indentation := i;
-                i := 1;
-                rec.Insert();
-                PrenGrp := Rec_Customer."Parent Group";
-            end;
+            // if Rec_Customer."Parent Group" <> Rec_Customer."No." then begin
+            Rec.Init();
+            rec."Entry No." := EntryNo;
+            Rec.Code := Rec_Customer."No.";
+            rec."Parent Group" := Rec_Customer."Parent Group";
+            Rec.Name := Rec_Customer.Name;
+            Rec."Balance LCY" := Rec_Customer."Balance (LCY)";
+            rec.Indentation := i;
+            i := 1;
+            rec.Insert();
+            PrenGrp := Rec_Customer."Parent Group";
+        // end;
         until Rec_Customer.Next() = 0;
     end;
 
