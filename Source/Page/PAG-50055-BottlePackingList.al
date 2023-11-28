@@ -94,8 +94,5 @@ page 50055 "Bottling Packing List"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

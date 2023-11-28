@@ -92,9 +92,7 @@ pageextension 50006 ItemTrackingLine extends "Item Tracking Lines"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     var
 

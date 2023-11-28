@@ -1,6 +1,5 @@
 table 50019 "Material Requisition Line"
 {
-
     fields
     {
         field(1; "Req. No."; Code[20])
@@ -48,32 +47,23 @@ table 50019 "Material Requisition Line"
                 END;
             end;
         }
-        field(8; "Item Name"; Text[50])
-        {
-        }
-        field(9; "Unit of Measure"; Code[10])
-        {
-        }
-        field(10; "Source Quantity"; Decimal)
-        {
-        }
+        field(8; "Item Name"; Text[50]) { }
+        field(9; "Unit of Measure"; Code[10]) { }
+        field(10; "Source Quantity"; Decimal) { }
         field(11; "Requested Quantity"; Decimal)
         {
-
             trigger OnValidate()
             begin
                 /*recComponentLine.GET(recComponentLine.Status::Released, "Document No.", "Document Line No.", "Component Line No.");
                 recComponentLine.CALCFIELDS("Material Issued Qty.", recComponentLine."Material To Issue Qty.");
-                
+
                 decPendingQty := recComponentLine."Remaining Quantity" - recComponentLine."Material Issued Qty." - recComponentLine."Material To Issue Qty." + xRec."Requested Quantity";
                 IF decPendingQty - "Requested Quantity" < 0 THEN
                   ERROR('You can only request %1 quantity.', decPendingQty);*/
-
             end;
         }
         field(12; "Qty. To Issue"; Decimal)
         {
-
             trigger OnValidate()
             begin
                 IF "Qty. To Issue" > "Requested Quantity" - "Quantity Issued" THEN
@@ -123,9 +113,7 @@ table 50019 "Material Requisition Line"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     trigger OnInsert()
     begin
@@ -135,9 +123,5 @@ table 50019 "Material Requisition Line"
     end;
 
     var
-        recComponentLine: Record "Prod. Order Component";
-        decPendingQty: Decimal;
-        recItem: Record "Item";
         recUserSetup: Record "User Setup";
 }
-

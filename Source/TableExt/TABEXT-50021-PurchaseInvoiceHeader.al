@@ -63,9 +63,7 @@ tableextension 50021 PurchaseInvoiceHeader extends "Purch. Inv. Header"
             OptionCaption = ' ,Buyer Scope,Supplier Scope';
             OptionMembers = " ","Buyer Scope","Supplier Scope";
         }
-        field(50018; "Valid Till"; Date)
-        {
-        }
+        field(50018; "Valid Till"; Date) { }
         field(80002; "GST Dependency Type"; Option)
         {
             OptionMembers = " ","Buy-from Address","Order Address","Location Address";

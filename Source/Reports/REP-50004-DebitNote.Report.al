@@ -10,54 +10,26 @@ report 50004 "Debit Note-New"
         dataitem("Purch. Cr. Memo Hdr."; 124)
         {
             RequestFilterFields = "No.";
-            column(CompName; recCompInfo.Name)
-            {
-            }
-            column(CompAddress; recCompInfo.Address)
-            {
-            }
-            column(CompAddress2; recCompInfo."Address 2")
-            {
-            }
+            column(CompName; recCompInfo.Name) { }
+            column(CompAddress; recCompInfo.Address) { }
+            column(CompAddress2; recCompInfo."Address 2") { }
             column(CITY; recCompInfo.City) { }
             column(PostCode; recCompInfo."Post Code") { }
             column(Picture; recCompInfo.Picture) { }
             column(QR_Code; '') { }
-            column(Location1; txtLocation[1])
-            {
-            }
-            column(Location2; txtLocation[2] + ' ' + txtLocation[3])
-            {
-            }
-            column(Location3; txtLocation[4] + ' ' + txtLocation[5])
-            {
-            }
-            column(DebitNote_No; "Purch. Cr. Memo Hdr."."No.")
-            {
-            }
-            column(DebitNote_Date; FORMAT("Purch. Cr. Memo Hdr."."Posting Date"))
-            {
-            }
+            column(Location1; txtLocation[1]) { }
+            column(Location2; txtLocation[2] + ' ' + txtLocation[3]) { }
+            column(Location3; txtLocation[4] + ' ' + txtLocation[5]) { }
+            column(DebitNote_No; "Purch. Cr. Memo Hdr."."No.") { }
+            column(DebitNote_Date; FORMAT("Purch. Cr. Memo Hdr."."Posting Date")) { }
             column(Location_GST_Reg__No_; "Location GST Reg. No.") { }
             //Buyer Info.
-            column(txt_Vendor1; txt_Vendor[1])
-            {
-            }
-            column(txt_Vendor2; txt_Vendor[2])
-            {
-            }
-            column(txt_Vendor3; txt_Vendor[3])
-            {
-            }
-            column(txt_Vendor4; txt_Vendor[4])
-            {
-            }
-            column(txt_Vendor5; txt_Vendor[5])
-            {
-            }
-            column(txt_Vendor6; txt_Vendor[6])
-            {
-            }
+            column(txt_Vendor1; txt_Vendor[1]) { }
+            column(txt_Vendor2; txt_Vendor[2]) { }
+            column(txt_Vendor3; txt_Vendor[3]) { }
+            column(txt_Vendor4; txt_Vendor[4]) { }
+            column(txt_Vendor5; txt_Vendor[5]) { }
+            column(txt_Vendor6; txt_Vendor[6]) { }
             column(Ship_to_Name; "Ship-to Name") { }
             column(Ship_to_Address; "Ship-to Address") { }
             column(Buyer_GSTNo; "Purch. Cr. Memo Hdr."."Vendor GST Reg. No.") { }
@@ -72,35 +44,19 @@ report 50004 "Debit Note-New"
             column(BuyerOrder_Date; '')// External Doc Date
             {
             }
-            column(OPS_No; '')
-            {
-            }
-            column(SalesOrder_Date; '')
-            {
-            }
-            column(Dispatch_through; '')
-            {
-            }
-            column(Destination; '')
-            {
-            }
-            column(paymentDue_Date; '')
-            {
-            }
-            column(Ref_No; '')
-            {
-            }
-            column(IRN_No; '')
-            {
-            }
+            column(OPS_No; '') { }
+            column(SalesOrder_Date; '') { }
+            column(Dispatch_through; '') { }
+            column(Destination; '') { }
+            column(paymentDue_Date; '') { }
+            column(Ref_No; '') { }
+            column(IRN_No; '') { }
             dataitem("Purch. Cr. Memo Line"; 125)
             {
                 DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = "Purch. Cr. Memo Hdr.";
                 DataItemTableView = SORTING("Document No.", "Line No.");
-                column(Sr_No; Sr_No)
-                {
-                }
+                column(Sr_No; Sr_No) { }
                 column(No_; "No.") { }
                 column(Description; Description) { }
                 column(Quantity; Quantity) { }
@@ -208,18 +164,12 @@ report 50004 "Debit Note-New"
 
     requestpage
     {
-        layout
-        {
-        }
+        layout { }
 
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     trigger OnPreReport()
     begin

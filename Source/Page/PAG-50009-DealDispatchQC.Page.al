@@ -44,9 +44,7 @@ page 50009 "Deal Dispatch QC"
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                }
+                field("Packing Type"; Rec."Packing Type") { }
                 field("Vehicle No."; Rec."Vehicle No.")
                 {
                     ApplicationArea = All;

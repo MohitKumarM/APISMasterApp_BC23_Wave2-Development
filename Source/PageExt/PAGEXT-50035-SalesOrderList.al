@@ -1,8 +1,6 @@
 pageextension 50035 SalesOrderList extends "Sales Order List"
 {
-    layout
-    {
-    }
+    layout { }
 
     actions
     {

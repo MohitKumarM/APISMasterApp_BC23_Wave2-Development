@@ -9,46 +9,16 @@ report 50013 "Invoice Export"
         dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
             RequestFilterFields = "No.";
-            column(Shipper_Name; '')
-            {
-
-            }
-            column(Shipper_Address; '')
-            {
-
-            }
-            column(Sale_Order_no; "Order No.")
-            {
-
-            }
-            column(Invoice_No; "No.")
-            {
-
-            }
-            column(Invoice_Date; "Posting Date")
-            {
-
-            }
-            column(Consignee_Name; "Ship-to Name")
-            {
-
-            }
-            column(Consignee_Address; "Ship-to Address" + "Ship-to Address 2")
-            {
-
-            }
-            column(Bill_to_Name; "Bill-to Name")
-            {
-
-            }
-            column(Bill_to_Address; "Bill-to Address" + "Bill-to Address 2")
-            {
-
-            }
-            column(Bill_to_Customer_No_; "Bill-to Customer No.")
-            {
-
-            }
+            column(Shipper_Name; '') { }
+            column(Shipper_Address; '') { }
+            column(Sale_Order_no; "Order No.") { }
+            column(Invoice_No; "No.") { }
+            column(Invoice_Date; "Posting Date") { }
+            column(Consignee_Name; "Ship-to Name") { }
+            column(Consignee_Address; "Ship-to Address" + "Ship-to Address 2") { }
+            column(Bill_to_Name; "Bill-to Name") { }
+            column(Bill_to_Address; "Bill-to Address" + "Bill-to Address 2") { }
+            column(Bill_to_Customer_No_; "Bill-to Customer No.") { }
             column(Buyer_Order_No; '') { }
             column(Payment_Terms; '') { }
             column(Incoterm; '') { }
@@ -64,76 +34,33 @@ report 50013 "Invoice Export"
             column(First_Notify_Address; '') { }
             column(Second_Notify_PartyName; '') { }
             column(Second_Notify_Address; '') { }
-
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = field("No.");
                 DataItemLinkReference = "Sales Invoice Header";
                 DataItemTableView = sorting("Document No.", "Line No.");
-                column(Sr_No; Sr_No)
-                {
-
-                }
-                column(Item_Code; "No.")
-                {
-
-                }
-                column(Item_Description; Description)
-                {
-
-                }
-                column(Packing; '')
-                {
-
-                }
-                column(Container_No; '')
-                {
-
-                }
-                column(FCL_Type; '')
-                {
-
-                }
-                column(Batch_No; '')
-                {
-
-                }
-                column(Production_Date; '')
-                {
-
-                }
-                column(Expiry_Date; '')
-                {
-
-                }
-                column(Qty_InCaseORDrum; '')
-                {
-
-                }
-                column(Unit_Price; "Unit Price")
-                {
-
-                }
-                column(Amount; Amount)
-                {
-
-                }
+                column(Sr_No; Sr_No) { }
+                column(Item_Code; "No.") { }
+                column(Item_Description; Description) { }
+                column(Packing; '') { }
+                column(Container_No; '') { }
+                column(FCL_Type; '') { }
+                column(Batch_No; '') { }
+                column(Production_Date; '') { }
+                column(Expiry_Date; '') { }
+                column(Qty_InCaseORDrum; '') { }
+                column(Unit_Price; "Unit Price") { }
+                column(Amount; Amount) { }
                 column(Line_Discount__; "Line Discount %")// Dis %
                 {
-
                 }
                 column(Line_Discount_Amount; "Line Discount Amount")// Discounted Amount Value in $
                 {
-
                 }
                 column(Other_Charges; '')// Add or less Other charges
                 {
-
                 }
-                column(Final_AmtIN_USD; '')
-                {
-
-                }
+                column(Final_AmtIN_USD; '') { }
                 trigger OnPreDataItem()
                 begin
                     Sr_No := 0;
@@ -158,12 +85,11 @@ report 50013 "Invoice Export"
                     field(Name; SourceExpression)
                     {
                         ApplicationArea = All;
-                        
                     }
                 }
             }
         }
-    
+
         actions
         {
             area(processing)
@@ -171,7 +97,6 @@ report 50013 "Invoice Export"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-                    
                 }
             }
         }

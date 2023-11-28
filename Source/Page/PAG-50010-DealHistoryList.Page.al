@@ -72,9 +72,7 @@ page 50010 "Deal History List"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnAfterGetRecord()
     begin

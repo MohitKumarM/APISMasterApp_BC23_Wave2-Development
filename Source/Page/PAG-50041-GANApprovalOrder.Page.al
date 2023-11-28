@@ -34,9 +34,7 @@ page 50041 "GAN Approval Order"
                 {
                     ApplicationArea = All;
                 }
-                field("Waybill No."; Rec."Waybill No.")
-                {
-                }
+                field("Waybill No."; Rec."Waybill No.") { }
                 field("GR / LR No."; Rec."GR / LR No.")
                 {
                     ApplicationArea = All;
@@ -57,9 +55,7 @@ page 50041 "GAN Approval Order"
                 {
                     ApplicationArea = All;
                 }
-                field("Document Date"; Rec."Document Date")
-                {
-                }
+                field("Document Date"; Rec."Document Date") { }
                 field("Posting No. Series"; Rec."Posting No. Series")
                 {
                     ApplicationArea = All;

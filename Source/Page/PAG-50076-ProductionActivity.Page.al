@@ -83,16 +83,13 @@ page 50076 "Production Activity"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     var
         intUserCount: Integer;
         recGLSetup: Record "General Ledger Setup";
         recUser: Record "User";
-        recActiveSession: Record "Active Session";
     begin
         //Iappc - User Mgmt Begin
         recGLSetup.GET;
@@ -103,10 +100,7 @@ page 50076 "Production Activity"
         recUser.SETRANGE("User Name", USERID);
         recUser.FINDFIRST;
 
-
         //Iappc - User Mgmt End
-
-
 
         Rec.RESET;
         IF NOT Rec.GET THEN BEGIN
@@ -117,4 +111,3 @@ page 50076 "Production Activity"
         Rec.SETFILTER("Date Filter", '>=%1', WORKDATE);
     end;
 }
-

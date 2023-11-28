@@ -14,42 +14,25 @@ report 50009 "Payment Advice"
             RequestFilterFields = "Document No.";
             DataItemTableView = sorting("Entry No.") ORDER(Ascending);
 
-            column(CompanyName; CompanyInfo.Name)
-            { }
-            column(CompanyFullAddress; CompanyInfo.Address + CompanyInfo."Address 2" + ' , ' + CompanyInfo.City + ' - ' + CompanyInfo."Post Code")
-            { }
-            column(CompanyPicture; CompanyInfo.Picture)
-            { }
-            column(Vendor_No; RecVendor."No.")
-            { }
-            column(VendorName; RecVendor.Name)
-            { }
-            column(VendorAddress; RecVendor.Address + ' ' + RecVendor."Address 2")
-            { }
-            column(VendorState; RecState.Description)
-            { }
-            column(VendorEmail; RecVendor."E-Mail")
-            { }
-            column(VendorContact; RecVendor.Contact)
-            { }
-            column(DocumentType_VendorLedgerEntry; "Vendor Ledger Entry"."Document Type")
-            { }
-            column(DocumentNo_VendorLedgerEntry; "Vendor Ledger Entry"."Document No.")
-            { }
-            column(Date; TODAY)
-            { }
-            column(FinanceUser; FinanceUser)
-            { }
-            column(External_Document_No_; "External Document No.")
-            { }
+            column(CompanyName; CompanyInfo.Name) { }
+            column(CompanyFullAddress; CompanyInfo.Address + CompanyInfo."Address 2" + ' , ' + CompanyInfo.City + ' - ' + CompanyInfo."Post Code") { }
+            column(CompanyPicture; CompanyInfo.Picture) { }
+            column(Vendor_No; RecVendor."No.") { }
+            column(VendorName; RecVendor.Name) { }
+            column(VendorAddress; RecVendor.Address + ' ' + RecVendor."Address 2") { }
+            column(VendorState; RecState.Description) { }
+            column(VendorEmail; RecVendor."E-Mail") { }
+            column(VendorContact; RecVendor.Contact) { }
+            column(DocumentType_VendorLedgerEntry; "Vendor Ledger Entry"."Document Type") { }
+            column(DocumentNo_VendorLedgerEntry; "Vendor Ledger Entry"."Document No.") { }
+            column(Date; TODAY) { }
+            column(FinanceUser; FinanceUser) { }
+            column(External_Document_No_; "External Document No.") { }
             column(UTR_No_; '') // 15578 "UTR No." As Discussed With Jaideep Please Comment
             { }
-            column(Posting_Date; "Posting Date")
-            { }
-            column(Amount; Amount)
-            { }
-            column(ChequeNo; ChequeNo)
-            { }
+            column(Posting_Date; "Posting Date") { }
+            column(Amount; Amount) { }
+            column(ChequeNo; ChequeNo) { }
             dataitem("Detailed Vendor Ledg. Entry"; "Detailed Vendor Ledg. Entry")
             {
                 DataItemLink = "Vendor Ledger Entry No." = FIELD("Entry No.");
@@ -121,26 +104,16 @@ report 50009 "Payment Advice"
         {
             DataItemTableView = SORTING(Number) ORDER(Ascending);
 
-            column(BillNo; BillNo)
-            { }
-            column(IntegerDocType; RecVenLedEntry."Document Type")
-            { }
-            column(BillAdvAmount; ABS(BillAdvAmount))
-            { }
-            column(Remarks; Remarks)
-            { }
-            column(TDSAmt; ABS(TDSAmt))
-            { }
-            column(PaymentDate; PaymentDate)
-            { }
-            column(UTRNo; UTRNo)
-            { }
-            column(Amount_Paid; ABS(AmountPaid))
-            { }
-            column(TotalNetAmt; TotalNetAmt)
-            { }
-            column(AppliedDetails; AppliedDetails)
-            { }
+            column(BillNo; BillNo) { }
+            column(IntegerDocType; RecVenLedEntry."Document Type") { }
+            column(BillAdvAmount; ABS(BillAdvAmount)) { }
+            column(Remarks; Remarks) { }
+            column(TDSAmt; ABS(TDSAmt)) { }
+            column(PaymentDate; PaymentDate) { }
+            column(UTRNo; UTRNo) { }
+            column(Amount_Paid; ABS(AmountPaid)) { }
+            column(TotalNetAmt; TotalNetAmt) { }
+            column(AppliedDetails; AppliedDetails) { }
 
             trigger OnAfterGetRecord()
             var

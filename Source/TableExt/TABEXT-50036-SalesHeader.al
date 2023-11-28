@@ -82,7 +82,6 @@ tableextension 50036 SalesHeader extends "Sales Header"
         {
             DataClassification = ToBeClassified;
         }
-
     }
 
     keys

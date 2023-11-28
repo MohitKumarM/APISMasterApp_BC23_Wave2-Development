@@ -15,6 +15,13 @@ codeunit 50000 Tble83
         ILENo: Integer;
         Can: Decimal;
 
+    [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnBeforeValidateLocationCode', '', false, false)]
+    local procedure OnBeforeValidateLocationCode(var ItemJournalLine: Record "Item Journal Line"; xItemJournalLine: Record "Item Journal Line"; var IsHandled: Boolean);
+    begin
+        if (ItemJournalLine."Entry Type" = ItemJournalLine."Entry Type"::Consumption) then
+            IsHandled := true;
+    end;
+
     [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromPurchLine', '', false, false)]
     local procedure OnAfterCopyItemJnlLineFromPurchLine(var ItemJnlLine: Record "Item Journal Line"; PurchLine: Record "Purchase Line")
     var
@@ -45,22 +52,15 @@ codeunit 50000 Tble83
     local procedure OnAfterInitItemLedgEntry(var NewItemLedgEntry: Record "Item Ledger Entry"; var ItemJournalLine: Record "Item Journal Line"; var ItemLedgEntryNo: Integer)
     var
         recItemCategory: Record "Item Category";
-        recQualityChecks: Record "Quality Header";
-        recLotInfo: Record "Lot No. Information";
         recItemLedgerEntry: Record "Item Ledger Entry";
         recItem: Record Item;
         recInventoryPostingGroup: Record "Inventory Posting Group";
         recLotTracking: Record "Tran. Lot Tracking";
         recPostedLotTracking: Record "Lot Tracking Entry";
         intEntryNo: Integer;
-        decQtyInPacks: Decimal;
         recSourceLotEntry: Record "Lot Tracking Entry";
         recPurchaseSetup: Record "Purchases & Payables Setup";
         dtExpiryDate: Date;
-        Fromlocation: record Location;
-        Tolocation: Record Location;
-        ItemLedgerEntry: Record "Item Ledger Entry";
-
 
     begin
         NewItemLedgEntry."Deal No." := ItemJournalLine."Deal No.";
@@ -76,6 +76,7 @@ codeunit 50000 Tble83
         NewItemLedgEntry.Drum := ItemJournalLine.Drum;
         NewItemLedgEntry.Bucket := ItemJournalLine.Bucket;
         NewItemLedgEntry.Can := ItemJournalLine.Can;
+        NewItemLedgEntry."Container Trasfer Stage" := ItemJournalLine."Container Trasfer Stage";
 
         //>>
 
@@ -352,8 +353,6 @@ codeunit 50000 Tble83
             NewItemLedgerEntry."Qty. in Pack" := ABS(NewItemLedgerEntry."Qty. in Pack");
     end;
 
-
-
     // Codeunit22 End
 
     //Codeunit23
@@ -376,9 +375,6 @@ codeunit 50000 Tble83
     local procedure OnPostLinesOnBeforePostLine(var ItemJournalLine: Record "Item Journal Line"; var SuppressCommit: Boolean; var WindowIsOpen: Boolean)
     var
         recUserSetup: Record "User Setup";
-        TempTrackingSpecification: Record "Tracking Specification";
-        OriginalQuantity: Decimal;
-        OriginalQuantityBase: Decimal;
         recConsumptionDetails: Record "Job WIP Entry";
         recBatchProcessLines: Record "Batch Process Line";
         recReservationEntry: Record "Reservation Entry";
@@ -454,11 +450,8 @@ codeunit 50000 Tble83
         //Plan Weight Register End
     end;
 
-
-
     local procedure GenerateScrapEntry(DocumentNo: Code[20]; PostingDate: Date; ScrapItem: Code[20]; ScrapLocation: Code[20]; GD1: Code[20]; GD2: Code[20]; DimSetID: Integer; ScrapQty: Decimal; ProdOrderLineNo: Integer; MachineCenterNo: Code[20])
     var
-        recShipmentLines: Record "Sales Shipment Line";
         recItemJournal: Record "Item Journal Line";
         intLineNo: Integer;
         InvtSetup: Record "Inventory Setup";
@@ -590,6 +583,54 @@ codeunit 50000 Tble83
         //Iappc - 23 Jan 16 - Beekeeper Accounting End
     end;
 
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnBeforePurchRcptLineInsert', '', false, false)]
+    local procedure OnBeforePurchRcptLineInsert(var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchLine: Record "Purchase Line"; CommitIsSupressed: Boolean; PostedWhseRcptLine: Record "Posted Whse. Receipt Line"; var IsHandled: Boolean)
+    var
+        recLotTracking: Record "Tran. Lot Tracking";
+        recPostedLotTracking: Record "Lot Tracking Entry";
+        intEntryNo: Integer;
+        recItemCategory: Record "Item Category";
+        PurchHeader: Record "Purchase Header";
+    begin
+
+        //- QC Control Process Begin
+        IF recItemCategory.GET(PurchRcptLine."Item Category Code") THEN BEGIN
+            IF NOT recItemCategory."Inward QC Required" THEN
+                PurchRcptLine."QC Completed" := TRUE;
+        END;
+        //- QC Control Process End
+
+        //- Lot Tracking
+        recPostedLotTracking.RESET;
+        IF recPostedLotTracking.FINDLAST THEN
+            intEntryNo := recPostedLotTracking."Entry No."
+        ELSE
+            intEntryNo := 0;
+
+        PurchHeader.Get(PurchLine."Document Type", PurchLine."Document No.");
+
+        recLotTracking.RESET;
+        recLotTracking.SETRANGE("Document No.", PurchHeader."No.");
+        recLotTracking.SETRANGE("Document Line No.", PurchRcptLine."Line No.");
+        recLotTracking.SETRANGE("Item No.", PurchRcptLine."No.");
+        IF recLotTracking.FINDFIRST THEN
+            REPEAT
+                recPostedLotTracking.INIT;
+                recPostedLotTracking.TRANSFERFIELDS(recLotTracking);
+                intEntryNo += 1;
+                recPostedLotTracking."Entry No." := intEntryNo;
+                recPostedLotTracking."Document No." := PurchRcptHeader."No.";
+                recPostedLotTracking."Remaining Qty." := recLotTracking.Quantity;
+                recPostedLotTracking.Positive := TRUE;
+                recPostedLotTracking."Ref. Entry No." := intEntryNo;
+                recPostedLotTracking."Posting Date" := PurchRcptLine."Posting Date";
+                recPostedLotTracking.INSERT;
+
+                recLotTracking.DELETE;
+            UNTIL recLotTracking.NEXT = 0;
+        //- Lot Tracking
+    end;
+
     // Codeunit90 End
 
     // Codeunit91 Start
@@ -683,17 +724,12 @@ codeunit 50000 Tble83
 
     // Codeunit91 End
 
-
     //Codeunit241
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", 'OnBeforeCode', '', false, false)]
     local procedure OnBeforeCode(var ItemJournalLine: Record "Item Journal Line"; var HideDialog: Boolean; var SuppressCommit: Boolean; var IsHandled: Boolean)
     var
         recUserSetup: Record "User Setup";
-        ItemJnlTemplate: Record "Item Journal Template";
-        ItemJnlLine: Record "Item Journal Line";
-        ItemJnlPostBatch: Codeunit "Item Jnl.-Post Batch";
-        TempJnlBatchName: Code[10];
         recItemJournal: Record "Item Journal Line";
         recProdOrderComponent: Record "Prod. Order Component";
         decOutputQty: Decimal;
@@ -811,7 +847,6 @@ codeunit 50000 Tble83
                     END;
             UNTIL recItemJournal.NEXT = 0;
         //Output Validation End
-
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post", 'OnCodeOnAfterItemJnlPostBatchRun', '', false, false)]
@@ -1043,7 +1078,6 @@ codeunit 50000 Tble83
     begin
         IdenticalArray[2] := ((ReservEntry1."MRP Price" = ReservEntry2."MRP Price") and (ReservEntry1."MFG. Date" = ReservEntry2."MFG. Date") and (ReservEntry1.Tin = ReservEntry2.Tin) and (ReservEntry1.Drum = ReservEntry2.Drum)
             and (ReservEntry1.Bucket = ReservEntry2.Bucket) and (ReservEntry1."ILE No." = ReservEntry2."ILE No.") and (ReservEntry1.Can = ReservEntry2.Can));
-
     end;
 
     [EventSubscriber(ObjectType::Page, Page::"Item Tracking Lines", 'OnAfterCopyTrackingSpec', '', false, false)]
@@ -1378,8 +1412,6 @@ codeunit 50000 Tble83
     begin
         GenJournalLine."Parent Group" := Customer."Parent Group";
     end;
-
-
 
     //Table81 End
 

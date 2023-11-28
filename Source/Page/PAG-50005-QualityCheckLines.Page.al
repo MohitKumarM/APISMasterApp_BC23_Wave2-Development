@@ -41,7 +41,5 @@ page 50005 "Quality Check Lines"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }

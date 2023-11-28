@@ -86,7 +86,5 @@ table 50003 "Quality Line"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 }

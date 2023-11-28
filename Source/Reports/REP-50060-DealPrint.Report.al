@@ -13,174 +13,63 @@ report 50060 "Deal Print"
             DataItemTableView = SORTING("No.")
                                 ORDER(Ascending);
             // RequestFilterFields = "No.";
-            column(ImagePath; 'file:///E:/Documents/Image/APIS.bmp')
-            {
-            }
-            column(CompanyLogo; recCompanyInfo.Picture)
-            {
-            }
-            column(RegOffAddress; recCompanyInfo.Address)
-            {
-            }
-            column(STD_Code_; recCompanyInfo."STD Code")
-            {
-            }
-            column(RegOffAddress1; recCompanyInfo."Address 2")
-            {
-            }
-            column(RegOffCity; recCompanyInfo.City)
-            {
-            }
-            column(RegOffPostCode; recCompanyInfo."Post Code")
-            {
-            }
-            column(RegOddPhone; recCompanyInfo."Phone No.")
-            {
-            }
-            column(RegOffState; txtRegOffStateName)
-            {
-            }
-            column(RegOffCountry; txtRegOffCountryName)
-            {
-            }
-            column(RegOffContact; recCompanyInfo."Name 2")
-            {
-            }
-            column(CompanyName; recCompanyInfo.Name)
-            {
-            }
-            column(CompanyAddress; recLocation.Address)
-            {
-            }
-            column(CompanyAddress2; recLocation."Address 2")
-            {
-            }
-            column(CompanyCity; recLocation.City)
-            {
-            }
-            column(CompanyPostCode; recLocation."Post Code")
-            {
-            }
-            column(CompanyState; txtLocationState)
-            {
-            }
-            column(CompanyCountry; txtLocationCountry)
-            {
-            }
-            column(LocationPhone; recLocation."Phone No.")
-            {
-            }
-            column(LocationContact; recLocation.Contact)
-            {
-            }
-            column(PurchOrderNo; "No.")
-            {
-            }
-            column(PurchaseOrderDate; FORMAT(Date))
-            {
-            }
-            column(VendorName; recVendor.Name)
-            {
-            }
-            column(VendorCountry; txtVendorCountry)
-            {
-            }
-            column(ShipToCountry; txtShipToCountry)
-            {
-            }
-            column(VendorTIN; '')
-            {
-            }
-            column(VendorCST; '')
-            {
-            }
-            column(BuyerTIN; recLocation."GST Registration No.")
-            {
-            }
-            column(CompanyPANNo; recCompanyInfo."P.A.N. No.")
-            {
-            }
-            column(CompanyEmail; recCompanyInfo."E-Mail")
-            {
-            }
-            column(RefText; '')
-            {
-            }
-            column(Term2; 'All disputes subject to Delhi Jurisdiction.')
-            {
-            }
-            column(Term3; '1. Mention Deal No. on invoice/Bill.')
-            {
-            }
-            column(Term4; '2. Send dispatch information by mail on Kamaljeet@apisindia.com')
-            {
-            }
-            column(SpecialTerm; "Special Instruction")
-            {
-            }
-            column(Term5; "Quality Instruction 1")
-            { }
-            column(Term6; "Quality Instruction 2")
-            { }
-            column(Term7; "Quality Instruction 3")
-            { }
-            column(Term8; "Quality Instruction 4")
-            {
-            }
-            column(Term9; "Quality Instruction 5")
-            {
-            }
-            column(Term10; "Quality Instruction 6")
-            {
-            }
-            column(TotalTaxAmount; decTotalLineAmount)
-            {
-            }
-            column(TotalLineAmount; decTotalLineValue)
-            {
-            }
-            column(ItemCode; "Item Code")
-            {
-            }
-            column(ItemDescription; recItem.Description)
-            {
-            }
-            column(Flora; Flora)
-            {
-            }
-            column(ItemQty; "Deal Qty.")
-            {
-            }
-            column(Packing; "Packing Type")
-            {
-            }
-            column(ItemRate; "Unit Rate in Kg.")
-            {
-            }
-            column(ItemValue; decTotalLineAmount)
-            {
-            }
-            column(TotalQty; "Deal Qty." * "Per Unit Qty. (Kg.)")
-            {
-            }
-            column(PaymentTerm; "Payment Terms")
-            {
-            }
-            column(DispatchSchedule; "Dispatch Schedule")
-            {
-            }
-            column(FreightTerm; 'Freight will be paid by ' + FORMAT("Freight Liability"))
-            {
-            }
-            column(TaxTerms; txtTaxRate)
-            {
-            }
-            column(AmountInWord1; NumberText[1])
-            {
-            }
-            column(AmountInWord2; NumberText[2])
-            {
-            }
+            column(ImagePath; 'file:///E:/Documents/Image/APIS.bmp') { }
+            column(CompanyLogo; recCompanyInfo.Picture) { }
+            column(RegOffAddress; recCompanyInfo.Address) { }
+            column(STD_Code_; recCompanyInfo."STD Code") { }
+            column(RegOffAddress1; recCompanyInfo."Address 2") { }
+            column(RegOffCity; recCompanyInfo.City) { }
+            column(RegOffPostCode; recCompanyInfo."Post Code") { }
+            column(RegOddPhone; recCompanyInfo."Phone No.") { }
+            column(RegOffState; txtRegOffStateName) { }
+            column(RegOffCountry; txtRegOffCountryName) { }
+            column(RegOffContact; recCompanyInfo."Name 2") { }
+            column(CompanyName; recCompanyInfo.Name) { }
+            column(CompanyAddress; recLocation.Address) { }
+            column(CompanyAddress2; recLocation."Address 2") { }
+            column(CompanyCity; recLocation.City) { }
+            column(CompanyPostCode; recLocation."Post Code") { }
+            column(CompanyState; txtLocationState) { }
+            column(CompanyCountry; txtLocationCountry) { }
+            column(LocationPhone; recLocation."Phone No.") { }
+            column(LocationContact; recLocation.Contact) { }
+            column(PurchOrderNo; "No.") { }
+            column(PurchaseOrderDate; FORMAT(Date)) { }
+            column(VendorName; recVendor.Name) { }
+            column(VendorCountry; txtVendorCountry) { }
+            column(ShipToCountry; txtShipToCountry) { }
+            column(VendorTIN; '') { }
+            column(VendorCST; '') { }
+            column(BuyerTIN; recLocation."GST Registration No.") { }
+            column(CompanyPANNo; recCompanyInfo."P.A.N. No.") { }
+            column(CompanyEmail; recCompanyInfo."E-Mail") { }
+            column(RefText; '') { }
+            column(Term2; 'All disputes subject to Delhi Jurisdiction.') { }
+            column(Term3; '1. Mention Deal No. on invoice/Bill.') { }
+            column(Term4; '2. Send dispatch information by mail on Kamaljeet@apisindia.com') { }
+            column(SpecialTerm; "Special Instruction") { }
+            column(Term5; "Quality Instruction 1") { }
+            column(Term6; "Quality Instruction 2") { }
+            column(Term7; "Quality Instruction 3") { }
+            column(Term8; "Quality Instruction 4") { }
+            column(Term9; "Quality Instruction 5") { }
+            column(Term10; "Quality Instruction 6") { }
+            column(TotalTaxAmount; decTotalLineAmount) { }
+            column(TotalLineAmount; decTotalLineValue) { }
+            column(ItemCode; "Item Code") { }
+            column(ItemDescription; recItem.Description) { }
+            column(Flora; Flora) { }
+            column(ItemQty; "Deal Qty.") { }
+            column(Packing; "Packing Type") { }
+            column(ItemRate; "Unit Rate in Kg.") { }
+            column(ItemValue; decTotalLineAmount) { }
+            column(TotalQty; "Deal Qty." * "Per Unit Qty. (Kg.)") { }
+            column(PaymentTerm; "Payment Terms") { }
+            column(DispatchSchedule; "Dispatch Schedule") { }
+            column(FreightTerm; 'Freight will be paid by ' + FORMAT("Freight Liability")) { }
+            column(TaxTerms; txtTaxRate) { }
+            column(AmountInWord1; NumberText[1]) { }
+            column(AmountInWord2; NumberText[2]) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -288,18 +177,12 @@ report 50060 "Deal Print"
 
     requestpage
     {
-        layout
-        {
-        }
+        layout { }
 
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     var
         rptCheque: Report "Check Report";

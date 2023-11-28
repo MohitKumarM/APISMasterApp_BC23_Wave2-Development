@@ -29,7 +29,6 @@ report 50011 "Sales Order Export\Domestic"
             column(Payment_Terms; "Payment Terms Code") { }
             column(Incoterm; '') { }
             column(Documentry_credit_No; '') { }
-
             column(Other_Documents_RemarksAny; '') { }
             column(Buyer_Requested_Receipt_Date; '') { }
             column(Currency_Code; "Currency Code") { }
@@ -47,8 +46,6 @@ report 50011 "Sales Order Export\Domestic"
             column(Shipping_Remarks; '') { }
             column(Echange_Rate; '') { }
             column(Pallet_Requirement; '') { }
-
-
             dataitem("Sales Line"; "Sales Line")
             {
                 DataItemLink = "Document Type" = FIELD("Document Type"),
@@ -120,16 +117,10 @@ report 50011 "Sales Order Export\Domestic"
 
     requestpage
     {
-        layout
-        {
-        }
+        layout { }
 
-        actions
-        {
-        }
+        actions { }
     }
-
-
 
     var
         DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";
@@ -144,7 +135,4 @@ report 50011 "Sales Order Export\Domestic"
         IAmount: Decimal;
         IAmount1: Decimal;
         Total_GSTAmount: Decimal;
-
-
-
 }

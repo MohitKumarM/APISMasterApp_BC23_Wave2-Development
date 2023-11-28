@@ -18,7 +18,7 @@
             "tenant": "default",
             "port": 2049,
             "usePublicURLFromServer": true,
-            "schemaUpdateMode": "Synchronize"
+            "schemaUpdateMode": "ForceSync"
         },
         
     ]

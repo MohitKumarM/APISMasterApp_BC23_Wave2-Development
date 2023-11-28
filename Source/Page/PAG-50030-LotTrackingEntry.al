@@ -1,10 +1,10 @@
 page 50030 "Lot Entries"
 {
-    DeleteAllowed = false;
-    Editable = false;
-    InsertAllowed = false;
+    //DeleteAllowed = false;
+    //Editable = false;
+    //InsertAllowed = false;
     LinksAllowed = false;
-    ModifyAllowed = false;
+    //ModifyAllowed = false;
     PageType = List;
     UsageCategory = Lists;
     ApplicationArea = All;
@@ -118,15 +118,13 @@ page 50030 "Lot Entries"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     begin
         Rec.FILTERGROUP(2);
-        Rec.SETRANGE(Positive, TRUE);
-        Rec.SETFILTER("Remaining Qty.", '<>%1', 0);
+        //Rec.SETRANGE(Positive, TRUE);
+        //Rec.SETFILTER("Remaining Qty.", '<>%1', 0);
         Rec.FILTERGROUP(0);
     end;
 }

@@ -33,10 +33,7 @@ tableextension 50000 UserSetup extends "User Setup"
             OptionCaption = ' ,All,Honey,Packing,Other';
             OptionMembers = " ",All,Honey,Packing,Other;
         }
-        field(50009; "Allow Item Journal Posting"; Boolean)
-        {
-
-        }
+        field(50009; "Allow Item Journal Posting"; Boolean) { }
         field(50012; "Allow Customer Approval"; Boolean)
         {
             trigger OnValidate()

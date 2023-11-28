@@ -22,8 +22,20 @@ page 50053 "Production Planning"
                 field(cdLocationCode; cdLocationCode)
                 {
                     Caption = 'Select Production Location';
-                    TableRelation = Location.Code where("Production Unit" = const(true));
+                    //TableRelation = Location.Code where("Production Unit" = const(true));
                     // TableRelation = Location WHERE(Code = FILTER('RRK-PR1' | 'RRK-PR2'));
+                    trigger OnDrillDown()
+                    var
+                        LocationLoc: Record Location;
+                        ManufSetup: Record "Manufacturing Setup";
+                    begin
+                        ManufSetup.Get();
+                        LocationLoc.Reset();
+                        LocationLoc.SetRange(Code, ManufSetup."Production Location");
+                        if LocationLoc.FindFirst then
+                            if page.RunModal(0, LocationLoc) = Action::LookupOK then
+                                cdLocationCode := LocationLoc.Code;
+                    end;
 
                     trigger OnValidate()
                     begin
@@ -31,9 +43,7 @@ page 50053 "Production Planning"
                         //     ERROR('Invalid location, it must be RRK-PR1 or RRK-PR2');
                     end;
                 }
-                field("Plan Date"; dtPlanDate)
-                {
-                }
+                field("Plan Date"; dtPlanDate) { }
                 field("Production For"; ProductionFor)
                 {
                     Caption = 'Production For';
@@ -91,18 +101,10 @@ page 50053 "Production Planning"
                         END;
                     end;
                 }
-                field(Moisture; txtQualityValues)
-                {
-                }
-                field(Color; txtColor)
-                {
-                }
-                field(FG; txtFG)
-                {
-                }
-                field(HMF; txtHMF)
-                {
-                }
+                field(Moisture; txtQualityValues) { }
+                field(Color; txtColor) { }
+                field(FG; txtFG) { }
+                field(HMF; txtHMF) { }
             }
             repeater(Group)
             {
@@ -111,9 +113,7 @@ page 50053 "Production Planning"
                 {
                     Editable = false;
                 }
-                field("Item Name"; Rec."Item Name")
-                {
-                }
+                field("Item Name"; Rec."Item Name") { }
                 field("Source Type"; Rec."Source Type")
                 {
                     Editable = false;
@@ -123,9 +123,7 @@ page 50053 "Production Planning"
                 {
                     Editable = false;
                 }
-                field("Customer Name"; Rec."Customer Name")
-                {
-                }
+                field("Customer Name"; Rec."Customer Name") { }
                 field(Quantity; Rec.Quantity)
                 {
                     Editable = false;
@@ -146,12 +144,8 @@ page 50053 "Production Planning"
                 {
                     Editable = false;
                 }
-                field("Packing Order Qty."; Rec."Packing Order Qty.")
-                {
-                }
-                field("Qty. to Pack"; Rec."Qty. to Pack")
-                {
-                }
+                field("Packing Order Qty."; Rec."Packing Order Qty.") { }
+                field("Qty. to Pack"; Rec."Qty. to Pack") { }
             }
         }
     }
@@ -287,8 +281,6 @@ page 50053 "Production Planning"
         decQtyToProduce: Decimal;
         cdLocationCode: Code[20];
         dBatchNo: Code[20];
-        recReservationEntry: Record "Reservation Entry";
-        intEntryNo: Integer;
         cdCustomerCode: Code[20];
         cdProdOrderCode: Code[20];
         opProductionType: Option " ","Bulk Without Filteration","Bulk With Filteration","Small Pack";

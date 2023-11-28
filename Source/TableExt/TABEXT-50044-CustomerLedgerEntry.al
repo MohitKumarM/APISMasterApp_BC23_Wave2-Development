@@ -18,7 +18,4 @@ tableextension 50044 CustomerLedgerEntries extends "Cust. Ledger Entry"
     {
         // Add changes to field groups here
     }
-
-    var
-        myInt: Integer;
 }

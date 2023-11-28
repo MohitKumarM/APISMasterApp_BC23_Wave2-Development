@@ -66,7 +66,5 @@ table 50007 "Batch Process Header"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 }

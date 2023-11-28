@@ -136,9 +136,7 @@ page 50033 "Quality Activities New"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     var

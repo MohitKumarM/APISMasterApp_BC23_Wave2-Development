@@ -21,7 +21,4 @@ tableextension 50042 ProductionOrderLineExt extends "Prod. Order Line"
     {
         // Add changes to field groups here
     }
-
-    var
-        myInt: Integer;
 }

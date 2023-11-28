@@ -65,7 +65,6 @@ pageextension 50037 "Output Journal Ext." extends "Output Journal"
         {
             Visible = false;
         }
-
         addafter("&Print")
         {
             action("Submit for QC")

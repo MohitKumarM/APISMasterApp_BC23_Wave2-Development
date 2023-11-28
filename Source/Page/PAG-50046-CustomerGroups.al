@@ -41,16 +41,12 @@ page 50046 "Customer Groups"
                 }
             }
         }
-        area(Factboxes)
-        {
-
-        }
+        area(Factboxes) { }
     }
     actions
     {
         area(Processing)
         {
-
             action("Ledger E&ntries")
             {
                 ApplicationArea = Basic, Suite;
@@ -78,11 +74,8 @@ page 50046 "Customer Groups"
                                   order(Descending);
                 ShortCutKey = 'Ctrl+F7';
                 ToolTip = 'View the history of transactions that have been posted for the selected record.';
-
-
             }
         }
-
     }
 
     var

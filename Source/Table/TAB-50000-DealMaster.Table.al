@@ -189,9 +189,7 @@ table 50000 "Deal Master"
 
     fieldgroups
     {
-        fieldgroup(DropDown; "No.", Date, "Purchaser Name", Flora, "Packing Type")
-        {
-        }
+        fieldgroup(DropDown; "No.", Date, "Purchaser Name", Flora, "Packing Type") { }
     }
 
     trigger OnInsert()

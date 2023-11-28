@@ -14,7 +14,6 @@ page 50067 "Material Req. SubPage"
             {
                 field("Item Code"; Rec."Item Code")
                 {
-
                     trigger OnValidate()
                     begin
                         CurrPage.UPDATE;
@@ -28,18 +27,11 @@ page 50067 "Material Req. SubPage"
                 {
                     Editable = false;
                 }
-                field("Requested Quantity"; Rec."Requested Quantity")
-                {
-                }
-                field("Stock at RRK Store"; Rec."Stock at RRK Store")
-                {
-                }
+                field("Requested Quantity"; Rec."Requested Quantity") { }
+                field("Stock at RRK Store"; Rec."Stock at RRK Store") { }
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

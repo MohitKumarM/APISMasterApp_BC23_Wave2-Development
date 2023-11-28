@@ -20,70 +20,36 @@ page 50069 "Production BOM Lines View"
         {
             repeater(Grp1)
             {
-                field("Product Group"; Rec."Product Group")
-                {
-                }
-                field("Production BOM No."; Rec."Production BOM No.")
-                {
-                }
-                field("FG Name"; Rec."FG Name")
-                {
-                }
-                field("Customer Code"; Rec."Customer Code")
-                {
-                }
-                field("Customer Name"; Rec."Customer Name")
-                {
-                }
-                field("Base Unit of Measure"; Rec."Base Unit of Measure")
-                {
-                }
-                field("BOM Status"; Rec."BOM Status")
-                {
-                }
-                field(Type; Rec.Type)
-                {
-                }
-                field("Item Category Code"; Rec."Item Category Code")
-                {
-                }
-                field("No."; Rec."No.")
-                {
-                }
+                field("Product Group"; Rec."Product Group") { }
+                field("Production BOM No."; Rec."Production BOM No.") { }
+                field("FG Name"; Rec."FG Name") { }
+                field("Customer Code"; Rec."Customer Code") { }
+                field("Customer Name"; Rec."Customer Name") { }
+                field("Base Unit of Measure"; Rec."Base Unit of Measure") { }
+                field("BOM Status"; Rec."BOM Status") { }
+                field(Type; Rec.Type) { }
+                field("Item Category Code"; Rec."Item Category Code") { }
+                field("No."; Rec."No.") { }
                 field("Variant Code"; Rec."Variant Code")
                 {
                     Visible = false;
                 }
-                field(Description; Rec.Description)
-                {
-                }
+                field(Description; Rec.Description) { }
                 field("Calculation Formula"; Rec."Calculation Formula")
                 {
                     Visible = false;
                 }
-                field("Quantity per"; Rec."Quantity per")
-                {
-                }
-                field("Unit of Measure Code"; Rec."Unit of Measure Code")
-                {
-                }
-                field("Item Category Code (RM / PM)"; Rec."Item Category Code (RM / PM)")
-                {
-                }
-                field("Product Group Code (RM / PM)"; Rec."Product Group Code (RM / PM)")
-                {
-                }
-                field("Wastage %"; Rec."Wastage %")
-                {
-                }
+                field("Quantity per"; Rec."Quantity per") { }
+                field("Unit of Measure Code"; Rec."Unit of Measure Code") { }
+                field("Item Category Code (RM / PM)"; Rec."Item Category Code (RM / PM)") { }
+                field("Product Group Code (RM / PM)"; Rec."Product Group Code (RM / PM)") { }
+                field("Wastage %"; Rec."Wastage %") { }
                 field("Net Req. Qty."; decNetQty)
                 {
                     DecimalPlaces = 4 : 4;
                     Editable = false;
                 }
-                field(Blocked; Rec.Blocked)
-                {
-                }
+                field(Blocked; Rec.Blocked) { }
             }
         }
     }
@@ -133,7 +99,6 @@ page 50069 "Production BOM Lines View"
     var
         decNetQty: Decimal;
 
-
     procedure ShowComment()
     var
         ProdOrderCompComment: Record "Production BOM Comment Line";
@@ -144,7 +109,6 @@ page 50069 "Production BOM Lines View"
 
         PAGE.RUN(PAGE::"Prod. Order BOM Cmt. Sheet", ProdOrderCompComment);
     end;
-
 
     procedure ShowWhereUsed()
     var
@@ -171,4 +135,3 @@ page 50069 "Production BOM Lines View"
         CLEAR(ProdBOMWhereUsed);
     end;
 }
-

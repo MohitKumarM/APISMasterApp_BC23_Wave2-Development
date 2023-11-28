@@ -15,30 +15,15 @@ page 50060 "Plan Weight Register Sub Page"
                 {
                     Editable = false;
                 }
-                field("Packing Qauntity"; Rec."Packing Qauntity")
-                {
-                }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                }
-                field("Plan Weight"; Rec."Plan Weight")
-                {
-                }
-                field("Gross Weight"; Rec."Gross Weight")
-                {
-                }
-                field("Tare Weight"; Rec."Tare Weight")
-                {
-                }
-                field("Nett Weight"; Rec."Nett Weight")
-                {
-                }
+                field("Packing Qauntity"; Rec."Packing Qauntity") { }
+                field("Packing Type"; Rec."Packing Type") { }
+                field("Plan Weight"; Rec."Plan Weight") { }
+                field("Gross Weight"; Rec."Gross Weight") { }
+                field("Tare Weight"; Rec."Tare Weight") { }
+                field("Nett Weight"; Rec."Nett Weight") { }
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

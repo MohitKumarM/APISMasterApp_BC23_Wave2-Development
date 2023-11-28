@@ -21,9 +21,9 @@ pageextension 50003 SalesInvoiceSubform extends "Sales Invoice Subform"
                         if not LCustomer."Skip Tcs" then begin
                             Rec.AllowedNocLookup(Rec, Rec."Sell-to Customer No.");
                             Rec."TCS Nature of Collection 2" := Rec."TCS Nature of Collection";
-                            UpdateTaxAmount();
+                            UpdateTaxAmount2();
                         end else begin
-                            UpdateTaxAmount();
+                            UpdateTaxAmount2();
                             Message('SKIP TCS feature is Enabled');
                         end;
                 end;
@@ -37,7 +37,7 @@ pageextension 50003 SalesInvoiceSubform extends "Sales Invoice Subform"
                     NOCNotDefinedErr: Label 'TCS Nature of Collection %1 is not defined for Customer no. %2.', Comment = '%1= TCS Nature of Collection, %2=Customer No.';
                 begin
                     Rec."TCS Nature of Collection" := rec."TCS Nature of Collection 2";
-                    UpdateTaxAmount();
+                    UpdateTaxAmount2();
                     if Rec."TCS Nature of Collection 2" = '' then
                         exit;
                     if not TCSNatureOfCollection.Get(Rec."TCS Nature of Collection 2") then
@@ -49,11 +49,10 @@ pageextension 50003 SalesInvoiceSubform extends "Sales Invoice Subform"
                         if LCustomer."Skip Tcs" then begin
                             Clear(rec."TCS Nature of Collection");
                             Clear(rec."TCS Nature of Collection 2");
-                            UpdateTaxAmount();
+                            UpdateTaxAmount2();
                             Message('SKIP TCS feature is Enabled');
                         end;
                 end;
-
             }
         }
     }
@@ -63,7 +62,7 @@ pageextension 50003 SalesInvoiceSubform extends "Sales Invoice Subform"
         // Add changes to page actions here
     }
 
-    local procedure UpdateTaxAmount()
+    local procedure UpdateTaxAmount2()
     var
         CalculateTax: Codeunit "Calculate Tax";
     begin

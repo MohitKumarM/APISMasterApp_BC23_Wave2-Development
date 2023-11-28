@@ -2,11 +2,7 @@ tableextension 50010 Locations extends Location
 {
     fields
     {
-        field(50101; "Production Unit"; Boolean)
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(50102; "Reject Unit"; Boolean)
+        field(50103; "Scrap Unit"; Boolean)
         {
             DataClassification = ToBeClassified;
         }

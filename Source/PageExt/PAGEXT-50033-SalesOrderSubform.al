@@ -53,7 +53,6 @@ pageextension 50033 "Sales Order Subform" extends "Sales Order Subform"
                             Message('SKIP TCS feature is Enabled');
                         end;
                 end;
-
             }
         }
     }

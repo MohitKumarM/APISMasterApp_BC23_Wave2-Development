@@ -45,7 +45,5 @@ page 50006 "Sauda List Released"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }

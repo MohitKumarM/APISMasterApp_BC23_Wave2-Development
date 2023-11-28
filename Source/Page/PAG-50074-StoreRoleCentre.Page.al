@@ -4,7 +4,6 @@ page 50074 "Store Role Centre"
     PageType = RoleCenter;
     ApplicationArea = Basic, Suite;
 
-
     layout
     {
         area(rolecenter)
@@ -18,6 +17,30 @@ page 50074 "Store Role Centre"
 
     actions
     {
+        area(Embedding)
+        {
+            action("Material Issue")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Material Issue';
+                RunObject = page "Material Req. Issue List";
+                Image = Order;
+            }
+            action("Production Material Issue")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Production Material Issue';
+                RunObject = page "Production Material Issue";
+                Image = Order;
+            }
+            action("Material Req. List")
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Material Req. List';
+                RunObject = page "Material Req. List";
+                Image = Order;
+            }
+        }
         area(Sections)
         {
             group(Voucher)
@@ -51,10 +74,7 @@ page 50074 "Store Role Centre"
                         Caption = 'Stock Status';
                         RunObject = Page "Item Trial";
                     }
-
-
                 }
-
                 group("Production / Quality Reports")
                 {
                     Caption = 'Production / Quality Reports';
@@ -69,7 +89,6 @@ page 50074 "Store Role Centre"
                 group(Registers)
                 {
                     Caption = 'Registers';
-
 
                     action("Item Ageing Quantity")
                     {
@@ -134,4 +153,3 @@ page 50074 "Store Role Centre"
         }
     }
 }
-

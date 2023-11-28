@@ -141,17 +141,13 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
             Editable = false;
             TableRelation = "New Product Group".Code WHERE("Item Category Code" = FILTER(''));
         }
-        field(50007; "Unit Rate"; Decimal)
-        {
-        }
+        field(50007; "Unit Rate"; Decimal) { }
         field(50008; "Purchaser Code"; Code[20])
         {
             TableRelation = "Salesperson/Purchaser";
             /*comment by amar*/
         }
-        field(50009; "Other Charges"; Decimal)
-        {
-        }
+        field(50009; "Other Charges"; Decimal) { }
         field(50010; "Billed Quantity"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -193,7 +189,6 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
         {
             FieldClass = FlowField;
             CalcFormula = Sum("Reservation Entry"."Quantity (Base)" WHERE("Source Type" = FILTER(39), "Source Subtype" = FILTER(1), "Source ID" = FIELD("Document No."), "Source Ref. No." = FIELD("Line No.")));
-
         }
     }
 

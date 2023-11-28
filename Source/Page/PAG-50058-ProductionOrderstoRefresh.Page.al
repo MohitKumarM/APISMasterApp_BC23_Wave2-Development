@@ -18,15 +18,9 @@ page 50058 "Production Orders to Refresh"
                 {
                     Lookup = false;
                 }
-                field(Description; Rec.Description)
-                {
-                }
-                field("Source No."; Rec."Source No.")
-                {
-                }
-                field(Quantity; Rec.Quantity)
-                {
-                }
+                field(Description; Rec.Description) { }
+                field("Source No."; Rec."Source No.") { }
+                field(Quantity; Rec.Quantity) { }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     Visible = false;
@@ -39,12 +33,8 @@ page 50058 "Production Orders to Refresh"
                 {
                     Visible = false;
                 }
-                field(Status; Rec.Status)
-                {
-                }
-                field("Search Description"; Rec."Search Description")
-                {
-                }
+                field(Status; Rec.Status) { }
+                field("Search Description"; Rec."Search Description") { }
             }
         }
     }
@@ -119,9 +109,7 @@ page 50058 "Production Orders to Refresh"
                         Rec.ShowDocDim;
                     end;
                 }
-                separator(Seprator1)
-                {
-                }
+                separator(Seprator1) { }
                 action(Statistics)
                 {
                     Caption = 'Statistics';
@@ -172,4 +160,3 @@ page 50058 "Production Orders to Refresh"
         }
     }
 }
-

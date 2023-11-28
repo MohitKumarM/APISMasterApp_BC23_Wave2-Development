@@ -151,12 +151,8 @@ table 50008 "Lot Tracking Entry"
         {
             SumIndexFields = Quantity;
         }
-        key(Key3; "Posting Date", "Item No.", "Lot No.", Positive)
-        {
-        }
+        key(Key3; "Posting Date", "Item No.", "Lot No.", Positive) { }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 }

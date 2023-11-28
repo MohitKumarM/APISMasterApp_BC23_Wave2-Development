@@ -21,11 +21,9 @@ report 50071 "Process Batch"
                         CustomerLedgerEntry."Parent Group" := ParentCustomer."Parent Group";
                         CustomerLedgerEntry.Modify();
                     until CustomerLedgerEntry.Next() = 0;
-
             end;
         }
     }
-
 
     requestpage
     {
@@ -39,7 +37,6 @@ report 50071 "Process Batch"
                     {
                         Visible = false;
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -52,7 +49,6 @@ report 50071 "Process Batch"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }

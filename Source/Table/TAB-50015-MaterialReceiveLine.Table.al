@@ -1,6 +1,5 @@
 table 50015 "Material Receive Line"
 {
-
     fields
     {
         field(1; "Document No."; Code[20])
@@ -15,18 +14,11 @@ table 50015 "Material Receive Line"
         {
             TableRelation = Item;
         }
-        field(4; "Item Name"; Text[50])
-        {
-        }
-        field(5; "Unit of Measure"; Code[10])
-        {
-        }
-        field(6; "Purchase Order Qty"; Decimal)
-        {
-        }
+        field(4; "Item Name"; Text[50]) { }
+        field(5; "Unit of Measure"; Code[10]) { }
+        field(6; "Purchase Order Qty"; Decimal) { }
         field(7; "Receive Qty"; Decimal)
         {
-
             trigger OnValidate()
             begin
                 IF "Receive Qty" > "Remaining Qty" THEN
@@ -37,21 +29,15 @@ table 50015 "Material Receive Line"
         {
             TableRelation = Location;
         }
-        field(9; "Purchase Order No."; Code[20])
-        {
-        }
+        field(9; "Purchase Order No."; Code[20]) { }
         field(10; Type; Option)
         {
             Caption = 'Type';
             OptionCaption = ' ,G/L Account,Item,,Fixed Asset,Charge (Item)';
             OptionMembers = " ","G/L Account",Item,,"Fixed Asset","Charge (Item)";
         }
-        field(11; IsInbound; Boolean)
-        {
-        }
-        field(12; "Remaining Qty"; Decimal)
-        {
-        }
+        field(11; IsInbound; Boolean) { }
+        field(12; "Remaining Qty"; Decimal) { }
         field(13; "Total Tracking Quantity"; Decimal)
         {
             CalcFormula = Sum("Reservation Entry"."Quantity (Base)" WHERE("Source Type" = CONST(50018),
@@ -60,9 +46,7 @@ table 50015 "Material Receive Line"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(14; "Purchase Order Line No."; Integer)
-        {
-        }
+        field(14; "Purchase Order Line No."; Integer) { }
     }
 
     keys
@@ -73,9 +57,7 @@ table 50015 "Material Receive Line"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     trigger OnDelete()
     begin
@@ -94,17 +76,13 @@ table 50015 "Material Receive Line"
     var
         recReceiveHeader: Record "Material Receive Header";
 
-
     procedure OpenItemTrackingLines()
-    var
-        ReserveMatRecLine: Codeunit "Purch. Line-Reserve";
     begin
         TESTFIELD("Item No.");
         TESTFIELD("Receive Qty");
 
         CallItemTracking(Rec);
     end;
-
 
     procedure CallItemTracking(var ReceiveLine: Record "Material Receive Line")
     var
@@ -120,7 +98,6 @@ table 50015 "Material Receive Line"
         ItemTrackingForm.SetInbound(TRUE);
         ItemTrackingForm.RUNMODAL;
     end;
-
 
     procedure InitTrackingSpecification(var ReceiveLine: Record "Material Receive Line"; var TrackingSpecification: Record "Tracking Specification")
     begin
@@ -146,4 +123,3 @@ table 50015 "Material Receive Line"
         TrackingSpecification."Qty. to Handle" := ReceiveLine."Receive Qty";
     end;
 }
-

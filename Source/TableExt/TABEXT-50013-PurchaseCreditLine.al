@@ -29,17 +29,13 @@ tableextension 50013 PurchaseCreditLine extends "Purch. Cr. Memo Line"
             Editable = false;
             TableRelation = "New Product Group".Code WHERE("Item Category Code" = FILTER(''));
         }
-        field(50007; "Unit Rate"; Decimal)
-        {
-        }
+        field(50007; "Unit Rate"; Decimal) { }
         field(50008; "Purchaser Code"; Code[20])
         {
             TableRelation = "Salesperson/Purchaser";
             /*comment by amar*/
         }
-        field(50009; "Other Charges"; Decimal)
-        {
-        }
+        field(50009; "Other Charges"; Decimal) { }
         field(50010; "Billed Quantity"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -57,9 +53,7 @@ tableextension 50013 PurchaseCreditLine extends "Purch. Cr. Memo Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(60000; "QC Completed"; Boolean)
-        {
-        }
+        field(60000; "QC Completed"; Boolean) { }
         field(70003; "Item Tracking Quantity Honey"; Decimal)
         {
             CalcFormula = Sum("Tran. Lot Tracking".Quantity WHERE("Document No." = FIELD("Document No."),

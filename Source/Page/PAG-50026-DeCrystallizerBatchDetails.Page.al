@@ -36,7 +36,5 @@ page 50026 "De-Crystallizer Batch Details"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }

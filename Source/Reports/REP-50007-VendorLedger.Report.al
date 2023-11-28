@@ -11,105 +11,46 @@ report 50007 "Vendor Ledger"
         {
             DataItemTableView = SORTING("Primary Key")
                                 ORDER(Ascending);
-            column(DateFilter; DateFilter)
-            {
-            }
-            column(Name1; "Company Information".Name)
-            {
-            }
-            column(Name2; "Company Information"."Name 2")
-            {
-            }
-            column(Address; "Company Information".Address)
-            {
-            }
-            column(Address2; "Company Information"."Address 2")
-            {
-            }
-            column(FORMAT; FORMAT(TODAY, 0, 4))
-            {
-            }
-            column(PAGENO; CurrReport.PAGENO)
-            {
-            }
+            column(DateFilter; DateFilter) { }
+            column(Name1; "Company Information".Name) { }
+            column(Name2; "Company Information"."Name 2") { }
+            column(Address; "Company Information".Address) { }
+            column(Address2; "Company Information"."Address 2") { }
+            column(FORMAT; FORMAT(TODAY, 0, 4)) { }
+            //column(PAGENO; CurrReport.PAGENO)
+            column(PAGENO; 0) { }
         }
         dataitem("Cust. Ledger Entry"; 25)
         {
             DataItemTableView = SORTING("Vendor No.", "Posting Date") // Year, Month // 16630 As Per rinku Close For Now
                                 ORDER(Ascending);
             RequestFilterFields = "Vendor No.", "Posting Date", "Global Dimension 1 Code";
-            column(VendorNo; Customer."No.")
-            {
-            }
-            column(VendorName; Customer.Name)
-            {
-            }
-            column(VendorNo_CustLedgerEntry; "Cust. Ledger Entry"."Vendor No.")
-            {
-            }
-            column(Vendor1; 'Vendor Detailed Ledger  for the period   ' + GETFILTER("Posting Date"))
-            {
-            }
-            column(Custt; Customer.Name)
-            {
-            }
-            column(City; Customer.City)
-            {
-            }
-            column(OpDr1; OpDr)
-            {
-            }
-            column(OpCr1; OpCr)
-            {
-            }
-            column(PostingDate; FORMAT("Posting Date"))
-            {
-            }
-            column(DocumentNo1; "Document No.")
-            {
-            }
-            column(ExternalDocumentNo; "Cust. Ledger Entry"."External Document No.")
-            {
-            }
-            column(Description; "Cust. Ledger Entry".Description)
-            {
-            }
-            column(ChequeNo; Cheque_No)
-            {
-            }
-            column(DebitAmountLCY; "Cust. Ledger Entry"."Debit Amount (LCY)")
-            {
-            }
-            column(CreditAmountLCY; "Cust. Ledger Entry"."Credit Amount (LCY)")
-            {
-            }
+            column(VendorNo; Customer."No.") { }
+            column(VendorName; Customer.Name) { }
+            column(VendorNo_CustLedgerEntry; "Cust. Ledger Entry"."Vendor No.") { }
+            column(Vendor1; 'Vendor Detailed Ledger  for the period   ' + GETFILTER("Posting Date")) { }
+            column(Custt; Customer.Name) { }
+            column(City; Customer.City) { }
+            column(OpDr1; OpDr) { }
+            column(OpCr1; OpCr) { }
+            column(PostingDate; FORMAT("Posting Date")) { }
+            column(DocumentNo1; "Document No.") { }
+            column(ExternalDocumentNo; "Cust. Ledger Entry"."External Document No.") { }
+            column(Description; "Cust. Ledger Entry".Description) { }
+            column(ChequeNo; Cheque_No) { }
+            column(DebitAmountLCY; "Cust. Ledger Entry"."Debit Amount (LCY)") { }
+            column(CreditAmountLCY; "Cust. Ledger Entry"."Credit Amount (LCY)") { }
             column(Description2; '')//"Cust. Ledger Entry".Description2
             {
             }
-            column(TotalDr1; TotalDr)
-            {
-            }
-            column(TotalCr1; TotalCr)
-            {
-            }
-            column(DebitAmount; "Cust. Ledger Entry"."Debit Amount" - "Cust. Ledger Entry"."Credit Amount" + Opening)
-            {
-            }
-            column(ClCr1; ClCr)
-            {
-            }
-            column(ClDr1; ClDr)
-            {
-            }
-            column(Opening1; "Cust. Ledger Entry"."Debit Amount" - "Cust. Ledger Entry"."Credit Amount" + Opening)
-            {
-            }
-            column(BalanceCr1; BalanceCr)
-            {
-            }
-            column(Instruction; PurchasePayableSetup."PO Terms & Conditions")
-            {
-            }
+            column(TotalDr1; TotalDr) { }
+            column(TotalCr1; TotalCr) { }
+            column(DebitAmount; "Cust. Ledger Entry"."Debit Amount" - "Cust. Ledger Entry"."Credit Amount" + Opening) { }
+            column(ClCr1; ClCr) { }
+            column(ClDr1; ClDr) { }
+            column(Opening1; "Cust. Ledger Entry"."Debit Amount" - "Cust. Ledger Entry"."Credit Amount" + Opening) { }
+            column(BalanceCr1; BalanceCr) { }
+            column(Instruction; PurchasePayableSetup."PO Terms & Conditions") { }
 
             trigger OnAfterGetRecord()
             begin
@@ -191,14 +132,10 @@ report 50007 "Vendor Ledger"
             }
         }
 
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     trigger OnPostReport()
     begin
@@ -209,7 +146,7 @@ report 50007 "Vendor Ledger"
     trigger OnPreReport()
 
     begin
-        IF Customer.Blocked <> 0 THEN
+        IF Customer.Blocked <> Customer.Blocked::All THEN
             ERROR('Report Cannot Be Generate When Vendor is Blocked');
         DateFilter := "Cust. Ledger Entry".GETFILTER("Posting Date");
     end;

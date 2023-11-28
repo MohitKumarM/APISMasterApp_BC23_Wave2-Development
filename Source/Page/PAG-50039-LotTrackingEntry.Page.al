@@ -64,9 +64,7 @@ page 50039 "Lot Tracking Entry"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin

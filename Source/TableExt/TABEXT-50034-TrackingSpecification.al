@@ -10,19 +10,9 @@ tableextension 50034 TrackingSpecfication extends "Tracking Specification"
         {
             OptionMembers = ,Drums,Tins,Buckets,Cans;
         }
-        field(50003; "Qty. in Pack"; Decimal)
-        {
-
-        }
-        field(50004; "Qty. Per Pack"; Decimal)
-        {
-
-        }
-        field(50005; "Original Qty. in Pack"; Decimal)
-        {
-
-        }
-
+        field(50003; "Qty. in Pack"; Decimal) { }
+        field(50004; "Qty. Per Pack"; Decimal) { }
+        field(50005; "Original Qty. in Pack"; Decimal) { }
         field(50020; "Tin"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -51,8 +41,6 @@ tableextension 50034 TrackingSpecfication extends "Tracking Specification"
 
     keys
     {
-        key(Key20; "ILE No.")
-        {
-        }
+        key(Key20; "ILE No.") { }
     }
 }

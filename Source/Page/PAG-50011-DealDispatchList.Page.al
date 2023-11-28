@@ -71,7 +71,5 @@ page 50011 "Deal Dispatch List"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }

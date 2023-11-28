@@ -13,62 +13,28 @@ report 50064 "Prod. Quality Report"
             CalcFields = "Document Date";
             DataItemTableView = SORTING("No.")
                                 ORDER(Ascending);
-            column(RepotNo; "QC Analytical Report No.")
-            {
-            }
-            column(Note; 'Note: This is a system generated Reports and needs no signature.')
-            {
-            }
-            column(CompanyName; recCompanyInfo.Name)
-            {
-            }
-            column(Logo; recCompanyInfo.Picture)
-            {
-            }
-            column(Heading; txtHeading)
-            {
-            }
-            column(Product; recProductionOrder."Customer Name")
-            {
-            }
-            column(BatchQuatity; Quantity)
-            {
-            }
-            column(BatchNo; cdLotNo)
-            {
-            }
-            column(MfgDate; FORMAT(dtMfgDate))
-            {
-            }
-            column(TestedByID; "Tested By")
-            {
-            }
-            column(CheckedBy; "Sampled By")
-            {
-            }
-            column(ExpiryDate; FORMAT(dtExpiryDate))
-            {
-            }
+            column(RepotNo; "QC Analytical Report No.") { }
+            column(Note; 'Note: This is a system generated Reports and needs no signature.') { }
+            column(CompanyName; recCompanyInfo.Name) { }
+            column(Logo; recCompanyInfo.Picture) { }
+            column(Heading; txtHeading) { }
+            column(Product; recProductionOrder."Customer Name") { }
+            column(BatchQuatity; Quantity) { }
+            column(BatchNo; cdLotNo) { }
+            column(MfgDate; FORMAT(dtMfgDate)) { }
+            column(TestedByID; "Tested By") { }
+            column(CheckedBy; "Sampled By") { }
+            column(ExpiryDate; FORMAT(dtExpiryDate)) { }
             dataitem("Quality Line"; "Quality Line")
             {
                 DataItemLink = "QC No." = FIELD("No.");
                 DataItemTableView = SORTING("QC No.", "Line No.")
                                     ORDER(Ascending);
-                column(Measure; "Quality Measure")
-                {
-                }
-                column(Parameter; Parameter)
-                {
-                }
-                column(Specs; Specs)
-                {
-                }
-                column(Limit; Limit)
-                {
-                }
-                column(Observation; Observation)
-                {
-                }
+                column(Measure; "Quality Measure") { }
+                column(Parameter; Parameter) { }
+                column(Specs; Specs) { }
+                column(Limit; Limit) { }
+                column(Observation; Observation) { }
             }
 
             trigger OnAfterGetRecord()
@@ -120,18 +86,12 @@ report 50064 "Prod. Quality Report"
 
     requestpage
     {
-        layout
-        {
-        }
+        layout { }
 
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     var
         recCompanyInfo: Record "Company Information";

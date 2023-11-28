@@ -9,36 +9,16 @@ report 50070 "Barcode Report 1"
         {
             DataItemTableView = SORTING(Number)
                                 ORDER(Ascending);
-            column(BarcodeNo; cdBarcodeNo)
-            {
-            }
-            column(Barcode; txtBarCode)
-            {
-            }
-            column(BarcodeNo1; cdBarcodeNo1)
-            {
-            }
-            column(Barcode1; txtBarCode1)
-            {
-            }
-            column(QRCode; recBarCode."QR Code")
-            {
-            }
-            column(QRCode1; recBarCode."QR Code 1")
-            {
-            }
-            column(QRCode2; recBarCode."QR Code 2")
-            {
-            }
-            column(Item; txtBarCode)
-            {
-            }
-            column(Item1; txtBarCode1)
-            {
-            }
-            column(Item2; txtBarCode2)
-            {
-            }
+            column(BarcodeNo; cdBarcodeNo) { }
+            column(Barcode; txtBarCode) { }
+            column(BarcodeNo1; cdBarcodeNo1) { }
+            column(Barcode1; txtBarCode1) { }
+            column(QRCode; recBarCode."QR Code") { }
+            column(QRCode1; recBarCode."QR Code 1") { }
+            column(QRCode2; recBarCode."QR Code 2") { }
+            column(Item; txtBarCode) { }
+            column(Item1; txtBarCode1) { }
+            column(Item2; txtBarCode2) { }
 
             trigger OnAfterGetRecord()
             begin
@@ -91,8 +71,6 @@ report 50070 "Barcode Report 1"
                 //     txtBarCode2 := recBarCodesLoop."G/L Account No." + ' - ' + recBarCodesLoop."External Document No.";
                 //     intEntryNo := intEntryNo - 1;
                 // END;
-
-
             end;
 
             trigger OnPreDataItem()
@@ -123,46 +101,27 @@ report 50070 "Barcode Report 1"
 
                 // intLoopCounter := ROUND(intEntryNo / 3, 1, '>');
                 // Integer.SETRANGE(Number, 1, intLoopCounter);
-
             end;
         }
     }
 
     requestpage
     {
+        layout { }
 
-        layout
-        {
-        }
-
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     var
         cdReceivingNo: Code[20];
-        //recRecevingLines: Record "50018";
-        recReservationEntry: Record "Reservation Entry";
-        //recBarCodesLoop: Record "16541" temporary;
-        intEntryNo: Integer;
         cdBarcodeNo: Code[50];
         txtBarCode: Text[50];
         cdBarcodeNo1: Code[50];
         txtBarCode1: Text[50];
-        intLoopCounter: Integer;
-        recBarCodeLines: Record "Bar Code Lines";
         recBarCode: Record "Bar Code Lines" temporary;
-        //recTempBlob: Record "99008535";
-        recTempBlob: Codeunit "Temp Blob";
-        //cuGSTEInvoice: Codeunit "Material Receive Line";
-        txtBarCodeText: Text;
         txtBarCode2: Text[50];
-
 
     procedure SetRecevingNo(ReceivingNo: Code[20])
     begin
@@ -170,4 +129,3 @@ report 50070 "Barcode Report 1"
         cdReceivingNo := ReceivingNo;
     end;
 }
-

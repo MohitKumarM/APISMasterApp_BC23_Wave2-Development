@@ -112,14 +112,10 @@ table 50002 "Quality Header"
         {
             Clustered = true;
         }
-        key(Key2; "Document Type", "Document No.", "Document Line No.", "Item Code", "Lot No.")
-        {
-        }
+        key(Key2; "Document Type", "Document No.", "Document Line No.", "Item Code", "Lot No.") { }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     trigger OnDelete()
     begin

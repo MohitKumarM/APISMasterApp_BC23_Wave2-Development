@@ -805,9 +805,7 @@ page 50035 ItemJournalLine
                 }
             }
         }
-        area(Factboxes)
-        {
-        }
+        area(Factboxes) { }
     }
 
     actions

@@ -32,22 +32,16 @@ report 50030 "Mktg Exp Report"
 
                 column(Type; Type)// Item No. __Replace NAme
                 {
-
                 }
                 column(Description; Description)// Item Description
                 {
-
                 }
-                column(HSN_SAC_Code; "HSN/SAC Code")
-                {
-
-                }
+                column(HSN_SAC_Code; "HSN/SAC Code") { }
                 column(Unit_of_Measure; "Unit of Measure") { }
                 column(Total_Qty; Quantity) { }
                 column(Unit_Price; "Direct Unit Cost") { }
                 column(GST_Base_Amount; Amount)//Total_Base_Price
                 {
-
                 }
                 column(GST_Percent; GST_Percent) { }
                 column(GST_Amount; Total_GSTAmount) { }
@@ -55,7 +49,6 @@ report 50030 "Mktg Exp Report"
 
                 trigger OnPreDataItem()
                 begin
-
                 end;
 
                 trigger OnAfterGetRecord()
@@ -96,14 +89,10 @@ report 50030 "Mktg Exp Report"
 
                     Clear(Total_GSTAmount);
                     Total_GSTAmount := CAmount1 + SAmount1 + IAmount1;
-
-
                 end;
-
             }
             trigger OnPreDataItem()
             begin
-
             end;
 
             trigger OnAfterGetRecord()
@@ -118,16 +107,12 @@ report 50030 "Mktg Exp Report"
         {
             area(content)
             {
-                group(GroupName)
-                {
-                }
+                group(GroupName) { }
             }
         }
         actions
         {
-            area(processing)
-            {
-            }
+            area(processing) { }
         }
     }
     var
@@ -141,6 +126,4 @@ report 50030 "Mktg Exp Report"
         IAmount: Decimal;
         GST_Percent: Decimal;
         Total_GSTAmount: Decimal;
-
-
 }

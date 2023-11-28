@@ -17,58 +17,26 @@ page 50070 "Incoming Material Report"
         {
             repeater(Group)
             {
-                field("Posting Date"; Rec."Posting Date")
-                {
-                }
-                field("Lot No."; Rec."Lot No.")
-                {
-                }
-                field(Flora; Rec.Flora)
-                {
-                }
-                field("Purchaser Code"; Rec."Purchaser Code")
-                {
-                }
-                field("Purchaser Name"; Rec."Purchaser Name")
-                {
-                }
-                field("Vehicle No."; Rec."Vehicle No.")
-                {
-                }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                }
-                field("Qty. in Pack"; Rec."Qty. in Pack")
-                {
-                }
-                field(Quantity; Rec.Quantity)
-                {
-                }
-                field("Moisture (%)"; Rec."Moisture (%)")
-                {
-                }
-                field("Color (MM)"; Rec."Color (MM)")
-                {
-                }
-                field("HMF (PPM)"; Rec."HMF (PPM)")
-                {
-                }
-                field(TRS; Rec.TRS)
-                {
-                }
-                field(Sucrose; Rec.Sucrose)
-                {
-                }
-                field(FG; Rec.FG)
-                {
-                }
+                field("Posting Date"; Rec."Posting Date") { }
+                field("Lot No."; Rec."Lot No.") { }
+                field(Flora; Rec.Flora) { }
+                field("Purchaser Code"; Rec."Purchaser Code") { }
+                field("Purchaser Name"; Rec."Purchaser Name") { }
+                field("Vehicle No."; Rec."Vehicle No.") { }
+                field("Packing Type"; Rec."Packing Type") { }
+                field("Qty. in Pack"; Rec."Qty. in Pack") { }
+                field(Quantity; Rec.Quantity) { }
+                field("Moisture (%)"; Rec."Moisture (%)") { }
+                field("Color (MM)"; Rec."Color (MM)") { }
+                field("HMF (PPM)"; Rec."HMF (PPM)") { }
+                field(TRS; Rec.TRS) { }
+                field(Sucrose; Rec.Sucrose) { }
+                field(FG; Rec.FG) { }
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     begin
@@ -81,4 +49,3 @@ page 50070 "Incoming Material Report"
     var
         recPurchaserSetup: Record "Purchases & Payables Setup";
 }
-

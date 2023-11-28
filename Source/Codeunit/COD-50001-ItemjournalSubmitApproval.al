@@ -42,7 +42,6 @@ codeunit 50001 "Item Jnl.-Submit Approval"
                     recItemJournalLines.Delete();
                 UNTIL recItemJournalLines.NEXT = 0;
 
-
                 Clear(intLineNo);
                 intLineNo := GetlastNo(cdTemplate, cdBatch);
                 if TempItemjournalLine.FindFirst() then begin

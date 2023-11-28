@@ -4,7 +4,6 @@ page 50066 "Material Req. Card"
     PageType = Card;
     SourceTable = "Material Requisition Header";
 
-
     layout
     {
         area(content)
@@ -13,38 +12,25 @@ page 50066 "Material Req. Card"
             {
                 field("No."; Rec."No.")
                 {
-
                     trigger OnAssistEdit()
                     begin
                         IF Rec.AssistEdit(xRec) THEN
                             CurrPage.UPDATE;
                     end;
                 }
-                field(Date; Rec.Date)
-                {
-                }
-                field("User ID"; Rec."User ID")
-                {
-                }
+                field(Date; Rec.Date) { }
+                field("User ID"; Rec."User ID") { }
                 field("Document No."; Rec."Document No.")
                 {
                     Visible = false;
                 }
-                field(Status; Rec.Status)
-                {
-                }
+                field(Status; Rec.Status) { }
                 field("Request Remarks"; Rec."Request Remarks")
                 {
                     Caption = 'Request Remarks';
                 }
-                field("Department Name"; Rec."Department Name")
-                {
-
-                }
-                field("Issue Remarks"; Rec."Issue Remarks")
-                {
-
-                }
+                field("Department Name"; Rec."Department Name") { }
+                field("Issue Remarks"; Rec."Issue Remarks") { }
             }
             part("Material Req. SubPage"; "Material Req. SubPage")
             {
@@ -70,17 +56,17 @@ page 50066 "Material Req. Card"
                 begin
                     /*
                     Rec.TESTFIELD("Document No.");
-                    
+
                     IF NOT CONFIRM('Want to Fill Pending Lines', FALSE) THEN
                       EXIT;
-                    
+
                     recRequisitionLine.RESET;
                     recRequisitionLine.SETRANGE("Req. No.", Rec."No.");
                     IF recRequisitionLine.FINDLAST THEN
                       intLineNo := recRequisitionLine."Line No."
                     ELSE
                       intLineNo := 0;
-                    
+
                     blnPendingLines := FALSE;
                     recComponentLines.RESET;
                     recComponentLines.SETRANGE(Status, recComponentLines.Status::Released);
@@ -104,19 +90,18 @@ page 50066 "Material Req. Card"
                         recRequisitionLine."Requested Quantity" := recComponentLines."Remaining Quantity" - recComponentLines."Material Issued Qty." - recComponentLines."Material To Issue Qty.";
                         recRequisitionLine."Location Code" := recComponentLines."Location Code";
                         recRequisitionLine.INSERT;
-                    
+
                         blnPendingLines := TRUE;
                       END;
                     UNTIL recComponentLines.NEXT = 0;
-                    
+
                     IF blnPendingLines THEN
                       MESSAGE('The material requisition is generated successfully.')
                     ELSE
                       ERROR('Nothing to Fill.');
-                    
+
                     CurrPage.UPDATE;
                     */
-
                 end;
             }
             action(Submit)
@@ -157,9 +142,5 @@ page 50066 "Material Req. Card"
     }
 
     var
-        recComponentLines: Record "Prod. Order Component";
         recRequisitionLine: Record "Material Requisition Line";
-        intLineNo: Integer;
-        blnPendingLines: Boolean;
 }
-

@@ -167,9 +167,7 @@ table 50006 "Batch Process Line"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     var
         recItemLedger: Record "Item Ledger Entry";

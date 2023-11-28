@@ -76,9 +76,7 @@ page 50034 "Purchase Que"
                 }
             }
         }
-        area(Factboxes)
-        {
-        }
+        area(Factboxes) { }
     }
 
     actions

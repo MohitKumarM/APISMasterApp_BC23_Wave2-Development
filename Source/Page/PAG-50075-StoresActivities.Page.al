@@ -9,7 +9,6 @@ page 50075 "Stores Activities"
     {
         area(content)
         {
-
             cuegroup(Stores_)
             {
                 Caption = 'Stores';
@@ -33,7 +32,6 @@ page 50075 "Stores Activities"
             }
             cuegroup(Stores)
             {
-
                 field("Material Issue"; Rec."Material Issue")
                 {
                     DrillDownPageID = "Material Req. Issue List";
@@ -61,16 +59,13 @@ page 50075 "Stores Activities"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     var
         intUserCount: Integer;
         recGLSetup: Record "General Ledger Setup";
         recUser: Record "User";
-        recActiveSession: Record "Active Session";
     begin
         //Iappc - User Mgmt Begin
         recGLSetup.GET;
@@ -100,8 +95,6 @@ page 50075 "Stores Activities"
         // END;
         //Iappc - User Mgmt End
 
-
-
         Rec.RESET;
         IF NOT Rec.GET THEN BEGIN
             Rec.INIT;
@@ -111,4 +104,3 @@ page 50075 "Stores Activities"
         Rec.SETFILTER("Date Filter", '>=%1', WORKDATE);
     end;
 }
-

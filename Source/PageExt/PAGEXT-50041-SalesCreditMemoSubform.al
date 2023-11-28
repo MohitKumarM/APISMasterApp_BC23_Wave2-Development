@@ -53,7 +53,6 @@ pageextension 50041 SalesCreditMemoSUbform extends "Sales Cr. Memo Subform"
                             Message('SKIP TCS feature is Enabled');
                         end;
                 end;
-
             }
         }
     }
@@ -62,9 +61,6 @@ pageextension 50041 SalesCreditMemoSUbform extends "Sales Cr. Memo Subform"
     {
         // Add changes to page actions here
     }
-
-    var
-        myInt: Integer;
 
     local procedure UpdateTaxAmount()
     var

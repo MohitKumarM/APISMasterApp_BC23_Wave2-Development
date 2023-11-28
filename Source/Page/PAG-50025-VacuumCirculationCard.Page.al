@@ -36,9 +36,7 @@ page 50025 "Vacuum Circulation Card"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     begin

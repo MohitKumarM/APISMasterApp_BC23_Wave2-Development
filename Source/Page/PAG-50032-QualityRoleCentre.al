@@ -21,6 +21,23 @@ page 50032 "Quality Role Centre New"
 
     actions
     {
+        area(Embedding)
+        {
+            action("Output QC")
+            {
+                ApplicationArea = Manufacturing, Basic, Suite;
+                Caption = 'Output QC';
+                RunObject = page "Output QC";
+                Image = Order;
+            }
+            action("Posted QC")
+            {
+                ApplicationArea = Manufacturing, Basic, Suite;
+                Caption = 'Posted QC';
+                RunObject = page "Quality Checks";
+                Image = Order;
+            }
+        }
         area(processing)
         {
             group(Masters)
@@ -83,7 +100,6 @@ page 50032 "Quality Role Centre New"
                         Image = Print;
                         //RunObject = Report "Yield Reprt";
                     }
-
                     action("PM Stock with QC Details")
                     {
                         // RunObject = Report 50053;

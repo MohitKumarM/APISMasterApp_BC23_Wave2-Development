@@ -68,9 +68,7 @@ tableextension 50017 PurchaseHeader extends "Purchase Header"
             OptionCaption = ' ,Buyer Scope,Supplier Scope';
             OptionMembers = " ","Buyer Scope","Supplier Scope";
         }
-        field(50018; "Valid Till"; Date)
-        {
-        }
+        field(50018; "Valid Till"; Date) { }
         field(50019; "Creation Tin&Drum&Bucket Item"; Boolean)
         {
             DataClassification = ToBeClassified;
@@ -98,7 +96,6 @@ tableextension 50017 PurchaseHeader extends "Purchase Header"
                 intEntryNo: Integer;
                 decQuantity: Decimal;
             begin
-
 
                 IF "Scan Bar Code" <> '' THEN BEGIN
                     //cdBarCodeID := COPYSTR("Scan Bar Code", STRPOS("Scan Bar Code", '/')+1);

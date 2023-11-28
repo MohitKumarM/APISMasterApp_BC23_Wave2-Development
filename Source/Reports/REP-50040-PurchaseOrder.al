@@ -5,16 +5,11 @@ report 50040 "purchase Order Report"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
 
-
     dataset
     {
         dataitem("Purchases & Payables Setup"; "Purchases & Payables Setup")
         {
-
-            column(Pament_Terms; "PO Terms & Conditions")
-            {
-
-            }
+            column(Pament_Terms; "PO Terms & Conditions") { }
         }
         dataitem("Purchase Header"; "Purchase Header")
         {
@@ -52,48 +47,27 @@ report 50040 "purchase Order Report"
             column(ModeOf_Delivery; '') { }
             column(Payment_Terms; '') { }
             column(Currency_Code; "Currency Code") { }
-            column(Location1; txtLocation[1])
-            {
-            }
-            column(Location2; txtLocation[2] + ' ' + txtLocation[3])
-            {
-            }
-            column(Location3; txtLocation[4] + ' ' + txtLocation[5])
-            {
-            }
+            column(Location1; txtLocation[1]) { }
+            column(Location2; txtLocation[2] + ' ' + txtLocation[3]) { }
+            column(Location3; txtLocation[4] + ' ' + txtLocation[5]) { }
             column(Location4; txtLocation[6]) { }//phone no
             column(Location5; txtLocation[7]) { }// home page
             column(Location6; txtLocation[8]) { }//email
-            column(txt_Vendor1; txt_Vendor[1])
-            {
-            }
-            column(txt_Vendor2; txt_Vendor[2])
-            {
-            }
-            column(txt_Vendor3; txt_Vendor[3])
-            {
-            }
-            column(txt_Vendor4; txt_Vendor[4])
-            {
-            }
-            column(txt_Vendor5; txt_Vendor[5])
-            {
-            }
+            column(txt_Vendor1; txt_Vendor[1]) { }
+            column(txt_Vendor2; txt_Vendor[2]) { }
+            column(txt_Vendor3; txt_Vendor[3]) { }
+            column(txt_Vendor4; txt_Vendor[4]) { }
+            column(txt_Vendor5; txt_Vendor[5]) { }
             column(txt_Vendor6; txt_Vendor[6]) { }
             column(txt_vendor_No; "Pay-to Vendor No.") { }
             column(Comment; Comment) { }
-
             dataitem("Purchase Line"; "Purchase Line")
             {
                 DataItemLink = "Document No." = field("No.");
                 DataItemLinkReference = "Purchase Header";
                 DataItemTableView = sorting("Document Type", "Document No.", "Line No.");
-                column(SrNo; Sr_No)
-                {
-
-                }
-                column(Document_No_; "Document No.")
-                { }
+                column(SrNo; Sr_No) { }
+                column(Document_No_; "Document No.") { }
                 column(Description; Description) { }
                 column(HSN_SAC_Code; "HSN/SAC Code") { }
                 column(Delivery_Time; '') { }
@@ -117,14 +91,11 @@ report 50040 "purchase Order Report"
                 trigger OnPreDataItem()
                 begin
                     Sr_No := 0;
-
                 end;
-
 
                 trigger OnAfterGetRecord()
                 begin
                     Sr_No += 1;
-
 
                     Clear(CRate);
                     Clear(CAmount);
@@ -175,20 +146,15 @@ report 50040 "purchase Order Report"
                         until TaxTransactionValue.Next() = 0;
                     end;
 
-
                     Clear(Total_GSTAmount);
                     Total_GSTAmount := CAmount1 + SAmount1 + IAmount1;
 
                     GrandTotalAmount := Total_GSTAmount + TotalAmount + TDSAmt;
-
-
                 end;
 
                 trigger OnPostDataItem()
                 begin
-
                 end;
-
             }
 
             trigger OnPreDataItem()
@@ -232,10 +198,8 @@ report 50040 "purchase Order Report"
                     Reverse_Charger := 'No';
                 if rec_Vendor."GST Vendor Type" = rec_Vendor."GST Vendor Type"::Unregistered then
                     Reverse_Charger := 'Yes';
-
             end;
         }
-
     }
 
     requestpage
@@ -244,7 +208,6 @@ report 50040 "purchase Order Report"
         {
             area(Content)
             {
-
                 /* field(No; "Purchase Header"."No.")
                 {
                     Caption = 'No';
@@ -259,20 +222,14 @@ report 50040 "purchase Order Report"
                         Purch_Header.Reset();
                         if Page.RunModal(Page::"Purchase Order List", Purch_Header) = Action::LookupOK then
                             P_No := Purch_Header."No.";
-                    end; 
-
+                    end;
                 } */
-
             }
-
         }
 
         actions
         {
-            area(processing)
-            {
-
-            }
+            area(processing) { }
         }
     }
     trigger OnPreReport()
@@ -281,12 +238,7 @@ report 50040 "purchase Order Report"
         recCompanyInfo.CalcFields(Picture);
     end;
 
-
-
     var
-        P_No: Code[25];
-
-        Purch_Payment_Setup: Record "Purchases & Payables Setup";
         Purch_Order_Name: Text[25];
         Reverse_Charger: Text[10];
         Vendor_GST_No: Code[20];

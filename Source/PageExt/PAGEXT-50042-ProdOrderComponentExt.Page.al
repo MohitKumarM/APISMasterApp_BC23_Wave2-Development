@@ -45,7 +45,6 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
         {
             Visible = false;
         }
-
         modify("Put-away/Pick Lines/Movement Lines")
         {
             Visible = false;
@@ -67,6 +66,8 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                 var
                     recLotTracking: Record "Tran. Lot Tracking";
                     pgLotTracking: Page "Cons. Lot Tracking Entry";
+                    ProdOrder_Loc: Record "Production Order";
+                    ManufacturingSetup_Loc: Record "Manufacturing Setup";
                 begin
 
                     Rec.TESTFIELD("Item No.");
@@ -75,6 +76,12 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                     recPurchSetup.TESTFIELD("Raw Honey Item");
                     recItem.GET(Rec."Item No.");
                     recProductGroup.GET(recItem."New Product Group Code", recItem."Item Category Code");
+                    ProdOrder_Loc.Get(Rec.Status, Rec."Prod. Order No.");
+                    //Rec."Location Code" := ProdOrder_Loc."Location Code";
+                    ManufacturingSetup_Loc.Get();
+                    ManufacturingSetup_Loc.TestField("Store Location");
+                    Rec."Location Code" := ManufacturingSetup_Loc."Store Location";
+                    Rec.Modify();
 
                     IF recProductGroup."Allow Direct Purch. Order" THEN BEGIN
                         recLotTracking.RESET;
@@ -110,19 +117,12 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                 end;
             }
         }
-
     }
-
-    var
-        myInt: Integer;
 
     procedure CalculateQuantityRequired(): Decimal
     var
         ProdOrderLine: Record "Prod. Order Line";
         ProdOrderRtngLine: Record "Prod. Order Routing Line";
-        Item_Loc: Record Item;
-        ProdBomHeader: Record "Production BOM Header";
-        ProdBomLine: Record "Production BOM Line";
         TotalQuantityWithScrap: Decimal;
         NetScrap: Decimal;
 
@@ -161,6 +161,4 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
         recItem: Record "Item";
         recItemLedger: Record "Item Ledger Entry";
         recReservationEntry: Record "Reservation Entry";
-
-
 }

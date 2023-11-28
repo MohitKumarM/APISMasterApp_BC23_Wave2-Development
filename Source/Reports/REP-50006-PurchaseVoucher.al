@@ -24,39 +24,20 @@ report 50006 "Purchase Voucher"
             column(Bal__Account_No_; "Bal. Account No.") { }
             column(Home_Page; '') { }
             column(Email; '') { }
-            column(Location1; txtLocation[1])
-            {
-            }
-            column(Location2; txtLocation[2] + ' ' + txtLocation[3])
-            {
-            }
-            column(Location3; txtLocation[4] + ' ' + txtLocation[5])
-            {
-            }
+            column(Location1; txtLocation[1]) { }
+            column(Location2; txtLocation[2] + ' ' + txtLocation[3]) { }
+            column(Location3; txtLocation[4] + ' ' + txtLocation[5]) { }
             column(Location4; txtLocation[6]) { }//phone no
             column(Location5; txtLocation[7]) { }// home page
             column(Location6; txtLocation[8]) { }//email
-            column(txt_Vendor1; txt_Vendor[1])
-            {
-            }
-            column(txt_Vendor2; txt_Vendor[2])
-            {
-            }
-            column(txt_Vendor3; txt_Vendor[3])
-            {
-            }
-            column(txt_Vendor4; txt_Vendor[4])
-            {
-            }
-            column(txt_Vendor5; txt_Vendor[5])
-            {
-            }
-            column(txt_Vendor6; Vendor_PhnNo)
-            {
-            }
+            column(txt_Vendor1; txt_Vendor[1]) { }
+            column(txt_Vendor2; txt_Vendor[2]) { }
+            column(txt_Vendor3; txt_Vendor[3]) { }
+            column(txt_Vendor4; txt_Vendor[4]) { }
+            column(txt_Vendor5; txt_Vendor[5]) { }
+            column(txt_Vendor6; Vendor_PhnNo) { }
             column(Ship_to_Address; "Ship-to Address") { }
             column(Comment; Comment) { }
-
             dataitem("Purch. Inv. Line"; "Purch. Inv. Line")
             {
                 DataItemLink = "Document No." = field("No.");
@@ -122,7 +103,6 @@ report 50006 "Purchase Voucher"
                             END;
                         UNTIL DetailedGSTLedgerEntry.NEXT = 0;
 
-
                     TDSSetup.Get();
                     TaxTransactionValue.Reset();
                     TaxTransactionValue.SetRange("Tax Record ID", "Purch. Inv. Line".RecordId);
@@ -142,11 +122,9 @@ report 50006 "Purchase Voucher"
 
                     GrandTotalAmount := Total_GSTAmount + TotalAmount + TDSAmt;
                 end;
-
             }
             trigger OnPreDataItem()
             begin
-
             end;
 
             trigger OnAfterGetRecord()
@@ -175,7 +153,6 @@ report 50006 "Purchase Voucher"
                 txt_Vendor[5] := rec_Vendor."State Code";
                 COMPRESSARRAY(txt_Vendor);
                 Vendor_PhnNo := rec_Vendor."Phone No.";
-
             end;
         }
     }
@@ -186,10 +163,7 @@ report 50006 "Purchase Voucher"
         {
             area(Content)
             {
-                group(GroupName)
-                {
-
-                }
+                group(GroupName) { }
             }
         }
 
@@ -200,7 +174,6 @@ report 50006 "Purchase Voucher"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -233,7 +206,5 @@ report 50006 "Purchase Voucher"
         IAmount: Decimal;
         IAmount1: Decimal;
         Total_GSTAmount: Decimal;
-        Total_Rate: Decimal;
         GrandTotalAmount: Decimal;
-
 }

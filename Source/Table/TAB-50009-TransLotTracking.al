@@ -5,16 +5,12 @@ table 50009 "Tran. Lot Tracking"
 
     fields
     {
-        field(1; "Entry No."; Integer)
-        {
-        }
+        field(1; "Entry No."; Integer) { }
         field(2; "Item No."; Code[20])
         {
             TableRelation = Item;
         }
-        field(3; "Lot No."; Code[20])
-        {
-        }
+        field(3; "Lot No."; Code[20]) { }
         field(4; Flora; Code[20])
         {
             TableRelation = "New Product Group".Code WHERE("Item Category Code" = FILTER(''));
@@ -45,12 +41,8 @@ table 50009 "Tran. Lot Tracking"
         {
             Editable = false;
         }
-        field(9; "Document No."; Code[20])
-        {
-        }
-        field(10; "Document Line No."; Integer)
-        {
-        }
+        field(9; "Document No."; Code[20]) { }
+        field(10; "Document Line No."; Integer) { }
         field(11; "Applied Qty."; Decimal)
         {
             CalcFormula = Sum("Tran. Lot Tracking".Quantity WHERE("Document No." = FIELD("Document No."),
@@ -71,9 +63,7 @@ table 50009 "Tran. Lot Tracking"
         {
             TableRelation = Location;
         }
-        field(14; "Tare Weight"; Decimal)
-        {
-        }
+        field(14; "Tare Weight"; Decimal) { }
         field(1000; "Document Type"; Option)
         {
             OptionCaption = 'Purch. Receipt,Consumption,Transfer';
@@ -105,9 +95,7 @@ table 50009 "Tran. Lot Tracking"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     trigger OnInsert()
     begin

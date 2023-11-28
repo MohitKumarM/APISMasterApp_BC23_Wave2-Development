@@ -1,11 +1,8 @@
 table 50018 "Material Requisition Header"
 {
-
     fields
     {
-        field(1; "No."; Code[20])
-        {
-        }
+        field(1; "No."; Code[20]) { }
         field(2; Date; Date)
         {
             Editable = false;
@@ -33,15 +30,9 @@ table 50018 "Material Requisition Header"
         {
             TableRelation = "No. Series";
         }
-        field(8; "Department Name"; Text[50])
-        {
-        }
-        field(9; "Request Remarks"; Text[50])
-        {
-        }
-        field(10; "Issue Remarks"; Text[50])
-        {
-        }
+        field(8; "Department Name"; Text[50]) { }
+        field(9; "Request Remarks"; Text[50]) { }
+        field(10; "Issue Remarks"; Text[50]) { }
     }
 
     keys
@@ -52,9 +43,7 @@ table 50018 "Material Requisition Header"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     trigger OnInsert()
     begin
@@ -70,7 +59,6 @@ table 50018 "Material Requisition Header"
         DimMgt: Codeunit "DimensionManagement";
         intSetID: Integer;
 
-
     procedure AssistEdit(OldMaterialReq: Record "Material Requisition Header"): Boolean
     begin
 
@@ -84,11 +72,9 @@ table 50018 "Material Requisition Header"
         END;
     END;
 
-
     procedure LookupShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.LookupDimValueCode(FieldNumber, ShortcutDimCode);
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, intSetID);
     end;
 }
-

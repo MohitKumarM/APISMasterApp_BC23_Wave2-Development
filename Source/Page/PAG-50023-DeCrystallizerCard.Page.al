@@ -69,9 +69,7 @@ page 50023 "De-Crystallizer Card"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     begin

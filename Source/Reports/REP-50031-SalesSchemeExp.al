@@ -1,6 +1,5 @@
 report 50031 "Sales Scheme Exp"
 {
-
     DefaultLayout = RDLC;
     RDLCLayout = '.\ReportLayouts\SalesSchemeExp.rdl';
     UsageCategory = ReportsAndAnalysis;
@@ -11,10 +10,7 @@ report 50031 "Sales Scheme Exp"
         dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
             RequestFilterFields = "No.";
-            column(Customer_Code; "Sell-to Customer No.")
-            {
-
-            }
+            column(Customer_Code; "Sell-to Customer No.") { }
             column(Customer_Firm_Name; "Sell-to Customer Name") { }
             column(Cstomer_Location; "Sell-to Address" + ',' + "Sell-to Address 2") { }
             column(Customer_District; "Sell-to City") { }
@@ -66,8 +62,6 @@ report 50031 "Sales Scheme Exp"
 
                     Clear(Total_GSTAmount);
                     Total_GSTAmount := CAmount1 + SAmount1 + IAmount1;
-
-
                 end;
             }
         }
@@ -75,10 +69,7 @@ report 50031 "Sales Scheme Exp"
 
     requestpage
     {
-        layout
-        {
-
-        }
+        layout { }
 
         actions
         {
@@ -87,12 +78,10 @@ report 50031 "Sales Scheme Exp"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
     }
-
 
     var
         DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";

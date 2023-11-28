@@ -688,30 +688,18 @@ page 50050 "Sales Invoice Export List"
                 Caption = 'Release', Comment = 'Generated from the PromotedActionCategories property index 3.';
                 ShowAs = SplitButton;
 
-                actionref("Re&lease_Promoted"; "Re&lease")
-                {
-                }
-                actionref("Re&open_Promoted"; "Re&open")
-                {
-                }
+                actionref("Re&lease_Promoted"; "Re&lease") { }
+                actionref("Re&open_Promoted"; "Re&open") { }
             }
             group(Category_Category5)
             {
                 Caption = 'Posting', Comment = 'Generated from the PromotedActionCategories property index 4.';
                 ShowAs = SplitButton;
 
-                actionref(Post_Promoted; Post)
-                {
-                }
-                actionref("Post &Batch_Promoted"; "Post &Batch")
-                {
-                }
-                actionref(PostAndSend_Promoted; PostAndSend)
-                {
-                }
-                actionref(Preview_Promoted; Preview)
-                {
-                }
+                actionref(Post_Promoted; Post) { }
+                actionref("Post &Batch_Promoted"; "Post &Batch") { }
+                actionref(PostAndSend_Promoted; PostAndSend) { }
+                actionref(Preview_Promoted; Preview) { }
             }
             group(Category_Category7)
             {
@@ -721,27 +709,13 @@ page 50050 "Sales Invoice Export List"
             {
                 Caption = 'Invoice', Comment = 'Generated from the PromotedActionCategories property index 5.';
 
-                actionref(Dimensions_Promoted; Dimensions)
-                {
-                }
-                actionref(Statistics_Promoted; Statistics)
-                {
-                }
-                actionref("Co&mments_Promoted"; "Co&mments")
-                {
-                }
-                actionref(Approvals_Promoted; Approvals)
-                {
-                }
-                separator(Navigate_Separator)
-                {
-                }
-                actionref(CustomerAction_Promoted; CustomerAction)
-                {
-                }
-                actionref("Posted Sales Invoices_Promoted"; "Posted Sales Invoices")
-                {
-                }
+                actionref(Dimensions_Promoted; Dimensions) { }
+                actionref(Statistics_Promoted; Statistics) { }
+                actionref("Co&mments_Promoted"; "Co&mments") { }
+                actionref(Approvals_Promoted; Approvals) { }
+                separator(Navigate_Separator) { }
+                actionref(CustomerAction_Promoted; CustomerAction) { }
+                actionref("Posted Sales Invoices_Promoted"; "Posted Sales Invoices") { }
             }
             group(Category_Category8)
             {

@@ -33,7 +33,4 @@ tableextension 50045 JobWIPEntryExt extends "Job WIP Entry"
     {
         // Add changes to field groups here
     }
-
-    var
-        myInt: Integer;
 }

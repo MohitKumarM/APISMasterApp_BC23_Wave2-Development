@@ -282,7 +282,8 @@ page 50051 "Posted Sales Invoices Export"
                         DocExchServDocStatus.DocExchStatusDrillDown(Rec);
                     end;
                 }
-                field("<Document Exchange Status>"; Rec."Coupled to CRM")
+                //field("<Document Exchange Status>"; Rec."Coupled to CRM")
+                field("<Document Exchange Status>"; Rec."Coupled to Dataverse")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies that the posted sales order is coupled to a sales order in Dynamics 365 Sales.';
@@ -645,73 +646,39 @@ page 50051 "Posted Sales Invoices Export"
             {
                 Caption = 'Process', Comment = 'Generated from the PromotedActionCategories property index 1.';
 
-                actionref("Update Document_Promoted"; "Update Document")
-                {
-                }
-                actionref(Navigate_Promoted; Navigate)
-                {
-                }
+                actionref("Update Document_Promoted"; "Update Document") { }
+                actionref(Navigate_Promoted; Navigate) { }
             }
             group(Category_Category7)
             {
                 Caption = 'Print/Send', Comment = 'Generated from the PromotedActionCategories property index 6.';
 
-                actionref(Print_Promoted; Print)
-                {
-                }
-                actionref(Email_Promoted; Email)
-                {
-                }
-                actionref(SendCustom_Promoted; SendCustom)
-                {
-                }
-                actionref(AttachAsPDF_Promoted; AttachAsPDF)
-                {
-                }
+                actionref(Print_Promoted; Print) { }
+                actionref(Email_Promoted; Email) { }
+                actionref(SendCustom_Promoted; SendCustom) { }
+                actionref(AttachAsPDF_Promoted; AttachAsPDF) { }
             }
             group(Category_Category4)
             {
                 Caption = 'Invoice', Comment = 'Generated from the PromotedActionCategories property index 3.';
 
-                actionref(Dimensions_Promoted; Dimensions)
-                {
-                }
-                actionref(Statistics_Promoted; Statistics)
-                {
-                }
-                actionref("Co&mments_Promoted"; "Co&mments")
-                {
-                }
-                actionref(ActivityLog_Promoted; ActivityLog)
-                {
-                }
-                separator(Navigate_Separator)
-                {
-                }
-                actionref(IncomingDoc_Promoted; IncomingDoc)
-                {
-                }
-                actionref(Customer_Promoted; Customer)
-                {
-                }
+                actionref(Dimensions_Promoted; Dimensions) { }
+                actionref(Statistics_Promoted; Statistics) { }
+                actionref("Co&mments_Promoted"; "Co&mments") { }
+                actionref(ActivityLog_Promoted; ActivityLog) { }
+                separator(Navigate_Separator) { }
+                actionref(IncomingDoc_Promoted; IncomingDoc) { }
+                actionref(Customer_Promoted; Customer) { }
             }
             group(Category_Category6)
             {
                 Caption = 'Correct', Comment = 'Generated from the PromotedActionCategories property index 5.';
                 ShowAs = SplitButton;
 
-                actionref(CorrectInvoice_Promoted; CorrectInvoice)
-                {
-                }
-                actionref(CancelInvoice_Promoted; CancelInvoice)
-                {
-                }
-                actionref(CreateCreditMemo_Promoted; CreateCreditMemo)
-                {
-                }
-                actionref(ShowCreditMemo_Promoted; ShowCreditMemo)
-                {
-                }
+                actionref(CorrectInvoice_Promoted; CorrectInvoice) { }
+                actionref(CancelInvoice_Promoted; CancelInvoice) { }
+                actionref(CreateCreditMemo_Promoted; CreateCreditMemo) { }
+                actionref(ShowCreditMemo_Promoted; ShowCreditMemo) { }
             }
             group(Category_Category5)
             {
@@ -726,15 +693,9 @@ page 50051 "Posted Sales Invoices Export"
                 Caption = 'Synchronize';
                 Visible = CRMIntegrationEnabled;
 
-                actionref(CreateInCRM_Promoted; CreateInCRM)
-                {
-                }
-                actionref(CRMGotoInvoice_Promoted; CRMGotoInvoice)
-                {
-                }
-                actionref(ShowLog_Promoted; ShowLog)
-                {
-                }
+                actionref(CreateInCRM_Promoted; CreateInCRM) { }
+                actionref(CRMGotoInvoice_Promoted; CRMGotoInvoice) { }
+                actionref(ShowLog_Promoted; ShowLog) { }
             }
         }
     }

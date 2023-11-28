@@ -97,8 +97,5 @@ page 50044 "Posted Bottling Packing List"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

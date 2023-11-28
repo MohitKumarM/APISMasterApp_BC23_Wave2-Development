@@ -13,6 +13,13 @@ pageextension 50018 Location extends "Location Card"
                 ApplicationArea = all;
             }
         }
+        addafter("Use As In-Transit")
+        {
+            field("Scrap Unit"; Rec."Scrap Unit")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     actions

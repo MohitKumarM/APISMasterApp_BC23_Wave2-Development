@@ -18,7 +18,4 @@ tableextension 50043 GenJournalLine extends "Gen. Journal Line"
     {
         // Add changes to field groups here
     }
-
-    var
-        myInt: Integer;
 }

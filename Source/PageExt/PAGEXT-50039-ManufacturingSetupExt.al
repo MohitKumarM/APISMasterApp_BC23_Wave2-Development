@@ -14,6 +14,14 @@ pageextension 50039 "Manufacturing Setup Ext." extends "Manufacturing Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Scrap Location"; Rec."Scrap Location")
+                {
+                    ApplicationArea = all;
+                }
+                field("Reject Location"; Rec."Reject Location")
+                {
+                    ApplicationArea = all;
+                }
                 field("Loose Honey Code"; Rec."Loose Honey Code")
                 {
                     ApplicationArea = All;
@@ -37,6 +45,22 @@ pageextension 50039 "Manufacturing Setup Ext." extends "Manufacturing Setup"
                 field("One by One Output Explode"; Rec."One by One Output Explode")
                 {
                     ApplicationArea = All;
+                }
+                field("Store to Prod. Template"; Rec."Store to Prod. Template")
+                {
+                    ApplicationArea = all;
+                }
+                field("Store to Prod. Batch"; Rec."Store to Prod. Batch")
+                {
+                    ApplicationArea = all;
+                }
+                field("Prod. to Store Template"; Rec."Prod. to Store Template")
+                {
+                    ApplicationArea = all;
+                }
+                field("Prod. to Store Batch"; Rec."Prod. to Store Batch")
+                {
+                    ApplicationArea = all;
                 }
             }
         }

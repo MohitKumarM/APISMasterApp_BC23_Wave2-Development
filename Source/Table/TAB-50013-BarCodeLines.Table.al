@@ -1,18 +1,13 @@
 table 50013 "Bar Code Lines"
 {
-
     fields
     {
         field(1; "Receiving No."; Code[20])
         {
             TableRelation = "Material Receive Header";
         }
-        field(2; "Receiving Line No."; Integer)
-        {
-        }
-        field(3; "Line No."; Integer)
-        {
-        }
+        field(2; "Receiving Line No."; Integer) { }
+        field(3; "Line No."; Integer) { }
         field(4; "Purchase Order No."; Code[20])
         {
             TableRelation = "Purchase Header"."No." WHERE("Document Type" = CONST(Order));
@@ -26,18 +21,10 @@ table 50013 "Bar Code Lines"
         {
             TableRelation = Item;
         }
-        field(7; "Lot No."; Code[20])
-        {
-        }
-        field(8; "Bar Code ID"; Code[10])
-        {
-        }
-        field(9; "Bar Code"; Code[50])
-        {
-        }
-        field(10; Quantity; Decimal)
-        {
-        }
+        field(7; "Lot No."; Code[20]) { }
+        field(8; "Bar Code ID"; Code[10]) { }
+        field(9; "Bar Code"; Code[50]) { }
+        field(10; Quantity; Decimal) { }
         field(11; "QR Code"; BLOB)
         {
             SubType = Bitmap;
@@ -74,13 +61,8 @@ table 50013 "Bar Code Lines"
         {
             Clustered = true;
         }
-        key(Key2; "Bar Code ID")
-        {
-        }
+        key(Key2; "Bar Code ID") { }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 }
-

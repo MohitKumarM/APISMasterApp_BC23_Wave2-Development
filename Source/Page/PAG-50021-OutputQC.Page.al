@@ -374,7 +374,7 @@ page 50021 "Output QC"
                 }
             }
         }
-        area(processing)
+        area(Processing)
         {
             group("F&unctions")
             {
@@ -383,8 +383,9 @@ page 50021 "Output QC"
                 action(Quality)
                 {
                     Caption = 'Quality';
-                    Image = TestReport;
+                    Image = PostOrder;
                     Promoted = true;
+                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin

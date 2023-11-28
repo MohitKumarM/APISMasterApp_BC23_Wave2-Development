@@ -155,9 +155,7 @@ page 50037 "Honey GAN Order"
                         Importance = Promoted;
                         ApplicationArea = All;
                     }
-                    field("Document Date"; Rec."Document Date")
-                    {
-                    }
+                    field("Document Date"; Rec."Document Date") { }
                     // field(Structure; Rec.Structure)
                     // {
                     //     Importance = Promoted;

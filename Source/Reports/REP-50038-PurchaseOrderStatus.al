@@ -3,20 +3,15 @@ report 50038 "Purchase Order Status"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultRenderingLayout = LayoutName;
-
     caption = 'Purchase Order Status';
 
     dataset
     {
         dataitem("Purchase Header"; "Purchase Header")
         {
-
-
             column(No_; "No.") { }
             dataitem("Purchase Line"; "Purchase Line")
             {
-
-
                 trigger OnAfterGetRecord()
                 var
                 begin
@@ -55,7 +50,6 @@ report 50038 "Purchase Order Status"
             begin
                 TempExcelBuffer.NewRow();
             end;
-
         }
     }
 
@@ -70,7 +64,6 @@ report 50038 "Purchase Order Status"
                     field(posting_date; posting_date)
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -83,12 +76,10 @@ report 50038 "Purchase Order Status"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
     }
-
 
     rendering
     {
@@ -127,9 +118,6 @@ report 50038 "Purchase Order Status"
         TempExcelBuffer.AddColumn('Expected Receipt Date', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Date);
         TempExcelBuffer.AddColumn('GST Tax Group Code', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
         TempExcelBuffer.AddColumn('Freight Liability', false, '', true, false, false, '', TempExcelBuffer."Cell Type"::Text);
-
-
-
     end;
 
     trigger OnPostReport()
@@ -148,5 +136,4 @@ report 50038 "Purchase Order Status"
         TempExcelBuffer: Record "Excel Buffer" temporary;
         PurchaseHeaderLbl: Label 'Purchase Header';
         ExcelFileName: Label 'PurchaseLineEntries_%1_%2';
-        myInt: Integer;
 }

@@ -26,12 +26,18 @@ tableextension 50023 ProductionOrderExt extends "Production Order"
         {
             DataClassification = ToBeClassified;
         }
-        field(50006; "Batch No."; Code[20])
-        {
-        }
+        field(50006; "Batch No."; Code[20]) { }
         field(50007; "Customer Code"; Code[20])
         {
             TableRelation = Customer;
+
+            trigger OnValidate();
+            var
+                Cust_loc: Record Customer;
+            begin
+                if Cust_loc.Get(Rec."Customer Code") then
+                    Rec."Customer Name" := Cust_loc.Name;
+            end;
         }
         Field(50008; "Production Type"; Option)
         {

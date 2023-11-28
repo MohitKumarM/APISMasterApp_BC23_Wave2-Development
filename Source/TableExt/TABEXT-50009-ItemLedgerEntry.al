@@ -15,10 +15,7 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
             OptionCaption = ' ,Drums,Tins,Buckets,Cans';
             OptionMembers = " ",Drums,Tins,Buckets,Cans;
         }
-        field(50003; "Qty. in Pack"; Decimal)
-        {
-        }
-
+        field(50003; "Qty. in Pack"; Decimal) { }
         field(50004; "Deal Line No."; Integer)
         {
             TableRelation = "Deal Dispatch Details"."Line No." WHERE("Sauda No." = FIELD("Deal No."),
@@ -37,30 +34,16 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         {
             DataClassification = ToBeClassified;
         }
-        field(50008; "QC To Approve"; Boolean)
-        {
-        }
+        field(50008; "QC To Approve"; Boolean) { }
         field(50009; "Inventory Posting Group"; Code[20])
         {
             TableRelation = "Inventory Posting Group";
         }
-        field(50010; "Vehicle No."; Code[20])
-        {
-        }
-        field(50011; "Purchaser Code"; Code[20])
-        {
-        }
-        field(50012; "Purchaser Name"; Text[50])
-        {
-        }
-        field(50017; "Starting Date Time"; DateTime)
-        {
-
-        }
-        field(50018; "Ending Date Time"; DateTime)
-        {
-
-        }
+        field(50010; "Vehicle No."; Code[20]) { }
+        field(50011; "Purchaser Code"; Code[20]) { }
+        field(50012; "Purchaser Name"; Text[50]) { }
+        field(50017; "Starting Date Time"; DateTime) { }
+        field(50018; "Ending Date Time"; DateTime) { }
         field(50020; "Tin"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -77,31 +60,20 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         {
             DataClassification = ToBeClassified;
         }
-        field(50024; "Barcode Generated"; Boolean)
+        field(50024; "Barcode Generated"; Boolean) { }
+        field(50025; "Container Trasfer Stage"; Option)
         {
-
+            OptionMembers = " ","Issued RM","RM Consumed";
         }
         field(50026; "Can"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
-        field(60000; "Approved Quantity"; Decimal)
-        {
-        }
-        field(60001; "Rejected Quantity"; Decimal)
-        {
-        }
-        field(60002; "Quality Checked"; Boolean)
-        {
-        }
-        field(60006; "ByProduct Entry"; Boolean)
-        {
-
-        }
-        field(60009; "Prod. Order Line No."; Integer)
-        {
-
-        }
+        field(60000; "Approved Quantity"; Decimal) { }
+        field(60001; "Rejected Quantity"; Decimal) { }
+        field(60002; "Quality Checked"; Boolean) { }
+        field(60006; "ByProduct Entry"; Boolean) { }
+        field(60009; "Prod. Order Line No."; Integer) { }
         field(60010; "Machine Center No."; Code[20])
         {
             TableRelation = "Machine Center";
@@ -110,24 +82,11 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         {
             TableRelation = Customer;
         }
-        field(70000; "Moisture (%)"; Text[10])
-        {
-        }
-        field(70001; "Color (MM)"; Text[10])
-        {
-        }
-        field(70002; "HMF (PPM)"; Text[10])
-        {
-        }
-        field(70003; TRS; Text[10])
-        {
-        }
-        field(70004; Sucrose; Text[10])
-        {
-        }
-        field(70005; FG; Text[10])
-        {
-        }
-
+        field(70000; "Moisture (%)"; Text[10]) { }
+        field(70001; "Color (MM)"; Text[10]) { }
+        field(70002; "HMF (PPM)"; Text[10]) { }
+        field(70003; TRS; Text[10]) { }
+        field(70004; Sucrose; Text[10]) { }
+        field(70005; FG; Text[10]) { }
     }
 }

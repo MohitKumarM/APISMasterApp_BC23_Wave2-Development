@@ -91,9 +91,11 @@ tableextension 50011 ItemJournalLine extends "Item Journal Line"
         {
             DataClassification = ToBeClassified;
         }
-        field(60000; "Temp Message Control"; Boolean)
+        field(50024; "Container Trasfer Stage"; Option)
         {
+            OptionMembers = " ","Issued RM","RM Consumed";
         }
+        field(60000; "Temp Message Control"; Boolean) { }
         field(60006; "ByProduct Item Code"; Code[20])
         {
             TableRelation = Item;
@@ -102,12 +104,8 @@ tableextension 50011 ItemJournalLine extends "Item Journal Line"
         {
             MinValue = 0;
         }
-        field(60008; "ByProduct Entry"; Boolean)
-        {
-        }
-        field(60009; "Prod. Order Line No."; Integer)
-        {
-        }
+        field(60008; "ByProduct Entry"; Boolean) { }
+        field(60009; "Prod. Order Line No."; Integer) { }
         field(60010; "Machine Center No."; Code[20])
         {
             TableRelation = "Machine Center";
@@ -124,27 +122,13 @@ tableextension 50011 ItemJournalLine extends "Item Journal Line"
         {
             TableRelation = Customer;
         }
-        field(60014; "QC Required"; Boolean)
-        {
-        }
-        field(70000; "Moisture (%)"; Text[10])
-        {
-        }
-        field(70001; "Color (MM)"; Text[10])
-        {
-        }
-        field(70002; "HMF (PPM)"; Text[10])
-        {
-        }
-        field(70003; TRS; Text[10])
-        {
-        }
-        field(70004; Sucrose; Text[10])
-        {
-        }
-        field(70005; FG; Text[10])
-        {
-        }
+        field(60014; "QC Required"; Boolean) { }
+        field(70000; "Moisture (%)"; Text[10]) { }
+        field(70001; "Color (MM)"; Text[10]) { }
+        field(70002; "HMF (PPM)"; Text[10]) { }
+        field(70003; TRS; Text[10]) { }
+        field(70004; Sucrose; Text[10]) { }
+        field(70005; FG; Text[10]) { }
         //Ending---
     }
 }

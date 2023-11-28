@@ -96,13 +96,9 @@ page 50045 "Posted Drum Packing List"
                 {
                     ApplicationArea = All;
                 }
-
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

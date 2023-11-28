@@ -9,94 +9,28 @@ report 50029 "Packing Slip logistic"
         dataitem("Sales Line"; "Sales Line")
         {
             RequestFilterFields = "Document No.";
-            column(Order_No; Order_No)
-            {
-
-            }
-            column(Order_Date; Order_Date)
-            {
-
-            }
-            column(Customer_Name; Cust_Name)
-            {
-
-            }
-            column(Customer_Address; Cust_Address)
-            {
-
-            }
-            column(Transporter_Name; '')
-            {
-
-            }
-            column(Vehicle_no; '')
-            {
-
-            }
-            column(Driver_Name; '')
-            {
-
-            }
-            column(Driver_Mob_No; '')
-            {
-
-            }
-            column(Driver_Adhar_No; '')
-            {
-
-            }
-            column(Loading_StartTime; '')
-            {
-
-            }
-            column(Loading_EndTime; '')
-            {
-
-            }
-            column(No_; "No.")
-            {
-
-            }
-            column(Description; Description)
-            {
-
-            }
-            column(Location_Code; "Location Code")
-            {
-
-            }
-            column(Stock_In_Hand; '')
-            {
-
-            }
-            column(MRP; '')
-            {
-
-            }
-            column(Batch_No; Batch_No)
-            {
-
-            }
-            column(MFG; '')
-            {
-
-            }
-            column(Expiry; Expiry)
-            {
-
-            }
-            column(Quantity; Quantity)
-            {
-
-            }
-            column(Gross_Weight_KG; "Gross Weight")
-            {
-
-            }
-            column(Quantity_Loaded; '')
-            {
-
-            }
+            column(Order_No; Order_No) { }
+            column(Order_Date; Order_Date) { }
+            column(Customer_Name; Cust_Name) { }
+            column(Customer_Address; Cust_Address) { }
+            column(Transporter_Name; '') { }
+            column(Vehicle_no; '') { }
+            column(Driver_Name; '') { }
+            column(Driver_Mob_No; '') { }
+            column(Driver_Adhar_No; '') { }
+            column(Loading_StartTime; '') { }
+            column(Loading_EndTime; '') { }
+            column(No_; "No.") { }
+            column(Description; Description) { }
+            column(Location_Code; "Location Code") { }
+            column(Stock_In_Hand; '') { }
+            column(MRP; '') { }
+            column(Batch_No; Batch_No) { }
+            column(MFG; '') { }
+            column(Expiry; Expiry) { }
+            column(Quantity; Quantity) { }
+            column(Gross_Weight_KG; "Gross Weight") { }
+            column(Quantity_Loaded; '') { }
             trigger OnAfterGetRecord()
             begin
                 Rec_SalesHeader.Reset();
@@ -116,15 +50,9 @@ report 50029 "Packing Slip logistic"
                     Batch_No := Rec_ItemTrackingList."Lot No.";
                     Expiry := Rec_ItemTrackingList."Expiration Date";
                 end;
-
             end;
-
         }
     }
-
-
-
-
 
     var
         Rec_SalesHeader: Record "Sales Header";
@@ -134,6 +62,5 @@ report 50029 "Packing Slip logistic"
         Cust_Address: Text[100];
         Rec_ItemTrackingList: Record "Tracking Specification";
         Batch_No: Code[50];
-        MFG: Date;
         Expiry: Date;
 }

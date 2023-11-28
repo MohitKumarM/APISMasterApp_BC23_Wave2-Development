@@ -12,69 +12,29 @@ report 50063 "Inward Quality Report"
             // CalcFields = "Document Date";
             DataItemTableView = SORTING("No.")
                                 ORDER(Ascending);
-            column(RepotNo; "QC Analytical Report No.")
-            {
-            }
-            column(InvoiceNo; recPurchReceipt."Vendor Shipment No.")
-            {
-            }
-            column(TestedBy; "Tested By")
-            {
-            }
-            column(LotNo; "Lot No.")
-            {
-            }
-            column(Note; 'Note: This is a system generated Reports and needs no signature.')
-            {
-            }
-            column(CompanyName; recCompanyInfo.Name)
-            {
-            }
-            column(Logo; recCompanyInfo.Picture)
-            {
-            }
-            column(Heading; txtHeading)
-            {
-            }
-            column(QCNo; "No.")
-            {
-            }
-            column(QCDate; FORMAT(Date))
-            {
-            }
-            column(GANNo; "Document No.")
-            {
-            }
+            column(RepotNo; "QC Analytical Report No.") { }
+            column(InvoiceNo; recPurchReceipt."Vendor Shipment No.") { }
+            column(TestedBy; "Tested By") { }
+            column(LotNo; "Lot No.") { }
+            column(Note; 'Note: This is a system generated Reports and needs no signature.') { }
+            column(CompanyName; recCompanyInfo.Name) { }
+            column(Logo; recCompanyInfo.Picture) { }
+            column(Heading; txtHeading) { }
+            column(QCNo; "No.") { }
+            column(QCDate; FORMAT(Date)) { }
+            column(GANNo; "Document No.") { }
             // column(GANDate; FORMAT("Document Date"))
             // {
             // }
-            column(ItemCode; "Item Code")
-            {
-            }
-            column(ItemName; "Item Name")
-            {
-            }
-            column(UOM; recItem."Base Unit of Measure")
-            {
-            }
-            column(QuanityReceived; Quantity)
-            {
-            }
-            column(ApprovedQuantity; "Approved Quantity")
-            {
-            }
-            column(RejectedQuantity; "Rejected Quantity")
-            {
-            }
-            column(Remarks; Remarks)
-            {
-            }
-            column(VendorName; recPurchReceipt."Buy-from Vendor Name")
-            {
-            }
-            column(SampledBy; "Sampled By")
-            {
-            }
+            column(ItemCode; "Item Code") { }
+            column(ItemName; "Item Name") { }
+            column(UOM; recItem."Base Unit of Measure") { }
+            column(QuanityReceived; Quantity) { }
+            column(ApprovedQuantity; "Approved Quantity") { }
+            column(RejectedQuantity; "Rejected Quantity") { }
+            column(Remarks; Remarks) { }
+            column(VendorName; recPurchReceipt."Buy-from Vendor Name") { }
+            column(SampledBy; "Sampled By") { }
             column(VeninvNo; VeninvNo) { }
             column(GANDate; GANDate) { }
             dataitem("Quality Line"; "Quality Line")
@@ -82,21 +42,11 @@ report 50063 "Inward Quality Report"
                 DataItemLink = "QC No." = FIELD("No.");
                 DataItemTableView = SORTING("QC No.", "Line No.")
                                     ORDER(Ascending);
-                column(Measure; "Quality Measure")
-                {
-                }
-                column(Parameter; Parameter)
-                {
-                }
-                column(Specs; Specs)
-                {
-                }
-                column(Limit; Limit)
-                {
-                }
-                column(Observation; Observation)
-                {
-                }
+                column(Measure; "Quality Measure") { }
+                column(Parameter; Parameter) { }
+                column(Specs; Specs) { }
+                column(Limit; Limit) { }
+                column(Observation; Observation) { }
             }
 
             trigger OnAfterGetRecord()
@@ -137,18 +87,12 @@ report 50063 "Inward Quality Report"
 
     requestpage
     {
-        layout
-        {
-        }
+        layout { }
 
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     var
         recCompanyInfo: Record "Company Information";

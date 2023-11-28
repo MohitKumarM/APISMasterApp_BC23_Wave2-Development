@@ -105,12 +105,8 @@ table 50005 "BeeKeeper VendorLedger Entries"
         {
             Clustered = true;
         }
-        key(Key2; "Beekeeper Code", "Document Date")
-        {
-        }
+        key(Key2; "Beekeeper Code", "Document Date") { }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 }

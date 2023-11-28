@@ -95,13 +95,9 @@ page 50056 "Drum Packing List"
                 {
                     ApplicationArea = All;
                 }
-
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

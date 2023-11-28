@@ -297,7 +297,8 @@ page 50049 "Sales Order Export List"
                     ToolTip = 'Specifies the customer''s reference. The content will be printed on sales documents.';
                     Visible = false;
                 }
-                field("Coupled to CRM"; Rec."Coupled to CRM")
+                //field("Coupled to CRM"; Rec."Coupled to CRM")
+                field("Coupled to CRM"; Rec."Coupled to Dataverse")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies that the sales order is coupled to an order in Dynamics 365 Sales.';
@@ -1036,62 +1037,36 @@ page 50049 "Sales Order Export List"
             {
                 Caption = 'Process', Comment = 'Generated from the PromotedActionCategories property index 1.';
 
-                actionref("Create &Warehouse Shipment_Promoted"; "Create &Warehouse Shipment")
-                {
-                }
-                actionref("Create Inventor&y Put-away/Pick_Promoted"; "Create Inventor&y Put-away/Pick")
-                {
-                }
+                actionref("Create &Warehouse Shipment_Promoted"; "Create &Warehouse Shipment") { }
+                actionref("Create Inventor&y Put-away/Pick_Promoted"; "Create Inventor&y Put-away/Pick") { }
             }
             group(Category_Category6)
             {
                 Caption = 'Release', Comment = 'Generated from the PromotedActionCategories property index 5.';
                 ShowAs = SplitButton;
 
-                actionref(Release_Promoted; Release)
-                {
-                }
-                actionref(Reopen_Promoted; Reopen)
-                {
-                }
+                actionref(Release_Promoted; Release) { }
+                actionref(Reopen_Promoted; Reopen) { }
             }
             group(Category_Category7)
             {
                 Caption = 'Posting', Comment = 'Generated from the PromotedActionCategories property index 6.';
                 ShowAs = SplitButton;
 
-                actionref(Post_Promoted; Post)
-                {
-                }
-                actionref(PostAndSend_Promoted; PostAndSend)
-                {
-                }
-                actionref("Post &Batch_Promoted"; "Post &Batch")
-                {
-                }
-                actionref("Preview Posting_Promoted"; "Preview Posting")
-                {
-                }
+                actionref(Post_Promoted; Post) { }
+                actionref(PostAndSend_Promoted; PostAndSend) { }
+                actionref("Post &Batch_Promoted"; "Post &Batch") { }
+                actionref("Preview Posting_Promoted"; "Preview Posting") { }
             }
             group(Category_Category8)
             {
                 Caption = 'Print/Send', Comment = 'Generated from the PromotedActionCategories property index 7.';
 
-                actionref("Print Confirmation_Promoted"; "Print Confirmation")
-                {
-                }
-                actionref("Pick Instruction_Promoted"; "Pick Instruction")
-                {
-                }
-                actionref("Email Confirmation_Promoted"; "Email Confirmation")
-                {
-                }
-                actionref("Work Order_Promoted"; "Work Order")
-                {
-                }
-                actionref(AttachAsPDF_Promoted; AttachAsPDF)
-                {
-                }
+                actionref("Print Confirmation_Promoted"; "Print Confirmation") { }
+                actionref("Pick Instruction_Promoted"; "Pick Instruction") { }
+                actionref("Email Confirmation_Promoted"; "Email Confirmation") { }
+                actionref("Work Order_Promoted"; "Work Order") { }
+                actionref(AttachAsPDF_Promoted; AttachAsPDF) { }
             }
             group(Category_Category4)
             {
@@ -1101,27 +1076,13 @@ page 50049 "Sales Order Export List"
             {
                 Caption = 'Order', Comment = 'Generated from the PromotedActionCategories property index 4.';
 
-                actionref(Dimensions_Promoted; Dimensions)
-                {
-                }
-                actionref(Statistics_Promoted; Statistics)
-                {
-                }
-                actionref("Co&mments_Promoted"; "Co&mments")
-                {
-                }
-                actionref(Approvals_Promoted; Approvals)
-                {
-                }
-                separator(Navigate_Separator)
-                {
-                }
-                actionref("S&hipments_Promoted"; "S&hipments")
-                {
-                }
-                actionref(PostedSalesInvoices_Promoted; PostedSalesInvoices)
-                {
-                }
+                actionref(Dimensions_Promoted; Dimensions) { }
+                actionref(Statistics_Promoted; Statistics) { }
+                actionref("Co&mments_Promoted"; "Co&mments") { }
+                actionref(Approvals_Promoted; Approvals) { }
+                separator(Navigate_Separator) { }
+                actionref("S&hipments_Promoted"; "S&hipments") { }
+                actionref(PostedSalesInvoices_Promoted; PostedSalesInvoices) { }
             }
             group(Category_Category9)
             {
@@ -1146,9 +1107,7 @@ page 50049 "Sales Order Export List"
                 Caption = 'Synchronize';
                 Visible = CRMIntegrationEnabled;
 
-                actionref(CRMGoToSalesOrderListInNAV_Promoted; CRMGoToSalesOrderListInNAV)
-                {
-                }
+                actionref(CRMGoToSalesOrderListInNAV_Promoted; CRMGoToSalesOrderListInNAV) { }
             }
         }
     }

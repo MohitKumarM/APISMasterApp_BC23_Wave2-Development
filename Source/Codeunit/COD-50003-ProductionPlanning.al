@@ -4,7 +4,6 @@ codeunit 50003 "Production Planning"
     begin
     end;
 
-
     procedure CalculateRequirement(FromDate: Date; ToDate: Date)
     var
         recSalesHeader: Record "Sales Header";
@@ -179,7 +178,6 @@ codeunit 50003 "Production Planning"
                 cdOldItem := recPlanningLines."Item No.";
             UNTIL recPlanningLines.NEXT = 0;
     end;
-
 
     procedure CalculateProcurement(FromDate: Date; ToDate: Date)
     var
@@ -389,5 +387,4 @@ codeunit 50003 "Production Planning"
     begin
         WorkDate(Today);
     end;
-
 }

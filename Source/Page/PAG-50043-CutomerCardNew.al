@@ -604,9 +604,7 @@ page 50043 "Customer Card New"
                         Email.OpenSentEmails(Database::Customer, Rec.SystemId);
                     end;
                 }
-                separator(Action140)
-                {
-                }
+                separator(Action140) { }
             }
             group("Prices and Discounts")
             {
@@ -1573,49 +1571,27 @@ page 50043 "Customer Card New"
                 Visible = false;
                 Caption = 'Process', Comment = 'Generated from the PromotedActionCategories property index 1.';
 
-                actionref(Contact_Promoted; Contact)
-                {
-                }
-                actionref(ApplyTemplate_Promoted; ApplyTemplate)
-                {
-                }
-                actionref(MergeDuplicate_Promoted; MergeDuplicate)
-                {
-                }
-                actionref(Email_Promoted; Email)
-                {
-                }
+                actionref(Contact_Promoted; Contact) { }
+                actionref(ApplyTemplate_Promoted; ApplyTemplate) { }
+                actionref(MergeDuplicate_Promoted; MergeDuplicate) { }
+                actionref(Email_Promoted; Email) { }
             }
             group(Category_Category5)
             {
                 Caption = 'Approve', Comment = 'Generated from the PromotedActionCategories property index 4.';
 
-                actionref(Approve_Promoted; Approve)
-                {
-                }
-                actionref(Reject_Promoted; Reject)
-                {
-                }
-                actionref(Comment_Promoted; Comment)
-                {
-                }
-                actionref(Delegate_Promoted; Delegate)
-                {
-                }
+                actionref(Approve_Promoted; Approve) { }
+                actionref(Reject_Promoted; Reject) { }
+                actionref(Comment_Promoted; Comment) { }
+                actionref(Delegate_Promoted; Delegate) { }
             }
             group(Category_Category6)
             {
                 Caption = 'Request Approval', Comment = 'Generated from the PromotedActionCategories property index 5.';
 
-                actionref(SendApprovalRequest_Promoted; SendApprovalRequest)
-                {
-                }
-                actionref(CancelApproavlRequest_Promoted; CancelApprovalRequest)
-                {
-                }
-                actionref(ApprovalEntries_Promoted; ApprovalEntries)
-                {
-                }
+                actionref(SendApprovalRequest_Promoted; SendApprovalRequest) { }
+                actionref(CancelApproavlRequest_Promoted; CancelApprovalRequest) { }
+                actionref(ApprovalEntries_Promoted; ApprovalEntries) { }
 #if not CLEAN21
 
 #endif
@@ -1625,33 +1601,15 @@ page 50043 "Customer Card New"
                 Visible = false;
                 Caption = 'New Document', Comment = 'Generated from the PromotedActionCategories property index 3.';
 
-                actionref(NewSalesQuoteAddin_Promoted; NewSalesQuoteAddin)
-                {
-                }
-                actionref(NewSalesQuote_Promoted; NewSalesQuote)
-                {
-                }
-                actionref(NewSalesOrderAddin_Promoted; NewSalesOrderAddin)
-                {
-                }
-                actionref(NewSalesOrder_Promoted; NewSalesOrder)
-                {
-                }
-                actionref(NewSalesInvoiceAddin_Promoted; NewSalesInvoiceAddin)
-                {
-                }
-                actionref(NewSalesInvoice_Promoted; NewSalesInvoice)
-                {
-                }
-                actionref(NewSalesCreditMemoAddin_Promoted; NewSalesCreditMemoAddin)
-                {
-                }
-                actionref(NewSalesCreditMemo_Promoted; NewSalesCreditMemo)
-                {
-                }
-                actionref(NewReminder_Promoted; NewReminder)
-                {
-                }
+                actionref(NewSalesQuoteAddin_Promoted; NewSalesQuoteAddin) { }
+                actionref(NewSalesQuote_Promoted; NewSalesQuote) { }
+                actionref(NewSalesOrderAddin_Promoted; NewSalesOrderAddin) { }
+                actionref(NewSalesOrder_Promoted; NewSalesOrder) { }
+                actionref(NewSalesInvoiceAddin_Promoted; NewSalesInvoiceAddin) { }
+                actionref(NewSalesInvoice_Promoted; NewSalesInvoice) { }
+                actionref(NewSalesCreditMemoAddin_Promoted; NewSalesCreditMemoAddin) { }
+                actionref(NewSalesCreditMemo_Promoted; NewSalesCreditMemo) { }
+                actionref(NewReminder_Promoted; NewReminder) { }
             }
             group(Category_Category7)
             {
@@ -1666,39 +1624,17 @@ page 50043 "Customer Card New"
                 Visible = false;
                 Caption = 'Customer', Comment = 'Generated from the PromotedActionCategories property index 8.';
 
-                actionref("Ledger E&ntries_Promoted"; "Ledger E&ntries")
-                {
-                }
-                actionref(Dimensions_Promoted; Dimensions)
-                {
-                }
-                actionref(Action76_Promoted; Action76)
-                {
-                }
-                actionref(Attachments_Promoted; Attachments)
-                {
-                }
-                actionref("Co&mments_Promoted"; "Co&mments")
-                {
-                }
-                separator(Navigate_Separator)
-                {
-                }
-                actionref(CustomerReportSelections_Promoted; CustomerReportSelections)
-                {
-                }
-                actionref("Bank Accounts_Promoted"; "Bank Accounts")
-                {
-                }
-                actionref(ShipToAddresses_Promoted; ShipToAddresses)
-                {
-                }
-                actionref("Direct Debit Mandates_Promoted"; "Direct Debit Mandates")
-                {
-                }
-                actionref("Item References_Promoted"; "Item References")
-                {
-                }
+                actionref("Ledger E&ntries_Promoted"; "Ledger E&ntries") { }
+                actionref(Dimensions_Promoted; Dimensions) { }
+                actionref(Action76_Promoted; Action76) { }
+                actionref(Attachments_Promoted; Attachments) { }
+                actionref("Co&mments_Promoted"; "Co&mments") { }
+                separator(Navigate_Separator) { }
+                actionref(CustomerReportSelections_Promoted; CustomerReportSelections) { }
+                actionref("Bank Accounts_Promoted"; "Bank Accounts") { }
+                actionref(ShipToAddresses_Promoted; ShipToAddresses) { }
+                actionref("Direct Debit Mandates_Promoted"; "Direct Debit Mandates") { }
+                actionref("Item References_Promoted"; "Item References") { }
 #if not CLEAN21
                 actionref(Quotes_Promoted; Quotes)
                 {
@@ -1747,18 +1683,10 @@ page 50043 "Customer Card New"
                 Visible = false;
                 Caption = 'Report', Comment = 'Generated from the PromotedActionCategories property index 2.';
 
-                actionref("Report Statement_Promoted"; "Report Statement")
-                {
-                }
-                actionref("Report Customer - Balance to Date_Promoted"; "Report Customer - Balance to Date")
-                {
-                }
-                actionref("Report Customer Detailed Aging_Promoted"; "Report Customer Detailed Aging")
-                {
-                }
-                actionref("S&ales_Promoted"; "S&ales")
-                {
-                }
+                actionref("Report Statement_Promoted"; "Report Statement") { }
+                actionref("Report Customer - Balance to Date_Promoted"; "Report Customer - Balance to Date") { }
+                actionref("Report Customer Detailed Aging_Promoted"; "Report Customer Detailed Aging") { }
+                actionref("S&ales_Promoted"; "S&ales") { }
             }
         }
     }
@@ -1773,8 +1701,6 @@ page 50043 "Customer Card New"
     end;
 
     trigger OnAfterGetRecord()
-    var
-        myInt: Integer;
     begin
         if rec."Country/Region Code" = 'IN' then
             MandField := true
@@ -1792,7 +1718,6 @@ page 50043 "Customer Card New"
             MandField := true
         else
             MandField := false;
-
     end;
 
     local procedure OnAfterGetCurrRecordFunc()

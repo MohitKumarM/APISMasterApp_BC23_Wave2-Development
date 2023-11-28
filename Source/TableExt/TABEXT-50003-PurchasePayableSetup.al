@@ -38,8 +38,6 @@ tableextension 50003 PurchPayableSetup extends "Purchases & Payables Setup"
         {
             TableRelation = Location;
         }
-        field(70001; "Deal Tolerance"; Decimal)
-        {
-        }
+        field(70001; "Deal Tolerance"; Decimal) { }
     }
 }

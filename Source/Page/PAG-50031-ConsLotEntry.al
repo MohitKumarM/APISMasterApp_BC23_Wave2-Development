@@ -129,9 +129,7 @@ page 50031 "Cons. Lot Tracking View"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin

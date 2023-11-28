@@ -16,9 +16,7 @@ page 50059 "Plan Weight Register Card"
                 {
                     Editable = false;
                 }
-                field(Date; Rec.Date)
-                {
-                }
+                field(Date; Rec.Date) { }
             }
             part("Plan Weight Register Sub Page"; "Plan Weight Register Sub Page")
             {
@@ -28,9 +26,7 @@ page 50059 "Plan Weight Register Card"
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnOpenPage()
     begin
@@ -43,4 +39,3 @@ page 50059 "Plan Weight Register Card"
     var
         recProdctonOrder: Record "Production Order";
 }
-

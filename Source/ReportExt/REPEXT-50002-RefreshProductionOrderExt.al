@@ -9,7 +9,6 @@ reportextension 50002 RefreshProdOrderExt extends "Refresh Production Order"
 
                 "Production Order".TestField("Location Code");
 
-
                 "Production Order".Refreshed := TRUE;
                 "Production Order".MODIFY;
 
@@ -20,7 +19,6 @@ reportextension 50002 RefreshProdOrderExt extends "Refresh Production Order"
                     recProdOrderLine.MODIFYALL("Planning Date", "Production Order"."Planning Date");
                     recProdOrderLine.MODIFYALL("Planning Entry No.", "Production Order"."Planning Entry No.");
                 END;
-
 
                 recUserSetup.GET(USERID);
                 recUserSetup.TESTFIELD("Default Store Location");

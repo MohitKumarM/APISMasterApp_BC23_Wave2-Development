@@ -21,24 +21,13 @@ page 50065 "Material Req. List"
         {
             repeater(Group)
             {
-                field("No."; Rec."No.")
-                {
-                }
-                field(Date; Rec.Date)
-                {
-                }
-                field("Document No."; Rec."Document No.")
-                {
-                }
-                field(Status; Rec.Status)
-                {
-                }
+                field("No."; Rec."No.") { }
+                field(Date; Rec.Date) { }
+                field("Document No."; Rec."Document No.") { }
+                field(Status; Rec.Status) { }
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 }
-

@@ -71,7 +71,5 @@ table 50001 "Deal Dispatch Details"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 }

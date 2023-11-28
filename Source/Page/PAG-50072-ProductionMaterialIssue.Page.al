@@ -21,27 +21,13 @@ page 50072 "Production Material Issue"
                 {
                     Lookup = false;
                 }
-                field("Customer Code"; Rec."Customer Code")
-                {
-                }
-                field("Customer Name"; Rec."Customer Name")
-                {
-                }
-                field("Batch No."; Rec."Batch No.")
-                {
-                }
-                field("Production Type"; Rec."Production Type")
-                {
-                }
-                field("Source No."; Rec."Source No.")
-                {
-                }
-                field(Description; Rec.Description)
-                {
-                }
-                field(Quantity; Rec.Quantity)
-                {
-                }
+                field("Customer Code"; Rec."Customer Code") { }
+                field("Customer Name"; Rec."Customer Name") { }
+                field("Batch No."; Rec."Batch No.") { }
+                field("Production Type"; Rec."Production Type") { }
+                field("Source No."; Rec."Source No.") { }
+                field(Description; Rec.Description) { }
+                field(Quantity; Rec.Quantity) { }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     Visible = false;
@@ -54,12 +40,8 @@ page 50072 "Production Material Issue"
                 {
                     Visible = false;
                 }
-                field(Status; Rec.Status)
-                {
-                }
-                field("Search Description"; Rec."Search Description")
-                {
-                }
+                field(Status; Rec.Status) { }
+                field("Search Description"; Rec."Search Description") { }
             }
         }
     }
@@ -152,9 +134,7 @@ page 50072 "Production Material Issue"
                         Rec.ShowDocDim;
                     end;
                 }
-                separator(Sept)
-                {
-                }
+                separator(Sept) { }
                 action(Statistics)
                 {
                     Caption = 'Statistics';
@@ -357,7 +337,6 @@ page 50072 "Production Material Issue"
                             pgItemTransfer.RUN;
                             */
                         END;
-
                     end;
                 }
                 action("Send Back")
@@ -390,10 +369,8 @@ page 50072 "Production Material Issue"
         recItemJournal: Record "Item Journal Line";
         recInventorySetup: Record "Inventory Setup";
         intLineNo: Integer;
-        recLocation: Record "Location";
         recReservationEntry: Record "Reservation Entry";
         recReservationEntrySource: Record "Reservation Entry";
         intEntryNo: Integer;
         pgComponent: Page "Prod. Order Components";
 }
-

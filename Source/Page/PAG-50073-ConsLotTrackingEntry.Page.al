@@ -1,4 +1,4 @@
-page 50087 "Cons. Lot Tracking Entry"
+page 50073 "Cons. Lot Tracking Entry"
 {
     DelayedInsert = true;
     LinksAllowed = false;
@@ -15,7 +15,6 @@ page 50087 "Cons. Lot Tracking Entry"
             {
                 field("Ref. Entry No."; Rec."Ref. Entry No.")
                 {
-
                     trigger OnLookup(var Text: Text): Boolean
                     begin
                         recLotEntry.RESET;
@@ -73,7 +72,6 @@ page 50087 "Cons. Lot Tracking Entry"
                 }
                 field("Qty. In Packs"; Rec."Qty. In Packs")
                 {
-
                     trigger OnValidate()
                     begin
                         IF Rec."Remaining Qty. In Packs" - Rec."Qty. In Packs" < 0 THEN
@@ -94,19 +92,13 @@ page 50087 "Cons. Lot Tracking Entry"
                 {
                     Editable = false;
                 }
-                field("Remaining Qty. In Packs"; Rec."Remaining Qty. In Packs")
-                {
-                }
-                field("Remaining Quantity"; Rec."Remaining Quantity")
-                {
-                }
+                field("Remaining Qty. In Packs"; Rec."Remaining Qty. In Packs") { }
+                field("Remaining Quantity"; Rec."Remaining Quantity") { }
             }
         }
     }
 
-    actions
-    {
-    }
+    actions { }
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
@@ -125,13 +117,10 @@ page 50087 "Cons. Lot Tracking Entry"
         intLineNo: Integer;
         cdItemCode: Code[20];
         decTotalToRcd: Decimal;
-        decRemQty: Decimal;
-        decAppliedQty: Decimal;
         recLotTracking: Record "Tran. Lot Tracking";
         recLotEntry: Record "Lot Tracking Entry";
         cdLocationCode: Code[20];
         opDocumentType: Option "Purch. Receipt",Consumption;
-
 
     procedure SetDocumentNo(DocNo: Code[20]; LineNo: Integer; ItemNo: Code[20]; QtyToRcd: Decimal; LocationCode: Code[20]; DocumentType: Integer)
     begin
@@ -143,4 +132,3 @@ page 50087 "Cons. Lot Tracking Entry"
         opDocumentType := DocumentType;
     end;
 }
-

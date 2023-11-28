@@ -40,9 +40,7 @@ page 50064 "Output Posting"
             }
             repeater(Group2)
             {
-                field("Posting Date"; Rec."Posting Date")
-                {
-                }
+                field("Posting Date"; Rec."Posting Date") { }
                 field("Order No."; Rec."Order No.")
                 {
                     Editable = false;
@@ -102,9 +100,7 @@ page 50064 "Output Posting"
                     Editable = false;
                     Visible = false;
                 }
-                field("Output Quantity"; Rec."Output Quantity")
-                {
-                }
+                field("Output Quantity"; Rec."Output Quantity") { }
                 field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     Editable = false;
@@ -117,9 +113,7 @@ page 50064 "Output Posting"
                 {
                     Editable = false;
                 }
-                field("Prod. Date for Expiry Calc"; Rec."Prod. Date for Expiry Calc")
-                {
-                }
+                field("Prod. Date for Expiry Calc"; Rec."Prod. Date for Expiry Calc") { }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     Editable = false;
@@ -246,13 +240,42 @@ page 50064 "Output Posting"
                         Editable = false;
                     }
                 }
-
             }
         }
     }
 
     actions
     {
+        area(Creation)
+        {
+            action("Container Information")
+            {
+                Image = Order;
+                Caption = 'Container Information';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    ContainerStoreToProd: page "Container- Prod. to Scrap";
+                    ItemjournalLine: Record "Item Journal Line";
+                    ManufacSetup: Record "Manufacturing Setup";
+                begin
+                    ManufacSetup.Get();
+                    ManufacSetup.TestField("Prod. to Store Template");
+                    ManufacSetup.TestField("Prod. to Store Batch");
+
+                    ItemjournalLine.Reset();
+                    ItemjournalLine.SetRange("Journal Template Name", ManufacSetup."Prod. to Store Template");
+                    ItemjournalLine.SetRange("Journal Batch Name", ManufacSetup."Prod. to Store Batch");
+                    ItemjournalLine.SetRange("Document No.", Rec."Document No.");
+                    ContainerStoreToProd.SetTableView(ItemjournalLine);
+                    ContainerStoreToProd.SetDocNo(Rec."Document No.");
+                    ContainerStoreToProd.Run();
+                end;
+            }
+        }
         area(navigation)
         {
             group("&Line")
@@ -284,7 +307,6 @@ page 50064 "Output Posting"
                         Rec.OpenItemTrackingLines(FALSE);
                     end;
                 }
-
                 action("Bin Contents")
                 {
                     Caption = 'Bin Contents';
@@ -382,7 +404,6 @@ page 50064 "Output Posting"
                         ReportPrint.PrintItemJnlLine(Rec);
                     end;
                 }
-
             }
             action(Post)
             {
@@ -394,7 +415,22 @@ page 50064 "Output Posting"
                 ShortCutKey = 'F9';
 
                 trigger OnAction()
+                var
+                    ManfactSetup: Record "Manufacturing Setup";
+                    ItemLedgerEntries: Record "Item Ledger Entry";
                 begin
+
+                    ManfactSetup.Get();
+                    ManfactSetup.TestField("Scrap Location");
+                    ManfactSetup.TestField("Reject Location");
+
+                    ItemLedgerEntries.Reset();
+                    ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
+                    ItemLedgerEntries.SetFilter("Location Code", '%1|%2', ManfactSetup."Scrap Location", ManfactSetup."Reject Location");
+                    ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
+                    ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"RM Consumed");
+                    if not ItemLedgerEntries.FindFirst() then
+                        Error('Plesae Fill and Post Container Information before posting Output.');
 
                     recItemJournalLines.RESET;
                     recItemJournalLines.COPYFILTERS(Rec);
@@ -490,7 +526,6 @@ page 50064 "Output Posting"
                     recUserSetup.GET(USERID);
                     recUserSetup."Post ByProduct Entry" := FALSE;
                     recUserSetup.MODIFY;
-
                 end;
             }
             action("&Print")
@@ -577,14 +612,12 @@ page 50064 "Output Posting"
         ItemJnlMgt.OpenJnl(CurrentJnlBatchName, Rec);
     end;
 
-
     local procedure CurrentJnlBatchNameOnAfterVali()
     begin
         CurrPage.SAVERECORD;
         ItemJnlMgt.SetName(CurrentJnlBatchName, Rec);
         CurrPage.UPDATE(FALSE);
     end;
-
 
     procedure TrySetApplyToEntries()
     var
@@ -602,7 +635,6 @@ page 50064 "Output Posting"
                             ReservationEntry.MODIFY(TRUE);
                         END;
                     UNTIL ReservationEntry.NEXT = 0;
-
             UNTIL ItemJournalLine2.NEXT = 0;
     end;
 
@@ -644,7 +676,6 @@ page 50064 "Output Posting"
         EXIT(ItemLedgerEntry.FINDSET);
     end;
 
-
     procedure OpenQCInfo(DocNo: Code[20]; DocLineNo: Integer)
     var
         recMachineCenter: Record "Machine Center";
@@ -656,11 +687,6 @@ page 50064 "Output Posting"
         recQualityMeasure: Record "Standard Task Quality Measure";
         recQualityLines: Record "Quality Line";
         pgQuality: Page "Output Quality Check Card";
-        recBatchProcess: Record "Batch Process Header";
-        pgBatchProcess: Page "De-Crystallizer Card";
-        pgVacuumCirculation: Page "Vacuum Circulation Card";
-        recReservationEntry: Record "Reservation Entry";
-        recBatchProcessLine: Record "Batch Process Line";
         recCustomer: Record "Customer";
     begin
         recMachineCenter.GET(Rec."No.");
@@ -725,9 +751,7 @@ page 50064 "Output Posting"
                 CLEAR(pgQuality);
                 pgQuality.SETTABLEVIEW(recQualityCheck);
                 pgQuality.RUN;
-
             END;
         END;
     end;
-
 }

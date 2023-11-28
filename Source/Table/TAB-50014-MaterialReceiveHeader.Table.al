@@ -1,11 +1,8 @@
 table 50014 "Material Receive Header"
 {
-
     fields
     {
-        field(1; "No."; Code[20])
-        {
-        }
+        field(1; "No."; Code[20]) { }
         field(2; Date; Date)
         {
             Editable = false;
@@ -33,12 +30,8 @@ table 50014 "Material Receive Header"
         {
             TableRelation = "Purchase Header";
         }
-        field(5; "EXternal Document No."; Code[20])
-        {
-        }
-        field(6; "Document Date"; Date)
-        {
-        }
+        field(5; "EXternal Document No."; Code[20]) { }
+        field(6; "Document Date"; Date) { }
         field(7; Status; Option)
         {
             Editable = false;
@@ -53,9 +46,7 @@ table 50014 "Material Receive Header"
         {
             Editable = false;
         }
-        field(10; "Created Date"; Date)
-        {
-        }
+        field(10; "Created Date"; Date) { }
         field(11; "Vendor Name"; Text[50])
         {
             Editable = false;
@@ -70,9 +61,7 @@ table 50014 "Material Receive Header"
         }
     }
 
-    fieldgroups
-    {
-    }
+    fieldgroups { }
 
     trigger OnDelete()
     begin
@@ -96,11 +85,8 @@ table 50014 "Material Receive Header"
         recMaterialRec: Record "Material Receive Header";
         recInventorySetup: Record "Inventory Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
-        DimMgt: Codeunit DimensionManagement;
-        intSetID: Integer;
         recVendor: Record Vendor;
         recReceiveLine: Record "Material Receive Line";
-
 
     procedure AssistEdit(OldMaterialRec: Record "Material Receive Header"): Boolean
     begin
@@ -113,7 +99,6 @@ table 50014 "Material Receive Header"
             EXIT(TRUE);
         END;
     end;
-
 
     procedure GenerateLines()
     var
@@ -161,7 +146,6 @@ table 50014 "Material Receive Header"
             ERROR('Nothing to generate.');
         MESSAGE('Generated the pending lines for the selected purchase order.');
     end;
-
 
     procedure GenerateBarCodes()
     var
@@ -217,4 +201,3 @@ table 50014 "Material Receive Header"
         MESSAGE('The Barcodes generated for the selected purchase order lines.');
     end;
 }
-
