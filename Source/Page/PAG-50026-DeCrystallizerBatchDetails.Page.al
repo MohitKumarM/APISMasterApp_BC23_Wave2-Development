@@ -32,6 +32,26 @@ page 50026 "De-Crystallizer Batch Details"
                 {
                     ApplicationArea = All;
                 }
+                field(Time; Rec.Time)
+                {
+                    ApplicationArea = All;
+                }
+                field("Temp. Deg. C."; Rec."Temp. Deg. C.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Water Temp. Dec. C."; Rec."Water Temp. Dec. C.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Checked By"; Rec."Checked By")
+                {
+                    ApplicationArea = All;
+                }
+                field(Remarks; Rec.Remarks)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

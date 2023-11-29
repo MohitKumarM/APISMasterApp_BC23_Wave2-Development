@@ -39,12 +39,27 @@ page 50136 "Container- Prod. to Scrap"
                     ApplicationArea = all;
                     trigger OnValidate()
                     var
-                        manufSetup: Record "Manufacturing Setup";
+                        Location_Loc1: Record Location;
+                        Location_Loc2: Record Location;
+                        Location_Loc3: Record Location;
+                        ProdOrder_Loc: Record "Production Order";
                     begin
-                        ManufacturingSetup_Loc.Get();
-                        manufSetup.TestField("Scrap Location");
-                        manufSetup.TestField("Reject Location");
-                        IF not ((Rec."New Location Code" = manufSetup."Scrap Location") and (Rec."New Location Code" = ManufacturingSetup_Loc."Reject Location")) then
+                        Rec.TestField("Document No.");
+                        ProdOrder_Loc.Reset();
+                        ProdOrder_Loc.SetRange("No.", Rec."Document No.");
+                        ProdOrder_Loc.FindFirst();
+                        ProdOrder_Loc.TestField("Location Code");
+                        Location_Loc1.Get(ProdOrder_Loc."Location Code");
+                        Location_Loc2.Reset();
+                        Location_Loc2.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                        Location_Loc2.SetRange("Scrap Location", true);
+                        Location_Loc2.FindFirst();
+                        Location_Loc3.Reset();
+                        Location_Loc3.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                        Location_Loc3.SetRange("Reject Location", true);
+                        Location_Loc3.FindFirst();
+
+                        IF not ((Rec."New Location Code" = Location_Loc2.Code) or (Rec."New Location Code" = Location_Loc3.Code)) then
                             Error('Entered Location is neither scrap nor reject Location.');
                     end;
 
@@ -52,13 +67,29 @@ page 50136 "Container- Prod. to Scrap"
                     var
                         location_Loc: Record Location;
                         manufSetup: Record "Manufacturing Setup";
+                        Location_Loc1: Record Location;
+                        Location_Loc2: Record Location;
+                        Location_Loc3: Record Location;
+                        ProdOrder_Loc: Record "Production Order";
                     begin
-                        ManufacturingSetup_Loc.Get();
-                        manufSetup.TestField("Scrap Location");
-                        manufSetup.TestField("Reject Location");
+                        Rec.TestField("Document No.");
+                        ProdOrder_Loc.Reset();
+                        ProdOrder_Loc.SetRange("No.", Rec."Document No.");
+                        ProdOrder_Loc.FindFirst();
+                        ProdOrder_Loc.TestField("Location Code");
+                        Location_Loc1.Get(ProdOrder_Loc."Location Code");
+                        Location_Loc2.Reset();
+                        Location_Loc2.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                        Location_Loc2.SetRange("Scrap Location", true);
+                        Location_Loc2.FindFirst();
+                        Location_Loc3.Reset();
+                        Location_Loc3.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                        Location_Loc3.SetRange("Reject Location", true);
+                        Location_Loc3.FindFirst();
+
 
                         location_Loc.Reset();
-                        location_Loc.SetFilter(Code, '%1|%2', manufSetup."Scrap Location", manufSetup."Reject Location");
+                        location_Loc.SetFilter(Code, '%1|%2', Location_Loc2.Code, Location_Loc3.Code);
                         if location_Loc.FindSet() then
                             if Page.RunModal(0, location_Loc) = Action::LookupOK then
                                 Rec."New Location Code" := location_Loc.Code;
@@ -172,21 +203,46 @@ page 50136 "Container- Prod. to Scrap"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     var
+        ItemJnlLine: Record "Item Journal Line";
+        Location_loc: Record Location;
+        Location_loc1: Record Location;
+        Location_loc2: Record Location;
+        ProdOrder_Loc: Record "Production Order";
     begin
+
         ManufacturingSetup_Loc.Get();
         ManufacturingSetup_Loc.TestField("Prod. to Store Template");
         ManufacturingSetup_Loc.TestField("Prod. to Store Batch");
-        ManufacturingSetup_Loc.TestField("Production Location");
-        ManufacturingSetup_Loc.TestField("Scrap Location");
-        ManufacturingSetup_Loc.TestField("Reject Location");
+
+
+        ItemJnlLine.Reset();
+        ItemJnlLine.SetRange("Journal Template Name", ManufacturingSetup_Loc."Prod. to Store Template");
+        ItemJnlLine.SetRange("Journal Batch Name", ManufacturingSetup_Loc."Prod. to Store Batch");
+        IF ItemJnlLine.FindLast() then;
+
+        ProdOrder_Loc.Reset();
+        ProdOrder_Loc.SetRange("No.", GlobDocNo);
+        ProdOrder_Loc.FindFirst();
+        ProdOrder_Loc.TestField("Location Code");
+        Location_loc.Get(ProdOrder_Loc."Location Code");
+        Location_loc.TestField("Associated Plant");
 
         Rec."Posting Date" := Today;
         Rec.Validate("Entry Type", Rec."Entry Type"::Transfer);
         Rec."Journal Template Name" := ManufacturingSetup_Loc."Prod. to Store Template";
         Rec."Journal Batch Name" := ManufacturingSetup_Loc."Prod. to Store Batch";
+        Rec."Line No." := ItemJnlLine."Line No." + 10000;
         Rec."Document No." := GlobDocNo;
-        Rec."Location Code" := ManufacturingSetup_Loc."Production Location";
-        Rec."New Location Code" := ManufacturingSetup_Loc."Scrap Location";
+        Location_loc1.Reset();
+        Location_loc1.SetRange("Associated Plant", Location_loc."Associated Plant");
+        Location_loc1.SetRange("Production Location", true);
+        Location_loc1.FindFirst();
+        Rec."Location Code" := Location_loc1.Code;
+        Location_loc2.Reset();
+        Location_loc2.SetRange("Associated Plant", Location_loc."Associated Plant");
+        Location_loc2.SetRange("Scrap Location", true);
+        Location_loc2.FindFirst();
+        Rec."New Location Code" := Location_loc2.Code;
         Rec."Container Trasfer Stage" := Rec."Container Trasfer Stage"::"RM Consumed";
     end;
 

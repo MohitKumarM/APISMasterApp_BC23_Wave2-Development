@@ -2,17 +2,9 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
 {
     fields
     {
-        Field(50000; "Production Location"; Code[20])
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = FILTER(false));
-        }
         Field(50001; "Loose Honey Code"; Code[20])
         {
             TableRelation = Item."No.";
-        }
-        Field(50002; "Packing Location"; Code[20])
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = FILTER(false));
         }
         Field(50003; "Consumption Template"; Code[10])
         {
@@ -22,10 +14,7 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Consumption Template"));
         }
-        Field(50005; "Store Location"; Code[20])
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = FILTER(false));
-        }
+
         Field(50006; "Process Add On Routing"; Code[20])
         {
             TableRelation = "Routing Header";
@@ -50,14 +39,7 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Prod. to Store Template"));
         }
-        Field(50012; "Scrap Location"; Code[20])
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = FILTER(false));
-        }
-        Field(50013; "Reject Location"; Code[20])
-        {
-            TableRelation = Location WHERE("Use As In-Transit" = FILTER(false));
-        }
+
     }
 
     keys

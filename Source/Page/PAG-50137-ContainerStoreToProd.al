@@ -131,11 +131,13 @@ page 50137 "Container Store to Prod."
                     ItemjnlLine_Loc: Record "Item Journal Line";
                     ItemjnlLine_Loc_1: Record "Item Journal Line";
                     lastLineNo: Integer;
+                    Location_loc: Record Location;
+                    Location_loc1: Record Location;
+                    Location_loc2: Record Location;
+                    ProdOrder_Loc: Record "Production Order";
                 begin
                     Clear(lastLineNo);
                     ManfactSetup.Get();
-                    ManfactSetup.TestField("Scrap Location");
-                    ManfactSetup.TestField("Reject Location");
                     ManfactSetup.TestField("Prod. to Store Template");
                     ManfactSetup.TestField("Prod. to Store Batch");
 
@@ -154,6 +156,24 @@ page 50137 "Container Store to Prod."
                         ItemjnlLine_Loc_1.SetRange("Document No.", Rec."Document No.");
                         IF ItemjnlLine_Loc_1.FindLast() then
                             lastLineNo := ItemjnlLine_Loc_1."Line No.";
+
+                        ProdOrder_Loc.Reset();
+                        ProdOrder_Loc.SetRange("No.", Rec."Document No.");
+                        ProdOrder_Loc.FindFirst();
+                        ProdOrder_Loc.TestField("Location Code");
+                        Location_loc.Get(ProdOrder_Loc."Location Code");
+                        Location_loc.TestField("Associated Plant");
+                        Location_loc1.Reset();
+                        Location_loc1.SetRange("Associated Plant", Location_loc."Associated Plant");
+                        Location_loc1.SetRange("Production Location", true);
+                        Location_loc1.FindFirst();
+                        Location_loc2.Reset();
+                        Location_loc2.SetRange("Associated Plant", Location_loc."Associated Plant");
+                        Location_loc2.SetRange("Scrap Location", true);
+                        Location_loc2.FindFirst();
+
+
+
                         repeat
                             ItemJournalLine_Temp.Init();
                             ItemJournalLine_Temp."Journal Template Name" := ManfactSetup."Prod. to Store Template";
@@ -164,8 +184,12 @@ page 50137 "Container Store to Prod."
                             ItemJournalLine_Temp."Document No." := Rec."Document No.";
                             ItemJournalLine_Temp."Posting Date" := Rec."Posting Date";
                             ItemJournalLine_Temp.Validate("Item No.", ItemjnlLine_Loc."Item No.");
-                            ItemJournalLine_Temp."Location Code" := ManfactSetup."Production Location";
-                            ItemJournalLine_Temp."New Location Code" := ManfactSetup."Scrap Location";
+                            Location_loc1.Reset();
+                            Location_loc1.SetRange("Associated Plant", Location_loc."Associated Plant");
+                            Location_loc1.SetRange("Production Location", true);
+                            Location_loc1.FindFirst();
+                            ItemJournalLine_Temp."Location Code" := Location_loc1.Code;
+                            ItemJournalLine_Temp."New Location Code" := Location_loc2.Code;
                             ItemJournalLine_Temp.Drum := ItemjnlLine_Loc.Drum;
                             ItemJournalLine_Temp.Tin := ItemjnlLine_Loc.Tin;
                             ItemJournalLine_Temp.Can := ItemjnlLine_Loc.Can;
@@ -212,19 +236,43 @@ page 50137 "Container Store to Prod."
 
     trigger OnNewRecord(BelowxRec: Boolean)
     var
+        ItemJnlLine: Record "Item Journal Line";
+        Location_loc: Record Location;
+        Location_loc1: Record Location;
+        Location_loc2: Record Location;
+        ProdOrder_Loc: Record "Production Order";
     begin
         ManufacturingSetup_Loc.Get();
         ManufacturingSetup_Loc.TestField("Store to Prod. Template");
         ManufacturingSetup_Loc.TestField("Store to Prod. Batch");
-        ManufacturingSetup_Loc.TestField("Store Location");
-        ManufacturingSetup_Loc.TestField("Production Location");
+
+        ItemJnlLine.Reset();
+        ItemJnlLine.SetRange("Journal Template Name", ManufacturingSetup_Loc."Prod. to Store Template");
+        ItemJnlLine.SetRange("Journal Batch Name", ManufacturingSetup_Loc."Prod. to Store Batch");
+        IF ItemJnlLine.FindLast() then;
+
+        ProdOrder_Loc.Reset();
+        ProdOrder_Loc.SetRange("No.", GlobDocNo);
+        ProdOrder_Loc.FindFirst();
+        ProdOrder_Loc.TestField("Location Code");
+        Location_loc.Get(ProdOrder_Loc."Location Code");
+        Location_loc.TestField("Associated Plant");
 
         Rec."Posting Date" := Today;
         Rec."Journal Template Name" := ManufacturingSetup_Loc."Store to Prod. Template";
         Rec."Journal Batch Name" := ManufacturingSetup_Loc."Store to Prod. Batch";
+        Rec."Line No." := ItemJnlLine."Line No." + 10000;
         Rec."Document No." := GlobDocNo;
-        Rec."Location Code" := ManufacturingSetup_Loc."Store Location";
-        Rec."New Location Code" := ManufacturingSetup_Loc."Production Location";
+        Location_loc1.Reset();
+        Location_loc1.SetRange("Associated Plant", Location_loc."Associated Plant");
+        Location_loc1.SetRange("Store Location", true);
+        Location_loc1.FindFirst();
+        Rec."Location Code" := Location_loc2.Code;
+        Location_loc1.Reset();
+        Location_loc1.SetRange("Associated Plant", Location_loc."Associated Plant");
+        Location_loc1.SetRange("Production Location", true);
+        Location_loc1.FindFirst();
+        Rec."New Location Code" := Location_loc1.Code;
         Rec."Container Trasfer Stage" := Rec."Container Trasfer Stage"::"Issued RM";
         Rec.Validate("Entry Type", Rec."Entry Type"::Transfer);
     end;

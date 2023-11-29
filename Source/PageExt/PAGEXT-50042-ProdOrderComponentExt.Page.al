@@ -68,6 +68,9 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                     pgLotTracking: Page "Cons. Lot Tracking Entry";
                     ProdOrder_Loc: Record "Production Order";
                     ManufacturingSetup_Loc: Record "Manufacturing Setup";
+                    LocationCode_Loc1: Record Location;
+                    LocationCode_Loc2: Record Location;
+
                 begin
 
                     Rec.TESTFIELD("Item No.");
@@ -76,11 +79,19 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                     recPurchSetup.TESTFIELD("Raw Honey Item");
                     recItem.GET(Rec."Item No.");
                     recProductGroup.GET(recItem."New Product Group Code", recItem."Item Category Code");
+
                     ProdOrder_Loc.Get(Rec.Status, Rec."Prod. Order No.");
-                    //Rec."Location Code" := ProdOrder_Loc."Location Code";
+                    Rec."Location Code" := ProdOrder_Loc."Location Code";
+                    LocationCode_Loc1.Get(Rec."Location Code");
+                    LocationCode_Loc2.Reset();
+                    LocationCode_Loc2.SetRange("Associated Plant", LocationCode_Loc1."Associated Plant");
+                    LocationCode_Loc2.SetRange("Store Location", true);
+                    IF not LocationCode_Loc2.FindFirst() then begin
+                        LocationCode_Loc2.SetRange("Associated Plant");
+                        LocationCode_Loc2.FindFirst();
+                    end;
+
                     ManufacturingSetup_Loc.Get();
-                    ManufacturingSetup_Loc.TestField("Store Location");
-                    Rec."Location Code" := ManufacturingSetup_Loc."Store Location";
                     Rec.Modify();
 
                     IF recProductGroup."Allow Direct Purch. Order" THEN BEGIN
@@ -93,7 +104,7 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                         recLotTracking.FILTERGROUP(0);
 
                         CLEAR(pgLotTracking);
-                        pgLotTracking.SetDocumentNo(Rec."Prod. Order No.", Rec."Prod. Order Line No.", Rec."Item No.", Rec."Remaining Quantity", Rec."Location Code", 1);
+                        pgLotTracking.SetDocumentNo(Rec."Prod. Order No.", Rec."Prod. Order Line No.", Rec."Item No.", Rec."Remaining Quantity", LocationCode_Loc2.Code, 1);
                         pgLotTracking.SETTABLEVIEW(recLotTracking);
                         pgLotTracking.RUN;
                     END ELSE BEGIN

@@ -22,26 +22,7 @@ page 50053 "Production Planning"
                 field(cdLocationCode; cdLocationCode)
                 {
                     Caption = 'Select Production Location';
-                    //TableRelation = Location.Code where("Production Unit" = const(true));
-                    // TableRelation = Location WHERE(Code = FILTER('RRK-PR1' | 'RRK-PR2'));
-                    trigger OnDrillDown()
-                    var
-                        LocationLoc: Record Location;
-                        ManufSetup: Record "Manufacturing Setup";
-                    begin
-                        ManufSetup.Get();
-                        LocationLoc.Reset();
-                        LocationLoc.SetRange(Code, ManufSetup."Production Location");
-                        if LocationLoc.FindFirst then
-                            if page.RunModal(0, LocationLoc) = Action::LookupOK then
-                                cdLocationCode := LocationLoc.Code;
-                    end;
-
-                    trigger OnValidate()
-                    begin
-                        // IF (STRPOS(cdLocationCode, 'RRK-PR1') = 0) AND (STRPOS(cdLocationCode, 'RRK-PR2') = 0) THEN
-                        //     ERROR('Invalid location, it must be RRK-PR1 or RRK-PR2');
-                    end;
+                    TableRelation = Location.Code where("Production Location" = const(true));
                 }
                 field("Plan Date"; dtPlanDate) { }
                 field("Production For"; ProductionFor)
@@ -85,6 +66,14 @@ page 50053 "Production Planning"
                 field(opProductionType; opProductionType)
                 {
                     Caption = 'Production Type';
+                }
+                field(ProductionSubType_Var; ProductionSubType_Var)
+                {
+                    Caption = 'Production Sub type';
+                }
+                field(TradeType_Var; TradeType_Var)
+                {
+                    Caption = 'Trade Type';
                 }
                 field(cdBulkItemNo; cdBulkItemNo)
                 {
@@ -168,7 +157,6 @@ page 50053 "Production Planning"
                         Error('Please Select a value for Production For Field on Page');
 
                     recManufacturingSetup.GET;
-                    recManufacturingSetup.TESTFIELD("Production Location");
                     recManufacturingSetup.TESTFIELD("Loose Honey Code");
 
                     IF decQtyToProduce = 0 THEN
@@ -206,6 +194,8 @@ page 50053 "Production Planning"
                     recProductionOrder."Production Type" := opProductionType;
                     IF dtPlanDate <> 0D THEN
                         recProductionOrder."Creation Date" := dtPlanDate;
+                    recProductionOrder."Production Sub Type" := ProductionSubType_Var;
+                    recProductionOrder."Trade Type" := TradeType_Var;
 
                     recRoutingHeader.RESET;
                     recRoutingHeader.SETRANGE("Production Type", opProductionType);
@@ -249,6 +239,8 @@ page 50053 "Production Planning"
                     Clear(txtColor);
                     Clear(txtFG);
                     Clear(txtHMF);
+                    Clear(TradeType_Var);
+                    Clear(ProductionSubType_Var);
                     CurrPage.Update();
                 end;
             }
@@ -296,4 +288,6 @@ page 50053 "Production Planning"
         dtPlanDate: Date;
         ProductionFor: Option " ","In House",Customer;
         ProductionForEnable: Boolean;
+        TradeType_Var: Option " ","General Trade","Modern Trade";
+        ProductionSubType_Var: Option " ","FG Bulk Exp. w/o processing","FG Bulk Exp. w/o filter","FG Bulk Exp. Filtered","FG Small Exp. Filtered","FG Bulk Dom w/o filter","FG Bulk Dom Filter","FG Small Dom Filtered",Pouring;
 }

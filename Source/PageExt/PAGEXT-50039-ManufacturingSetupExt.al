@@ -6,30 +6,11 @@ pageextension 50039 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             group("Production Planning")
             {
-                field("Store Location"; Rec."Store Location")
-                {
-                    ApplicationArea = All;
-                }
-                field("Production Location"; Rec."Production Location")
-                {
-                    ApplicationArea = All;
-                }
-                field("Scrap Location"; Rec."Scrap Location")
-                {
-                    ApplicationArea = all;
-                }
-                field("Reject Location"; Rec."Reject Location")
-                {
-                    ApplicationArea = all;
-                }
                 field("Loose Honey Code"; Rec."Loose Honey Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Location"; Rec."Packing Location")
-                {
-                    ApplicationArea = All;
-                }
+
                 field("Consumption Template"; Rec."Consumption Template")
                 {
                     ApplicationArea = All;

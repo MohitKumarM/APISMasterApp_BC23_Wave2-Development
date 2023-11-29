@@ -58,14 +58,14 @@ page 50023 "De-Crystallizer Card"
                               ORDER(Ascending)
                               WHERE("Line Type" = FILTER("Batch Details"));
             }
-            part(Line_2; "De-Crystallizer Sub Page")
-            {
-                SubPageLink = Type = FIELD(Type),
-                              "Document No." = FIELD("Document No.");
-                SubPageView = SORTING(Type, "Document No.", "Line No.")
-                              ORDER(Ascending)
-                              WHERE("Line Type" = FILTER("Line Details"));
-            }
+            // part(Line_2; "De-Crystallizer Sub Page")
+            // {
+            //     SubPageLink = Type = FIELD(Type),
+            //                   "Document No." = FIELD("Document No.");
+            //     SubPageView = SORTING(Type, "Document No.", "Line No.")
+            //                   ORDER(Ascending)
+            //                   WHERE("Line Type" = FILTER("Line Details"));
+            // }
         }
     }
 

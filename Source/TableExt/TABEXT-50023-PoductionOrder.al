@@ -69,6 +69,14 @@ tableextension 50023 ProductionOrderExt extends "Production Order"
         {
             DataClassification = ToBeClassified;
         }
+        field(50015; "Trade Type"; Option)
+        {
+            OptionMembers = " ","General Trade","Modern Trade";
+        }
+        field(50016; "Production Sub Type"; Option)
+        {
+            OptionMembers = " ","FG Bulk Exp. w/o processing","FG Bulk Exp. w/o filter","FG Bulk Exp. Filtered","FG Small Exp. Filtered","FG Bulk Dom w/o filter","FG Bulk Dom Filter","FG Small Dom Filtered",Pouring;
+        }
         Field(50100; "KHP"; Decimal)
         {
             DataClassification = ToBeClassified;

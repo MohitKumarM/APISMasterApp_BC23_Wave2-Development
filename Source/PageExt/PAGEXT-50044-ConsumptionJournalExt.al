@@ -8,10 +8,17 @@ pageextension 50044 ConsumptionJournalExt extends "Consumption Journal"
             var
                 prodOrder_loc: Record "Production Order";
                 ManufacturingSetup_loc: Record "Manufacturing Setup";
+                LocationCode_Loc1: Record Location;
+                LocationCode_Loc2: Record Location;
             begin
                 if (Rec."Order No." <> '') and (prodOrder_loc.Get(prodOrder_loc.Status::Released, Rec."Order No.")) then begin
-                    ManufacturingSetup_loc.Get();
-                    Rec."Location Code" := ManufacturingSetup_loc."Store Location";
+
+                    LocationCode_Loc1.Get(prodOrder_loc."Location Code");
+                    LocationCode_Loc2.Reset();
+                    LocationCode_Loc2.SetRange("Associated Plant", LocationCode_Loc1."Associated Plant");
+                    LocationCode_Loc2.SetRange("Store Location", true);
+                    LocationCode_Loc2.FindFirst();
+                    Rec."Location Code" := LocationCode_Loc2.Code;
                 end;
             end;
         }
@@ -55,13 +62,26 @@ pageextension 50044 ConsumptionJournalExt extends "Consumption Journal"
             var
                 ManfactSetup: Record "Manufacturing Setup";
                 ItemLedgerEntries: Record "Item Ledger Entry";
+                Location_loc: Record Location;
+                Location_loc1: Record Location;
+                ProdOrder_Loc: Record "Production Order";
             begin
+                ProdOrder_Loc.Reset();
+                ProdOrder_Loc.SetRange("No.", Rec."Document No.");
+                ProdOrder_Loc.FindFirst();
+                ProdOrder_Loc.TestField("Location Code");
+                Location_loc.Get(ProdOrder_Loc."Location Code");
+                Location_loc.TestField("Associated Plant");
+                Location_loc1.Reset();
+                Location_loc1.SetRange("Associated Plant", Location_loc."Associated Plant");
+                Location_loc1.SetRange("Production Location", true);
+                Location_loc1.FindFirst();
+
                 ManfactSetup.Get();
-                ManfactSetup.TestField("Production Location");
 
                 ItemLedgerEntries.Reset();
                 ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
-                ItemLedgerEntries.SetRange("Location Code", ManfactSetup."Production Location");
+                ItemLedgerEntries.SetRange("Location Code", Location_loc1.Code);
                 ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
                 ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"Issued RM");
                 if not ItemLedgerEntries.FindFirst() then

@@ -378,6 +378,7 @@ page 50057 "Prod. Orders Material Request"
                     Image = GetEntries;
                     Promoted = true;
                     PromotedCategory = Process;
+                    Visible = false;
 
                     trigger OnAction()
                     begin
@@ -393,6 +394,7 @@ page 50057 "Prod. Orders Material Request"
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = "Report";
+                    Visible = false;
 
                     trigger OnAction()
                     var
@@ -428,6 +430,7 @@ page 50057 "Prod. Orders Material Request"
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = "Report";
+
 
                     trigger OnAction()
                     begin

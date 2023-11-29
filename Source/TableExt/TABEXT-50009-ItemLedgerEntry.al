@@ -69,6 +69,14 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         {
             DataClassification = ToBeClassified;
         }
+        field(50030; "Trade Type"; Option)
+        {
+            OptionMembers = " ","General Trade","Modern Trade";
+        }
+        field(50031; "Production Sub Type"; Option)
+        {
+            OptionMembers = " ","FG Bulk Exp. w/o processing","FG Bulk Exp. w/o filter","FG Bulk Exp. Filtered","FG Small Exp. Filtered","FG Bulk Dom w/o filter","FG Bulk Dom Filter","FG Small Dom Filtered",Pouring;
+        }
         field(60000; "Approved Quantity"; Decimal) { }
         field(60001; "Rejected Quantity"; Decimal) { }
         field(60002; "Quality Checked"; Boolean) { }

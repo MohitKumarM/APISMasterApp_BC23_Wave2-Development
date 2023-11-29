@@ -418,15 +418,27 @@ page 50064 "Output Posting"
                 var
                     ManfactSetup: Record "Manufacturing Setup";
                     ItemLedgerEntries: Record "Item Ledger Entry";
+                    Location_Loc1: Record Location;
+                    Location_Loc2: Record Location;
+                    Location_Loc3: Record Location;
                 begin
 
                     ManfactSetup.Get();
-                    ManfactSetup.TestField("Scrap Location");
-                    ManfactSetup.TestField("Reject Location");
+                    Rec.TestField("Location Code");
+                    Location_Loc1.Get(Rec."Location Code");
+                    Location_Loc2.Reset();
+                    Location_Loc2.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                    Location_Loc2.SetRange("Scrap Location", true);
+                    Location_Loc2.FindFirst();
+                    Location_Loc3.Reset();
+                    Location_Loc3.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                    Location_Loc3.SetRange("Reject Location", true);
+                    Location_Loc3.FindFirst();
+
 
                     ItemLedgerEntries.Reset();
                     ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
-                    ItemLedgerEntries.SetFilter("Location Code", '%1|%2', ManfactSetup."Scrap Location", ManfactSetup."Reject Location");
+                    ItemLedgerEntries.SetFilter("Location Code", '%1|%2', Location_Loc2.Code, Location_Loc3.Code);
                     ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
                     ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"RM Consumed");
                     if not ItemLedgerEntries.FindFirst() then

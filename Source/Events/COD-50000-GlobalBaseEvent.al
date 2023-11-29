@@ -61,6 +61,7 @@ codeunit 50000 Tble83
         recSourceLotEntry: Record "Lot Tracking Entry";
         recPurchaseSetup: Record "Purchases & Payables Setup";
         dtExpiryDate: Date;
+        ProdOrder_loc: Record "Production Order";
 
     begin
         NewItemLedgEntry."Deal No." := ItemJournalLine."Deal No.";
@@ -77,6 +78,9 @@ codeunit 50000 Tble83
         NewItemLedgEntry.Bucket := ItemJournalLine.Bucket;
         NewItemLedgEntry.Can := ItemJournalLine.Can;
         NewItemLedgEntry."Container Trasfer Stage" := ItemJournalLine."Container Trasfer Stage";
+        NewItemLedgEntry."Trade Type" := ItemJournalLine."Trade Type";
+        NewItemLedgEntry."Production Sub Type" := ItemJournalLine."Production Sub Type";
+
 
         //>>
 
@@ -94,6 +98,16 @@ codeunit 50000 Tble83
         NewItemLedgEntry."Machine Center No." := ItemJournalLine."Machine Center No.";
         NewItemLedgEntry."Starting Date Time" := ItemJournalLine."Starting Date Time";
         NewItemLedgEntry."Ending Date Time" := ItemJournalLine."Ending Date Time";
+
+        if (ItemJournalLine."Order Type" = ItemJournalLine."Order Type"::Production) then begin
+            ProdOrder_loc.Reset();
+            ProdOrder_loc.SetRange("No.", ItemJournalLine."Document No.");
+            if ProdOrder_loc.FindFirst() then begin
+                NewItemLedgEntry."Trade Type" := ProdOrder_loc."Trade Type";
+                NewItemLedgEntry."Production Sub Type" := ProdOrder_loc."Production Sub Type";
+            end;
+        end;
+
 
         //Expiry Date
         IF NewItemLedgEntry.Quantity > 0 THEN BEGIN

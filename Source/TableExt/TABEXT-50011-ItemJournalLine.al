@@ -95,6 +95,14 @@ tableextension 50011 ItemJournalLine extends "Item Journal Line"
         {
             OptionMembers = " ","Issued RM","RM Consumed";
         }
+        field(50025; "Trade Type"; Option)
+        {
+            OptionMembers = " ","General Trade","Modern Trade";
+        }
+        field(50027; "Production Sub Type"; Option)
+        {
+            OptionMembers = " ","FG Bulk Exp. w/o processing","FG Bulk Exp. w/o filter","FG Bulk Exp. Filtered","FG Small Exp. Filtered","FG Bulk Dom w/o filter","FG Bulk Dom Filter","FG Small Dom Filtered",Pouring;
+        }
         field(60000; "Temp Message Control"; Boolean) { }
         field(60006; "ByProduct Item Code"; Code[20])
         {
