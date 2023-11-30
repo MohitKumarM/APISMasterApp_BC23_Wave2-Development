@@ -1,4 +1,4 @@
-report 50027 "Purchase Receipt Other Pre"
+report 50068 "Purchase Receipt Other Pre"
 {
     //     DefaultLayout = RDLC;
     //

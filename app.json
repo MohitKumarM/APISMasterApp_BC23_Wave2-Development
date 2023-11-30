@@ -2,6 +2,7 @@
     "id": "f7485e1d-515b-41e9-9188-0b8b741e55c2",
     "name": "APIS_Master_App_Development",
     "publisher": "TCPL",
+    "target": "Cloud",
     "version": "1.0.0.1",
     "brief": "",
     "description": "",

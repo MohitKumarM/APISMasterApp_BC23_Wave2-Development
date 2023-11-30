@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="DealNoLbl">
+          <DataField>DealNoLbl</DataField>
+        </Field>
+        <Field Name="SLbl">
+          <DataField>SLbl</DataField>
+        </Field>
+        <Field Name="ReturnMonthLbl">
+          <DataField>ReturnMonthLbl</DataField>
+        </Field>
+        <Field Name="ArrivalDateLbl">
+          <DataField>ArrivalDateLbl</DataField>
+        </Field>
+        <Field Name="GateEntryLbl">
+          <DataField>GateEntryLbl</DataField>
+        </Field>
+        <Field Name="GateDtLbl">
+          <DataField>GateDtLbl</DataField>
+        </Field>
+        <Field Name="UnloadingDtLbl">
+          <DataField>UnloadingDtLbl</DataField>
+        </Field>
+        <Field Name="VehicleNoLbl">
+          <DataField>VehicleNoLbl</DataField>
+        </Field>
+        <Field Name="PartyNameLbl">
+          <DataField>PartyNameLbl</DataField>
+        </Field>
+        <Field Name="BillNoLbl">
+          <DataField>BillNoLbl</DataField>
+        </Field>
+        <Field Name="BillDateLbl">
+          <DataField>BillDateLbl</DataField>
+        </Field>
+        <Field Name="LotNoLbl">
+          <DataField>LotNoLbl</DataField>
+        </Field>
+        <Field Name="DealRateLbl">
+          <DataField>DealRateLbl</DataField>
+        </Field>
+        <Field Name="NoTinsLbl">
+          <DataField>NoTinsLbl</DataField>
+        </Field>
+        <Field Name="NoBucketsLbl">
+          <DataField>NoBucketsLbl</DataField>
+        </Field>
+        <Field Name="NoCainsLbl">
+          <DataField>NoCainsLbl</DataField>
+        </Field>
+        <Field Name="NoDrumsLbl">
+          <DataField>NoDrumsLbl</DataField>
+        </Field>
+        <Field Name="TotalUnitsLbl">
+          <DataField>TotalUnitsLbl</DataField>
+        </Field>
+        <Field Name="UnitLbl">
+          <DataField>UnitLbl</DataField>
+        </Field>
+        <Field Name="FactoryNetWtLbl">
+          <DataField>FactoryNetWtLbl</DataField>
+        </Field>
+        <Field Name="FactoryGrossLbl">
+          <DataField>FactoryGrossLbl</DataField>
+        </Field>
+        <Field Name="FactoryTareLbl">
+          <DataField>FactoryTareLbl</DataField>
+        </Field>
+        <Field Name="InveNetWtLbl">
+          <DataField>InveNetWtLbl</DataField>
+        </Field>
+        <Field Name="ShortageExcessLbl">
+          <DataField>ShortageExcessLbl</DataField>
+        </Field>
+        <Field Name="ExtraDiscountLbl">
+          <DataField>ExtraDiscountLbl</DataField>
+        </Field>
+        <Field Name="FinalWtLbl">
+          <DataField>FinalWtLbl</DataField>
+        </Field>
+        <Field Name="AmtAsPerbillLbl">
+          <DataField>AmtAsPerbillLbl</DataField>
+        </Field>
+        <Field Name="StateLbl">
+          <DataField>StateLbl</DataField>
+        </Field>
+        <Field Name="LoadedFromLbl">
+          <DataField>LoadedFromLbl</DataField>
+        </Field>
+        <Field Name="AmountLbl">
+          <DataField>AmountLbl</DataField>
+        </Field>
+        <Field Name="CSTLbl">
+          <DataField>CSTLbl</DataField>
+        </Field>
+        <Field Name="OthersChargesLbl">
+          <DataField>OthersChargesLbl</DataField>
+        </Field>
+        <Field Name="TransporterNameLbl">
+          <DataField>TransporterNameLbl</DataField>
+        </Field>
+        <Field Name="GRNolbl">
+          <DataField>GRNolbl</DataField>
+        </Field>
+        <Field Name="GrDateLbl">
+          <DataField>GrDateLbl</DataField>
+        </Field>
+        <Field Name="TFreightLbl">
+          <DataField>TFreightLbl</DataField>
+        </Field>
+        <Field Name="AdvFreightLbl">
+          <DataField>AdvFreightLbl</DataField>
+        </Field>
+        <Field Name="BalFreightLbl">
+          <DataField>BalFreightLbl</DataField>
+        </Field>
+        <Field Name="GANNoLbl">
+          <DataField>GANNoLbl</DataField>
+        </Field>
+        <Field Name="PONumberLbl">
+          <DataField>PONumberLbl</DataField>
+        </Field>
+        <Field Name="DebitNoteNoLbl">
+          <DataField>DebitNoteNoLbl</DataField>
+        </Field>
+        <Field Name="DebitNoteDateLbl">
+          <DataField>DebitNoteDateLbl</DataField>
+        </Field>
+        <Field Name="TransportNameLbl">
+          <DataField>TransportNameLbl</DataField>
+        </Field>
+        <Field Name="GrNumberLbl">
+          <DataField>GrNumberLbl</DataField>
+        </Field>
+        <Field Name="SendLotNoLbl">
+          <DataField>SendLotNoLbl</DataField>
+        </Field>
+        <Field Name="QtyInkgLbl">
+          <DataField>QtyInkgLbl</DataField>
+        </Field>
+        <Field Name="No_DataItemName">
+          <DataField>No_DataItemName</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

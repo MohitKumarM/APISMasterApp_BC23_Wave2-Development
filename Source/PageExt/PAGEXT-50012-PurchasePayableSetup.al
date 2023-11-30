@@ -28,10 +28,7 @@ pageextension 50012 PurchasePayableSetupN1 extends "Purchases & Payables Setup"
             {
                 ApplicationArea = all;
             }
-            field("OK Store Location"; Rec."OK Store Location")
-            {
-                ApplicationArea = all;
-            }
+
         }
         addafter(Archiving)
         {

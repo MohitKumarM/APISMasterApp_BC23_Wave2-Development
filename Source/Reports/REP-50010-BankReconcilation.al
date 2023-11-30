@@ -7,30 +7,84 @@ report 50086 "Bank Reconcilation"
 
     dataset
     {
-        dataitem("Company Information"; 79)
+
+        dataitem("Bank Account Ledger Entry"; 271)
         {
-            DataItemTableView = SORTING("Primary Key");
-            column(OpeningBalance; OpeningBalance) { }
-            column(Name; "Company Information".Name) { }
-            column(Name2; "Company Information"."Name 2") { }
-            column(LocationAddress1; LocationAddress) { }
-            column(LocationAddress2; LocationAddress2) { }
-            //column(PageNo; 'Page : ' + FORMAT(CurrReport.PAGENO))
-            column(PageNo; 'Page : ' + FORMAT(0)) { }
-            column(Caption1; 'Bank Reconciliation Statement as on ' + FORMAT(AsOnDate)) { }
-            column(BankFilter; 'Bank Reconciliation Statement as on ' + FORMAT(AsOnDate)) { }
-            column(Bankname; 'Bank : ' + BankName) { }
-            column(BankAcc; BankAcc."Bank Account No.") { }
+            DataItemTableView = SORTING("Bank Account No.", "Posting Date")
+                                WHERE(Amount = FILTER(< 0));
+
+            //<<
+            column(OpeningBalance; OpeningBalance)
+            {
+            }
+            column(Name; CompInfo_Rec.Name)
+            {
+            }
+            column(Name2; CompInfo_Rec."Name 2")
+            {
+            }
+            column(LocationAddress1; LocationAddress)
+            {
+            }
+            column(LocationAddress2; LocationAddress2)
+            {
+            }
+            column(PageNo; 'Page : ')//+ FORMAT(CurrReport.PAGENO))//15578
+            {
+            }
+            column(Caption1; 'Bank Reconciliation Statement as on ' + FORMAT(AsOnDate))
+            {
+            }
+            column(BankFilter; 'Bank Reconciliation Statement as on ' + FORMAT(AsOnDate))
+            {
+            }
+            column(Bankname; 'Bank : ' + BankName)
+            {
+            }
+            column(BankAcc; 'Bank Account No. : ' + BankAcc."Bank Account No.")
+            {
+            }
+
+            //>>
+            column(TempCheck; TempCheck)
+            {
+            }
+            column(Valuedate; '')//"Value Date"15578
+            {
+            }
+            column(Open_BankAccountLedgerEntry; "Bank Account Ledger Entry".Open)
+            {
+            }
+            column(Cheque_No; "Cheque No.")
+            {
+            }
+            column(Cheque_Date; FORMAT("Cheque Date"))
+            {
+            }
+            column(Posting_Date; FORMAT("Posting Date"))
+            {
+            }
+            column(Party_Name; PartyName)
+            {
+            }
+            column(AmountToShow; mAmountToShow)
+            {
+            }
+            column(AddAmt; AddAmt)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
+                //<<
+                CompInfo_Rec.get();
 
                 IF LocationCode = '' THEN BEGIN
                     StateRec.RESET;
-                    IF StateRec.GET("State Code") THEN;
-                    LocationAddress := "Company Information".Address + ', ' + "Company Information"."Address 2";
+                    IF StateRec.GET(CompInfo_Rec."State Code") THEN;
+                    LocationAddress := CompInfo_Rec.Address + ', ' + CompInfo_Rec."Address 2";
 
-                    LocationAddress2 := "Company Information".City + '-' + "Company Information"."Post Code" + ' ('
+                    LocationAddress2 := CompInfo_Rec.City + '-' + CompInfo_Rec."Post Code" + ' ('
                                        + StateRec.Description
                                        + ')';
                 END ELSE BEGIN
@@ -60,26 +114,9 @@ report 50086 "Bank Reconcilation"
                 IF BankAcc.GET(BankAccNo) THEN
                     BankName := BankAcc.Name + ' ' + BankAcc."Name 2" + ' ' + BankAcc.Address + ' ' + BankAcc."Address 2" + ' ' +
                                 BankAcc.City;
-            end;
-        }
-        dataitem("Bank Account Ledger Entry"; 271)
-        {
-            DataItemTableView = SORTING("Bank Account No.", "Posting Date")
-                                WHERE(Amount = FILTER(< 0));
-            column(TempCheck; TempCheck) { }
-            column(Valuedate; '')//"Value Date"15578
-            {
-            }
-            column(Open_BankAccountLedgerEntry; "Bank Account Ledger Entry".Open) { }
-            column(Cheque_No; "Cheque No.") { }
-            column(Cheque_Date; FORMAT("Cheque Date")) { }
-            column(Posting_Date; FORMAT("Posting Date")) { }
-            column(Party_Name; PartyName) { }
-            column(AmountToShow; mAmountToShow) { }
-            column(AddAmt; AddAmt) { }
 
-            trigger OnAfterGetRecord()
-            begin
+
+                //>>
 
                 IF BankAcc.GET("Bank Account No.") THEN
                     BankName := BankAcc.Name + ' ' + BankAcc."Name 2" + ' ' + BankAcc.Address + ' ' + BankAcc."Address 2" + ' ' +
@@ -162,19 +199,39 @@ report 50086 "Bank Reconcilation"
         {
             DataItemTableView = SORTING("Bank Account No.", "Posting Date")
                                 WHERE(Amount = FILTER(< 0));
-            column(TempCheck2; TempCheck) { }
+            column(TempCheck2; TempCheck)
+            {
+            }
             column(ValueDate2; '')// "Value Date"15578
             {
             }
-            column(Open_BankAccountLedgerEntry2; "Bank Account Ledger Entry".Open) { }
-            column(BankFilter2; 'Bank Reconciliation Statement as on ' + FORMAT(AsOnDate)) { }
-            column(Bankname2; 'Bank : ' + BankName) { }
-            column(Cheque_No2; "Cheque No.") { }
-            column(Cheque_Date2; FORMAT("Cheque Date")) { }
-            column(Posting_Date2; FORMAT("Posting Date")) { }
-            column(Party_Name2; PartyName) { }
-            column(AmountToShow2; mAmountToShow) { }
-            column(AddAmt2; AddAmt) { }
+            column(Open_BankAccountLedgerEntry2; "Bank Account Ledger Entry".Open)
+            {
+            }
+            column(BankFilter2; 'Bank Reconciliation Statement as on ' + FORMAT(AsOnDate))
+            {
+            }
+            column(Bankname2; 'Bank : ' + BankName)
+            {
+            }
+            column(Cheque_No2; "Cheque No.")
+            {
+            }
+            column(Cheque_Date2; FORMAT("Cheque Date"))
+            {
+            }
+            column(Posting_Date2; FORMAT("Posting Date"))
+            {
+            }
+            column(Party_Name2; PartyName)
+            {
+            }
+            column(AmountToShow2; mAmountToShow)
+            {
+            }
+            column(AddAmt2; AddAmt)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -264,17 +321,33 @@ report 50086 "Bank Reconcilation"
         {
             DataItemTableView = SORTING("Bank Account No.", "Posting Date")
                                 WHERE(Amount = FILTER(> 0));
-            column(Amount_LCY; "Amount (LCY)") { }
+            column(Amount_LCY; "Amount (LCY)")
+            {
+            }
             column(ValueDate3; '')//"Value Date"15578
             {
             }
-            column(Less_Amt; LessAmt) { }
-            column(RemBalance; OpeningBalance + AddAmt - LessAmt) { }
-            column(ChequeNo1; "Cheque No.") { }
-            column(ChequeDate1; FORMAT("Cheque Date")) { }
-            column(PostingDate1; FORMAT("Posting Date")) { }
-            column(PartyName1; PartyName) { }
-            column(Open_BankAccountLedgerEntry1; "Bank Account Ledger Entry1".Open) { }
+            column(Less_Amt; LessAmt)
+            {
+            }
+            column(RemBalance; OpeningBalance + AddAmt - LessAmt)
+            {
+            }
+            column(ChequeNo1; "Cheque No.")
+            {
+            }
+            column(ChequeDate1; FORMAT("Cheque Date"))
+            {
+            }
+            column(PostingDate1; FORMAT("Posting Date"))
+            {
+            }
+            column(PartyName1; PartyName)
+            {
+            }
+            column(Open_BankAccountLedgerEntry1; "Bank Account Ledger Entry1".Open)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -348,17 +421,33 @@ report 50086 "Bank Reconcilation"
         {
             DataItemTableView = SORTING("Bank Account No.", "Posting Date")
                                 WHERE(Amount = FILTER(> 0));
-            column(Amount_LCY3; "Amount (LCY)") { }
-            column(Less_Amt3; LessAmt) { }
+            column(Amount_LCY3; "Amount (LCY)")
+            {
+            }
+            column(Less_Amt3; LessAmt)
+            {
+            }
             column(ValueDate4; '')//"Value Date"
             {
             }
-            column(RemBalance3; OpeningBalance + AddAmt - LessAmt) { }
-            column(ChequeNo13; "Cheque No.") { }
-            column(ChequeDate13; FORMAT("Cheque Date")) { }
-            column(PostingDate13; FORMAT("Posting Date")) { }
-            column(PartyName13; PartyName) { }
-            column(Open_BankAccountLedgerEntry13; "Bank Account Ledger Entry1".Open) { }
+            column(RemBalance3; OpeningBalance + AddAmt - LessAmt)
+            {
+            }
+            column(ChequeNo13; "Cheque No.")
+            {
+            }
+            column(ChequeDate13; FORMAT("Cheque Date"))
+            {
+            }
+            column(PostingDate13; FORMAT("Posting Date"))
+            {
+            }
+            column(PartyName13; PartyName)
+            {
+            }
+            column(Open_BankAccountLedgerEntry13; "Bank Account Ledger Entry1".Open)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
@@ -436,10 +525,12 @@ report 50086 "Bank Reconcilation"
                 i := COUNT;
             end;
         }
+
     }
 
     requestpage
     {
+
         layout
         {
             area(content)
@@ -464,10 +555,14 @@ report 50086 "Bank Reconcilation"
             }
         }
 
-        actions { }
+        actions
+        {
+        }
     }
 
-    labels { }
+    labels
+    {
+    }
 
     trigger OnPostReport()
     begin
@@ -480,6 +575,7 @@ report 50086 "Bank Reconcilation"
         END;
         */
         //RepAuditMgt.CreateAudit(50086)
+
     end;
 
     trigger OnPreReport()
@@ -529,6 +625,8 @@ report 50086 "Bank Reconcilation"
         Rowno: Integer;
         tgText001: Label 'Process @1@@@@@@@@@@@@@@@@@@@';
         TempCheck: Decimal;
+        p: Page 388;
+        CompInfo_Rec: Record "Company Information";
 
     procedure EnterCell(RowNo: Integer; ColumnNo: Integer; CellValue: Text[250]; Bold: Boolean; UnderLine: Boolean)
     begin
@@ -541,5 +639,7 @@ report 50086 "Bank Reconcilation"
         ExcelBuffer.Underline := UnderLine;
         ExcelBuffer.INSERT;
          */
+
     end;
 }
+

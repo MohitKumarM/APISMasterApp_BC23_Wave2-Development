@@ -34,10 +34,7 @@ tableextension 50003 PurchPayableSetup extends "Purchases & Payables Setup"
             DataClassification = ToBeClassified;
             TableRelation = Item;
         }
-        field(50008; "OK Store Location"; code[20])
-        {
-            TableRelation = Location;
-        }
+
         field(70001; "Deal Tolerance"; Decimal) { }
     }
 }

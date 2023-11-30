@@ -187,7 +187,8 @@ codeunit 50000 Tble83
                 recPostedLotTracking."Average Qty. In Pack" := recPostedLotTracking.Quantity / recPostedLotTracking."Qty. In Packs";
                 recPostedLotTracking."Document No." := NewItemLedgEntry."Document No.";
                 recPostedLotTracking."Document Line No." := NewItemLedgEntry."Document Line No.";
-                recPostedLotTracking."Location Code" := recPurchaseSetup."OK Store Location";
+                //recPostedLotTracking."Location Code" := recPurchaseSetup."OK Store Location";
+                recPostedLotTracking."Location Code" := NewItemLedgEntry."Location Code"; // Removed Purchase Payable ok Store Location code(Ramesh,Ravi vivek)
                 recPostedLotTracking."Tare Weight" := 0;
                 recPostedLotTracking."Remaining Qty." := NewItemLedgEntry.Quantity;
                 recPostedLotTracking."Moisture (%)" := NewItemLedgEntry."Moisture (%)";
