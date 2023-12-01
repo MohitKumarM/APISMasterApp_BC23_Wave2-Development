@@ -81,7 +81,6 @@ codeunit 50000 Tble83
         NewItemLedgEntry."Trade Type" := ItemJournalLine."Trade Type";
         NewItemLedgEntry."Production Sub Type" := ItemJournalLine."Production Sub Type";
 
-
         //>>
 
         IF NewItemLedgEntry."Document Type" = NewItemLedgEntry."Document Type"::"Purchase Receipt" THEN BEGIN
@@ -107,7 +106,6 @@ codeunit 50000 Tble83
                 NewItemLedgEntry."Production Sub Type" := ProdOrder_loc."Production Sub Type";
             end;
         end;
-
 
         //Expiry Date
         IF NewItemLedgEntry.Quantity > 0 THEN BEGIN

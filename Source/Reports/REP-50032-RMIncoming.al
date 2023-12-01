@@ -51,7 +51,6 @@ report 50032 "RM Incoming"
             column(B_Freight; '') { }//New field
             column(GAN_No; "Document No.") { }
             column(PO_Nomber; "Order No.") { }
-
             dataitem("Item Ledger Entry"; "Item Ledger Entry")
             {
                 DataItemLinkReference = "Purch. Rcpt. Line";
@@ -73,7 +72,6 @@ report 50032 "RM Incoming"
                 if PostedGateEntyLine_Rec.FindFirst() then;
 
                 if PostedGateEntyHdr_Rec.get(PostedGateEntyLine_Rec."Entry Type", PostedGateEntyLine_Rec."Gate Entry No.") then;
-
             end;
         }
     }
@@ -89,7 +87,6 @@ report 50032 "RM Incoming"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -102,7 +99,6 @@ report 50032 "RM Incoming"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -114,14 +110,11 @@ report 50032 "RM Incoming"
         {
             Type = RDLC;
             LayoutFile = '.\ReportLayouts\RMIncoming.rdl';
-
         }
     }
     procedure ConvertDate(DateP: Date): Text
     var
-        MonthTxt: Text;
         Month: Text;
-        Year: Integer;
         Day: Integer;
     begin
         Day := DATE2DMY(DateP, 2);
@@ -157,15 +150,10 @@ report 50032 "RM Incoming"
         EXIT(Month);
     end;
 
-
     var
         SRNO: Integer;
         PRH_Rec: Record "Purch. Rcpt. Header";
-        PRL_Rec: Record "Purch. Rcpt. Line";
         Vendor_Rec: Record Vendor;
-        PurchaseHeader: Record "Purchase Header";
-        GateEntryLine_Rec: Record "Gate Entry Line";
-        GateEntryHdr_Rec: Record "Gate Entry Header";
         PostedGateEntyHdr_Rec: Record "Posted Gate Entry Header";
         PostedGateEntyLine_Rec: Record "Posted Gate Entry Line";
 }

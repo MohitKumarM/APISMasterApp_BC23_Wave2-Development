@@ -19,52 +19,52 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.27778in</Width>
+                  <Width>0.16344in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.69444in</Width>
+                  <Width>0.27174in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.96528in</Width>
+                  <Width>0.63657in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.54861in</Width>
+                  <Width>0.42502in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90972in</Width>
+                  <Width>0.73099in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.59723in</Width>
+                  <Width>0.41577in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.625in</Width>
+                  <Width>0.43332in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.73611in</Width>
+                  <Width>0.59537in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.79167in</Width>
+                  <Width>0.53472in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.65278in</Width>
+                  <Width>0.40973in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.67361in</Width>
+                  <Width>0.4412in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.875in</Width>
+                  <Width>0.48149in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.5in</Width>
+                  <Width>0.39351in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.69074in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.77083in</Width>
+                  <Width>0.49306in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1in</Width>
+                  <Width>0.92963in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -82,7 +82,7 @@
                                 <TextRun>
                                   <Value>Sr. No.</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -136,7 +136,7 @@
                                 <TextRun>
                                   <Value>Item Code</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -190,7 +190,7 @@
                                 <TextRun>
                                   <Value>Item Description</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -244,7 +244,7 @@
                                 <TextRun>
                                   <Value>Packing</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -298,7 +298,7 @@
                                 <TextRun>
                                   <Value>Container No.</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -352,7 +352,7 @@
                                 <TextRun>
                                   <Value>FCL Type</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -406,7 +406,7 @@
                                 <TextRun>
                                   <Value>Batch No.</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -460,7 +460,7 @@
                                 <TextRun>
                                   <Value>Production Date</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -514,7 +514,7 @@
                                 <TextRun>
                                   <Value>Expiry Date</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -568,7 +568,7 @@
                                 <TextRun>
                                   <Value>Qty In Case Or Drum</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -622,7 +622,7 @@
                                 <TextRun>
                                   <Value>Unit Price</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -676,7 +676,7 @@
                                 <TextRun>
                                   <Value>Amount In $</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -730,7 +730,7 @@
                                 <TextRun>
                                   <Value>Dis %</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -784,7 +784,7 @@
                                 <TextRun>
                                   <Value>Discounted Amount Value in $</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -838,7 +838,7 @@
                                 <TextRun>
                                   <Value>Add or less Other charges</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -892,7 +892,7 @@
                                 <TextRun>
                                   <Value>Final Amount in USD</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -951,7 +951,7 @@
                                 <TextRun>
                                   <Value>=Fields!Sr_No.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -983,7 +983,7 @@
                                 <TextRun>
                                   <Value>=Fields!Item_Code.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1015,7 +1015,7 @@
                                 <TextRun>
                                   <Value>=Fields!Item_Description.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1047,7 +1047,7 @@
                                 <TextRun>
                                   <Value>=Fields!Packing.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1079,7 +1079,7 @@
                                 <TextRun>
                                   <Value>=Fields!Container_No.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1111,7 +1111,7 @@
                                 <TextRun>
                                   <Value>=Fields!FCL_Type.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1143,7 +1143,7 @@
                                 <TextRun>
                                   <Value>=Fields!Batch_No.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1175,7 +1175,7 @@
                                 <TextRun>
                                   <Value>=Fields!Production_Date.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1207,7 +1207,7 @@
                                 <TextRun>
                                   <Value>=Fields!Expiry_Date.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1239,7 +1239,7 @@
                                 <TextRun>
                                   <Value>=Fields!Qty_InCaseORDrum.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1271,7 +1271,7 @@
                                 <TextRun>
                                   <Value>=Fields!Unit_Price.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1303,7 +1303,7 @@
                                 <TextRun>
                                   <Value>=Fields!Amount.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1335,7 +1335,7 @@
                                 <TextRun>
                                   <Value>=Fields!Line_Discount__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1367,7 +1367,7 @@
                                 <TextRun>
                                   <Value>=Fields!Line_Discount_Amount.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1399,7 +1399,7 @@
                                 <TextRun>
                                   <Value>=Fields!Other_Charges.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1431,7 +1431,7 @@
                                 <TextRun>
                                   <Value>=Fields!Final_AmtIN_USD.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1468,7 +1468,7 @@
                                 <TextRun>
                                   <Value>Total qty and Amount Chargeable: -</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1512,7 +1512,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Qty_InCaseORDrum.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1547,7 +1547,7 @@
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1580,7 +1580,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Amount.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1615,7 +1615,7 @@
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1648,7 +1648,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Line_Discount_Amount.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1683,7 +1683,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Other_Charges.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1716,7 +1716,7 @@
                                 <TextRun>
                                   <Value>=Sum(Fields!Final_AmtIN_USD.Value)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1779,7 +1779,7 @@
             <Top>4.40499in</Top>
             <Left>0.21055in</Left>
             <Height>0.54861in</Height>
-            <Width>11.61806in</Width>
+            <Width>8.0463in</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1815,7 +1815,7 @@
                   <TextRun>
                     <Value>Shipper Name &amp; Address </Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1827,7 +1827,7 @@
             <Top>0.25917in</Top>
             <Left>0.21055in</Left>
             <Height>0.15278in</Height>
-            <Width>5.77778in</Width>
+            <Width>3.79861in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1881,7 +1881,7 @@
             <Top>0.09944in</Top>
             <Left>0.21055in</Left>
             <Height>0.15972in</Height>
-            <Width>11.61806in</Width>
+            <Width>8.0463in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1922,14 +1922,14 @@
                   <TextRun>
                     <Value>Invoice No. </Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=First(Fields!Invoice_No.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -1939,9 +1939,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
             <Top>0.25917in</Top>
-            <Left>5.98833in</Left>
+            <Left>4.00916in</Left>
             <Height>0.15278in</Height>
-            <Width>2.39583in</Width>
+            <Width>1.94444in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -1962,14 +1962,15 @@
                   <TextRun>
                     <Value>Invoice Date:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=First(Fields!Invoice_Date.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
+                      <Format>dd MMMM yyyy</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1977,10 +1978,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
-            <Top>0.41194in</Top>
-            <Left>5.98833in</Left>
+            <Top>0.41193in</Top>
+            <Left>4.00916in</Left>
             <Height>0.66667in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -2001,14 +2002,14 @@
                   <TextRun>
                     <Value>ERP Sales Order No. </Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=First(Fields!Sale_Order_no.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2018,9 +2019,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
             <Top>0.25917in</Top>
-            <Left>8.38416in</Left>
+            <Left>5.9536in</Left>
             <Height>0.15278in</Height>
-            <Width>3.44445in</Width>
+            <Width>2.30325in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -2041,7 +2042,9 @@
                   <TextRun>
                     <Value>=First(Fields!Shipper_Name.Value, "DataSet_Result")
 First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
-                    <Style />
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style />
@@ -2051,7 +2054,7 @@ First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
             <Top>0.41195in</Top>
             <Left>0.21055in</Left>
             <Height>0.66667in</Height>
-            <Width>5.77778in</Width>
+            <Width>3.79861in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -2072,7 +2075,7 @@ First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Consignee Name &amp; Address (Ship To):</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2084,7 +2087,7 @@ First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
             <Top>1.07862in</Top>
             <Left>0.21055in</Left>
             <Height>0.15278in</Height>
-            <Width>5.77778in</Width>
+            <Width>3.79861in</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -2125,7 +2128,7 @@ First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Bill To (Sell To):</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2134,10 +2137,10 @@ First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
-            <Top>1.07862in</Top>
-            <Left>5.98833in</Left>
+            <Top>1.07861in</Top>
+            <Left>4.00916in</Left>
             <Height>0.15278in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>8</ZIndex>
             <Style>
               <Border>
@@ -2179,7 +2182,7 @@ First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
                     <Value>=First(Fields!Bill_to_Name.Value, "DataSet_Result")
 First(Fields!Bill_to_Address.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2187,10 +2190,10 @@ First(Fields!Bill_to_Address.Value, "DataSet_Result")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
-            <Top>1.23139in</Top>
-            <Left>5.98833in</Left>
+            <Top>1.23138in</Top>
+            <Left>4.00916in</Left>
             <Height>0.70834in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -2212,7 +2215,7 @@ First(Fields!Bill_to_Address.Value, "DataSet_Result")</Value>
                     <Value>=First(Fields!Consignee_Name.Value, "DataSet_Result")
 First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2223,7 +2226,7 @@ First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
             <Top>1.2314in</Top>
             <Left>0.21055in</Left>
             <Height>0.70834in</Height>
-            <Width>5.77778in</Width>
+            <Width>3.79861in</Width>
             <ZIndex>10</ZIndex>
             <Style>
               <Border>
@@ -2244,7 +2247,7 @@ First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Other Details:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2256,7 +2259,7 @@ First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
             <Top>1.93972in</Top>
             <Left>0.21055in</Left>
             <Height>0.15278in</Height>
-            <Width>5.77778in</Width>
+            <Width>3.79861in</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -2297,7 +2300,7 @@ First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>1st Notify Party Name &amp; Address (if Any):</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2306,10 +2309,10 @@ First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
-            <Top>1.93972in</Top>
-            <Left>5.98833in</Left>
+            <Top>1.93971in</Top>
+            <Left>4.00916in</Left>
             <Height>0.15278in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -2351,7 +2354,7 @@ First(Fields!Consignee_Address.Value, "DataSet_Result")</Value>
                     <Value>=First(Fields!First_Notify_PartyName.Value, "DataSet_Result")
 First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
@@ -2362,7 +2365,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
 
 </Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
@@ -2370,7 +2373,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
 
 </Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2380,9 +2383,9 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             </Paragraphs>
             <rd:DefaultName>Textbox33</rd:DefaultName>
             <Top>2.09249in</Top>
-            <Left>5.98833in</Left>
+            <Left>4.00916in</Left>
             <Height>2.24306in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -2412,7 +2415,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.0925in</Top>
             <Left>0.21055in</Left>
             <Height>2.24305in</Height>
-            <Width>5.77778in</Width>
+            <Width>3.79861in</Width>
             <ZIndex>14</ZIndex>
             <Style>
               <Border>
@@ -2453,7 +2456,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Bill to Customer No.</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2486,7 +2489,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Buyer Order No.</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2519,7 +2522,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Incoterm:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2552,7 +2555,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Payment Term:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2585,7 +2588,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Pre Carriage By:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2618,7 +2621,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Documentary Credit No:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2651,7 +2654,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Vessel Name/Flight  No.:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2684,7 +2687,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Pre-Carriage Receipt By:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2717,7 +2720,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Loading Port /Airport Dept.</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2750,7 +2753,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Port of Discharge:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -2783,7 +2786,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Bill_to_Customer_No_.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2794,7 +2797,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.09249in</Top>
             <Left>1.95361in</Left>
             <Height>0.0903in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>25</ZIndex>
             <Style>
               <Border>
@@ -2815,7 +2818,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Buyer_Order_No.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2826,7 +2829,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.18279in</Top>
             <Left>1.95361in</Left>
             <Height>0.10416in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>26</ZIndex>
             <Style>
               <Border>
@@ -2847,7 +2850,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Payment_Terms.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2858,7 +2861,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.28697in</Top>
             <Left>1.95361in</Left>
             <Height>0.13194in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>27</ZIndex>
             <Style>
               <Border>
@@ -2879,7 +2882,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Incoterm.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2890,7 +2893,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.41892in</Top>
             <Left>1.9536in</Left>
             <Height>0.11805in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>28</ZIndex>
             <Style>
               <Border>
@@ -2911,7 +2914,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Documentary_Credit_No.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2922,7 +2925,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.53696in</Top>
             <Left>1.95361in</Left>
             <Height>0.125in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>29</ZIndex>
             <Style>
               <Border>
@@ -2943,7 +2946,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Precarriage_By.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2954,7 +2957,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.66196in</Top>
             <Left>1.95361in</Left>
             <Height>0.13887in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>30</ZIndex>
             <Style>
               <Border>
@@ -2975,7 +2978,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Precarriage_receipt_By.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -2986,7 +2989,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.80083in</Top>
             <Left>1.9536in</Left>
             <Height>0.15277in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>31</ZIndex>
             <Style>
               <Border>
@@ -3007,7 +3010,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!VesselName_Flight_No.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -3018,7 +3021,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>2.95359in</Top>
             <Left>1.95361in</Left>
             <Height>0.125in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>32</ZIndex>
             <Style>
               <Border>
@@ -3039,7 +3042,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!LoadingPort_AirPortDept.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -3050,7 +3053,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>3.07858in</Top>
             <Left>1.95361in</Left>
             <Height>0.125in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>33</ZIndex>
             <Style>
               <Border>
@@ -3071,7 +3074,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!PortOfDischarge.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -3082,7 +3085,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>3.20358in</Top>
             <Left>1.95361in</Left>
             <Height>0.125in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>34</ZIndex>
             <Style>
               <Border>
@@ -3103,7 +3106,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Shipping Remarks:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -3136,7 +3139,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Shipping_Remarks.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -3147,7 +3150,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>3.45358in</Top>
             <Left>1.95361in</Left>
             <Height>0.125in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>36</ZIndex>
             <Style>
               <Border>
@@ -3168,7 +3171,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>=First(Fields!Final_Destination.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -3179,7 +3182,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
             <Top>3.32858in</Top>
             <Left>1.95361in</Left>
             <Height>0.125in</Height>
-            <Width>2.34723in</Width>
+            <Width>1.92362in</Width>
             <ZIndex>37</ZIndex>
             <Style>
               <Border>
@@ -3200,7 +3203,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>Final Destination:</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -3233,7 +3236,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                   <TextRun>
                     <Value>2nd Notify Party Name &amp; Address (if Any):</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
@@ -3242,10 +3245,10 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.99526in</Top>
-            <Left>5.98833in</Left>
+            <Top>2.9536in</Top>
+            <Left>4.00916in</Left>
             <Height>0.15278in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>39</ZIndex>
             <Style>
               <Border>
@@ -3287,7 +3290,7 @@ First(Fields!First_Notify_Address.Value, "DataSet_Result")</Value>
                     <Value>=First(Fields!Second_Notify_PartyName.Value, "DataSet_Result")
 First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                     <Style>
-                      <FontSize>8pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -3295,10 +3298,10 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
-            <Top>3.14804in</Top>
-            <Left>5.98833in</Left>
+            <Top>3.10638in</Top>
+            <Left>4.00916in</Left>
             <Height>0.74307in</Height>
-            <Width>5.84028in</Width>
+            <Width>4.24769in</Width>
             <ZIndex>40</ZIndex>
             <Style>
               <Border>
@@ -3317,13 +3320,10 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                   <Width>1.025in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.83333in</Width>
+                  <Width>2.13887in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.15695in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>4.48333in</Width>
+                  <Width>1.76298in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.87917in</Width>
@@ -3346,7 +3346,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3376,7 +3378,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3406,43 +3410,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox12</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox16">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox16</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3466,7 +3442,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3496,7 +3474,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3532,7 +3512,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Comment Box:-</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -3566,43 +3546,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox22</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox24">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3627,7 +3579,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Total Amount in USD</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3658,7 +3610,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3693,7 +3647,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3718,36 +3674,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox47">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox47</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Textbox77">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -3757,7 +3683,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Add or Less Other Charges in USD</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3788,7 +3714,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3824,7 +3752,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Net weight:</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3855,7 +3783,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3885,43 +3815,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox89</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox90">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox90</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -3946,7 +3848,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Less Discount</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3977,7 +3879,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4013,7 +3917,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Tare weight: </Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4044,7 +3948,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4074,43 +3980,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox84</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox85">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox85</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -4135,7 +4013,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Total Amount Chargeable in USD</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4166,7 +4044,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4202,7 +4082,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Pallet weight:</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4233,7 +4113,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4263,43 +4145,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox79</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox80">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox80</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -4324,7 +4178,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Total Amount before Tax in INR</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4355,7 +4209,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4391,7 +4247,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Gross weight</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4422,7 +4278,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4452,43 +4310,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox104</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox105">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox105</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -4513,7 +4343,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>IGST Reverse Charge on Export</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4544,7 +4374,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4579,7 +4411,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4609,7 +4443,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4639,43 +4475,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox99</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox100">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox100</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -4700,7 +4508,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>IGST Input on Export</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4731,7 +4539,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4766,7 +4576,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4796,7 +4608,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4826,43 +4640,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox94</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox95">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox95</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -4887,7 +4673,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Total Amount after Tax</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4918,7 +4704,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -4949,7 +4737,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -4967,8 +4754,8 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
             </TablixRowHierarchy>
             <Top>4.9536in</Top>
             <Left>0.21055in</Left>
-            <Height>1.63194in</Height>
-            <Width>11.61806in</Width>
+            <Height>1.63195in</Height>
+            <Width>8.0463in</Width>
             <ZIndex>41</ZIndex>
             <Style>
               <Border>
@@ -5000,13 +4787,10 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>5.93287in</Width>
+                  <Width>5.74305in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.2176in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.46759in</Width>
+                  <Width>2.30325in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -5024,7 +4808,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Declaration: -</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5033,36 +4817,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox123</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox124">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox124</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -5087,7 +4841,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>For Apis India Limited</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5125,7 +4879,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>1. We declare that this Invoice shows the actual price of the goods described and that particulars are true and correct.</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5133,36 +4887,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox117</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox119">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox119</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -5186,7 +4910,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -5222,7 +4948,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>2. We Intend to claim rewards under RODTEP (Remission of Duties and Taces on Exported Products) Incentive Scheme</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5230,36 +4956,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox126</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox127">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox127</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -5283,7 +4979,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -5319,7 +5017,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>3. Export Under LUT or IGST</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -5327,36 +5025,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox132</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox133">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox133</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -5380,7 +5048,9 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -5415,43 +5085,15 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox129</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox130">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox130</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -5476,7 +5118,7 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
                                 <TextRun>
                                   <Value>Authorized Singatory</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -5506,7 +5148,6 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
               <TablixMembers>
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -5520,8 +5161,8 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
             </TablixRowHierarchy>
             <Top>6.5925in</Top>
             <Left>0.21055in</Left>
-            <Height>0.75694in</Height>
-            <Width>11.61806in</Width>
+            <Height>0.75695in</Height>
+            <Width>8.0463in</Width>
             <ZIndex>42</ZIndex>
             <Style>
               <Border>
@@ -5550,13 +5191,13 @@ First(Fields!Second_Notify_Address.Value, "DataSet_Result")</Value>
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>7.50694in</Height>
+        <Height>7.45139in</Height>
         <Style />
       </Body>
-      <Width>12.06009in</Width>
+      <Width>8.44667in</Width>
       <Page>
-        <PageHeight>8.27in</PageHeight>
-        <PageWidth>11.69in</PageWidth>
+        <PageHeight>11.69in</PageHeight>
+        <PageWidth>8.27in</PageWidth>
         <LeftMargin>0in</LeftMargin>
         <RightMargin>0in</RightMargin>
         <TopMargin>0in</TopMargin>

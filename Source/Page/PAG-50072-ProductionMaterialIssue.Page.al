@@ -155,39 +155,16 @@ page 50072 "Production Material Issue"
             {
                 Caption = 'F&unctions';
                 Image = "Action";
-                action("Lot Tracking Lines")
-                {
-                    Caption = 'Item &Tracking Lines';
-                    Image = ItemTrackingLines;
-                    Promoted = true;
+                ShowAs = Standard;
 
-                    trigger OnAction()
-                    var
-                        recLotTracking: Record "Tran. Lot Tracking";
-                        pgLotTracking: Page "Cons. Lot Tracking Entry";
-                    begin
-                        recPurchaseSetup.GET;
-                        recPurchaseSetup.TESTFIELD("Raw Honey Item");
-
-                        recLotTracking.RESET;
-                        recLotTracking.FILTERGROUP(2);
-                        recLotTracking.SETRANGE("Document Type", recLotTracking."Document Type"::Consumption);
-                        recLotTracking.SETRANGE("Document No.", Rec."No.");
-                        recLotTracking.SETRANGE("Document Line No.", 10000);
-                        recLotTracking.SETRANGE("Item No.", recPurchaseSetup."Raw Honey Item");
-                        recLotTracking.FILTERGROUP(0);
-
-                        CLEAR(pgLotTracking);
-                        pgLotTracking.SetDocumentNo(Rec."No.", 10000, recPurchaseSetup."Raw Honey Item", Rec.Quantity, Rec."Location Code", 1);
-                        pgLotTracking.SETTABLEVIEW(recLotTracking);
-                        pgLotTracking.RUN;
-                    end;
-                }
                 action(Components)
                 {
                     Caption = 'Components';
                     Image = Components;
                     Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -210,10 +187,15 @@ page 50072 "Production Material Issue"
                     Caption = 'Issue Material';
                     Image = ConsumptionJournal;
                     Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
                         IF Rec."Order Type" = Rec."Order Type"::Production THEN BEGIN
+
+
                             CLEAR(rptCalcConsumption);
 
                             recManufacturingSetup.GET;
@@ -339,11 +321,15 @@ page 50072 "Production Material Issue"
                         END;
                     end;
                 }
+                separator(Separator1) { }
                 action("Send Back")
                 {
                     Caption = 'Send Back';
                     Image = SendTo;
                     Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    ApplicationArea = All;
 
                     trigger OnAction()
                     begin
@@ -356,13 +342,44 @@ page 50072 "Production Material Issue"
                         CurrPage.UPDATE;
                     end;
                 }
+                action("Lot Tracking Lines")
+                {
+                    Caption = 'Item &Tracking Lines';
+                    Image = ItemTrackingLines;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
+                    ApplicationArea = All;
+
+                    trigger OnAction()
+                    var
+                        recLotTracking: Record "Tran. Lot Tracking";
+                        pgLotTracking: Page "Cons. Lot Tracking Entry";
+                    begin
+                        recPurchaseSetup.GET;
+                        recPurchaseSetup.TESTFIELD("Raw Honey Item");
+
+                        recLotTracking.RESET;
+                        recLotTracking.FILTERGROUP(2);
+                        recLotTracking.SETRANGE("Document Type", recLotTracking."Document Type"::Consumption);
+                        recLotTracking.SETRANGE("Document No.", Rec."No.");
+                        recLotTracking.SETRANGE("Document Line No.", 10000);
+                        recLotTracking.SETRANGE("Item No.", recPurchaseSetup."Raw Honey Item");
+                        recLotTracking.FILTERGROUP(0);
+
+                        CLEAR(pgLotTracking);
+                        pgLotTracking.SetDocumentNo(Rec."No.", 10000, recPurchaseSetup."Raw Honey Item", Rec.Quantity, Rec."Location Code", 1);
+                        pgLotTracking.SETTABLEVIEW(recLotTracking);
+                        pgLotTracking.RUN;
+                    end;
+                }
             }
         }
     }
 
     var
         recProdOrderComponent: Record "Prod. Order Component";
-        rptCalcConsumption: Report "Calc. Consumption";
+        rptCalcConsumption: Report "Calc. ConsumptionN";
         recManufacturingSetup: Record "Manufacturing Setup";
         pgConsumptionJournal: Page "Consumption Journal";
         recPurchaseSetup: Record "Purchases & Payables Setup";

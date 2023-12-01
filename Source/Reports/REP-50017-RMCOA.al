@@ -23,7 +23,6 @@ report 50017 "RM COA"
             column(Tested_By; "Tested By") { }
             column(Lot_No; "Lot No.") { }
             column(Picture; ComInfor_Rec.Picture) { }
-
             dataitem("Quality Line"; "Quality Line")
             {
                 DataItemLink = "QC No." = field("No.");
@@ -49,7 +48,6 @@ report 50017 "RM COA"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -81,5 +79,4 @@ report 50017 "RM COA"
 
     var
         ComInfor_Rec: Record "Company Information";
-
 }

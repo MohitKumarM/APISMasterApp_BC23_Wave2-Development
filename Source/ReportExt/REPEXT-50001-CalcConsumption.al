@@ -8,7 +8,6 @@ reportextension 50001 CalcConsumptionExt extends "Calc. Consumption"
             begin
                 IF cdOrderNo <> '' THEN
                     "Production Order".SETRANGE("No.", cdOrderNo);
-
             end;
         }
     }
@@ -17,8 +16,6 @@ reportextension 50001 CalcConsumptionExt extends "Calc. Consumption"
     {
         // Add changes to the requestpage here
     }
-
-
 
     var
         cdOrderNo: Code[20];

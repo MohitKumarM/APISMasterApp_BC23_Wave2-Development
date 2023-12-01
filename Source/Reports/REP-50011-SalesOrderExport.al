@@ -111,6 +111,11 @@ report 50011 "Sales Order Export\Domestic"
                     Clear(Total_GSTAmount);
                     Total_GSTAmount := CAmount1 + SAmount1 + IAmount1;
                 end;
+
+                trigger OnPreDataItem()
+                begin
+                    Item_rec.Get("Sales Line"."No.");
+                end;
             }
         }
     }
@@ -135,4 +140,5 @@ report 50011 "Sales Order Export\Domestic"
         IAmount: Decimal;
         IAmount1: Decimal;
         Total_GSTAmount: Decimal;
+        Item_rec: Record Item;
 }

@@ -35,7 +35,6 @@ report 50034 "Material Issue"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -48,7 +47,6 @@ report 50034 "Material Issue"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -62,7 +60,4 @@ report 50034 "Material Issue"
             LayoutFile = '.\ReportLayouts\MaterialIssue.rdl';
         }
     }
-
-    var
-        myInt: Integer;
 }

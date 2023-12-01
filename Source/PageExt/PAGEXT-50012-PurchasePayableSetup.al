@@ -28,7 +28,6 @@ pageextension 50012 PurchasePayableSetupN1 extends "Purchases & Payables Setup"
             {
                 ApplicationArea = all;
             }
-
         }
         addafter(Archiving)
         {

@@ -6,7 +6,6 @@
 //     ApplicationArea = All;
 //     UsageCategory = ReportsAndAnalysis;
 
-
 //     dataset
 //     {
 //         dataitem("Vendor Ledger Entry"; "Vendor Ledger Entry")

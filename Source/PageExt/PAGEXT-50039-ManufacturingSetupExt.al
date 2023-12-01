@@ -10,7 +10,6 @@ pageextension 50039 "Manufacturing Setup Ext." extends "Manufacturing Setup"
                 {
                     ApplicationArea = All;
                 }
-
                 field("Consumption Template"; Rec."Consumption Template")
                 {
                     ApplicationArea = All;

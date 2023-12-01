@@ -17,7 +17,6 @@ report 50018 "APIS COA"
             column(MFG_DATE; '') { }
             column(EXPIRY_DATE; '') { }
             column(Picture; ComInfor_Rec.Picture) { }
-
             dataitem("Quality Line"; "Quality Line")
             {
                 DataItemLink = "QC No." = field("No.");
@@ -32,8 +31,6 @@ report 50018 "APIS COA"
                 begin
                     SrNO += 1;
                 end;
-
-
             }
         }
     }
@@ -49,7 +46,6 @@ report 50018 "APIS COA"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -62,7 +58,6 @@ report 50018 "APIS COA"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }

@@ -14,49 +14,23 @@ report 50009 "Multiple Customer Ledger"
             DataItemTableView = SORTING("No.");
             PrintOnlyIfDetail = true;
             RequestFilterFields = "No.", "Search Name", "Customer Posting Group", "Date Filter";
-            column(City_Customer; DataItem6836.City)
-            {
-            }
-            column(TodayFormatted; FORMAT(TODAY))
-            {
-            }
-            column(PeriodCustDatetFilter; STRSUBSTNO(Text000, CustDateFilter))
-            {
-            }
-            column(CompanyName; COMPANYNAME)
-            {
-            }
-            column(PrintAmountsInLCY; PrintAmountsInLCY)
-            {
-            }
-            column(ExcludeBalanceOnly; ExcludeBalanceOnly)
-            {
-            }
-            column(CustFilterCaption; TABLECAPTION + ': ' + CustFilter)
-            {
-            }
-            column(CustFilter; CustFilter)
-            {
-            }
-            column(AmountCaption; AmountCaption)
-            {
-            }
-            column(RemainingAmtCaption; RemainingAmtCaption)
-            {
-            }
-            column(No_Cust; "No.")
-            {
-            }
-            column(Name_Cust; Name)
-            {
-            }
+            column(City_Customer; DataItem6836.City) { }
+            column(TodayFormatted; FORMAT(TODAY)) { }
+            column(PeriodCustDatetFilter; STRSUBSTNO(Text000, CustDateFilter)) { }
+            column(CompanyName; COMPANYNAME) { }
+            column(PrintAmountsInLCY; PrintAmountsInLCY) { }
+            column(ExcludeBalanceOnly; ExcludeBalanceOnly) { }
+            column(CustFilterCaption; TABLECAPTION + ': ' + CustFilter) { }
+            column(CustFilter; CustFilter) { }
+            column(AmountCaption; AmountCaption) { }
+            column(RemainingAmtCaption; RemainingAmtCaption) { }
+            column(No_Cust; "No.") { }
+            column(Name_Cust; Name) { }
             column(PhoneNo_Cust; "Phone No.")
             {
                 IncludeCaption = true;
             }
-            column(PageGroupNo; PageGroupNo)
-            {
-            }
+            column(PageGroupNo; PageGroupNo) { }
             column(StartBalanceLCY; StartBalanceLCY)
             {
                 AutoFormatType = 1;
@@ -81,39 +55,17 @@ report 50009 "Multiple Customer Ledger"
             {
                 AutoFormatType = 1;
             }
-            column(CustDetailTrialBalCaption; CustDetailTrialBalCaptionLbl)
-            {
-            }
-            column(PageNoCaption; PageNoCaptionLbl)
-            {
-            }
-            column(AllAmtsLCYCaption; AllAmtsLCYCaptionLbl)
-            {
-            }
-            column(RepInclCustsBalCptn; RepInclCustsBalCptnLbl)
-            {
-            }
-            column(PostingDateCaption; PostingDateCaptionLbl)
-            {
-            }
-            column(DueDateCaption; DueDateCaptionLbl)
-            {
-            }
-            column(BalanceLCYCaption; BalanceLCYCaptionLbl)
-            {
-            }
-            column(AdjOpeningBalCaption; AdjOpeningBalCaptionLbl)
-            {
-            }
-            column(BeforePeriodCaption; BeforePeriodCaptionLbl)
-            {
-            }
-            column(TotalCaption; TotalCaptionLbl)
-            {
-            }
-            column(OpeningBalCaption; OpeningBalCaptionLbl)
-            {
-            }
+            column(CustDetailTrialBalCaption; CustDetailTrialBalCaptionLbl) { }
+            column(PageNoCaption; PageNoCaptionLbl) { }
+            column(AllAmtsLCYCaption; AllAmtsLCYCaptionLbl) { }
+            column(RepInclCustsBalCptn; RepInclCustsBalCptnLbl) { }
+            column(PostingDateCaption; PostingDateCaptionLbl) { }
+            column(DueDateCaption; DueDateCaptionLbl) { }
+            column(BalanceLCYCaption; BalanceLCYCaptionLbl) { }
+            column(AdjOpeningBalCaption; AdjOpeningBalCaptionLbl) { }
+            column(BeforePeriodCaption; BeforePeriodCaptionLbl) { }
+            column(TotalCaption; TotalCaptionLbl) { }
+            column(OpeningBalCaption; OpeningBalCaptionLbl) { }
             dataitem(DataItem8503; "Cust. Ledger Entry")
             {
                 CalcFields = "Debit Amount (LCY)", "Debit Amount", "Credit Amount", "Credit Amount (LCY)";
@@ -124,42 +76,18 @@ report 50009 "Multiple Customer Ledger"
                                "Date Filter" = FIELD("Date Filter");
                 DataItemTableView = SORTING("Customer No.", "Posting Date");
                 RequestFilterFields = "Global Dimension 1 Code";
-                column(NarrationDetails; NarrationDetails)
-                {
-                }
-                column(VoucherNarration; VoucherNarration)
-                {
-                }
-                column(SalesNarration; SalesNarration)
-                {
-                }
-                column(CustExtDocNo; CustExtDocNo)
-                {
-                }
-                column(ExternalDocumentNo; "External Document No.")
-                {
-                }
-                column(Cheqdate; Cheqdate)
-                {
-                }
-                column(CheqNo; CheqNo)
-                {
-                }
-                column(TotalDebit; TotalDebit)
-                {
-                }
-                column(TotalCredit; TotalCredit)
-                {
-                }
-                column(DebitAmountLCY_CustLedgerEntry; DataItem8503."Debit Amount (LCY)")
-                {
-                }
-                column(CreditAmountLCY_CustLedgerEntry; DataItem8503."Credit Amount (LCY)")
-                {
-                }
-                column(PostDate_CustLedgEntry; FORMAT("Posting Date"))
-                {
-                }
+                column(NarrationDetails; NarrationDetails) { }
+                column(VoucherNarration; VoucherNarration) { }
+                column(SalesNarration; SalesNarration) { }
+                column(CustExtDocNo; CustExtDocNo) { }
+                column(ExternalDocumentNo; "External Document No.") { }
+                column(Cheqdate; Cheqdate) { }
+                column(CheqNo; CheqNo) { }
+                column(TotalDebit; TotalDebit) { }
+                column(TotalCredit; TotalCredit) { }
+                column(DebitAmountLCY_CustLedgerEntry; DataItem8503."Debit Amount (LCY)") { }
+                column(CreditAmountLCY_CustLedgerEntry; DataItem8503."Credit Amount (LCY)") { }
+                column(PostDate_CustLedgEntry; FORMAT("Posting Date")) { }
                 column(DocType_CustLedgEntry; "Document Type")
                 {
                     IncludeCaption = true;
@@ -182,50 +110,30 @@ report 50009 "Multiple Customer Ledger"
                     AutoFormatExpression = CustCurrencyCode;
                     AutoFormatType = 1;
                 }
-                column(CustEntryDueDate; FORMAT(CustEntryDueDate))
-                {
-                }
+                column(CustEntryDueDate; FORMAT(CustEntryDueDate)) { }
                 column(EntryNo_CustLedgEntry; "Entry No.")
                 {
                     IncludeCaption = true;
                 }
-                column(CustCurrencyCode; CustCurrencyCode)
-                {
-                }
+                column(CustCurrencyCode; CustCurrencyCode) { }
                 column(CustBalanceLCY1; CustBalanceLCY)
                 {
                     AutoFormatType = 1;
                 }
-                column(TotalDebitAmt; TotalDebitAmt)
-                {
-                }
-                column(TotalCreaditAmt; TotalCreaditAmt)
-                {
-                }
-                column(DebitAmount; "Debit Amount")
-                {
-                }
-                column(CreditAmount; "Credit Amount")
-                {
-                }
+                column(TotalDebitAmt; TotalDebitAmt) { }
+                column(TotalCreaditAmt; TotalCreaditAmt) { }
+                column(DebitAmount; "Debit Amount") { }
+                column(CreditAmount; "Credit Amount") { }
                 dataitem(DataItem6942; "Detailed Cust. Ledg. Entry")
                 {
                     DataItemLink = "Cust. Ledger Entry No." = FIELD("Entry No.");
                     DataItemTableView = SORTING("Cust. Ledger Entry No.", "Entry Type", "Posting Date")
                                         WHERE("Entry Type" = FILTER("Appln. Rounding" | "Correction of Remaining Amount"));
                     RequestFilterFields = "Initial Entry Global Dim. 1";
-                    column(CustBalinDisc; CustBalinDisc)
-                    {
-                    }
-                    column(DebitAmountLCY; "Debit Amount (LCY)")
-                    {
-                    }
-                    column(CreditAmountLCY; "Credit Amount (LCY)")
-                    {
-                    }
-                    column(EntryType_DtldCustLedgEntry; FORMAT("Entry Type"))
-                    {
-                    }
+                    column(CustBalinDisc; CustBalinDisc) { }
+                    column(DebitAmountLCY; "Debit Amount (LCY)") { }
+                    column(CreditAmountLCY; "Credit Amount (LCY)") { }
+                    column(EntryType_DtldCustLedgEntry; FORMAT("Entry Type")) { }
                     column(Correction; Correction)
                     {
                         AutoFormatType = 1;
@@ -345,19 +253,13 @@ report 50009 "Multiple Customer Ledger"
             {
                 DataItemTableView = SORTING(Number)
                                     WHERE(Number = CONST(1));
-                column(Name1_Cust; DataItem6836.Name)
-                {
-                }
+                column(Name1_Cust; DataItem6836.Name) { }
                 column(CustBalanceLCY4; CustBalanceLCY)
                 {
                     AutoFormatType = 1;
                 }
-                column(StartBalanceLCY2; StartBalanceLCY)
-                {
-                }
-                column(StartBalAdjLCY2; StartBalAdjLCY)
-                {
-                }
+                column(StartBalanceLCY2; StartBalanceLCY) { }
+                column(StartBalAdjLCY2; StartBalAdjLCY) { }
                 column(CustBalStBalStBalAdjLCY; CustBalanceLCY - StartBalanceLCY - StartBalAdjLCY)
                 {
                     AutoFormatType = 1;
@@ -471,14 +373,10 @@ report 50009 "Multiple Customer Ledger"
             }
         }
 
-        actions
-        {
-        }
+        actions { }
     }
 
-    labels
-    {
-    }
+    labels { }
 
     trigger OnPreReport()
     begin
@@ -533,34 +431,23 @@ report 50009 "Multiple Customer Ledger"
         DocumentType: Text[30];
         TotalDebitAmtLCY: Decimal;
         TotalCreaditAmtLCY: Decimal;
-        CustLedgerEntry: Record 21;
         CustLedgerEntry2: Record 21;
-        CustDocNo: Code[20];
         CustPostDate: Date;
         CustExtDocNo: Code[20];
         PostedNarration: Record "Posted Narration";
         VoucherNarration: Text[500];
-        VoucherNarration2: Text[500];
         NarrationDetails: Boolean;
         SalesCommentLine: Record 44;
         SalesNarration: Text[200];
         Br: Code[20];
         DtlCustLedgEntry: Record 379;
         DateFrom: Date;
-        BeginBalance: Decimal;
-        BankAccledgEntry: Record 271;
         CheqNo: Code[10];
         Cheqdate: Date;
-        ExcelBuf: Record 370 temporary;
-        PrintToExcel: Boolean;
-        date1: Date;
-        docno: Code[30];
-        UserSetup: Record 91;
         CustBalinDisc: Decimal;
         TotalDebit: Decimal;
         TotalCredit: Decimal;
         BankAccLedEntry: Record 271;
-
 
     procedure InitializeRequest(ShowAmountInLCY: Boolean; SetPrintOnlyOnePerPage: Boolean; SetExcludeBalanceOnly: Boolean)
     begin
@@ -569,4 +456,3 @@ report 50009 "Multiple Customer Ledger"
         ExcludeBalanceOnly := SetExcludeBalanceOnly;
     end;
 }
-

@@ -12,7 +12,6 @@ page 50137 "Container Store to Prod."
         {
             repeater(Lines)
             {
-
                 field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = all;
@@ -105,7 +104,6 @@ page 50137 "Container Store to Prod."
                 {
                     ApplicationArea = all;
                 }
-
             }
         }
     }
@@ -172,8 +170,6 @@ page 50137 "Container Store to Prod."
                         Location_loc2.SetRange("Scrap Location", true);
                         Location_loc2.FindFirst();
 
-
-
                         repeat
                             ItemJournalLine_Temp.Init();
                             ItemJournalLine_Temp."Journal Template Name" := ManfactSetup."Prod. to Store Template";
@@ -197,7 +193,6 @@ page 50137 "Container Store to Prod."
                             ItemJournalLine_Temp.Validate(Quantity, ItemjnlLine_Loc.Quantity);
                             ItemJournalLine_Temp."Container Trasfer Stage" := ItemJournalLine_Temp."Container Trasfer Stage"::"RM Consumed";
                             ItemJournalLine_Temp.Insert();
-
                         until ItemjnlLine_Loc.Next() = 0;
                     end;
 
@@ -281,12 +276,10 @@ page 50137 "Container Store to Prod."
     var
     begin
         GlobDocNo := DocNo;
-
     end;
 
     var
         GlobDocNo: Code[20];
 
         ManufacturingSetup_Loc: Record "Manufacturing Setup";
-
 }

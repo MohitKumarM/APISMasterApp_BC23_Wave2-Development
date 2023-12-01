@@ -32,7 +32,6 @@ page 50136 "Container- Prod. to Scrap"
                 field("Prod. Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = all;
-
                 }
                 field("Scrap/Reject Location Code"; Rec."New Location Code")
                 {
@@ -66,7 +65,6 @@ page 50136 "Container- Prod. to Scrap"
                     trigger OnDrillDown()
                     var
                         location_Loc: Record Location;
-                        manufSetup: Record "Manufacturing Setup";
                         Location_Loc1: Record Location;
                         Location_Loc2: Record Location;
                         Location_Loc3: Record Location;
@@ -86,7 +84,6 @@ page 50136 "Container- Prod. to Scrap"
                         Location_Loc3.SetRange("Associated Plant", Location_Loc1."Associated Plant");
                         Location_Loc3.SetRange("Reject Location", true);
                         Location_Loc3.FindFirst();
-
 
                         location_Loc.Reset();
                         location_Loc.SetFilter(Code, '%1|%2', Location_Loc2.Code, Location_Loc3.Code);
@@ -213,7 +210,6 @@ page 50136 "Container- Prod. to Scrap"
         ManufacturingSetup_Loc.Get();
         ManufacturingSetup_Loc.TestField("Prod. to Store Template");
         ManufacturingSetup_Loc.TestField("Prod. to Store Batch");
-
 
         ItemJnlLine.Reset();
         ItemJnlLine.SetRange("Journal Template Name", ManufacturingSetup_Loc."Prod. to Store Template");

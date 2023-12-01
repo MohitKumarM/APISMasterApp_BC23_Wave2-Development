@@ -12,7 +12,6 @@ report 50025 "Deal Status"
             column(SrNoLbl; SrNoLbl) { }
             column(DealRateLbl; DealRateLbl) { }
             column(DealQtyLbl; DealQtyLbl) { }
-
             column(CurrentStausLbl; CurrentStausLbl) { }
             column(BalNetWtLbl; BalNetWtLbl) { }
             column(BalQtyLbl; BalQtyLbl) { }
@@ -39,15 +38,11 @@ report 50025 "Deal Status"
             column(DealNetWt; DealNetWt) { }
             column(BalanceNetWt; BalanceNetWt) { }
             trigger OnPreDataItem()
-            var
-                myInt: Integer;
             begin
                 SrNo := 0;
             end;
 
             trigger OnAfterGetRecord()
-            var
-                myInt: Integer;
             begin
                 ReamainigQty := 0;
                 ReamainigQty := ("Deal Qty." - "Dispatched Qty.");
@@ -78,13 +73,10 @@ report 50025 "Deal Status"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
     }
-
-
 
     var
         SrNo: Integer;
@@ -106,5 +98,4 @@ report 50025 "Deal Status"
         DealNetWtlbl: Label 'Deal Net Wt.';
         RecNetWtLbl: Label 'Rec. Net Wt.';
         BalNetWtLbl: Label 'Bal. Net Wt.';
-
 }

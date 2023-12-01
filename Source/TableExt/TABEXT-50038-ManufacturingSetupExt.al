@@ -14,7 +14,6 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Consumption Template"));
         }
-
         Field(50006; "Process Add On Routing"; Code[20])
         {
             TableRelation = "Routing Header";
@@ -39,7 +38,6 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Prod. to Store Template"));
         }
-
     }
 
     keys

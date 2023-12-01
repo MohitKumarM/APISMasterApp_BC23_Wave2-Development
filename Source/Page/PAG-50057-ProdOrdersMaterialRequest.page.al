@@ -431,7 +431,6 @@ page 50057 "Prod. Orders Material Request"
                     Promoted = true;
                     PromotedCategory = "Report";
 
-
                     trigger OnAction()
                     begin
                         recBatchProcess.RESET;

@@ -6,10 +6,7 @@ report 50019 "Packing Material"
 
     dataset
     {
-        dataitem("Item Ledger Entry"; "Item Ledger Entry")
-        {
-
-        }
+        dataitem("Item Ledger Entry"; "Item Ledger Entry") { }
     }
 
     requestpage
@@ -23,7 +20,6 @@ report 50019 "Packing Material"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -36,7 +32,6 @@ report 50019 "Packing Material"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -50,7 +45,4 @@ report 50019 "Packing Material"
             LayoutFile = '.\ReportLayouts\PackingMaterial.rdl';
         }
     }
-
-    var
-        myInt: Integer;
 }

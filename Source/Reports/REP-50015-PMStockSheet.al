@@ -4,8 +4,6 @@ report 50015 "PM Stock Sheet"
     ApplicationArea = All;
     DefaultRenderingLayout = LayoutName;
 
-
-
     dataset
     {
         dataitem("Item Ledger Entry"; "Item Ledger Entry")
@@ -52,7 +50,6 @@ report 50015 "PM Stock Sheet"
                 "Item Ledger Entry".SetFilter("Posting Date", '%1..%2', 0D, AsOnDate);
             end;
         }
-
     }
 
     requestpage
@@ -67,7 +64,6 @@ report 50015 "PM Stock Sheet"
                     {
                         Caption = 'As On Date';
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -80,7 +76,6 @@ report 50015 "PM Stock Sheet"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -95,20 +90,11 @@ report 50015 "PM Stock Sheet"
         }
     }
 
-
-
-
-
-
     var
         AsOnDate: Date;
         TotalDay: Integer;
         TotalQty: Decimal;
-        ILE_Rec: Record 32;
-        ILE_Rec2: Record "Item Ledger Entry";
         Date_Rec: Record Date;
-        RemainingQty: Decimal;
         RecDate: Date;
         ILE_Rec1: Record "Item Ledger Entry";
-
 }

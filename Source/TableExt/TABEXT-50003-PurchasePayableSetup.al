@@ -34,7 +34,6 @@ tableextension 50003 PurchPayableSetup extends "Purchases & Payables Setup"
             DataClassification = ToBeClassified;
             TableRelation = Item;
         }
-
         field(70001; "Deal Tolerance"; Decimal) { }
     }
 }

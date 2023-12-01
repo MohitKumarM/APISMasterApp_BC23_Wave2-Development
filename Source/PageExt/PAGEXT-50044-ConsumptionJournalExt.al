@@ -7,7 +7,6 @@ pageextension 50044 ConsumptionJournalExt extends "Consumption Journal"
             trigger OnAfterValidate()
             var
                 prodOrder_loc: Record "Production Order";
-                ManufacturingSetup_loc: Record "Manufacturing Setup";
                 LocationCode_Loc1: Record Location;
                 LocationCode_Loc2: Record Location;
             begin
@@ -86,8 +85,6 @@ pageextension 50044 ConsumptionJournalExt extends "Consumption Journal"
                 ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"Issued RM");
                 if not ItemLedgerEntries.FindFirst() then
                     Error('Plesae Fill and Post Container Information before posting Consumption.');
-
-
             end;
         }
     }

@@ -26,7 +26,6 @@ report 50035 "Sales Report Dispatch"
                 column(Customer_Type; '') { }//We have to create
                 column(Customer_Location; "Location Code") { }
                 column(Customer_District; '') { }//We have to create
-
                 column(ZSM; '') { }//We have to create
                 column(ZSM_RSM; '') { }//We have to create
                 column(ASM_KAM; '') { }//We have to create
@@ -103,7 +102,6 @@ report 50035 "Sales Report Dispatch"
                         //Gstper := DetGstLedEntry_Rec."GST %";
                         until DetGstLedEntry_Rec.Next() = 0;
                     end;
-
                 end;
             }
             trigger OnAfterGetRecord()
@@ -112,9 +110,7 @@ report 50035 "Sales Report Dispatch"
                 Customer_Rec.SetRange("No.", "Sell-to Customer No.");
                 if Customer_Rec.FindFirst() then;
             end;
-
         }
-
     }
 
     requestpage
@@ -128,7 +124,6 @@ report 50035 "Sales Report Dispatch"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -141,7 +136,6 @@ report 50035 "Sales Report Dispatch"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -181,7 +175,6 @@ report 50035 "Sales Report Dispatch"
 
                 if DetGstLedEntry."GST Component Code" = 'CGST' then
                     CGSTAmt := abs(DetGstLedEntry."GST Amount");
-
             until DetGstLedEntry.Next() = 0;
         end;
 
@@ -192,9 +185,7 @@ report 50035 "Sales Report Dispatch"
 
     procedure ConvertDate(DateP: Date): Text
     var
-        MonthTxt: Text;
         Month: Text;
-        Year: Integer;
         Day: Integer;
     begin
         Day := DATE2DMY(DateP, 2);
@@ -229,7 +220,6 @@ report 50035 "Sales Report Dispatch"
         END;
         EXIT(Month);
     end;
-
 
     var
         BatchNo: Code[50];

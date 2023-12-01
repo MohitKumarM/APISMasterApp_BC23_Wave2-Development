@@ -27,8 +27,6 @@ report 50036 "FG Stock"
             column(USE_By; '') { }
             column(MRP; '') { }
             column(Batch_No; '') { }
-
-
         }
     }
 
@@ -43,7 +41,6 @@ report 50036 "FG Stock"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -56,7 +53,6 @@ report 50036 "FG Stock"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -70,7 +66,4 @@ report 50036 "FG Stock"
             LayoutFile = '.\ReportLayouts\FGStock.rdl';
         }
     }
-
-    var
-        myInt: Integer;
 }

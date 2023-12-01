@@ -11,7 +11,6 @@ report 50033 "RM Stock"
             RequestFilterFields = "Item No.";
             DataItemTableView = sorting("Posting Date") order(ascending) where(Positive = const(true));
 
-
             column(Item_No_; "Item No.") { }
             column(Entry_Type; "Entry Type") { }
             column(Document_No_; "Document No.") { }
@@ -61,8 +60,6 @@ report 50033 "RM Stock"
                     TotalDay := Date_Rec.COUNT;
                 end;
 
-
-
                 Clear(LastUseDate);
                 ILE_Rec3.Reset();
                 ILE_Rec3.SetCurrentKey("Posting Date");
@@ -106,9 +103,7 @@ report 50033 "RM Stock"
                         UNTIL ItemLedgerEntry3.NEXT = 0;
                 end;
             end;
-
         }
-
     }
     requestpage
     {
@@ -122,7 +117,6 @@ report 50033 "RM Stock"
                     {
                         Caption = 'As On Date';
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -135,7 +129,6 @@ report 50033 "RM Stock"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -152,8 +145,6 @@ report 50033 "RM Stock"
     PROCEDURE CallTransfer(InbountEnrtyP: Integer): Date;
     VAR
         ItemLedgerEntryL: Record 32;
-        ProductionOrderLnL: Record 5406;
-        ProdOrderComponentL: Record 5407;
     BEGIN
         InboundEntry := true;
         OutBoundEntryG := 0;
@@ -175,9 +166,7 @@ report 50033 "RM Stock"
         UNTIL OutBoundEntryG = 0;
         IF ItemLedgerEntryL.get(InboundEntryG) then
             exit(ItemLedgerEntryL."Posting Date");
-
     END;
-
 
     var
         RemainingQty: Decimal;
@@ -191,18 +180,10 @@ report 50033 "RM Stock"
         LastUseDate: Date;
         TotalQty: Decimal;
         ILE_Rec3: Record "Item Ledger Entry";
-        ILE_Rec4: Record "Item Ledger Entry";
         ItemApplEntTransfer: Record 339;
         InboundEntry: Boolean;
-        OutBoundEntry: Boolean;
         OutBoundEntryG: Integer;
         ItemLedgerEntry3: Record 32;
-        CheckBlnc: Decimal;
-        Show1: Boolean;
         InboundEntryG: Integer;
-        FromDate: Date;
-        RecDate1: Date;
         RecDate3: Date;
-
-
 }

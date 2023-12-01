@@ -6,7 +6,6 @@ report 50014 "PM Incoming Sheet"
     DefaultLayout = RDLC;
     RDLCLayout = '.\ReportLayouts\PMIncomingSheet.rdl';
 
-
     dataset
     {
         dataitem("Purch. Rcpt. Line"; "Purch. Rcpt. Line")
@@ -42,13 +41,11 @@ report 50014 "PM Incoming Sheet"
             column(Item_Category_Code; Item_Rec."Item Category Code") { }
             column(Product_Group_Code; '') { }
             column(Inventory_Posting_Group; Item_Rec."Inventory Posting Group") { }
-
             dataitem("Item Ledger Entry"; "Item Ledger Entry")
             {
                 DataItemLinkReference = "Purch. Rcpt. Line";
                 DataItemLink = "Document No." = field("Document No.");
                 DataItemTableView = sorting("Document No.", "Document Type", "Document Line No.");
-
 
                 column(GAN_Tolerance; '') { }//PLI
                 column(OrderQty_with_Tolerance; '') { }//Need
@@ -57,9 +54,7 @@ report 50014 "PM Incoming Sheet"
 
                 trigger OnAfterGetRecord()
                 begin
-
                 end;
-
             }
             trigger OnAfterGetRecord()
             begin
@@ -72,9 +67,7 @@ report 50014 "PM Incoming Sheet"
 
                 if PostedGateEntyHdr_Rec.get(PostedGateEntyLine_Rec."Entry Type", PostedGateEntyLine_Rec."Gate Entry No.") then;
             end;
-
         }
-
     }
 
     requestpage
@@ -88,7 +81,6 @@ report 50014 "PM Incoming Sheet"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -96,15 +88,7 @@ report 50014 "PM Incoming Sheet"
     }
     var
         PIH_Rec: Record "Purch. Inv. Header";
-        GateEntryHeadr: Record "Gate Entry Header";
-        GateEntryLine: Record "Gate Entry Line";
-        PL: Record "Purchase Line";
         Item_Rec: Record Item;
-        ILE_Rec: Record "Item Ledger Entry";
-
-        PuchRecptHeader: Record "Purch. Rcpt. Header";
         PostedGateEntyHdr_Rec: Record "Posted Gate Entry Header";
         PostedGateEntyLine_Rec: Record "Posted Gate Entry Line";
-
-
 }

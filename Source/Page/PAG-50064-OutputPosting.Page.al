@@ -435,7 +435,6 @@ page 50064 "Output Posting"
                     Location_Loc3.SetRange("Reject Location", true);
                     Location_Loc3.FindFirst();
 
-
                     ItemLedgerEntries.Reset();
                     ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
                     ItemLedgerEntries.SetFilter("Location Code", '%1|%2', Location_Loc2.Code, Location_Loc3.Code);

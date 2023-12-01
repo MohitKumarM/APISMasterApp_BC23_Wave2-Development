@@ -54,15 +54,9 @@ report 50027 "Return Vehicle"
             column(GrNumberLbl; GrNumberLbl) { }
             column(SendLotNoLbl; SendLotNoLbl) { }
             column(QtyInkgLbl; QtyInkgLbl) { }
-
-
-            column(No_DataItemName; "No.")
-            {
-            }
+            column(No_DataItemName; "No.") { }
         }
     }
-
-
 
     var
         DealNoLbl: Label 'Deal No.';

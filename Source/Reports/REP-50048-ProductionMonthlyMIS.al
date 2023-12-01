@@ -12,7 +12,6 @@ report 50048 "Production Monthly MIS"
             column(Document_No_; "Document No.") { }
             column(Production_Type; '') { }
             column(Month; '') { }
-
         }
     }
 
@@ -27,7 +26,6 @@ report 50048 "Production Monthly MIS"
                     field(Name; '')
                     {
                         ApplicationArea = All;
-
                     }
                 }
             }
@@ -40,7 +38,6 @@ report 50048 "Production Monthly MIS"
                 action(ActionName)
                 {
                     ApplicationArea = All;
-
                 }
             }
         }
@@ -54,7 +51,4 @@ report 50048 "Production Monthly MIS"
             LayoutFile = '.\ReportLayouts\MonthlyMIS.rdl';
         }
     }
-
-    var
-        myInt: Integer;
 }

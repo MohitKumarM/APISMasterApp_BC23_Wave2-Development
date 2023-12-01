@@ -5,6 +5,7 @@ using Microsoft.Inventory.Item;
 using Microsoft.Inventory.Journal;
 using Microsoft.Inventory.Ledger;
 using Microsoft.Inventory.Location;
+using Microsoft.Purchases.Setup;
 using Microsoft.Inventory.Tracking;
 
 report 50000 "Calc. ConsumptionN"
@@ -32,8 +33,15 @@ report 50000 "Calc. ConsumptionN"
                     Clear(ItemJnlLine);
                     Item.Get("Item No.");
                     ProdOrderLine.Get(Status, "Prod. Order No.", "Prod. Order Line No.");
-
-                    NeededQty := GetNeededQty(CalcBasedOn, true);
+                    //>>
+                    recPurchaseSetup.GET;
+                    recPurchaseSetup.TESTFIELD("Raw Honey Item");
+                    IF recPurchaseSetup."Raw Honey Item" = "Prod. Order Component"."Item No." THEN BEGIN
+                        "Prod. Order Component".CALCFIELDS("Lot Tracking Qty.");
+                        NeededQty := ROUND("Prod. Order Component"."Lot Tracking Qty.", 0.001);
+                        //<<
+                    END ELSE
+                        NeededQty := GetNeededQty(CalcBasedOn, true);
 
                     AdjustQtyToReservedFromInventory(NeededQty, ReservedFromStock);
 
@@ -68,6 +76,12 @@ report 50000 "Calc. ConsumptionN"
                 else
                     NextConsumpJnlLineNo := 10000;
 
+                //>>
+                IF cdOrderNo <> '' THEN
+                    "Production Order".SETRANGE("No.", cdOrderNo);
+                PostingDate := WORKDATE;
+                //<<
+
                 Window.Open(
                   Text000 +
                   Text001 +
@@ -79,7 +93,6 @@ report 50000 "Calc. ConsumptionN"
 
     requestpage
     {
-
         layout
         {
             area(content)
@@ -128,9 +141,7 @@ report 50000 "Calc. ConsumptionN"
             }
         }
 
-        actions
-        {
-        }
+        actions { }
 
         trigger OnOpenPage()
         begin
@@ -138,11 +149,15 @@ report 50000 "Calc. ConsumptionN"
         end;
     }
 
-    labels
-    {
-    }
+    labels { }
 
     var
+        recLotTracking: Record "Tran. Lot Tracking";
+        recReservationEntry: Record "Reservation Entry";
+        intEntryNo: Integer;
+        decTotalLotQty: Decimal;
+        recPurchaseSetup: Record "Purchases & Payables Setup";
+        cdOrderNo: Code[20];
         Item: Record Item;
         ProdOrderLine: Record "Prod. Order Line";
         ItemJnlLine: Record "Item Journal Line";
@@ -209,7 +224,30 @@ report 50000 "Calc. ConsumptionN"
             ItemJnlLine.Validate("Item No.", "Prod. Order Component"."Item No.");
             ItemJnlLine.Validate("Unit of Measure Code", "Prod. Order Component"."Unit of Measure Code");
             ItemJnlLine.Description := "Prod. Order Component".Description;
-            ValidateItemJnlLineQuantity(QtyToPost, QtyToPost < OriginalQtyToPost);
+            //>>
+            recPurchaseSetup.GET;
+            recPurchaseSetup.TESTFIELD("Raw Honey Item");
+            IF recPurchaseSetup."Raw Honey Item" = "Prod. Order Component"."Item No." THEN BEGIN
+                decTotalLotQty := 0;
+                recLotTracking.RESET;
+                recLotTracking.SETRANGE("Document Type", recLotTracking."Document Type"::Consumption);
+                recLotTracking.SETRANGE("Document No.", "Prod. Order Component"."Prod. Order No.");
+                recLotTracking.SETRANGE("Document Line No.", "Prod. Order Component"."Prod. Order Line No.");
+                recLotTracking.SETRANGE("Item No.", "Prod. Order Component"."Item No.");
+                recLotTracking.SETRANGE("Location Code", LocationCode);
+                IF recLotTracking.FINDFIRST THEN
+                    REPEAT
+                        decTotalLotQty += recLotTracking.Quantity;
+                    UNTIL recLotTracking.NEXT = 0;
+                QtyToPost := decTotalLotQty;
+            END;
+            IF Item."Rounding Precision" > 0 THEN
+                ItemJnlLine.VALIDATE(Quantity, ROUND(QtyToPost, Item."Rounding Precision", '>'))
+            ELSE
+                ItemJnlLine.VALIDATE(Quantity, ROUND(QtyToPost, 0.00001));
+            //<<
+
+            //ValidateItemJnlLineQuantity(QtyToPost, QtyToPost < OriginalQtyToPost);
             ItemJnlLine."Variant Code" := "Prod. Order Component"."Variant Code";
             ItemJnlLine.Validate("Location Code", LocationCode);
             if BinCode <> '' then
@@ -225,6 +263,48 @@ report 50000 "Calc. ConsumptionN"
                 AssignItemTracking("Prod. Order Component", ItemJnlLine);
             OnCreateConsumpJnlLineOnAfterAssignItemTracking(ItemJnlLine, NextConsumpJnlLineNo);
         end;
+
+        //>>
+
+        recReservationEntry.RESET;
+        IF recReservationEntry.FINDLAST THEN
+            intEntryNo := recReservationEntry."Entry No."
+        ELSE
+            intEntryNo := 0;
+
+        recLotTracking.RESET;
+        recLotTracking.SETRANGE("Document Type", recLotTracking."Document Type"::Consumption);
+        recLotTracking.SETRANGE("Document No.", "Prod. Order Component"."Prod. Order No.");
+        recLotTracking.SETRANGE("Document Line No.", "Prod. Order Component"."Prod. Order Line No.");
+        recLotTracking.SETRANGE("Item No.", "Prod. Order Component"."Item No.");
+        recLotTracking.SETRANGE("Location Code", LocationCode);
+        IF recLotTracking.FINDFIRST THEN
+            REPEAT
+                recReservationEntry.INIT;
+                intEntryNo += 1;
+                recReservationEntry."Entry No." := intEntryNo;
+                recReservationEntry."Item No." := recLotTracking."Item No.";
+                recReservationEntry."Location Code" := recLotTracking."Location Code";
+                recReservationEntry."Quantity (Base)" := -ROUND(recLotTracking.Quantity, 0.001);
+                recReservationEntry."Reservation Status" := recReservationEntry."Reservation Status"::Prospect;
+                recReservationEntry."Creation Date" := TODAY;
+                recReservationEntry."Source Type" := 83;
+                recReservationEntry."Source Subtype" := 5;
+                recReservationEntry."Source ID" := ToTemplateName;
+                recReservationEntry."Source Batch Name" := ToBatchName;
+                recReservationEntry."Source Ref. No." := NextConsumpJnlLineNo;
+                recReservationEntry."Shipment Date" := TODAY;
+                recReservationEntry."Created By" := USERID;
+                recReservationEntry."Qty. per Unit of Measure" := 1;
+                recReservationEntry.Quantity := -ROUND(recLotTracking.Quantity, 0.001);
+                recReservationEntry."Qty. to Handle (Base)" := -ROUND(recLotTracking.Quantity, 0.001);
+                recReservationEntry."Qty. to Invoice (Base)" := -ROUND(recLotTracking.Quantity, 0.001);
+                recReservationEntry."Lot No." := recLotTracking."Lot No.";
+                recReservationEntry."Item Tracking" := recReservationEntry."Item Tracking"::"Lot No.";
+                recReservationEntry.INSERT;
+            UNTIL recLotTracking.NEXT = 0;
+
+        //<<
 
         NextConsumpJnlLineNo := NextConsumpJnlLineNo + 10000;
 
@@ -307,11 +387,16 @@ report 50000 "Calc. ConsumptionN"
 
             TempReservEntry.Reset();
             ItemTrackingMgt.SumUpItemTracking(TempReservEntry, TempTrackingSpecification, false, true);
-
             SourceTrackingSpecification.InitFromItemJnlLine(ItemJournalLine);
             ItemTrackingLines.RegisterItemTrackingLines(
               SourceTrackingSpecification, ItemJournalLine."Posting Date", TempTrackingSpecification);
         end;
+    end;
+
+    procedure SetOrderNo(InputOrderNo: Code[20]; InputCalcBasedOn: Option "Actual Output","Expected Output")
+    begin
+        cdOrderNo := InputOrderNo;
+        CalcBasedOn := InputCalcBasedOn;
     end;
 
     [IntegrationEvent(false, false)]
@@ -374,4 +459,3 @@ report 50000 "Calc. ConsumptionN"
     begin
     end;
 }
-
