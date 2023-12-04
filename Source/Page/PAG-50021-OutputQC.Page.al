@@ -4,7 +4,7 @@ page 50021 "Output QC"
     Caption = 'Pending Output QC';
     DataCaptionFields = "Journal Batch Name";
     DelayedInsert = true;
-    DeleteAllowed = false;
+    //DeleteAllowed = false;
     InsertAllowed = false;
     LinksAllowed = false;
     PageType = Worksheet;
@@ -102,6 +102,7 @@ page 50021 "Output QC"
                 field("QC Required"; Rec."QC Required")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Description; Rec.Description)
                 {
@@ -124,16 +125,7 @@ page 50021 "Output QC"
                     Editable = false;
                     ApplicationArea = All;
                 }
-                field("ByProduct Item Code"; Rec."ByProduct Item Code")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                }
-                field("ByProduct Qty."; Rec."ByProduct Qty.")
-                {
-                    Editable = false;
-                    ApplicationArea = All;
-                }
+
                 field("Prod. Date for Expiry Calc"; Rec."Prod. Date for Expiry Calc")
                 {
                     Editable = false;

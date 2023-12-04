@@ -9,7 +9,8 @@ page 50072 "Production Material Issue"
     SourceTable = "Production Order";
     SourceTableView = WHERE(Status = CONST(Released),
                             Refreshed = FILTER(True),
-                            "Requested Material Issue" = FILTER(true));
+                            "Requested Material Issue" = FILTER(true),
+                            "Requested Material Issued" = filter(false));
 
     layout
     {
@@ -168,7 +169,6 @@ page 50072 "Production Material Issue"
 
                     trigger OnAction()
                     begin
-                        //Rec.TESTFIELD("Order Type", "Order Type"::Packing);
 
                         recProdOrderComponent.SETRANGE(Status, Rec.Status);
                         recProdOrderComponent.SETRANGE("Prod. Order No.", Rec."No.");
@@ -208,7 +208,8 @@ page 50072 "Production Material Issue"
                             rptCalcConsumption.RUNMODAL;
 
                             CLEAR(pgConsumptionJournal);
-                            pgConsumptionJournal.RUN;
+                            pgConsumptionJournal.ProdOrderNo(Rec."No.");
+                            pgConsumptionJournal.Run();
                         END ELSE BEGIN
                             recInventorySetup.GET;
                             recInventorySetup.TESTFIELD("Material Issue Entry Template");
@@ -313,11 +314,6 @@ page 50072 "Production Material Issue"
                             recItemJournal.SETRANGE("Journal Template Name", recInventorySetup."Material Issue Entry Template");
                             recItemJournal.SETRANGE("Journal Batch Name", recInventorySetup."Material Issue Entry Batch");
                             PAGE.RUN(Page::"Item Reclass. Journal", recItemJournal);
-                            /*
-                            CLEAR(pgItemTransfer);
-                            pgItemTransfer.SETTABLEVIEW(recItemJournal);
-                            pgItemTransfer.RUN;
-                            */
                         END;
                     end;
                 }
@@ -342,6 +338,7 @@ page 50072 "Production Material Issue"
                         CurrPage.UPDATE;
                     end;
                 }
+
                 action("Lot Tracking Lines")
                 {
                     Caption = 'Item &Tracking Lines';

@@ -26,6 +26,10 @@ page 50043 "Customer Card New"
                             CurrPage.UPDATE;
                     end;
                 }
+                field("Parent Group"; Rec."Parent Group")
+                {
+                    ApplicationArea = all;
+                }
                 field(Name; Rec.Name)
                 {
                     Importance = Promoted;
@@ -88,11 +92,13 @@ page 50043 "Customer Card New"
                 {
                     Importance = Promoted;
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("E-Mail"; Rec."E-Mail")
                 {
                     Importance = Promoted;
                     ApplicationArea = All;
+                    ShowMandatory = true;
                 }
                 field("Home Page"; Rec."Home Page")
                 {
@@ -132,6 +138,10 @@ page 50043 "Customer Card New"
                 field("GST Registration No."; Rec."GST Registration No.")
                 {
                     ApplicationArea = All;
+                }
+                field("ARN No."; Rec."ARN No.")
+                {
+                    ApplicationArea = all;
                 }
                 field("GST Customer Type"; Rec."GST Customer Type")
                 {
@@ -188,7 +198,7 @@ page 50043 "Customer Card New"
                 field("MSME No."; Rec."MSME No.")
                 {
                     ApplicationArea = All;
-                    ShowMandatory = true;
+
                 }
                 field("FASSAI No."; Rec."FASSAI No.")
                 {
@@ -199,14 +209,8 @@ page 50043 "Customer Card New"
                 {
                     ApplicationArea = all;
                 }
-                field("ARN No."; Rec."ARN No.")
-                {
-                    ApplicationArea = all;
-                }
-                field("Parent Group"; Rec."Parent Group")
-                {
-                    ApplicationArea = all;
-                }
+
+
                 field("Child Group"; Rec."Child Group")
                 {
                     ApplicationArea = all;
@@ -1249,10 +1253,11 @@ page 50043 "Customer Card New"
                         Rec.TestField("Quality Process");
                         Rec.TestField("Authorized person");
                         Rec.TestField("Security Cheque No");
-                        rec.TestField("MSME No.");
                         Rec.TestField("FASSAI No.");
                         Rec.TestField("RSM Name");
                         Rec.TestField("GST Customer Type");
+                        Rec.TestField("Phone No.");
+                        rec.TestField("E-Mail");
 
                         if ApprovalsMgmt.CheckCustomerApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnSendCustomerForApproval(Rec);

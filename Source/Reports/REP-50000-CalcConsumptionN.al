@@ -1,13 +1,3 @@
-namespace Microsoft.Manufacturing.Document;
-
-using Microsoft.Foundation.UOM;
-using Microsoft.Inventory.Item;
-using Microsoft.Inventory.Journal;
-using Microsoft.Inventory.Ledger;
-using Microsoft.Inventory.Location;
-using Microsoft.Purchases.Setup;
-using Microsoft.Inventory.Tracking;
-
 report 50000 "Calc. ConsumptionN"
 {
     Caption = 'Calc. Consumption';
@@ -234,6 +224,7 @@ report 50000 "Calc. ConsumptionN"
                 recLotTracking.SETRANGE("Document No.", "Prod. Order Component"."Prod. Order No.");
                 recLotTracking.SETRANGE("Document Line No.", "Prod. Order Component"."Prod. Order Line No.");
                 recLotTracking.SETRANGE("Item No.", "Prod. Order Component"."Item No.");
+
                 recLotTracking.SETRANGE("Location Code", LocationCode);
                 IF recLotTracking.FINDFIRST THEN
                     REPEAT

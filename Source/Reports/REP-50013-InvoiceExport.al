@@ -42,7 +42,7 @@ report 50013 "Invoice Export"
                 column(Sr_No; Sr_No) { }
                 column(Item_Code; "No.") { }
                 column(Item_Description; Description) { }
-                column(Packing; '') { }
+                column(Packing; '') { }// Available On Indent App Item Card
                 column(Container_No; '') { }
                 column(FCL_Type; '') { }
                 column(Batch_No; '') { }

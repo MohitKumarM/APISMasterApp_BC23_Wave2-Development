@@ -39,5 +39,17 @@ tableextension 50001 ItemN1 extends Item
         Field(70013; "Total Inward Value"; Decimal) { }
         Field(70014; "Total Outward Value"; Decimal) { }
         Field(70015; "Total Closing Value"; Decimal) { }
+        field(70016; "Brand"; Code[20])
+        {
+            TableRelation = Brand;
+        }
+        field(70017; "Sub Brand"; Code[20])
+        {
+            TableRelation = "Sub Brand";
+        }
+        field(70018; "Pack Size (SKU)"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 }

@@ -44,14 +44,7 @@ pageextension 50037 "Output Journal Ext." extends "Output Journal"
             {
                 ApplicationArea = all;
             }
-            field("ByProduct Item Code"; Rec."ByProduct Item Code")
-            {
-                ApplicationArea = all;
-            }
-            field("ByProduct Qty."; Rec."ByProduct Qty.")
-            {
-                ApplicationArea = all;
-            }
+
             field("Prod. Date for Expiry Calc"; Rec."Prod. Date for Expiry Calc")
             {
                 ApplicationArea = all;
@@ -64,6 +57,29 @@ pageextension 50037 "Output Journal Ext." extends "Output Journal"
         modify("P&osting")
         {
             Visible = false;
+        }
+        modify("Explode &Routing")
+        {
+            trigger OnAfterAction()
+            var
+                ItemJnlLine_Loc: Record "Item Journal Line";
+                MachinCenter_Loc: Record "Machine Center";
+            begin
+                IF (Rec."Journal Template Name" <> '') and (Rec."Journal Batch Name" <> '') then begin
+                    ItemJnlLine_Loc.Reset();
+                    ItemJnlLine_Loc.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    ItemJnlLine_Loc.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+                    ItemJnlLine_Loc.SetRange("Document No.", Rec."Document No.");
+                    if ItemJnlLine_Loc.FindSet() then begin
+                        repeat
+                            if (ItemJnlLine_Loc.Type = ItemJnlLine_Loc.Type::"Machine Center") and (MachinCenter_Loc.Get(ItemJnlLine_Loc."No.")) then begin
+                                ItemJnlLine_Loc."QC Required" := MachinCenter_Loc."QC Mandatory";
+                                ItemJnlLine_Loc.Modify();
+                            end;
+                        until ItemJnlLine_Loc.Next() = 0;
+                    end;
+                end;
+            end;
         }
         addafter("&Print")
         {

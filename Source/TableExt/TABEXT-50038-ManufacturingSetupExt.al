@@ -38,6 +38,22 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Prod. to Store Template"));
         }
+        Field(50012; "Bucket Item Code"; Code[20])
+        {
+            TableRelation = Item."No.";
+        }
+        Field(50013; "Can Item Code"; Code[20])
+        {
+            TableRelation = Item."No.";
+        }
+        Field(50014; "Drum Item Code"; Code[20])
+        {
+            TableRelation = Item."No.";
+        }
+        Field(50015; "Tin Item Code"; Code[20])
+        {
+            TableRelation = Item."No.";
+        }
     }
 
     keys

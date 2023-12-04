@@ -123,8 +123,8 @@ page 50030 "Lot Entries"
     trigger OnOpenPage()
     begin
         Rec.FILTERGROUP(2);
-        //Rec.SETRANGE(Positive, TRUE);
-        //Rec.SETFILTER("Remaining Qty.", '<>%1', 0);
+        Rec.SETRANGE(Positive, TRUE);
+        Rec.SETFILTER("Remaining Qty.", '<>%1', 0);
         Rec.FILTERGROUP(0);
     end;
 }

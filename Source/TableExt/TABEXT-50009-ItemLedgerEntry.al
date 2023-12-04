@@ -90,11 +90,53 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         {
             TableRelation = Customer;
         }
+        Field(60012; "Item to Produce 1"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60013; "Quantity to Produce 1"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60014; "Production Location"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60015; "Item to Produce 2"; Code[10])
+
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60016; "Item to Produce 3"; Code[10])
+
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60017; "Item to Produce 4"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60018; "Quantity to Produce 2"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60019; "Quantity to Produce 3"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(60020; "Quantity to Produce 4"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(70000; "Moisture (%)"; Text[10]) { }
         field(70001; "Color (MM)"; Text[10]) { }
         field(70002; "HMF (PPM)"; Text[10]) { }
         field(70003; TRS; Text[10]) { }
         field(70004; Sucrose; Text[10]) { }
         field(70005; FG; Text[10]) { }
+        Field(70006; "Convesion Packing Type"; Option)
+Field(70007; "Customer Details"; Text[30])
+Field(70008; "No. of Drums / Tins / Cans"; Integer)
+Field(70009; "Quantity to Move"; Decimal_
     }
-}
+    }

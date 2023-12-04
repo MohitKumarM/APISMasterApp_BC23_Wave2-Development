@@ -47,6 +47,60 @@ codeunit 50000 Tble83
 
     // Table83 End
 
+    // //Table5407
+    // [EventSubscriber(ObjectType::Table, Database::"Prod. Order Component", 'OnAfterValidateEvent', 'Item No.', false, false)]
+    // local procedure MyProcedure(var Rec: Record "Prod. Order Component"; var xRec: Record "Prod. Order Component"; CurrFieldNo: Integer)
+    // var
+    //     Location_Loc1: Record Location;
+    //     Location_Loc2: Record Location;
+    //     ProdOrder_Loc: Record "Production Order";
+
+    // begin
+    //     IF ProdOrder_Loc.Get(Rec.Status, Rec."Prod. Order No.") then
+    //         if Location_Loc1.Get(ProdOrder_Loc."Location Code") then begin
+    //             Location_Loc2.Reset();
+    //             Location_Loc2.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+    //             Location_Loc2.SetRange("Store Location", true);
+    //             if not Location_Loc2.FindFirst() then begin
+    //                 Location_Loc2.SetRange("Associated Plant");
+
+    //             end;
+    //             IF Location_Loc2.FindFirst() then
+    //                 Rec.Validate("Location Code", Location_Loc2.Code)
+    //             else
+    //                 Rec.Validate("Location Code", Rec."Location Code");
+
+    //         end;
+
+    // end;
+
+    // //Table5407
+
+    //Codeunit99000773
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Calculate Prod. Order", 'OnAfterTransferBOMComponent', '', false, false)]
+    local procedure OnAfterTransferBOMComponent(var ProdOrderLine: Record "Prod. Order Line"; var ProductionBOMLine: Record "Production BOM Line"; var ProdOrderComponent: Record "Prod. Order Component"; LineQtyPerUOM: Decimal; ItemQtyPerUOM: Decimal)
+    var
+        Location_Loc1: Record Location;
+        Location_Loc2: Record Location;
+        ProdOrder_Loc: Record "Production Order";
+
+    begin
+        IF ProdOrder_Loc.Get(ProdOrderLine.Status, ProdOrderLine."Prod. Order No.") then
+            if Location_Loc1.Get(ProdOrder_Loc."Location Code") then begin
+                Location_Loc2.Reset();
+                Location_Loc2.SetRange("Associated Plant", Location_Loc1."Associated Plant");
+                Location_Loc2.SetRange("Store Location", true);
+                if not Location_Loc2.FindFirst() then begin
+                    Location_Loc2.SetRange("Associated Plant");
+                end;
+                IF Location_Loc2.FindFirst() then
+                    ProdOrderComponent.Validate("Location Code", Location_Loc2.Code);
+            end;
+    end;
+    //Codeunit99000773
+
+
+
     // Codeunit22 Start
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Item Jnl.-Post Line", 'OnAfterInitItemLedgEntry', '', false, false)]
     local procedure OnAfterInitItemLedgEntry(var NewItemLedgEntry: Record "Item Ledger Entry"; var ItemJournalLine: Record "Item Journal Line"; var ItemLedgEntryNo: Integer)

@@ -10,6 +10,22 @@ pageextension 50039 "Manufacturing Setup Ext." extends "Manufacturing Setup"
                 {
                     ApplicationArea = All;
                 }
+                field("Bucket Item Code"; Rec."Bucket Item Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Can Item Code"; Rec."Can Item Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Drum Item Code"; Rec."Drum Item Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Tin Item Code"; Rec."Tin Item Code")
+                {
+                    ApplicationArea = All;
+                }
                 field("Consumption Template"; Rec."Consumption Template")
                 {
                     ApplicationArea = All;

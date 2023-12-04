@@ -77,6 +77,10 @@ tableextension 50023 ProductionOrderExt extends "Production Order"
         {
             OptionMembers = " ","FG Bulk Exp. w/o processing","FG Bulk Exp. w/o filter","FG Bulk Exp. Filtered","FG Small Exp. Filtered","FG Bulk Dom w/o filter","FG Bulk Dom Filter","FG Small Dom Filtered",Pouring;
         }
+        Field(50017; "Requested Material Issued"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
         Field(50100; "KHP"; Decimal)
         {
             DataClassification = ToBeClassified;

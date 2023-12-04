@@ -67,9 +67,9 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                     recLotTracking: Record "Tran. Lot Tracking";
                     pgLotTracking: Page "Cons. Lot Tracking Entry";
                     ProdOrder_Loc: Record "Production Order";
-                    ManufacturingSetup_Loc: Record "Manufacturing Setup";
                     LocationCode_Loc1: Record Location;
                     LocationCode_Loc2: Record Location;
+                    prodordercomponent_Loc: Record "Prod. Order Component";
 
                 begin
 
@@ -91,9 +91,6 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                         LocationCode_Loc2.FindFirst();
                     end;
 
-                    ManufacturingSetup_Loc.Get();
-                    Rec.Modify();
-
                     IF recProductGroup."Allow Direct Purch. Order" THEN BEGIN
                         recLotTracking.RESET;
                         recLotTracking.FILTERGROUP(2);
@@ -106,7 +103,7 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                         CLEAR(pgLotTracking);
                         pgLotTracking.SetDocumentNo(Rec."Prod. Order No.", Rec."Prod. Order Line No.", Rec."Item No.", Rec."Remaining Quantity", LocationCode_Loc2.Code, 1);
                         pgLotTracking.SETTABLEVIEW(recLotTracking);
-                        pgLotTracking.RUN;
+                        pgLotTracking.RunModal();
                     END ELSE BEGIN
                         recItemLedger.RESET;
                         recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Consumption);
@@ -125,6 +122,10 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
 
                         Rec.OpenItemTrackingLines;
                     END;
+                    IF (ProdOrder_Loc.Refreshed) then begin
+                        Rec."Location Code" := LocationCode_Loc2.Code;
+                        Rec.Modify();
+                    end;
                 end;
             }
         }

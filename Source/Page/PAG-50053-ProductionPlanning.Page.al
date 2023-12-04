@@ -177,6 +177,8 @@ page 50053 "Production Planning"
                     IF recProductionOrder.FINDFIRST THEN
                         ERROR('There are production orders to refresh, first refresh them manually.');
 
+                    if (cdLocationCode = '') then Error('Location is Blank');
+
                     recProductionOrder.INIT;
                     recProductionOrder.VALIDATE(Status, recProductionOrder.Status::Released);
                     recProductionOrder."No." := '';

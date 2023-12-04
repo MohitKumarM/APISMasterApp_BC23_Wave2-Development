@@ -75,8 +75,8 @@ report 50035 "Sales Report Dispatch"
                     if ILE_Rec.FindSet() then begin
                         repeat
                             BatchNo := ILE_Rec."Lot No.";
-                            // MFG := ILE_Rec."MFG. Date";
-                            // MRP := ILE_Rec."MRP Price";
+                            MFG := ILE_Rec."MFG. Date";
+                            MRP := ILE_Rec."MRP Price";
                             Expiry := ILE_Rec."Expiration Date";
                         until ILE_Rec.Next() = 0;
                     end;

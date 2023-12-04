@@ -37,6 +37,12 @@ page 50064 "Output Posting"
                         CurrentJnlBatchNameOnAfterVali;
                     end;
                 }
+                field(Batch_No; Batch_No)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Lot No.';
+                    Editable = false;
+                }
             }
             repeater(Group2)
             {
@@ -95,6 +101,11 @@ page 50064 "Output Posting"
                 {
                     Editable = false;
                 }
+                field("QC Required"; Rec."QC Required")
+                {
+                    ApplicationArea = all;
+                    Editable = false;
+                }
                 field("Location Code"; Rec."Location Code")
                 {
                     Editable = false;
@@ -105,14 +116,7 @@ page 50064 "Output Posting"
                 {
                     Editable = false;
                 }
-                field("ByProduct Item Code"; Rec."ByProduct Item Code")
-                {
-                    Editable = false;
-                }
-                field("ByProduct Qty."; Rec."ByProduct Qty.")
-                {
-                    Editable = false;
-                }
+
                 field("Prod. Date for Expiry Calc"; Rec."Prod. Date for Expiry Calc") { }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
@@ -156,7 +160,7 @@ page 50064 "Output Posting"
                         Rec.ValidateShortcutDimCode(4, ShortcutDimCode[4]);
                     end;
                 }
-                field(ShortcutDimCode5; ShortcutDimCode[35])
+                field(ShortcutDimCode5; ShortcutDimCode[5])
                 {
                     CaptionClass = '1,2,5';
                     Editable = false;
@@ -229,6 +233,7 @@ page 50064 "Output Posting"
                     field(ProdOrderDescription; ProdOrderDescription)
                     {
                         Editable = false;
+                        Caption = 'Prod. Order Description';
                     }
                 }
                 group(Operation)
@@ -258,7 +263,7 @@ page 50064 "Output Posting"
 
                 trigger OnAction()
                 var
-                    ContainerStoreToProd: page "Container- Prod. to Scrap";
+                    ContainerStoreToProd: page "Container Prod. to Store.";
                     ItemjournalLine: Record "Item Journal Line";
                     ManufacSetup: Record "Manufacturing Setup";
                 begin
@@ -301,6 +306,8 @@ page 50064 "Output Posting"
                     Caption = 'Item &Tracking Lines';
                     Image = ItemTrackingLines;
                     ShortCutKey = 'Shift+Ctrl+I';
+                    Promoted = true;
+                    PromotedCategory = Process;
 
                     trigger OnAction()
                     begin
@@ -429,11 +436,17 @@ page 50064 "Output Posting"
                     Location_Loc2.Reset();
                     Location_Loc2.SetRange("Associated Plant", Location_Loc1."Associated Plant");
                     Location_Loc2.SetRange("Scrap Location", true);
-                    Location_Loc2.FindFirst();
+                    if not Location_Loc2.FindFirst() then begin
+                        Location_Loc2.SetRange("Associated Plant");
+                        IF Location_Loc2.FindFirst() then;
+                    end;
                     Location_Loc3.Reset();
                     Location_Loc3.SetRange("Associated Plant", Location_Loc1."Associated Plant");
                     Location_Loc3.SetRange("Reject Location", true);
-                    Location_Loc3.FindFirst();
+                    if not Location_Loc3.FindFirst() then begin
+                        Location_Loc3.SetRange("Associated Plant");
+                        IF Location_Loc3.FindFirst() then;
+                    end;
 
                     ItemLedgerEntries.Reset();
                     ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
@@ -486,12 +499,7 @@ page 50064 "Output Posting"
                                                             recProdOrderRoutingLinesInsert."Previous Operation No." := recProdOrderRoutingLines."Operation No."
                                                         ELSE
                                                             recProdOrderRoutingLinesInsert."Previous Operation No." := recRoutingLines."Previous Operation No.";
-                                                        /*
-                                                        IF recRoutingLines."Next Operation No." = '' THEN
-                                                          recProdOrderRoutingLinesInsert."Next Operation No." := '999999'
-                                                        ELSE
-                                                          recProdOrderRoutingLinesInsert."Next Operation No." := recRoutingLines."Next Operation No.";
-                                                        */
+
                                                         IF recRoutingLines."Next Operation No." <> '' THEN
                                                             recProdOrderRoutingLinesInsert."Next Operation No." := recRoutingLines."Next Operation No.";
 
@@ -531,7 +539,7 @@ page 50064 "Output Posting"
                     IF (Rec."Order Type" = Rec."Order Type"::Production) AND (Rec."Order No." <> '') THEN
                         ProductionOrder.GET(ProductionOrder.Status::Released, Rec."Order No.");
                     Rec.PostingItemJnlFromProduction(FALSE);
-                    CurrentJnlBatchName := Rec.GETRANGEMAX("Journal Batch Name");
+                    //CurrentJnlBatchName := Rec.GETRANGEMAX("Journal Batch Name");
                     CurrPage.UPDATE(FALSE);
 
                     recUserSetup.GET(USERID);
@@ -561,6 +569,7 @@ page 50064 "Output Posting"
     }
 
     var
+        Batch_No: Code[20];
         ItemJnlMgt: Codeunit "ItemJnlManagement";
         ReportPrint: Codeunit "Test Report-Print";
         ProdOrderDescription: Text[50];
@@ -586,8 +595,12 @@ page 50064 "Output Posting"
     end;
 
     trigger OnAfterGetRecord()
+    var
+        ProductionOrder_Loc: Record "Production Order";
     begin
         Rec.ShowShortcutDimCode(ShortcutDimCode);
+        IF ProductionOrder_Loc.Get(ProductionOrder_Loc.Status::Released, Rec."Document No.") then
+            Batch_No := ProductionOrder_Loc."Batch No.";
     end;
 
     trigger OnDeleteRecord(): Boolean
