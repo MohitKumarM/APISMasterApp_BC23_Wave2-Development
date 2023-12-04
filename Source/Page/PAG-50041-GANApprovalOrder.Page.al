@@ -56,6 +56,26 @@ page 50041 "GAN Approval Order"
                     ApplicationArea = All;
                 }
                 field("Document Date"; Rec."Document Date") { }
+                field("Activity Name"; Rec."Activity Name")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Activity Name field.';
+                }
+                field("Activity City"; Rec."Activity City")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Activity City field.';
+                }
+                field("Activity State"; Rec."Activity State")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Activity State field.';
+                }
+                field("Sales Channel"; Rec."Sales Channel")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Sales Channel field.';
+                }
                 field("Posting No. Series"; Rec."Posting No. Series")
                 {
                     ApplicationArea = All;

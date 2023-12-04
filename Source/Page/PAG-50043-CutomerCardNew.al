@@ -1255,6 +1255,7 @@ page 50043 "Customer Card New"
                         Rec.TestField("Security Cheque No");
                         Rec.TestField("FASSAI No.");
                         Rec.TestField("RSM Name");
+                        Rec.TestField("Customer Type");
                         Rec.TestField("GST Customer Type");
                         Rec.TestField("Phone No.");
                         rec.TestField("E-Mail");

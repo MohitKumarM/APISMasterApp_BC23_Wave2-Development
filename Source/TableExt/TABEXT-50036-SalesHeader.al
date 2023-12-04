@@ -10,12 +10,12 @@ tableextension 50036 SalesHeader extends "Sales Header"
         {
             DataClassification = ToBeClassified;
         }
-        field(60000; "Pre-Carriage By"; code[10])
+        Field(50004; "Shipping Marks"; Text[50])
+
         {
             DataClassification = ToBeClassified;
         }
-        Field(50004; "Shipping Marks"; Text[50])
-
+        field(60000; "Pre-Carriage By"; code[10])
         {
             DataClassification = ToBeClassified;
         }
@@ -49,19 +49,6 @@ tableextension 50036 SalesHeader extends "Sales Header"
         {
             DataClassification = ToBeClassified;
         }
-        Field(60012; "Total FCL"; Text[30])
-
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(80005; "GST Type on Export"; Option)
-        {
-            OptionMembers = ,"Agst. Bond",Refund;
-        }
-        field(80006; "Scan Bar Code"; code[100])
-        {
-            DataClassification = ToBeClassified;
-        }
         Field(60007; "Notify Party Name"; Text[50])
         {
             DataClassification = ToBeClassified;
@@ -82,9 +69,53 @@ tableextension 50036 SalesHeader extends "Sales Header"
         {
             DataClassification = ToBeClassified;
         }
+        Field(60012; "Total FCL"; Text[30])
+
+        {
+            DataClassification = ToBeClassified;
+        }
         field(60015; "APIS_Transaction Type"; Enum "Transaction Type")
         {
             Caption = 'Transaction Type';
+            DataClassification = ToBeClassified;
+        }
+        field(60016; NSM; Code[20])
+        {
+            TableRelation = "Salesperson/Purchaser";
+            DataClassification = ToBeClassified;
+        }
+        field(60017; ZSM; Code[20])
+        {
+            TableRelation = "Salesperson/Purchaser";
+            DataClassification = ToBeClassified;
+        }
+        field(60018; RSM; Code[20])
+        {
+            TableRelation = "Salesperson/Purchaser";
+            DataClassification = ToBeClassified;
+        }
+        field(60019; ASM; Code[20])
+        {
+            TableRelation = "Salesperson/Purchaser";
+            DataClassification = ToBeClassified;
+        }
+        field(60020; TSM; Code[20])
+        {
+            TableRelation = "Salesperson/Purchaser";
+            DataClassification = ToBeClassified;
+        }
+        field(60021; SO; Code[20])
+        {
+            TableRelation = "Salesperson/Purchaser";
+            DataClassification = ToBeClassified;
+        }
+
+        field(80005; "GST Type on Export"; Option)
+        {
+            OptionMembers = ,"Agst. Bond",Refund;
+        }
+        field(80006; "Scan Bar Code"; code[100])
+        {
             DataClassification = ToBeClassified;
         }
     }

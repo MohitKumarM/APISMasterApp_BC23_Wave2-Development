@@ -30,10 +30,6 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Store to Prod. Template"));
         }
-        Field(500010; "Prod. to Store Template"; Code[10])
-        {
-            TableRelation = "Item Journal Template" WHERE(Type = FILTER(Transfer));
-        }
         Field(50011; "Prod. to Store Batch"; Code[10])
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Prod. to Store Template"));
@@ -53,6 +49,10 @@ tableextension 50038 "Manufacturing Setup Ext." extends "Manufacturing Setup"
         Field(50015; "Tin Item Code"; Code[20])
         {
             TableRelation = Item."No.";
+        }
+        Field(500010; "Prod. to Store Template"; Code[10])
+        {
+            TableRelation = "Item Journal Template" WHERE(Type = FILTER(Transfer));
         }
     }
 

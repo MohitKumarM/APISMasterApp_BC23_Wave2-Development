@@ -18,6 +18,10 @@ tableextension 50007 InventorySetup extends "Inventory Setup"
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Material Issue Entry Template"));
         }
+        field(50006; "Receive Nos."; Code[10])
+        {
+            TableRelation = "No. Series";
+        }
         field(60000; "QC Entry Template"; Code[10])
         {
             TableRelation = "Item Journal Template" WHERE(Type = FILTER(Transfer));
@@ -49,10 +53,6 @@ tableextension 50007 InventorySetup extends "Inventory Setup"
         field(60008; "Output Posting Batch"; Code[10])
         {
             TableRelation = "Item Journal Batch".Name WHERE("Journal Template Name" = FIELD("Output Posting Template"));
-        }
-        field(50006; "Receive Nos."; Code[10])
-        {
-            TableRelation = "No. Series";
         }
     }
 }

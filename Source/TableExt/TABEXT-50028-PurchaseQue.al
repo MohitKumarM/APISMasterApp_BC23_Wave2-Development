@@ -2,15 +2,16 @@ tableextension 50028 PurhaseQue extends "Purchase Cue"
 {
     fields
     {
+        field(50022; "Material Requisition"; Integer)
+        {
+            CalcFormula = Count("Material Requisition Header" WHERE(Status = FILTER('Open')));
+            Editable = false;
+            FieldClass = FlowField;
+        }
         field(50023; "Material Issue"; Integer)
         {
             FieldClass = FlowField;
             CalcFormula = Count("Material Requisition Header" WHERE(Status = FILTER(Release)));
-        }
-        field(50037; "Issue Material"; Integer)
-        {
-            FieldClass = FlowField;
-            CalcFormula = Count("Production Order" WHERE(Status = FILTER(Released), Refreshed = FILTER(True), "Requested Material Issue" = FILTER(true)));
         }
         field(50024; "Pending Inward Quality"; Integer)
         {
@@ -61,6 +62,17 @@ tableextension 50028 PurhaseQue extends "Purchase Cue"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(50037; "Issue Material"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = Count("Production Order" WHERE(Status = FILTER(Released), Refreshed = FILTER(True), "Requested Material Issue" = FILTER(true)));
+        }
+        field(50038; "Consumption Journal"; Integer)
+        {
+            CalcFormula = Count("Item Journal Line" WHERE("Journal Template Name" = FILTER('CONSUMPTIO'), "Journal Batch Name" = FILTER('DEFAULT')));
+            Editable = false;
+            FieldClass = FlowField;
+        }
         field(50039; "Output Journal"; Integer)
         {
             CalcFormula = Count("Item Journal Line" WHERE("Journal Template Name" = FILTER('OUTPUT'), "Journal Batch Name" = FILTER('DEFAULT')));
@@ -73,9 +85,33 @@ tableextension 50028 PurhaseQue extends "Purchase Cue"
             Editable = false;
             FieldClass = FlowField;
         }
-        field(50022; "Material Requisition"; Integer)
+        Field(50041; "Create Packing Orders"; Integer)
         {
-            CalcFormula = Count("Material Requisition Header" WHERE(Status = FILTER('Open')));
+            CalcFormula = Count("Item Ledger Entry" WHERE("Location Code" = FILTER('RRK-PR1|RRK-PR2'), "Remaining Quantity" = FILTER(<> 0), "Item No." = FILTER('I000003')));
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        Field(50042; "Packing Location Stock Trf."; Integer)
+        {
+            CalcFormula = Count("Item Ledger Entry" WHERE("Location Code" = FILTER('RRK-PR1|RRK-PR2'), "Remaining Quantity" = FILTER(<> 0), "Item No." = FILTER('I000003')));
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        Field(50043; "Packing Order Approval"; Integer)
+        {
+            CalcFormula = Count("Item Ledger Entry" WHERE("Location Code" = FILTER('RRK-PR1|RRK-PR2'), "Remaining Quantity" = FILTER(<> 0), "Item No." = FILTER('I000003')));
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        Field(50044; "Packing Orders"; Integer)
+        {
+            CalcFormula = Count("Item Ledger Entry" WHERE("Location Code" = FILTER('RRK-PR1|RRK-PR2'), "Remaining Quantity" = FILTER(<> 0), "Item No." = FILTER('I000003')));
+            Editable = false;
+            FieldClass = FlowField;
+        }
+        Field(50045; "Dates Orders"; Integer)
+        {
+            CalcFormula = Count("Item Ledger Entry" WHERE("Location Code" = FILTER('RRK-PR1|RRK-PR2'), "Remaining Quantity" = FILTER(<> 0), "Item No." = FILTER('I000003')));
             Editable = false;
             FieldClass = FlowField;
         }

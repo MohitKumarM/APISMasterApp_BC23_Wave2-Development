@@ -46,6 +46,30 @@ pageextension 50001 Purchase_Invoice extends "Purchase Invoice"
         {
             Visible = false;
         }
+        addafter("Vendor Invoice No.")
+        {
+            field("Activity Name"; Rec."Activity Name")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Activity Name field.';
+            }
+            field("Activity City"; Rec."Activity City")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Activity City field.';
+            }
+            field("Activity State"; Rec."Activity State")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Activity State field.';
+            }
+            field("Sales Channel"; Rec."Sales Channel")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Sales Channel field.';
+            }
+
+        }
     }
 
     actions

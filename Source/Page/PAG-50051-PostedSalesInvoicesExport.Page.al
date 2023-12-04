@@ -173,6 +173,41 @@ page 50051 "Posted Sales Invoices Export"
                     ToolTip = 'Specifies which salesperson is associated with the invoice.';
                     Visible = false;
                 }
+                field(NSM; Rec.NSM)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the NSM field.';
+                }
+                field(ZSM; Rec.ZSM)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the ZSM field.';
+                }
+                field(RSM; Rec.RSM)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the RSM field.';
+                }
+                field(ASM; Rec.ASM)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the ASM field.';
+                }
+                field(TSM; Rec.TSM)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the TSM field.';
+                }
+                field(SO; Rec.SO)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the SO field.';
+                }
+                field("APIS_Transaction Type"; Rec."APIS_Transaction Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Transaction Type field.';
+                }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
                     ApplicationArea = Dimensions;

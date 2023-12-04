@@ -2,13 +2,13 @@ page 50139 "Packing Activities"
 {
     Caption = 'Activities';
     PageType = CardPart;
-    SourceTable = Table9055;
+    SourceTable = "Purchase Cue";
 
     layout
     {
         area(content)
         {
-            cuegroup(Production)
+            cuegroup(Production_)
             {
                 Caption = 'Production';
                 Visible = false;
@@ -18,89 +18,89 @@ page 50139 "Packing Activities"
                     action("Create Packing Order")
                     {
                         Caption = 'Create Packing Order';
-                        RunObject = Page 50094;
+                        RunObject = Page "Filling Planning";
                     }
                     action("Packing Location Mat. Trf.")
                     {
                         Caption = 'Packing Location Mat. Trf.';
-                        RunObject = Page 50142;
+                        RunObject = Page "Packing Location Stock Trf.";
                     }
                     action("Approve Packing Order")
                     {
-                        RunObject = Page 50135;
+                        RunObject = Page "Packing Orders Approval";
                     }
-                    action("Packing Orders")
+                    action("Packing Orders_")
                     {
                         Caption = 'Packing Orders';
-                        RunObject = Page 50054;
+                        RunObject = Page "Packing Orders Material Req.";
                     }
-                    action("Output Journal")
+                    action("Output Journal_")
                     {
                         Caption = 'Output Journal';
-                        RunObject = Page 99000823;
+                        RunObject = Page "Output Journal";
                     }
-                    action("Output Posting")
+                    action("Output Posting_")
                     {
                         Caption = 'Output Posting';
-                        RunObject = Page 50092;
+                        RunObject = Page "Output Posting";
                     }
-                    action("Consumption Journal")
+                    action("Consumption Journal_")
                     {
-                        RunObject = Page 50077;
+                        RunObject = Page "Consumption Journal";
                     }
-                    action("Dates Production Order")
-                    {
-                        RunObject = Page 50144;
-                    }
+                    // action("Dates Production Order")
+                    // {
+                    //     RunObject = Page 50144;
+                    // }
                 }
             }
             cuegroup(Production)
             {
-                field("Create Packing Orders"; "Create Packing Orders")
+                field("Create Packing Orders"; Rec."Create Packing Orders")
                 {
                     DrillDownPageID = "Filling Planning";
                     LookupPageID = "Filling Planning";
                 }
-                field("Packing Location Stock Trf."; "Packing Location Stock Trf.")
+                field("Packing Location Stock Trf."; Rec."Packing Location Stock Trf.")
                 {
                     DrillDownPageID = "Packing Location Stock Trf.";
                     LookupPageID = "Packing Location Stock Trf.";
                 }
-                field("Packing Order Approval"; "Packing Order Approval")
+                field("Packing Order Approval"; rec."Packing Order Approval")
                 {
                     DrillDownPageID = "Packing Orders Approval";
                     LookupPageID = "Packing Orders Approval";
                 }
-                field("Packing Orders"; "Packing Orders")
+                field("Packing Orders"; Rec."Packing Orders")
                 {
                     DrillDownPageID = "Packing Orders Material Req.";
                     LookupPageID = "Packing Orders Material Req.";
                 }
-                field("Output Journal"; "Output Journal")
+                field("Output Journal"; Rec."Output Journal")
                 {
                     DrillDownPageID = "Output Journal";
                     LookupPageID = "Output Journal";
                 }
-                field("Output Posting"; "Output Posting")
+                field("Output Posting"; Rec."Output Posting")
                 {
                     DrillDownPageID = "Output Posting";
                     LookupPageID = "Output Posting";
                 }
-                field("Consumption Journal"; "Consumption Journal")
-                {
-                    DrillDownPageID = "Direct Consumption Journal";
-                    LookupPageID = "Direct Consumption Journal";
-                }
-                field("Dates Orders"; "Dates Orders")
-                {
-                    DrillDownPageID = "Dates Production Orders";
-                    LookupPageID = "Dates Production Orders";
-                }
+                // field("Consumption Journal"; Rec."Consumption Journal")
+                // {
+                //     DrillDownPageID = Rec."Direct Consumption Journal";
+                //     LookupPageID = Rec."Direct Consumption Journal";
+                // }
+                // field("Dates Orders"; Rec."Dates Orders")
+                // {
+                //     DrillDownPageID = Rec."Dates Production Orders";
+                //     LookupPageID = Rec."Dates Production Orders";
+                // }
             }
             cuegroup(Requisition)
             {
                 Caption = 'Requisition';
-                field("Material Requisition"; "Material Requisition")
+                field("Material Requisition"; Rec."Material Requisition")
                 {
                     DrillDownPageID = "Material Req. List";
                     LookupPageID = "Material Req. List";
@@ -115,47 +115,18 @@ page 50139 "Packing Activities"
 
     trigger OnOpenPage()
     var
-        intUserCount: Integer;
-        recGLSetup: Record "98";
-        recUser: Record "2000000120";
-        recActiveSession: Record "2000000110";
     begin
         //Iappc - User Mgmt Begin
-        recGLSetup.GET;
-
-        intUserCount := 0;
-
-        recUser.RESET;
-        recUser.SETRANGE("User Name", USERID);
-        recUser.FINDFIRST;
-
-        IF recUser."License  Type" <> recUser."License  Type"::Administrator THEN BEGIN
-            recActiveSession.RESET;
-            recActiveSession.SETFILTER("Client Type", '%1', recActiveSession."Client Type"::"Web Client");
-
-            IF recUser."License  Type" = recUser."License  Type"::"Full User" THEN
-                recActiveSession.SETFILTER("License  Type", '%1', recActiveSession."License  Type"::"Full User")
-            ELSE
-                recActiveSession.SETFILTER("License  Type", '%1', recActiveSession."License  Type"::"Limited User");
-            IF recActiveSession.FINDLAST THEN BEGIN
-                intUserCount := recActiveSession.COUNT;
-
-                IF (recUser."License  Type" = recUser."License  Type"::"Full User") AND (intUserCount > recGLSetup."Full User Nos.") THEN
-                    STOPSESSION(recActiveSession."Session ID");
-                IF (recUser."License  Type" = recUser."License  Type"::"Limited User") AND (intUserCount > recGLSetup."Limited User Nos.") THEN
-                    STOPSESSION(recActiveSession."Session ID");
-            END;
-        END;
-        //Iappc - User Mgmt End
 
 
-        RESET;
-        IF NOT GET THEN BEGIN
-            INIT;
-            INSERT;
+
+        Rec.RESET;
+        IF NOT Rec.GET THEN BEGIN
+            Rec.INIT;
+            Rec.INSERT;
         END;
 
-        SETFILTER("Date Filter", '>=%1', WORKDATE);
+        Rec.SETFILTER("Date Filter", '>=%1', WORKDATE);
     end;
 }
 

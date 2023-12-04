@@ -39,8 +39,9 @@ tableextension 50001 ItemN1 extends Item
         Field(70013; "Total Inward Value"; Decimal) { }
         Field(70014; "Total Outward Value"; Decimal) { }
         Field(70015; "Total Closing Value"; Decimal) { }
-        field(70016; "Brand"; Code[20])
+        field(70016; "APIS_Brand"; Code[20])
         {
+            Caption = 'Brand';
             TableRelation = Brand;
         }
         field(70017; "Sub Brand"; Code[20])

@@ -1,4 +1,4 @@
-page 50094 "Filling Planning"
+page 50144 "Packing Location Stock Trf."
 {
     DeleteAllowed = false;
     InsertAllowed = false;
@@ -6,7 +6,10 @@ page 50094 "Filling Planning"
     PageType = List;
     Permissions = TableData "Item Ledger Entry" = rm;
     SourceTable = "Item Ledger Entry";
-    SourceTableView = SORTING("Item No.", "Entry Type", "Variant Code", "Drop Shipment", "Location Code", "Posting Date") ORDER(Ascending);
+    SourceTableView = SORTING("Item No.", "Entry Type", "Variant Code", "Drop Shipment", "Location Code", "Posting Date")
+                      ORDER(Ascending);
+
+
 
     layout
     {
@@ -42,33 +45,6 @@ page 50094 "Filling Planning"
                 {
                     Editable = false;
                 }
-                field("Output for Customer"; Rec."Output for Customer")
-                {
-                }
-                field("Item to Produce 1"; Rec."Item to Produce 1")
-                {
-                }
-                field("Quantity to Produce 1"; Rec."Quantity to Produce 1")
-                {
-                }
-                field("Item to Produce 2"; Rec."Item to Produce 2")
-                {
-                }
-                field("Quantity to Produce 2"; Rec."Quantity to Produce 2")
-                {
-                }
-                field("Item to Produce 3"; Rec."Item to Produce 3")
-                {
-                }
-                field("Quantity to Produce 3"; Rec."Quantity to Produce 3")
-                {
-                }
-                field("Item to Produce 4"; Rec."Item to Produce 4")
-                {
-                }
-                field("Quantity to Produce 4"; Rec."Quantity to Produce 4")
-                {
-                }
                 field("Convesion Packing Type"; Rec."Convesion Packing Type")
                 {
                 }
@@ -89,208 +65,6 @@ page 50094 "Filling Planning"
     {
         area(processing)
         {
-            action("Create Packing Order")
-            {
-                Caption = 'Create Packing Order';
-                Image = Production;
-                Promoted = true;
-
-                trigger OnAction()
-                var
-                    Location_Loc: Record Location;
-                    Location_Loc1: Record Location;
-                begin
-                    IF NOT CONFIRM('Want to create the packing orders?', FALSE) THEN
-                        EXIT;
-
-                    intEntryNo := 0;
-                    recManufacturingSetup.GET;
-                    recManufacturingSetup.TESTFIELD("Loose Honey Code");
-
-                    recItemLedger.RESET;
-                    recItemLedger.COPYFILTERS(Rec);
-                    recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
-                    recItemLedger.SETRANGE("Item No.", recManufacturingSetup."Loose Honey Code");
-                    recItemLedger.SETFILTER("Remaining Quantity", '<>%1', 0);
-                    IF recItemLedger.FINDFIRST THEN
-                        REPEAT
-                            recItemLedger.TESTFIELD("Output for Customer");
-                            decQtyToProduce := 0;
-                            IF (recItemLedger."Item to Produce 1" <> '') AND (recItemLedger."Quantity to Produce 1" <> 0) THEN BEGIN
-                                recItem.GET(recItemLedger."Item to Produce 1");
-                                IF recItem."Routing No." = '' THEN
-                                    ERROR('Routing no. must not be blank on item no. %1', recItemLedger."Item to Produce 1");
-                                recItem.TESTFIELD("Net Weight Per (Kg)");
-                                decQtyToProduce := decQtyToProduce + recItemLedger."Quantity to Produce 1" * recItem."Net Weight Per (Kg)";
-                            END;
-                            IF (recItemLedger."Item to Produce 2" <> '') AND (recItemLedger."Quantity to Produce 2" <> 0) THEN BEGIN
-                                recItem.GET(recItemLedger."Item to Produce 2");
-                                IF recItem."Routing No." = '' THEN
-                                    ERROR('Routing no. must not be blank on item no. %1', recItemLedger."Item to Produce 2");
-                                recItem.TESTFIELD("Net Weight Per (Kg)");
-                                decQtyToProduce := decQtyToProduce + recItemLedger."Quantity to Produce 2" * recItem."Net Weight Per (Kg)";
-                            END;
-                            IF (recItemLedger."Item to Produce 3" <> '') AND (recItemLedger."Quantity to Produce 3" <> 0) THEN BEGIN
-                                recItem.GET(recItemLedger."Item to Produce 3");
-                                IF recItem."Routing No." = '' THEN
-                                    ERROR('Routing no. must not be blank on item no. %1', recItemLedger."Item to Produce 3");
-                                recItem.TESTFIELD("Net Weight Per (Kg)");
-                                decQtyToProduce := decQtyToProduce + recItemLedger."Quantity to Produce 3" * recItem."Net Weight Per (Kg)";
-                            END;
-                            IF (recItemLedger."Item to Produce 4" <> '') AND (recItemLedger."Quantity to Produce 4" <> 0) THEN BEGIN
-                                recItem.GET(recItemLedger."Item to Produce 4");
-                                IF recItem."Routing No." = '' THEN
-                                    ERROR('Routing no. must not be blank on item no. %1', recItemLedger."Item to Produce 4");
-                                recItem.TESTFIELD("Net Weight Per (Kg)");
-                                decQtyToProduce := decQtyToProduce + recItemLedger."Quantity to Produce 4" * recItem."Net Weight Per (Kg)";
-                            END;
-
-                            IF recItemLedger."Remaining Quantity" < decQtyToProduce THEN
-                                ERROR('Can not use more than %1 for from entry no. %2, the actual usage is %3', recItemLedger."Remaining Quantity", recItemLedger."Entry No.", decQtyToProduce);
-                        UNTIL recItemLedger.NEXT = 0;
-
-                    recItemLedger.RESET;
-                    recItemLedger.COPYFILTERS(Rec);
-                    //recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
-                    recItemLedger.SETRANGE("Item No.", recManufacturingSetup."Loose Honey Code");
-                    recItemLedger.SETFILTER("Remaining Quantity", '<>%1', 0);
-                    IF recItemLedger.FINDFIRST THEN
-                        REPEAT
-                            recItemLedger.TestField("Location Code");
-                            Location_Loc.Get(recItemLedger."Location Code");
-                            IF (Location_Loc."Associated Plant" <> Location_Loc."Associated Plant"::" ") then begin
-                                Location_Loc1.Reset();
-                                Location_Loc1.SetRange("Associated Plant", Location_Loc."Associated Plant");
-                                Location_Loc1.SetRange("Packing Location", true);
-                                if not Location_Loc1.FindFirst() then begin
-                                    Location_Loc1.SetRange("Associated Plant");
-                                    if not Location_Loc1.FindFirst() then
-                                        Error('There is no Packing Location');
-                                end;
-                            end else begin
-                                Location_Loc1.Reset();
-                                Location_Loc1.SetRange("Store Location", true);
-                                if not Location_Loc1.FindFirst() then
-                                    Error('There is no Store Location');
-                            end;
-
-                            IF (recItemLedger."Item to Produce 1" <> '') AND (recItemLedger."Quantity to Produce 1" <> 0) THEN BEGIN
-                                recProductionOrder.INIT;
-                                recProductionOrder.VALIDATE(Status, recProductionOrder.Status::Released);
-                                recProductionOrder.VALIDATE("No.", '');
-                                recProductionOrder.INSERT(TRUE);
-
-                                recProductionOrder.VALIDATE("Source Type", recProductionOrder."Source Type"::Item);
-                                recProductionOrder.VALIDATE("Source No.", recItemLedger."Item to Produce 1");
-                                recProductionOrder.VALIDATE(Quantity, recItemLedger."Quantity to Produce 1");
-
-                                recLocation.GET(recItemLedger."Location Code");
-                                recLocation.TESTFIELD("Packing Location");
-                                recProductionOrder.VALIDATE("Location Code", Location_Loc1.Code);
-                                recProductionOrder.VALIDATE("Customer Code", recItemLedger."Output for Customer");
-                                recProductionOrder."Order Type" := recProductionOrder."Order Type"::Packing;
-                                recProductionOrder.MODIFY(TRUE);
-
-                                recItemLedger."Item to Produce 1" := '';
-                                recItemLedger."Quantity to Produce 1" := 0;
-                                intEntryNo += 1;
-                            END;
-                            IF (recItemLedger."Item to Produce 2" <> '') AND (recItemLedger."Quantity to Produce 2" <> 0) THEN BEGIN
-                                recProductionOrder.INIT;
-                                recProductionOrder.VALIDATE(Status, recProductionOrder.Status::Released);
-                                recProductionOrder.VALIDATE("No.", '');
-                                recProductionOrder.INSERT(TRUE);
-
-                                recProductionOrder.VALIDATE("Source Type", recProductionOrder."Source Type"::Item);
-                                recProductionOrder.VALIDATE("Source No.", recItemLedger."Item to Produce 2");
-                                recProductionOrder.VALIDATE(Quantity, recItemLedger."Quantity to Produce 2");
-
-                                recLocation.GET(recItemLedger."Location Code");
-                                recLocation.TESTFIELD("Packing Location");
-                                recProductionOrder.VALIDATE("Location Code", Location_Loc1.Code);
-                                recProductionOrder.VALIDATE("Customer Code", recItemLedger."Output for Customer");
-                                recProductionOrder."Order Type" := recProductionOrder."Order Type"::Packing;
-                                recProductionOrder.MODIFY(TRUE);
-
-                                recItemLedger."Item to Produce 2" := '';
-                                recItemLedger."Quantity to Produce 2" := 0;
-                                intEntryNo += 1;
-                            END;
-                            IF (recItemLedger."Item to Produce 3" <> '') AND (recItemLedger."Quantity to Produce 3" <> 0) THEN BEGIN
-                                recProductionOrder.INIT;
-                                recProductionOrder.VALIDATE(Status, recProductionOrder.Status::Released);
-                                recProductionOrder.VALIDATE("No.", '');
-                                recProductionOrder.INSERT(TRUE);
-
-                                recProductionOrder.VALIDATE("Source Type", recProductionOrder."Source Type"::Item);
-                                recProductionOrder.VALIDATE("Source No.", recItemLedger."Item to Produce 3");
-                                recProductionOrder.VALIDATE(Quantity, recItemLedger."Quantity to Produce 3");
-
-                                recLocation.GET(recItemLedger."Location Code");
-                                recLocation.TESTFIELD("Packing Location");
-                                recProductionOrder.VALIDATE("Location Code", Location_Loc1.Code);
-                                recProductionOrder.VALIDATE("Customer Code", recItemLedger."Output for Customer");
-                                recProductionOrder."Order Type" := recProductionOrder."Order Type"::Packing;
-                                recProductionOrder.MODIFY(TRUE);
-
-                                recItemLedger."Item to Produce 3" := '';
-                                recItemLedger."Quantity to Produce 3" := 0;
-                                intEntryNo += 1;
-                            END;
-                            IF (recItemLedger."Item to Produce 4" <> '') AND (recItemLedger."Quantity to Produce 4" <> 0) THEN BEGIN
-                                recProductionOrder.INIT;
-                                recProductionOrder.VALIDATE(Status, recProductionOrder.Status::Released);
-                                recProductionOrder.VALIDATE("No.", '');
-                                recProductionOrder.INSERT(TRUE);
-
-                                recProductionOrder.VALIDATE("Source Type", recProductionOrder."Source Type"::Item);
-                                recProductionOrder.VALIDATE("Source No.", recItemLedger."Item to Produce 4");
-                                recProductionOrder.VALIDATE(Quantity, recItemLedger."Quantity to Produce 4");
-
-                                recLocation.GET(recItemLedger."Location Code");
-                                recLocation.TESTFIELD("Packing Location");
-                                recProductionOrder.VALIDATE("Location Code", Location_Loc1.Code);
-                                recProductionOrder.VALIDATE("Customer Code", recItemLedger."Output for Customer");
-                                recProductionOrder."Order Type" := recProductionOrder."Order Type"::Packing;
-                                recProductionOrder.MODIFY(TRUE);
-
-                                recItemLedger."Item to Produce 4" := '';
-                                recItemLedger."Quantity to Produce 4" := 0;
-                                intEntryNo += 1;
-                            END;
-
-                            recItemLedger.MODIFY;
-                        UNTIL recItemLedger.NEXT = 0;
-                    COMMIT;
-
-                    IF intEntryNo = 0 THEN
-                        ERROR('Nothing is selected to create packing order.');
-
-                    intEntryNo := 0;
-                    recReservationEntry.RESET;
-                    IF recReservationEntry.FINDLAST THEN
-                        intEntryNo := recReservationEntry."Entry No."
-                    ELSE
-                        intEntryNo := 0;
-
-                    recProductionOrder.RESET;
-                    recProductionOrder.SETRANGE(Status, recProductionOrder.Status::Released);
-                    recProductionOrder.SETRANGE(Refreshed, FALSE);
-                    IF recProductionOrder.FINDFIRST THEN
-                        REPEAT
-
-                            recProdOrderToRefresh.RESET;
-                            recProdOrderToRefresh.SETRANGE(Status, recProductionOrder.Status);
-                            recProdOrderToRefresh.SETRANGE("No.", recProductionOrder."No.");
-                            recProdOrderToRefresh.FINDFIRST;
-                            COMMIT;
-
-                            REPORT.RUNMODAL(Report::"Refresh Production Order", FALSE, TRUE, recProdOrderToRefresh);
-                            COMMIT;
-                        UNTIL recProductionOrder.NEXT = 0;
-                    MESSAGE('%1 order(s) created.', intEntryNo);
-                end;
-            }
             action("Transfer to Store as RM")
             {
                 Image = ConsumptionJournal;
@@ -326,7 +100,7 @@ page 50094 "Filling Planning"
 
                     recPurchSetup.GET;
                     recPurchSetup.TESTFIELD("Raw Honey Item");
-                    //recPurchSetup.TESTFIELD("OK Store Location");
+
 
                     IF Rec."Convesion Packing Type" = 0 THEN
                         ERROR('Selected conversion packing type.');
@@ -358,8 +132,6 @@ page 50094 "Filling Planning"
                             if not Location_Loc2.FindFirst() then
                                 Error('There is no Store Location');
                         end;
-
-
                         recItemJournal.INIT;
                         recItemJournal.VALIDATE("Journal Template Name", recInventorySetup."QC Entry Template");
                         recItemJournal.VALIDATE("Journal Batch Name", recInventorySetup."QC Entry Batch");
@@ -502,6 +274,7 @@ page 50094 "Filling Planning"
                         recPostedTracking."Ref. Entry No." := intEntryNo;
                         recPostedTracking."Stock Type" := recPostedTracking."Stock Type"::Pouring;
                         recPostedTracking.Customer := recItemLedger."Customer Details";
+                        recPostedTracking."Posting Date" := WORKDATE;
                         recPostedTracking.INSERT;
 
                         IF recItemLedger."Remaining Quantity" <> recItemLedger."Quantity to Move" THEN BEGIN
@@ -549,6 +322,7 @@ page 50094 "Filling Planning"
         Rec.SetFilter("Location Code", LocationText);
         Rec.SetFilter("Remaining Quantity", '<>%1', 0);
         Rec.FILTERGROUP(0);
+
     end;
 
     var

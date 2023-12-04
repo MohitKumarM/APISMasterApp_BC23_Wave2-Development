@@ -21,10 +21,6 @@ tableextension 50034 TrackingSpecfication extends "Tracking Specification"
         {
             DataClassification = ToBeClassified;
         }
-        field(50026; "Can"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
         field(50022; "Bucket"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -34,6 +30,10 @@ tableextension 50034 TrackingSpecfication extends "Tracking Specification"
             DataClassification = ToBeClassified;
         }
         field(50025; "ILE No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50026; "Can"; Decimal)
         {
             DataClassification = ToBeClassified;
         }

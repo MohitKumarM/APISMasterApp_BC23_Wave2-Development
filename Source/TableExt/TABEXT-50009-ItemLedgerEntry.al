@@ -128,15 +128,45 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         {
             DataClassification = ToBeClassified;
         }
-        field(70000; "Moisture (%)"; Text[10]) { }
-        field(70001; "Color (MM)"; Text[10]) { }
-        field(70002; "HMF (PPM)"; Text[10]) { }
-        field(70003; TRS; Text[10]) { }
-        field(70004; Sucrose; Text[10]) { }
-        field(70005; FG; Text[10]) { }
+        field(70000; "Moisture (%)"; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(70001; "Color (MM)"; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(70002; "HMF (PPM)"; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(70003; TRS; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(70004; Sucrose; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(70005; FG; Text[10])
+        {
+            DataClassification = ToBeClassified;
+        }
         Field(70006; "Convesion Packing Type"; Option)
-Field(70007; "Customer Details"; Text[30])
-Field(70008; "No. of Drums / Tins / Cans"; Integer)
-Field(70009; "Quantity to Move"; Decimal_
+        {
+            OptionMembers = ,Drums,Tins,Buckets,Cans;
+        }
+        Field(70007; "Customer Details"; Text[30])
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(70008; "No. of Drums / Tins / Cans"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(70009; "Quantity to Move"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
-    }
+}

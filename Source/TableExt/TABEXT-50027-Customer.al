@@ -22,6 +22,7 @@ tableextension 50027 Customer extends Customer
         {
             Caption = 'FSSAI No.';
         }
+        field(50101; "Customer Type"; Enum "Customer Type") { }
         field(80002; "Print Name"; Text[100]) { }
         field(80003; "Address 3"; Text[50]) { }
         field(80004; "Parent Group"; Code[20])
@@ -50,7 +51,6 @@ tableextension 50027 Customer extends Customer
             end;
         }
         field(80006; "Total Group Wise Amount"; Decimal) { }
-        field(50101; "Customer Type"; Enum "Customer Type") { }
     }
     keys
     {

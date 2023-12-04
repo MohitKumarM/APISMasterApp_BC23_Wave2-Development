@@ -20,6 +20,18 @@ pageextension 50011 ItemN1 extends "Item Card"
             {
                 ApplicationArea = all;
             }
+            field(Brand; Rec."APIS_Brand")
+            {
+                ApplicationArea = all;
+            }
+            field("Sub Brand"; Rec."Sub Brand")
+            {
+                ApplicationArea = all;
+            }
+            field("Pack Size (SKU)"; Rec."Pack Size (SKU)")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

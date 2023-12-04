@@ -1,16 +1,7 @@
-pageextension 50038 "SalesOrder" extends "Sales Order"
+pageextension 50055 PostedSalesInvoice extends "Posted Sales Invoice"
 {
     layout
     {
-        modify("Sell-to Customer No.")
-        {
-            trigger OnAfterValidate()
-
-            begin
-                if rec."GST Customer Type" = Rec."GST Customer Type"::Export then
-                    Error('Export Orders Can be Create Only Export Page.');
-            end;
-        }
         addafter("Salesperson Code")
         {
 
@@ -56,4 +47,7 @@ pageextension 50038 "SalesOrder" extends "Sales Order"
     {
         // Add changes to page actions here
     }
+
+    var
+        myInt: Integer;
 }

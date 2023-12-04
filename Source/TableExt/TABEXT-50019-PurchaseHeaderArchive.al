@@ -69,6 +69,24 @@ tableextension 50019 PurchaseHedaerArchive extends "Purchase Header Archive"
             OptionMembers = " ","Buyer Scope","Supplier Scope";
         }
         field(50018; "Valid Till"; Date) { }
+        field(50019; "Creation Tin&Drum&Bucket Item"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50020; "Activity Name"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50021; "Activity City"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50022; "Activity State"; Code[20])
+        {
+
+        }
+        field(50023; "Sales Channel"; Enum "Sales Channel") { }
+
         field(80002; "GST Dependency Type"; Option)
         {
             OptionMembers = " ","Buy-from Address","Order Address","Location Address";

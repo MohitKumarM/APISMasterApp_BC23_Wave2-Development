@@ -11,10 +11,6 @@ tableextension 50011 ItemJournalLine extends "Item Journal Line"
             DataClassification = ToBeClassified;
             TableRelation = "Deal Master" WHERE(Status = FILTER(Release));
         }
-        field(50026; "Can"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
         field(50002; "Packing Type"; Option)
         {
             DataClassification = ToBeClassified;
@@ -98,6 +94,10 @@ tableextension 50011 ItemJournalLine extends "Item Journal Line"
         field(50025; "Trade Type"; Option)
         {
             OptionMembers = " ","General Trade","Modern Trade";
+        }
+        field(50026; "Can"; Decimal)
+        {
+            DataClassification = ToBeClassified;
         }
         field(50027; "Production Sub Type"; Option)
         {

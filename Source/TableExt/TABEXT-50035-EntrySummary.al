@@ -14,10 +14,6 @@ tableextension 50035 EntrySummary extends "Entry Summary"
         {
             DataClassification = ToBeClassified;
         }
-        field(50026; "Can"; Decimal)
-        {
-            DataClassification = ToBeClassified;
-        }
         field(50022; "Bucket"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -27,6 +23,10 @@ tableextension 50035 EntrySummary extends "Entry Summary"
             DataClassification = ToBeClassified;
         }
         field(50025; "ILE No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(50026; "Can"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
