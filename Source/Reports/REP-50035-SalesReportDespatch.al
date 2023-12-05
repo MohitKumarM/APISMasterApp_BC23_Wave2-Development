@@ -11,38 +11,39 @@ report 50035 "Sales Report Dispatch"
             RequestFilterFields = "No.";
             column(Customer_Name; "Bill-to Name") { }
             column(Custmer_Price_Group_Sales_Channel; "Customer Price Group") { }
+            column(ZSM; ZSM) { }//We have to create
+            column(ZSM_RSM; RSM) { }//We have to create
+            column(ASM_KAM; ASM) { }//We have to create
+            column(SO; SO) { }
+            column(SR; "Sell-to Customer Name") { }
+            column(Billing_Location; '') { }
+            column(Zone; GenLedsetup."Shortcut Dimension 3 Code") { }//We have to create
+            column(Region; GenLedsetup."Shortcut Dimension 4 Code") { }//We have to create
+            column(State; GenLedsetup."Shortcut Dimension 5 Code") { }//We have to create
+            column(Area_; GenLedsetup."Shortcut Dimension 6 Code") { }//We have to create
+            column(Customer_District; "Sell-to City") { }//We have to create
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemLinkReference = "Sales Invoice Header";
                 DataItemLink = "Document No." = field("No.");
-                column(Zone; '') { }//We have to create
-                column(Region; '') { }//We have to create
-                column(State; '') { }//We have to create
-                column(Area_; '') { }//We have to create
+
                 column(Invoice_Date; "Posting Date") { }
                 column(Month; ConvertDate("Posting Date")) { }
                 column(Invoice_No; "No.") { }
-                column(Customer_Code; '') { }
-                column(Customer_Type; '') { }//We have to create
+                column(Customer_Code; "Sell-to Customer No.") { }
+                column(Customer_Type; Customer_Rec."Customer Type") { }//We have to create
                 column(Customer_Location; "Location Code") { }
-                column(Customer_District; '') { }//We have to create
-                column(ZSM; '') { }//We have to create
-                column(ZSM_RSM; '') { }//We have to create
-                column(ASM_KAM; '') { }//We have to create
-                column(SO; '') { }
-                column(SR; '') { }
-                column(Billing_Location; '') { }
-                column(Transaction_Type; '') { }//Need to create new field
-                column(Brand; '') { }//Need to create new field
-                column(Sub_brand; '') { }//Need to create new field
+                column(Transaction_Type; "Transaction Type") { }//Need to create new field
+                column(Brand; Item_Rec.APIS_Brand) { }//Need to create new field
+                column(Sub_brand; Item_Rec."Sub Brand") { }//Need to create new field
                 column(Item_Code_FG_Code; "No.") { }
                 column(Item_Description; Description) { }
-                column(Pack_Size_SKU; '') { }/////Need to create new field
+                column(Pack_Size_SKU; Item_Rec."Pack Size (SKU)") { }/////Need to create new field
                 column(Packaging_Type; '') { }/////Need to create new field
                 column(Item_Category; "Item Category Code") { }
                 column(Item_Variant; '') { }/////Need to create new field
                 column(UOM; "Unit of Measure") { }
-                column(Unit_Net_Weight_kg; '') { }
+                column(Unit_Net_Weight_kg; "Net Weight") { }
                 column(Total_Sale_Quantity_nos; Quantity) { }//Layout Sum
                 column(Total_Net_Weight_kg; "Net Weight") { }
                 column(Unit_Rate; "Unit Price") { }
@@ -62,9 +63,13 @@ report 50035 "Sales Report Dispatch"
                 var
 
                 begin
+
+                    GenLedsetup.get();
                     Item_Rec.Reset();
                     Item_Rec.SetRange("No.", "Sales Invoice Line"."No.");
                     if Item_Rec.FindFirst() then;
+
+                    if Customer_Rec.get("Sell-to Customer No.") then;
 
                     Clear(BatchNo);
                     Clear(MFG);
@@ -233,4 +238,5 @@ report 50035 "Sales Report Dispatch"
         DetGstLedEntry_Rec: Record 18001;
         TotalInvoiceAmt: Decimal;
         ILE_Rec: Record "Item Ledger Entry";
+        GenLedsetup: Record "General Ledger Setup";
 }

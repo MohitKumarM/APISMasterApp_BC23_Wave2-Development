@@ -2978,21 +2978,6 @@ End Function
         <Field Name="Unit_Price__LCY_Format">
           <DataField>Unit_Price__LCY_Format</DataField>
         </Field>
-        <Field Name="No_Tins">
-          <DataField>No_Tins</DataField>
-        </Field>
-        <Field Name="No_Buck">
-          <DataField>No_Buck</DataField>
-        </Field>
-        <Field Name="No_Cains">
-          <DataField>No_Cains</DataField>
-        </Field>
-        <Field Name="No_Drums">
-          <DataField>No_Drums</DataField>
-        </Field>
-        <Field Name="Total_Units">
-          <DataField>Total_Units</DataField>
-        </Field>
         <Field Name="Unit">
           <DataField>Unit</DataField>
         </Field>
@@ -3019,6 +3004,9 @@ End Function
         </Field>
         <Field Name="Final_Weight">
           <DataField>Final_Weight</DataField>
+        </Field>
+        <Field Name="Final_WeightFormat">
+          <DataField>Final_WeightFormat</DataField>
         </Field>
         <Field Name="Amt_as_per_bill">
           <DataField>Amt_as_per_bill</DataField>
@@ -3070,6 +3058,33 @@ End Function
         </Field>
         <Field Name="Document_Line_No_">
           <DataField>Document_Line_No_</DataField>
+        </Field>
+        <Field Name="No_Tins">
+          <DataField>No_Tins</DataField>
+        </Field>
+        <Field Name="No_TinsFormat">
+          <DataField>No_TinsFormat</DataField>
+        </Field>
+        <Field Name="No_Buck">
+          <DataField>No_Buck</DataField>
+        </Field>
+        <Field Name="No_BuckFormat">
+          <DataField>No_BuckFormat</DataField>
+        </Field>
+        <Field Name="No_Cains">
+          <DataField>No_Cains</DataField>
+        </Field>
+        <Field Name="No_CainsFormat">
+          <DataField>No_CainsFormat</DataField>
+        </Field>
+        <Field Name="No_Drums">
+          <DataField>No_Drums</DataField>
+        </Field>
+        <Field Name="No_DrumsFormat">
+          <DataField>No_DrumsFormat</DataField>
+        </Field>
+        <Field Name="Total_Units">
+          <DataField>Total_Units</DataField>
         </Field>
       </Fields>
       <Query>

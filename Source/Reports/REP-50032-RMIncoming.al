@@ -24,11 +24,7 @@ report 50032 "RM Incoming"
             column(Invoice_No; PRH_Rec."Pay-to Vendor No.") { }//PIN
             column(Bill_Date; "Posting Date") { }
             column(Unit_Price__LCY_; "Unit Price (LCY)") { }
-            column(No_Tins; '') { }//New field
-            column(No_Buck; '') { }//New field
-            column(No_Cains; '') { }//New field
-            column(No_Drums; '') { }//New field
-            column(Total_Units; '') { }//New field
+
             column(Unit; 'Nos') { }
             column(Factory_Net; Quantity) { }
             column(Factory_Tare; '') { }
@@ -36,7 +32,7 @@ report 50032 "RM Incoming"
             column(Inv_Net_Wt; '') { }//New field
             column(Factory_Out_Side_Wt; '') { }//New field
             column(Shortage_Excess; '') { }//New field
-            column(Final_Weight; '') { }//New field
+            column(Final_Weight; "Net Weight") { }//New field
             column(Amt_as_per_bill; '') { }
             column(Vendor_State; Vendor_Rec."State Code") { }
             column(Loaded_from; PRH_Rec."Buy-from County") { }
@@ -59,6 +55,11 @@ report 50032 "RM Incoming"
 
                 column(Lot_No; "Lot No.") { }
                 column(Document_Line_No_; "Document Line No.") { }
+                column(No_Tins; Tin) { }//New field
+                column(No_Buck; Bucket) { }//New field
+                column(No_Cains; Can) { }//New field
+                column(No_Drums; Drum) { }//New field
+                column(Total_Units; '') { }//New field
             }
             trigger OnAfterGetRecord()
             begin

@@ -35,8 +35,8 @@ report 50014 "PM Incoming Sheet"
             column(Direct_Unit_Cost; "Direct Unit Cost") { }
             column(Order_Quantity; '') { }//PO Qty
             column(Billed_Quantity; Quantity) { }//PIL Qty
-            column(Approved_Qty; '') { }//Need to Quality
-            column(Rejected_Qty; '') { }//Need to Quality
+
+
             column(Pack_Size; '') { }//
             column(Item_Category_Code; Item_Rec."Item Category Code") { }
             column(Product_Group_Code; '') { }
@@ -51,6 +51,8 @@ report 50014 "PM Incoming Sheet"
                 column(OrderQty_with_Tolerance; '') { }//Need
                 column(Document_Line_No_; "Document Line No.") { }
                 column(Lot_No_; "Lot No.") { }
+                column(Rejected_Qty; "Rejected Quantity") { }//Need to Quality
+                column(Approved_Quantity; "Approved Quantity") { }//Need to Quality
 
                 trigger OnAfterGetRecord()
                 begin

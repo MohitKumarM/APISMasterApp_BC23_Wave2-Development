@@ -54,6 +54,10 @@ pageextension 50010 UsersSetup extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Allow Item Approval"; Rec."Allow Item Approval")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

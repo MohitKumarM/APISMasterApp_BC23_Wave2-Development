@@ -12,12 +12,12 @@ report 50030 "Mktg Exp Report"
         {
             RequestFilterFields = "No.";
             column(Invoice_Date; "Document Date") { }
-            column(Cost_Centers; '') { }//Shortcut Dimenstion 3
-            column(Cost_Heads; '') { }
-            column(Activity_Name; '') { }
-            column(Activity_City; '') { }
-            column(Activity_State; '') { }
-            column(Sales_Channel; '') { }
+            column(Cost_Centers; GenLedsetup."Shortcut Dimension 7 Code") { }//Shortcut Dimenstion 3
+            column(Cost_Heads; GenLedsetup."Shortcut Dimension 8 Code") { }
+            column(Activity_Name; "Activity Name") { }
+            column(Activity_City; "Activity City") { }
+            column(Activity_State; "Activity State") { }
+            column(Sales_Channel; "Sales Channel") { }
             column(Vandor_Name; rec_Vendor.Name) { }
             column(Vendor_Code; rec_Vendor."No.") { }
             column(Vendor_Address; rec_Vendor.Address + ',' + rec_Vendor."Address 2") { }
@@ -30,19 +30,13 @@ report 50030 "Mktg Exp Report"
                 DataItemLinkReference = "Purch. Inv. Header";
                 DataItemTableView = sorting("Document No.", "Line No.");
 
-                column(Type; Type)// Item No. __Replace NAme
-                {
-                }
-                column(Description; Description)// Item Description
-                {
-                }
+                column(Type; Type) { }// Item No. __Replace NAme
+                column(Description; Description) { }// Item Description
                 column(HSN_SAC_Code; "HSN/SAC Code") { }
                 column(Unit_of_Measure; "Unit of Measure") { }
                 column(Total_Qty; Quantity) { }
                 column(Unit_Price; "Direct Unit Cost") { }
-                column(GST_Base_Amount; Amount)//Total_Base_Price
-                {
-                }
+                column(GST_Base_Amount; Amount) { }//Total_Base_Price 
                 column(GST_Percent; GST_Percent) { }
                 column(GST_Amount; Total_GSTAmount) { }
                 column(Total_Amount; Amount + Total_GSTAmount) { }
@@ -53,6 +47,7 @@ report 50030 "Mktg Exp Report"
 
                 trigger OnAfterGetRecord()
                 begin
+
                     "Purch. Inv. Line".CalcSums(Quantity, Amount);
 
                     Clear(CAmount);
@@ -98,8 +93,11 @@ report 50030 "Mktg Exp Report"
             trigger OnAfterGetRecord()
             begin
                 rec_Vendor.Get("Buy-from Vendor No.");
+
+                GenLedsetup.get();
             end;
         }
+
     }
     requestpage
     {
@@ -126,4 +124,5 @@ report 50030 "Mktg Exp Report"
         IAmount: Decimal;
         GST_Percent: Decimal;
         Total_GSTAmount: Decimal;
+        GenLedsetup: Record "General Ledger Setup";
 }

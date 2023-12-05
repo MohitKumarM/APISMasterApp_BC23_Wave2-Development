@@ -116,7 +116,8 @@ codeunit 50000 Tble83
         recPurchaseSetup: Record "Purchases & Payables Setup";
         dtExpiryDate: Date;
         ProdOrder_loc: Record "Production Order";
-
+        Location_Loc: Record Location;
+        Location_Loc1: Record Location;
     begin
         NewItemLedgEntry."Deal No." := ItemJournalLine."Deal No.";
         NewItemLedgEntry."Deal Line No." := ItemJournalLine."Deal Line No.";
@@ -158,6 +159,7 @@ codeunit 50000 Tble83
             if ProdOrder_loc.FindFirst() then begin
                 NewItemLedgEntry."Trade Type" := ProdOrder_loc."Trade Type";
                 NewItemLedgEntry."Production Sub Type" := ProdOrder_loc."Production Sub Type";
+                NewItemLedgEntry."Output for Customer" := ProdOrder_loc."Customer Code";
             end;
         end;
 
@@ -240,7 +242,19 @@ codeunit 50000 Tble83
                 recPostedLotTracking."Document No." := NewItemLedgEntry."Document No.";
                 recPostedLotTracking."Document Line No." := NewItemLedgEntry."Document Line No.";
                 //recPostedLotTracking."Location Code" := recPurchaseSetup."OK Store Location";
-                recPostedLotTracking."Location Code" := NewItemLedgEntry."Location Code"; // Removed Purchase Payable ok Store Location code(Ramesh,Ravi vivek)
+                Location_Loc.Get(NewItemLedgEntry."Location Code");
+                IF (Location_Loc."Associated Plant" <> Location_Loc."Associated Plant"::" ") then begin
+                    Location_Loc1.Reset();
+                    Location_Loc1.SetRange("Associated Plant", Location_Loc."Associated Plant");
+                    Location_Loc1.SetRange("Store Location", true);
+                    if not Location_Loc1.FindFirst() then begin
+                        Location_Loc1.SetRange("Associated Plant");
+                        if not Location_Loc1.FindFirst() then
+                            Error('There is no store Location');
+                    end;
+                end;
+                recPostedLotTracking."Location Code" := Location_Loc1.Code;
+                //recPostedLotTracking."Location Code" := NewItemLedgEntry."Location Code"; // Removed Purchase Payable ok Store Location code(Ramesh,Ravi vivek)
                 recPostedLotTracking."Tare Weight" := 0;
                 recPostedLotTracking."Remaining Qty." := NewItemLedgEntry.Quantity;
                 recPostedLotTracking."Moisture (%)" := NewItemLedgEntry."Moisture (%)";

@@ -3047,6 +3047,24 @@ End Function
         <Field Name="Custmer_Price_Group_Sales_Channel">
           <DataField>Custmer_Price_Group_Sales_Channel</DataField>
         </Field>
+        <Field Name="ZSM">
+          <DataField>ZSM</DataField>
+        </Field>
+        <Field Name="ZSM_RSM">
+          <DataField>ZSM_RSM</DataField>
+        </Field>
+        <Field Name="ASM_KAM">
+          <DataField>ASM_KAM</DataField>
+        </Field>
+        <Field Name="SO">
+          <DataField>SO</DataField>
+        </Field>
+        <Field Name="SR">
+          <DataField>SR</DataField>
+        </Field>
+        <Field Name="Billing_Location">
+          <DataField>Billing_Location</DataField>
+        </Field>
         <Field Name="Zone">
           <DataField>Zone</DataField>
         </Field>
@@ -3058,6 +3076,9 @@ End Function
         </Field>
         <Field Name="Area_">
           <DataField>Area_</DataField>
+        </Field>
+        <Field Name="Customer_District">
+          <DataField>Customer_District</DataField>
         </Field>
         <Field Name="Invoice_Date">
           <DataField>Invoice_Date</DataField>
@@ -3076,27 +3097,6 @@ End Function
         </Field>
         <Field Name="Customer_Location">
           <DataField>Customer_Location</DataField>
-        </Field>
-        <Field Name="Customer_District">
-          <DataField>Customer_District</DataField>
-        </Field>
-        <Field Name="ZSM">
-          <DataField>ZSM</DataField>
-        </Field>
-        <Field Name="ZSM_RSM">
-          <DataField>ZSM_RSM</DataField>
-        </Field>
-        <Field Name="ASM_KAM">
-          <DataField>ASM_KAM</DataField>
-        </Field>
-        <Field Name="SO">
-          <DataField>SO</DataField>
-        </Field>
-        <Field Name="SR">
-          <DataField>SR</DataField>
-        </Field>
-        <Field Name="Billing_Location">
-          <DataField>Billing_Location</DataField>
         </Field>
         <Field Name="Transaction_Type">
           <DataField>Transaction_Type</DataField>
@@ -3130,6 +3130,9 @@ End Function
         </Field>
         <Field Name="Unit_Net_Weight_kg">
           <DataField>Unit_Net_Weight_kg</DataField>
+        </Field>
+        <Field Name="Unit_Net_Weight_kgFormat">
+          <DataField>Unit_Net_Weight_kgFormat</DataField>
         </Field>
         <Field Name="Total_Sale_Quantity_nos">
           <DataField>Total_Sale_Quantity_nos</DataField>

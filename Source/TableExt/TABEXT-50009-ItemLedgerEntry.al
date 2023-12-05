@@ -93,6 +93,7 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
         Field(60012; "Item to Produce 1"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item WHERE("Customer Code" = FIELD("Output for Customer"));
         }
         Field(60013; "Quantity to Produce 1"; Decimal)
         {
@@ -106,15 +107,18 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
 
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item WHERE("Customer Code" = FIELD("Output for Customer"));
         }
         Field(60016; "Item to Produce 3"; Code[10])
 
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item WHERE("Customer Code" = FIELD("Output for Customer"));
         }
         Field(60017; "Item to Produce 4"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item WHERE("Customer Code" = FIELD("Output for Customer"));
         }
         Field(60018; "Quantity to Produce 2"; Decimal)
         {

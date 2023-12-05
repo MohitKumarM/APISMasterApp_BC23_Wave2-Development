@@ -10,6 +10,7 @@ report 50031 "Sales Scheme Exp"
         dataitem("Sales Invoice Header"; "Sales Invoice Header")
         {
             RequestFilterFields = "No.";
+            column(No_; "No.") { }
             column(Customer_Code; "Sell-to Customer No.") { }
             column(Customer_Firm_Name; "Sell-to Customer Name") { }
             column(Cstomer_Location; "Sell-to Address" + ',' + "Sell-to Address 2") { }
@@ -17,8 +18,8 @@ report 50031 "Sales Scheme Exp"
             column(Customer_State; State) { }
             column(Customer_Region; "Sell-to Country/Region Code") { }
             column(Customer_Area; "Sell-to Post Code") { }
-            column(ASM; '') { }// 13 no table
-            column(RSM; '') { }
+            column(ASM; ASM) { }// 13 no table
+            column(RSM; RSM) { }
             column(Month; '') { }
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {

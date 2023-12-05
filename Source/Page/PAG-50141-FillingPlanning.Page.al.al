@@ -1,4 +1,4 @@
-page 50094 "Filling Planning"
+page 50141 "Filling Planning"
 {
     DeleteAllowed = false;
     InsertAllowed = false;
@@ -94,6 +94,7 @@ page 50094 "Filling Planning"
                 Caption = 'Create Packing Order';
                 Image = Production;
                 Promoted = true;
+                PromotedCategory = Process;
 
                 trigger OnAction()
                 var

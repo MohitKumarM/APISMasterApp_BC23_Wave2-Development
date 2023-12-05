@@ -12,12 +12,20 @@ tableextension 50001 ItemN1 extends Item
         }
         Field(50002; "Pack Size"; Text[30]) { }
         field(50003; "Net Weight Per (Kg)"; Decimal) { }
+        field(50005; "Gross Weight Per (Kg)"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(50007; "Item Type"; Option)
         {
             OptionCaption = ' ,Bulk,Small';
             OptionMembers = " ",Bulk,Small;
         }
         field(50009; "Expiry Date Formula"; DateFormula) { }
+        field(50013; "Extended Description"; Text[50])
+        {
+            DataClassification = ToBeClassified;
+        }
         field(50015; "New Product Group Code"; Code[10])
         {
             Caption = 'Product Group Code';
@@ -42,13 +50,33 @@ tableextension 50001 ItemN1 extends Item
         field(70016; "APIS_Brand"; Code[20])
         {
             Caption = 'Brand';
-            TableRelation = Brand;
+            // = Brand;
         }
         field(70017; "Sub Brand"; Code[20])
         {
-            TableRelation = "Sub Brand";
+            //TableRelation = "Sub Brand";
         }
         field(70018; "Pack Size (SKU)"; Text[100])
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(50004; "Item Size Dimension"; Text[30])
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(50008; "Pcs. Per Cartoon"; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(50010; Length_; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(50011; Width_; Decimal)
+        {
+            DataClassification = ToBeClassified;
+        }
+        Field(50012; Height; Decimal)
         {
             DataClassification = ToBeClassified;
         }

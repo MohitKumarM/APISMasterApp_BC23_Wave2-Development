@@ -60,6 +60,10 @@ tableextension 50000 UserSetup extends "User Setup"
                 END;
             end;
         }
+        field(50014; "Allow Item Approval"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
         field(50015; "Allow Purch. Order Approval"; Boolean)
         {
             trigger OnValidate()

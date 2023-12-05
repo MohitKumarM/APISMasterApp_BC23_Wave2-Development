@@ -2520,12 +2520,6 @@ End Function
         <Field Name="Billed_QuantityFormat">
           <DataField>Billed_QuantityFormat</DataField>
         </Field>
-        <Field Name="Approved_Qty">
-          <DataField>Approved_Qty</DataField>
-        </Field>
-        <Field Name="Rejected_Qty">
-          <DataField>Rejected_Qty</DataField>
-        </Field>
         <Field Name="Pack_Size">
           <DataField>Pack_Size</DataField>
         </Field>
@@ -2549,6 +2543,18 @@ End Function
         </Field>
         <Field Name="Lot_No_">
           <DataField>Lot_No_</DataField>
+        </Field>
+        <Field Name="Rejected_Qty">
+          <DataField>Rejected_Qty</DataField>
+        </Field>
+        <Field Name="Rejected_QtyFormat">
+          <DataField>Rejected_QtyFormat</DataField>
+        </Field>
+        <Field Name="Approved_Quantity">
+          <DataField>Approved_Quantity</DataField>
+        </Field>
+        <Field Name="Approved_QuantityFormat">
+          <DataField>Approved_QuantityFormat</DataField>
         </Field>
       </Fields>
       <Query>

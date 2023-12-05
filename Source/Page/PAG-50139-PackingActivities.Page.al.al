@@ -48,10 +48,10 @@ page 50139 "Packing Activities"
                     {
                         RunObject = Page "Consumption Journal";
                     }
-                    // action("Dates Production Order")
-                    // {
-                    //     RunObject = Page 50144;
-                    // }
+                    action("Dates Production Order")
+                    {
+                        RunObject = Page "Dates Production Orders";
+                    }
                 }
             }
             cuegroup(Production)
@@ -86,16 +86,16 @@ page 50139 "Packing Activities"
                     DrillDownPageID = "Output Posting";
                     LookupPageID = "Output Posting";
                 }
-                // field("Consumption Journal"; Rec."Consumption Journal")
-                // {
-                //     DrillDownPageID = Rec."Direct Consumption Journal";
-                //     LookupPageID = Rec."Direct Consumption Journal";
-                // }
-                // field("Dates Orders"; Rec."Dates Orders")
-                // {
-                //     DrillDownPageID = Rec."Dates Production Orders";
-                //     LookupPageID = Rec."Dates Production Orders";
-                // }
+                field("Consumption Journal"; Rec."Consumption Journal")
+                {
+                    DrillDownPageID = "Direct Consumption Journal";
+                    LookupPageID = "Direct Consumption Journal";
+                }
+                field("Dates Orders"; Rec."Dates Orders")
+                {
+                    DrillDownPageID = "Dates Production Orders";
+                    LookupPageID = "Dates Production Orders";
+                }
             }
             cuegroup(Requisition)
             {
