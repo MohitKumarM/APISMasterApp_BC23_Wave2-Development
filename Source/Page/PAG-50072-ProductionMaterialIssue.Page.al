@@ -182,6 +182,7 @@ page 50072 "Production Material Issue"
                         //PAGE.RUN(PAGE::"Prod. Order Components", recProdOrderComponent);
                     end;
                 }
+
                 action("Issue Material")
                 {
                     Caption = 'Issue Material';
@@ -192,6 +193,8 @@ page 50072 "Production Material Issue"
                     ApplicationArea = All;
 
                     trigger OnAction()
+                    var
+
                     begin
                         IF Rec."Order Type" = Rec."Order Type"::Production THEN BEGIN
 
@@ -313,7 +316,10 @@ page 50072 "Production Material Issue"
                             recItemJournal.RESET;
                             recItemJournal.SETRANGE("Journal Template Name", recInventorySetup."Material Issue Entry Template");
                             recItemJournal.SETRANGE("Journal Batch Name", recInventorySetup."Material Issue Entry Batch");
-                            PAGE.RUN(Page::"Item Reclass. Journal", recItemJournal);
+                            //PAGE.RUN(Page::"Item Reclass. Journal", recItemJournal);
+                            ItemReclassPage.SetTableView(recItemJournal);
+                            ItemReclassPage.ProdOrderNo(Rec."No.");
+                            ItemReclassPage.Run();
                         END;
                     end;
                 }
@@ -378,6 +384,7 @@ page 50072 "Production Material Issue"
         recProdOrderComponent: Record "Prod. Order Component";
         rptCalcConsumption: Report "Calc. ConsumptionN";
         recManufacturingSetup: Record "Manufacturing Setup";
+        ItemReclassPage: Page "Item Reclass. Journal";
         pgConsumptionJournal: Page "Consumption Journal";
         recPurchaseSetup: Record "Purchases & Payables Setup";
         recItemJournal: Record "Item Journal Line";

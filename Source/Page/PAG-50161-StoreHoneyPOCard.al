@@ -1,12 +1,12 @@
-/* page 50037 "Honey GAN Order"
+page 50161 "Store Honey PO"
 {
     // Caption = 'Purchase Order';
     DeleteAllowed = false;
     InsertAllowed = false;
     LinksAllowed = false;
     PageType = Document;
-    RefreshOnActivate = true;
     ApplicationArea = All;
+    RefreshOnActivate = true;
     SourceTable = "Purchase Header";
     SourceTableView = WHERE("Document Type" = FILTER(Order),
                             Subcontracting = FILTER(false));
@@ -18,96 +18,9 @@
             group(General)
             {
                 Caption = 'General';
-                group("GAN Details")
-                {
-                    Caption = 'GAN Details';
-                    field("Vendor Invoice No."; Rec."Vendor Invoice No.")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Posting Date"; Rec."Posting Date")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Activity Name"; Rec."Activity Name")
-                    {
-                        ApplicationArea = All;
-                        ToolTip = 'Specifies the value of the Activity Name field.';
-                    }
-                    field("Activity City"; Rec."Activity City")
-                    {
-                        ApplicationArea = All;
-                        ToolTip = 'Specifies the value of the Activity City field.';
-                    }
-                    field("Activity State"; Rec."Activity State")
-                    {
-                        ApplicationArea = All;
-                        ToolTip = 'Specifies the value of the Activity State field.';
-                    }
-                    field("Sales Channel"; Rec."Sales Channel")
-                    {
-                        ApplicationArea = All;
-                        ToolTip = 'Specifies the value of the Sales Channel field.';
-                    }
-                    field("Waybill No."; Rec."Waybill No.")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Vehicle No."; Rec."Vehicle No.")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("GR / LR No."; Rec."GR / LR No.")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("GR / LR Date"; Rec."GR / LR Date")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Gate Entry No."; Rec."Gate Entry No.")
-                    {
-                        ApplicationArea = All;
-                        Visible = false;
-                    }
-                    field("Gate Entry Date"; Rec."Gate Entry Date")
-                    {
-                        Visible = false;
-                    }
-                    field("Purchaser Code"; Rec."Purchaser Code")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Vendor Invoice Value"; Rec."Vendor Invoice Value")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("Shipping Agent Code"; Rec."Shipping Agent Code")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("GST Dependency Type"; Rec."GST Dependency Type")
-                    {
-                        ApplicationArea = All;
-                    }
-                    field("GST Vendor Type"; Rec."GST Vendor Type")
-                    {
-                        ApplicationArea = All;
-                    }
-                    // field("C Form"; Rec."C Form")
-                    // {
-                    //     ApplicationArea = All;
-                    // }
-                    // field("Form Code"; Rec."Form Code")
-                    // {
-                    //     Importance = Promoted;
-                    //     ApplicationArea = All;
-                    // }
-                }
                 group("Buy from Vendor")
                 {
                     Caption = 'Buy from Vendor';
-                    Editable = false;
                     field("No."; Rec."No.")
                     {
                         Importance = Promoted;
@@ -164,7 +77,10 @@
                 group("General ")
                 {
                     Caption = 'General ';
-                    Editable = false;
+                    field("Shipping Vendor"; Rec."Shipping Vendor")
+                    {
+                        ApplicationArea = All;
+                    }
                     field("Location Code"; Rec."Location Code")
                     {
                         Importance = Promoted;
@@ -175,7 +91,35 @@
                         Importance = Promoted;
                         ApplicationArea = All;
                     }
-                    field("Document Date"; Rec."Document Date") { }
+                    field("Order Type"; Rec."Order Type")
+                    {
+                        ApplicationArea = All;
+                        Importance = Promoted;
+                    }
+                    field("Document Date"; Rec."Document Date")
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("Activity Name"; Rec."Activity Name")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the Activity Name field.';
+                    }
+                    field("Activity City"; Rec."Activity City")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the Activity City field.';
+                    }
+                    field("Activity State"; Rec."Activity State")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the Activity State field.';
+                    }
+                    field("Sales Channel"; Rec."Sales Channel")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies the value of the Sales Channel field.';
+                    }
                     // field(Structure; Rec.Structure)
                     // {
                     //     Importance = Promoted;
@@ -184,7 +128,6 @@
                 group("Other Detail")
                 {
                     Caption = 'Other Detail';
-                    Editable = false;
                     field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                     {
                         ApplicationArea = All;
@@ -196,8 +139,8 @@
                     }
                     field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                     {
-                        ApplicationArea = All;
                         Visible = false;
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -206,10 +149,18 @@
                     }
                     field("Payment Terms Code"; Rec."Payment Terms Code")
                     {
-                        ApplicationArea = All;
                         Importance = Promoted;
+                        ApplicationArea = All;
                     }
-                    field("Shipment Method Code"; Rec."Shipment Method Code")
+                    field("Shipping Agent Code"; Rec."Shipping Agent Code")
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("Valid Till"; Rec."Valid Till")
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("Transit Insurance"; Rec."Transit Insurance")
                     {
                         ApplicationArea = All;
                     }
@@ -233,10 +184,24 @@
                             CLEAR(ChangeExchangeRate);
                         end;
                     }
+                    // field("C Form"; Rec."C Form")
+                    // {
+                    //     ApplicationArea = All;
+                    // }
+                    // field("Form Code"; Rec."Form Code")
+                    // {
+                    //     Importance = Promoted;
+                    //     ApplicationArea = All;
+                    // }
                     field(Status; Rec.Status)
                     {
                         Importance = Promoted;
                         ApplicationArea = All;
+                        Enabled = true;
+                    }
+                    field("Product Group Code"; Rec."Product Group Code")
+                    {
+                        ApplicationArea = all;
                     }
                     field("Posting No. Series"; Rec."Posting No. Series")
                     {
@@ -246,13 +211,25 @@
                     {
                         ApplicationArea = All;
                     }
+                    field("Waybill No."; Rec."Waybill No.")
+                    {
+                        ApplicationArea = All;
+                    }
                     field("Freight Liability"; Rec."Freight Liability")
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("GST Dependency Type"; Rec."GST Dependency Type")
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("GST Vendor Type"; Rec."GST Vendor Type")
                     {
                         ApplicationArea = All;
                     }
                 }
             }
-            part(PurchLines; "Honey GAN Order Subform")
+            part(PurchLines; "Honey Purchase Order Subform")
             {
                 SubPageLink = "Document No." = FIELD("No.");
             }
@@ -366,6 +343,25 @@
     {
         area(navigation)
         {
+
+            action(Post1)
+            {
+                ApplicationArea = Suite;
+                Caption = 'P&ost';
+                Ellipsis = true;
+                Image = PostOrder;
+                ShortCutKey = 'F9';
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                ToolTip = 'Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.';
+
+                trigger OnAction()
+                begin
+                    PostDocument(CODEUNIT::"Purch.-Post (Yes/No)", Enum::"Navigate After Posting"::"Posted Document");
+                end;
+            }
+
             group("O&rder")
             {
                 Caption = 'O&rder';
@@ -385,20 +381,6 @@
                         CurrPage.SAVERECORD;
                     end;
                 }
-                action(Statistics1)
-                {
-                    ApplicationArea = Suite;
-                    Caption = 'Statistics';
-                    Image = Statistics;
-                    ShortCutKey = 'F7';
-                    ToolTip = 'View statistical information, such as the value of posted entries, for the record.';
-
-                    trigger OnAction()
-                    begin
-                        rec.OpenPurchaseOrderStatistics();
-                        CurrPage.PurchLines.Page.ForceTotalsCalculation();
-                    end;
-                }
                 action(Statistics)
                 {
                     Caption = 'Statistics';
@@ -407,26 +389,28 @@
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     ShortCutKey = 'F7';
-                    Visible = false;
+                    Visible = true;
 
-                    // trigger OnAction()
-                    // begin
-                    //     PurchSetup.GET;
-                    //     IF PurchSetup."Calc. Inv. Discount" THEN BEGIN
-                    //         Rec.CalcInvDiscForHeader;
-                    //         COMMIT;
-                    //     END;
-                    //     IF Structure <> '' THEN BEGIN
-                    //         PurchLine.CalculateStructures(Rec);
-                    //         PurchLine.AdjustStructureAmounts(Rec);
-                    //         PurchLine.UpdatePurchLines(Rec);
-                    //         PurchLine.CalculateTDS(Rec);
-                    //     END ELSE
-                    //         PurchLine.CalculateTDS(Rec);
+                    trigger OnAction()
+                    begin
+                        Rec.OpenPurchaseOrderStatistics();
+                        CurrPage.PurchLines.Page.ForceTotalsCalculation();
+                        // PurchSetup.GET;
+                        // IF PurchSetup."Calc. Inv. Discount" THEN BEGIN
+                        //     Rec.CalcInvDiscForHeader;
+                        //     COMMIT;
+                        // END;
+                        // IF Structure <> '' THEN BEGIN
+                        //     PurchLine.CalculateStructures(Rec);
+                        //     PurchLine.AdjustStructureAmounts(Rec);
+                        //     PurchLine.UpdatePurchLines(Rec);
+                        //     PurchLine.CalculateTDS(Rec);
+                        // END ELSE
+                        //     PurchLine.CalculateTDS(Rec);
 
-                    //     COMMIT;
-                    //     PAGE.RUNMODAL(PAGE::"Purchase Order Statistics", Rec);
-                    // end;
+                        // COMMIT;
+                        // PAGE.RUNMODAL(PAGE::"Purchase Order Statistics", Rec);
+                    end;
                 }
                 action("Co&mments")
                 {
@@ -527,7 +511,6 @@
                 {
                     Caption = 'Calc&ulate Structure Values';
                     Image = CalculateHierarchy;
-                    Visible = false;
 
                     trigger OnAction()
                     begin
@@ -539,16 +522,15 @@
                 action("Calculate TDS")
                 {
                     Caption = 'Calculate TDS';
-                    Visible = false;
 
                     trigger OnAction()
                     begin
                         // PurchLine.CalculateTDS(Rec);
                     end;
                 }
-                action("Submit for GAN Approval")
+                action("Submit for GAN Creation")
                 {
-                    Caption = 'Submit for GAN Approval';
+                    Caption = 'Submit for GAN Creation';
                     Image = SendTo;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -559,9 +541,8 @@
                         Rec.TESTFIELD("Buy-from Vendor No.");
                         Rec.TESTFIELD("Location Code");
                         Rec.TESTFIELD("Shortcut Dimension 1 Code");
-                        Rec.TESTFIELD("Vendor Invoice No.");
 
-                        IF NOT CONFIRM('Do you want to submit the order for GAN approval?', FALSE) THEN
+                        IF NOT CONFIRM('Do you want to submit the order for GAN creation?', FALSE) THEN
                             EXIT;
 
                         PurchLine.RESET;
@@ -584,43 +565,37 @@
                                 PurchLine.TESTFIELD(Quantity);
                                 PurchLine.TESTFIELD("Packing Type");
                                 PurchLine.TESTFIELD("Qty. in Pack");
-
-                                IF PurchLine."Qty. to Receive" <> 0 THEN BEGIN
-                                    recItem.GET(PurchLine."No.");
-                                    IF recItem."Item Tracking Code" <> '' THEN BEGIN
-                                        recItemTracking.GET(recItem."Item Tracking Code");
-                                        IF recItemTracking."Lot Purchase Inbound Tracking" THEN BEGIN
-                                            PurchLine.CALCFIELDS("Item Tracking Quantity Honey");
-                                            IF PurchLine."Item Tracking Quantity Honey" <> PurchLine."Qty. to Receive" THEN
-                                                ERROR('Item tracking is missing.');
-                                        END;
-                                    END;
-                                END;
                             UNTIL PurchLine.NEXT = 0 ELSE
                             ERROR('Nothing to Submit.');
 
-                        Rec."GAN Approval Pending" := TRUE;
+                        Rec."Order Approval Pending" := TRUE;
                         Rec.MODIFY;
 
-                        MESSAGE('The Order is successfully submitted for GAN Approval.');
+                        MESSAGE('The Order is successfully submitted for GAN Creation.');
                         CurrPage.CLOSE;
                     end;
                 }
-                action(Reopen)
+                action("Short Closed")
                 {
-                    Image = ReOpen;
+                    Caption = 'Short Closed';
+                    Image = Close;
                     Promoted = true;
                     PromotedCategory = Process;
-
+                    ApplicationArea = all;
                     trigger OnAction()
+                    var
+                        PurchasePayableSetup: Record "Purchases & Payables Setup";
                     begin
-                        IF NOT CONFIRM('Do you want to reopen the order?', FALSE) THEN
-                            EXIT;
 
-                        Rec."Order Approval Pending" := FALSE;
-                        Rec.MODIFY;
-                        CurrPage.CLOSE;
-                        MESSAGE('The selected order has been re-opened.');
+                        PurchasePayableSetup.get;
+                        PurchasePayableSetup.TestField("Archive Orders", true);
+                        rec.TestField("Short Close Comment");
+                        IF NOT CONFIRM('Do you want to Short Close the selected Order?', FALSE) THEN
+                            EXIT;
+                        Rec."Short Close" := true;
+                        Rec.Modify();
+                        ArchiveManagement.AutoArchivePurchDocument(Rec);
+                        CurrPage.Close();
                     end;
                 }
             }
@@ -628,62 +603,40 @@
             {
                 Caption = 'Print';
                 Image = Print;
-                action("&Print GAN")
+                action("&Print")
                 {
-                    Caption = '&Print GAN';
+                    Caption = '&Print';
                     Ellipsis = true;
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = Process;
 
                     trigger OnAction()
-                    var
-                        recPurchHeader: Record "Purchase Header";
                     begin
                         //DocPrint.PrintPurchHeader(Rec);
                         recPurchHeader.RESET;
                         recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
                         recPurchHeader.SETRANGE("No.", Rec."No.");
 
-                        // REPORT.RUN(50013, TRUE, TRUE, recPurchHeader); //Shivam
-                        REPORT.RUN(Report::"Purchase Receipt H-Pre", TRUE, TRUE, recPurchHeader); //Shivam
+                        REPORT.RUN(50062, TRUE, TRUE, recPurchHeader);
                     end;
                 }
-                action("&Print Order")
+                action("&Print GST")
                 {
-                    Caption = '&Print Order';
+                    Caption = '&Print GST';
                     Ellipsis = true;
                     Image = Print;
                     Promoted = true;
                     PromotedCategory = Process;
-                    Visible = false; //Shivam
 
                     trigger OnAction()
-                    var
-                        recPurchHeader: Record "Purchase Header";
                     begin
                         //DocPrint.PrintPurchHeader(Rec);
                         recPurchHeader.RESET;
                         recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
                         recPurchHeader.SETRANGE("No.", Rec."No.");
 
-                        REPORT.RUN(Report::"Purchase Order", TRUE, TRUE, recPurchHeader);
-                    end;
-                }
-                action("Print GST GAN")
-                {
-                    Caption = 'Print GST GAN';
-                    Image = Print;
-                    Promoted = true;
-                    Visible = false; //Shivam
-
-                    trigger OnAction()
-                    begin
-                        recPurchHeader.RESET;
-                        recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
-                        recPurchHeader.SETRANGE("No.", Rec."No.");
-
-                        REPORT.RUN(Report::"Purchase Receipt H-Pre", TRUE, TRUE, recPurchHeader);
+                        REPORT.RUN(50061, TRUE, TRUE, recPurchHeader);
                     end;
                 }
             }
@@ -711,6 +664,7 @@
         IF UserMgt.GetPurchasesFilter <> '' THEN BEGIN
             Rec.FILTERGROUP(2);
             Rec.SETRANGE("Responsibility Center", UserMgt.GetPurchasesFilter);
+            Rec.SetRange("Short Close", false);
             Rec.FILTERGROUP(0);
         END;
     end;
@@ -727,8 +681,6 @@
         JobQueueVisible: Boolean;
         recProductGroup: Record "New Product Group";
         recPurchHeader: Record "Purchase Header";
-        recItem: Record Item;
-        recItemTracking: Record "Item Tracking Code";
         HasIncomingDocument: Boolean;
         OpenApprovalEntriesExistForCurrUser: Boolean;
         OpenApprovalEntriesExist: Boolean;
@@ -751,7 +703,7 @@
 
     local procedure ApproveCalcInvDisc()
     begin
-        // CurrPage.PurchLines.PAGE.ApproveCalcInvDisc;
+        CurrPage.PurchLines.PAGE.ApproveCalcInvDisc;
     end;
 
     local procedure BuyfromVendorNoOnAfterValidate()
@@ -764,7 +716,7 @@
 
     local procedure PurchaserCodeOnAfterValidate()
     begin
-        // CurrPage.PurchLines.PAGE.UpdateForm(TRUE);
+        CurrPage.PurchLines.PAGE.UpdateForm(TRUE);
     end;
 
     local procedure PaytoVendorNoOnAfterValidate()
@@ -825,5 +777,57 @@
         PurchSetup.GetRecordOnce();
         VendorInvoiceNoMandatory := PurchSetup."Ext. Doc. No. Mandatory";
     end;
+
+    local procedure PostDocument(PostingCodeunitID: Integer; Navigate: Enum "Navigate After Posting")
+    var
+        PurchaseHeader: Record "Purchase Header";
+        InstructionMgt: Codeunit "Instruction Mgt.";
+        LinesInstructionMgt: Codeunit "Lines Instruction Mgt.";
+        IsScheduledPosting: Boolean;
+        IsHandled: Boolean;
+        DocumentIsPosted: Boolean;
+    begin
+        LinesInstructionMgt.PurchaseCheckAllLinesHaveQuantityAssigned(Rec);
+
+        Rec.SendToPosting(PostingCodeunitID);
+
+        IsScheduledPosting := Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting";
+        DocumentIsPosted := (not PurchaseHeader.Get(Rec."Document Type", Rec."No.")) or IsScheduledPosting;
+
+        if IsScheduledPosting then
+            CurrPage.Close();
+        CurrPage.Update(false);
+
+        IsHandled := false;
+        //OnPostDocumentBeforeNavigateAfterPosting(Rec, PostingCodeunitID, Navigate, DocumentIsPosted, IsHandled);
+        if IsHandled then
+            exit;
+
+        if PostingCodeunitID <> CODEUNIT::"Purch.-Post (Yes/No)" then
+            exit;
+
+        case Navigate of
+            Enum::"Navigate After Posting"::"Posted Document":
+                begin
+                    if InstructionMgt.IsEnabled(InstructionMgt.ShowPostedConfirmationMessageCode()) then
+                        //  ShowPostedConfirmationMessage();
+
+                        if IsScheduledPosting or DocumentIsPosted then
+                            CurrPage.Close();
+                end;
+            Enum::"Navigate After Posting"::"New Document":
+                if DocumentIsPosted then begin
+                    Clear(PurchaseHeader);
+                    PurchaseHeader.Init();
+                    PurchaseHeader.Validate("Document Type", PurchaseHeader."Document Type"::Order);
+                    //OnPostDocumentOnBeforePurchaseHeaderInsert(PurchaseHeader);
+                    PurchaseHeader.Insert(true);
+                    PAGE.Run(PAGE::"Purchase Order", PurchaseHeader);
+                end;
+        end;
+    end;
+
+
+
+
 }
- */

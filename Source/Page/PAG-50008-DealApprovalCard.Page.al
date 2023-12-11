@@ -37,10 +37,7 @@ page 50008 "Deal Approval Card"
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                    ApplicationArea = All;
-                }
+
                 field("Deal Qty."; Rec."Deal Qty.")
                 {
                     ApplicationArea = All;
@@ -120,7 +117,10 @@ page 50008 "Deal Approval Card"
             {
                 Caption = 'Release';
                 Image = ReleaseDoc;
+
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
@@ -130,7 +130,7 @@ page 50008 "Deal Approval Card"
                     Rec.TESTFIELD(Date);
                     Rec.TESTFIELD("Purchaser Code");
                     Rec.TESTFIELD(Flora);
-                    Rec.TESTFIELD("Packing Type");
+
                     Rec.TESTFIELD("Deal Qty.");
                     Rec.TESTFIELD("Unit Rate in Kg.");
                     Rec.TESTFIELD("Per Unit Qty. (Kg.)");
@@ -156,6 +156,9 @@ page 50008 "Deal Approval Card"
                 Caption = 'Cancel';
                 Image = Close;
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
 
                 trigger OnAction()
                 begin
@@ -185,7 +188,7 @@ page 50008 "Deal Approval Card"
                     Rec.TESTFIELD(Date);
                     Rec.TESTFIELD("Purchaser Code");
                     Rec.TESTFIELD(Flora);
-                    Rec.TESTFIELD("Packing Type");
+
                     Rec.TESTFIELD("Deal Qty.");
                     Rec.TESTFIELD("Unit Rate in Kg.");
                     Rec.TESTFIELD("Per Unit Qty. (Kg.)");

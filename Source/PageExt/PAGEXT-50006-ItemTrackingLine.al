@@ -103,18 +103,18 @@ pageextension 50006 ItemTrackingLine extends "Item Tracking Lines"
     begin
         Item_Visible := true;
         Item_Editable := true;
-        if (Rec."Source Type" <> 39) then begin
-            if Rec."Source Type" = 37 then begin
-                Item_Visible := true;
-                Item_Editable := false;
-            end else begin
-                Item_Visible := false;
-                Item_Editable := true;
-            end;
-        end else begin
-            Item_Visible := true;
-            Item_Editable := true;
-        end;
+        // if (Rec."Source Type" <> 39) then begin
+        //     if Rec."Source Type" = 37 then begin
+        //         Item_Visible := true;
+        //         Item_Editable := false;
+        //     end else begin
+        //         Item_Visible := false;
+        //         Item_Editable := true;
+        //     end;
+        // end else begin
+        //     Item_Visible := true;
+        //     Item_Editable := true;
+        // end;
     end;
 
     trigger OnAfterGetRecord()

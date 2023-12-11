@@ -86,6 +86,7 @@ tableextension 50017 PurchaseHeader extends "Purchase Header"
 
         }
         field(50023; "Sales Channel"; Enum "Sales Channel") { }
+        field(50024; "Release Honey PO"; Boolean) { }
 
         field(80002; "GST Dependency Type"; Option)
         {

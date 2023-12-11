@@ -1,4 +1,4 @@
-page 50041 "GAN Approval Order"
+/* page 50041 "GAN Approval Order"
 {
     Caption = 'GAN Approval Order';
     DeleteAllowed = false;
@@ -430,13 +430,18 @@ page 50041 "GAN Approval Order"
                     ShortCutKey = 'F9';
 
                     trigger OnAction()
+                    var
+                        PurchHeader: Record "Purchase Header";
                     begin
+                        PurchHeader.Copy(Rec);
                         CheckQtyToReceive();
 
                         Post(CODEUNIT::"Purch.-Post (Yes/No)");
 
-                        Rec."GAN Approval Pending" := false;
-                        Rec.MODIFY;
+                        if PurchHeader.FindFirst() then begin
+                            PurchHeader."GAN Approval Pending" := false;
+                            PurchHeader.MODIFY;
+                        end;
                         CurrPage.CLOSE;
                     end;
                 }
@@ -627,3 +632,4 @@ page 50041 "GAN Approval Order"
             until PurchLine.Next() = 0;
     end;
 }
+ */

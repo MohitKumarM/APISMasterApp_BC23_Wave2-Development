@@ -8,6 +8,7 @@ table 50001 "Deal Dispatch Details"
     {
         field(1; "Sauda No."; Code[20])
         {
+            Caption = 'Deal No.';
             TableRelation = "Deal Master";
             DataClassification = ToBeClassified;
         }

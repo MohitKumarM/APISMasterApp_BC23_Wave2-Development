@@ -333,7 +333,11 @@ page 50057 "Prod. Orders Material Request"
                                         recBatchProcessLine."Lot No." := recLotTracking."Lot No.";
                                         recBatchProcessLine."Packing Qauntity" := recLotTracking."Qty. In Packs";
                                         recBatchProcessLine."Plan Weight" := recLotTracking.Quantity;
-                                        recBatchProcessLine."Packing Type" := recLotTracking."Packing Type";
+                                        // recBatchProcessLine."Packing Type" := recLotTracking."Packing Type";
+                                        recBatchProcessLine.Tin := recLotTracking.Tin;
+                                        recBatchProcessLine.Drum := recLotTracking.Drum;
+                                        recBatchProcessLine.Can := recLotTracking.Can;
+                                        recBatchProcessLine.Bucket := recLotTracking.Bucket;
                                         recBatchProcessLine."Qty. Per Pack" := recLotTracking."Average Qty. In Pack";
                                         recBatchProcessLine.INSERT;
                                     UNTIL recLotTracking.NEXT = 0;

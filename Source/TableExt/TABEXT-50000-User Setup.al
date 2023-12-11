@@ -118,6 +118,10 @@ tableextension 50000 UserSetup extends "User Setup"
                     ERROR('Posting rights can not be assigned to a limited user.');
             end;
         }
+        field(50024; "Flora Visibilty"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     var

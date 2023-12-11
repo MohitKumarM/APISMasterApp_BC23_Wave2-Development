@@ -255,7 +255,11 @@ page 50144 "Packing Location Stock Trf."
                         recPostedTracking."Item No." := recPurchSetup."Raw Honey Item";
                         recPostedTracking."Lot No." := recItemLedger."Lot No.";
                         recPostedTracking.Flora := '';
-                        recPostedTracking."Packing Type" := recItemLedger."Convesion Packing Type";
+                        // recPostedTracking."Packing Type" := recItemLedger."Convesion Packing Type";
+                        recPostedTracking.Tin := recItemLedger.Tin;
+                        recPostedTracking.Drum := recItemLedger.Drum;
+                        recPostedTracking.Can := recItemLedger.Can;
+                        recPostedTracking.Bucket := recItemLedger.Bucket;
                         recPostedTracking."Qty. In Packs" := recItemLedger."No. of Drums / Tins / Cans";
                         recPostedTracking.Quantity := recItemLedger."Quantity to Move";
                         recPostedTracking."Average Qty. In Pack" := recItemLedger."Quantity to Move" / recPostedTracking."Qty. In Packs";

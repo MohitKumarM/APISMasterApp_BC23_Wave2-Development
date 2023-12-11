@@ -173,6 +173,7 @@ page 50147 "Packing Orders Material Req."
                     PromotedCategory = Process;
                     RunObject = Codeunit "Prod. Order Status Management";
                 }
+
                 action(Components)
                 {
                     Caption = 'Components';

@@ -453,8 +453,8 @@ page 50064 "Output Posting"
                     ItemLedgerEntries.SetFilter("Location Code", '%1|%2', Location_Loc2.Code, Location_Loc3.Code);
                     ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
                     ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"RM Consumed");
-                    if not ItemLedgerEntries.FindFirst() then
-                        Error('Plesae Fill and Post Container Information before posting Output.');
+                    // if not ItemLedgerEntries.FindFirst() then
+                    //     Error('Plesae Fill and Post Container Information before posting Output.');
 
                     recItemJournalLines.RESET;
                     recItemJournalLines.COPYFILTERS(Rec);

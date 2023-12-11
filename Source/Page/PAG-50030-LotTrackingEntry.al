@@ -34,10 +34,7 @@ page 50030 "Lot Entries"
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                    ApplicationArea = All;
-                }
+
                 field("Qty. In Packs"; Rec."Qty. In Packs")
                 {
                     ApplicationArea = All;
@@ -66,6 +63,23 @@ page 50030 "Lot Entries"
                 {
                     ApplicationArea = All;
                 }
+                field(Tin; Rec.Tin)
+                {
+                    ApplicationArea = all;
+                }
+                field(Drum; Rec.Drum)
+                {
+                    ApplicationArea = all;
+                }
+                field(Can; Rec.Can)
+                {
+                    ApplicationArea = all;
+                }
+                field(Bucket; Rec.Bucket)
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Moisture (%)"; Rec."Moisture (%)")
                 {
                     ApplicationArea = All;

@@ -37,10 +37,6 @@ page 50014 "Deal Card"
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                    ApplicationArea = All;
-                }
                 field("Deal Qty."; Rec."Deal Qty.")
                 {
                     ApplicationArea = All;
@@ -124,7 +120,6 @@ page 50014 "Deal Card"
                     Rec.TESTFIELD(Date);
                     Rec.TESTFIELD("Purchaser Code");
                     Rec.TESTFIELD(Flora);
-                    Rec.TESTFIELD("Packing Type");
                     Rec.TESTFIELD("Deal Qty.");
                     Rec.TESTFIELD("Per Unit Qty. (Kg.)");
                     Rec.TESTFIELD("Unit Rate in Kg.");
@@ -144,6 +139,8 @@ page 50014 "Deal Card"
                 Caption = 'Submit for Approval';
                 Image = SendTo;
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 var

@@ -152,7 +152,7 @@ page 50141 "Filling Planning"
 
                     recItemLedger.RESET;
                     recItemLedger.COPYFILTERS(Rec);
-                    //recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
+                    recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
                     recItemLedger.SETRANGE("Item No.", recManufacturingSetup."Loose Honey Code");
                     recItemLedger.SETFILTER("Remaining Quantity", '<>%1', 0);
                     IF recItemLedger.FINDFIRST THEN
@@ -162,7 +162,7 @@ page 50141 "Filling Planning"
                             IF (Location_Loc."Associated Plant" <> Location_Loc."Associated Plant"::" ") then begin
                                 Location_Loc1.Reset();
                                 Location_Loc1.SetRange("Associated Plant", Location_Loc."Associated Plant");
-                                Location_Loc1.SetRange("Packing Location", true);
+                                Location_Loc1.SetRange("Production Location", true);
                                 if not Location_Loc1.FindFirst() then begin
                                     Location_Loc1.SetRange("Associated Plant");
                                     if not Location_Loc1.FindFirst() then
@@ -185,8 +185,6 @@ page 50141 "Filling Planning"
                                 recProductionOrder.VALIDATE("Source No.", recItemLedger."Item to Produce 1");
                                 recProductionOrder.VALIDATE(Quantity, recItemLedger."Quantity to Produce 1");
 
-                                recLocation.GET(recItemLedger."Location Code");
-                                recLocation.TESTFIELD("Packing Location");
                                 recProductionOrder.VALIDATE("Location Code", Location_Loc1.Code);
                                 recProductionOrder.VALIDATE("Customer Code", recItemLedger."Output for Customer");
                                 recProductionOrder."Order Type" := recProductionOrder."Order Type"::Packing;
@@ -484,7 +482,11 @@ page 50141 "Filling Planning"
                         recPostedTracking."Item No." := recPurchSetup."Raw Honey Item";
                         recPostedTracking."Lot No." := recItemLedger."Lot No.";
                         recPostedTracking.Flora := '';
-                        recPostedTracking."Packing Type" := recItemLedger."Convesion Packing Type";
+                        //  recPostedTracking."Packing Type" := recItemLedger."Convesion Packing Type";
+                        recPostedTracking.Tin := recItemLedger.Tin;
+                        recPostedTracking.Drum := recItemLedger.Drum;
+                        recPostedTracking.Can := recItemLedger.Can;
+                        recPostedTracking.Bucket := recItemLedger.Bucket;
                         recPostedTracking."Qty. In Packs" := recItemLedger."No. of Drums / Tins / Cans";
                         recPostedTracking.Quantity := recItemLedger."Quantity to Move";
                         recPostedTracking."Average Qty. In Pack" := recItemLedger."Quantity to Move" / recPostedTracking."Qty. In Packs";

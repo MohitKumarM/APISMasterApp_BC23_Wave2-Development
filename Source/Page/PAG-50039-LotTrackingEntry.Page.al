@@ -22,10 +22,23 @@ page 50039 "Lot Tracking Entry"
                 field(Flora; Rec.Flora)
                 {
                     ApplicationArea = All;
+                    Visible = FloraVisibilty;
                 }
-                field("Packing Type"; Rec."Packing Type")
+                field(Tin; Rec.Tin)
                 {
-                    ApplicationArea = All;
+                    ApplicationArea = all;
+                }
+                field(Drum; Rec.Drum)
+                {
+                    ApplicationArea = all;
+                }
+                field(Can; Rec.Can)
+                {
+                    ApplicationArea = all;
+                }
+                field(Bucket; Rec.Bucket)
+                {
+                    ApplicationArea = all;
                 }
                 field("Qty. In Packs"; Rec."Qty. In Packs")
                 {
@@ -78,13 +91,21 @@ page 50039 "Lot Tracking Entry"
         Rec."Document Type" := opDocumentType;
         Rec.TESTFIELD("Lot No.");
         Rec.TESTFIELD(Flora);
-        Rec.TESTFIELD("Packing Type");
         Rec.TESTFIELD("Qty. In Packs");
         Rec.TESTFIELD(Quantity);
     end;
 
     trigger OnOpenPage()
+    var
+
+        UserSetup: Record "User Setup";
     begin
+        if UserSetup.Get(UserId) then begin
+            if UserSetup."Flora Visibilty" then
+                FloraVisibilty := true
+            else
+                FloraVisibilty := false;
+        end;
         decAppliedQty := 0;
         recLotTracking.RESET;
         recLotTracking.SETCURRENTKEY("Document No.", "Document Line No.", "Item No.", "Lot No.");
@@ -98,8 +119,21 @@ page 50039 "Lot Tracking Entry"
         decRemQty := decTotalToRcd - decAppliedQty;
     end;
 
+    trigger OnAfterGetRecord()
+    var
+        UserSetup: Record "User Setup";
+    begin
+        if UserSetup.Get(UserId) then begin
+            if UserSetup."Flora Visibilty" then
+                FloraVisibilty := true
+            else
+                FloraVisibilty := false;
+        end;
+    end;
+
     var
         cdDocumentNo: Code[20];
+        FloraVisibilty: Boolean;
         intLineNo: Integer;
         cdItemCode: Code[20];
         decTotalToRcd: Decimal;
@@ -118,4 +152,5 @@ page 50039 "Lot Tracking Entry"
         cdLocationCode := LocationCode;
         opDocumentType := DocumentType;
     end;
+
 }

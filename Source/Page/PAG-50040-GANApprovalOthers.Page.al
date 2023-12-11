@@ -1,4 +1,4 @@
-page 50040 "GAN Approval Others"
+/* page 50040 "GAN Approval Others"
 {
     CardPageID = "GAN Approval Order";
     DeleteAllowed = false;
@@ -14,8 +14,8 @@ page 50040 "GAN Approval Others"
     SourceTableView = SORTING("Document Type", "No.")
                       ORDER(Ascending)
                       WHERE("Document Type" = FILTER(Order),
-                            "GAN Approval Pending" = const(true),
-                            "Order Type" = FILTER(Other));
+                            "GAN Approval Pending" = const(true));
+    //"Order Type" = FILTER(Other));
 
     layout
     {
@@ -107,3 +107,4 @@ page 50040 "GAN Approval Others"
         }
     }
 }
+ */

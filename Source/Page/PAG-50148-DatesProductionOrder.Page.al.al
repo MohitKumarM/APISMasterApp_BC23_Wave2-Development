@@ -138,6 +138,8 @@ page 50148 "Dates Production Order"
                         Caption = 'Item Ledger E&ntries';
                         Image = ItemLedger;
                         Promoted = true;
+                        PromotedCategory = Process;
+                        PromotedIsBig = true;
                         RunObject = Page "Item Ledger Entries";
                         RunPageLink = "Order Type" = CONST(Production),
                                       "Order No." = FIELD("No.");
@@ -149,6 +151,8 @@ page 50148 "Dates Production Order"
                         Caption = 'Capacity Ledger Entries';
                         Image = CapacityLedger;
                         Promoted = true;
+                        PromotedCategory = Process;
+                        PromotedIsBig = true;
                         RunObject = Page "Capacity Ledger Entries";
                         RunPageLink = "Order Type" = CONST(Production),
                                       "Order No." = FIELD("No.");
@@ -162,6 +166,7 @@ page 50148 "Dates Production Order"
                     Image = Refresh;
                     Promoted = true;
                     PromotedCategory = Process;
+                    PromotedIsBig = true;
 
                     trigger OnAction()
                     var

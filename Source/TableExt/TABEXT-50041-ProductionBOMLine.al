@@ -2,6 +2,10 @@ tableextension 50041 "Production Bom Line Ext" extends "Production BOM Line"
 {
     fields
     {
+        field(50000; "Wastage %"; Decimal)
+        {
+
+        }
         Field(50001; "FG Name"; Text[50]) { }
         Field(50002; "Product Group"; Code[20]) { }
         Field(50003; "Customer Code"; Code[20]) { }
@@ -17,7 +21,7 @@ tableextension 50041 "Production Bom Line Ext" extends "Production BOM Line"
         Field(50009; Blocked; Boolean) { }
         Field(50010; "Item Category Code (RM / PM)"; Code[10]) { }
         Field(50011; "Product Group Code (RM / PM)"; Code[10]) { }
-        field(560000; "Wastage %"; Decimal) { }
+
     }
 
     keys

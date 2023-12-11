@@ -41,10 +41,6 @@ page 50013 "Deal List"
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Type"; Rec."Packing Type")
-                {
-                    ApplicationArea = All;
-                }
                 field("Deal Qty."; Rec."Deal Qty.")
                 {
                     ApplicationArea = All;

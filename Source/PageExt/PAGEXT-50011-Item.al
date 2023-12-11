@@ -32,6 +32,10 @@ pageextension 50011 ItemN1 extends "Item Card"
             {
                 ApplicationArea = all;
             }
+            field("Net Weight Per (Kg)"; Rec."Net Weight Per (Kg)")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

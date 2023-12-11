@@ -364,7 +364,40 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Shipper_Address1.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">
+</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Shipper_Address2.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">
+</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Shipper_Address3.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">
+</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -2103,7 +2136,7 @@
                   <Width>0.66926in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.70403in</Width>
+                  <Width>1.37803in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.77339in</Width>
@@ -2134,9 +2167,6 @@
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.63631in</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.674in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.32281in</Width>
@@ -2876,58 +2906,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox131">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>Add Freight Or Other Charges</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox131</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Textbox146">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -2935,7 +2913,14 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Final SAmount In USD</Value>
+                                  <Value>Final Amount in </Value>
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=First(Fields!Currency_Code.Value, "DataSet_Result")</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -3659,57 +3644,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Add_FreightOrOtherCharges">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Add_FreightOrOtherCharges.Value</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Add_FreightOrOtherCharges</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Final_AmountIn_USD">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -3792,10 +3726,9 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>16</ColSpan>
+                        <ColSpan>15</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
                     <TablixCell />
                     <TablixCell />
                     <TablixCell />
@@ -4293,58 +4226,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Add_FreightOrOtherCharges1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!Add_FreightOrOtherCharges.Value)</Value>
-                                  <Style>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Add_FreightOrOtherCharges1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Final_AmountIn_USD1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -4401,7 +4282,6 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -4542,7 +4422,14 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Total Amount in USD</Value>
+                    <Value>Total Amount in </Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Currency_Code.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                       <FontWeight>Normal</FontWeight>
@@ -4639,7 +4526,13 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Total Amount Chargeable in USD</Value>
+                    <Value>Total Amount Chargeable in </Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Currency_Code.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>8pt</FontSize>
                     </Style>
@@ -4892,7 +4785,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>=First(Fields!Discount_Amount.Value, "DataSet_Result") - First(Fields!Line_Amount_Excl_VAT.Value, "DataSet_Result")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -5147,7 +5040,7 @@
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>0.54168in</Top>
             <Left>5.14379in</Left>
-            <Height>4.2361in</Height>
+            <Height>4.40501in</Height>
             <Width>5.56951in</Width>
             <ZIndex>79</ZIndex>
             <Style>
@@ -5196,9 +5089,9 @@
             </Paragraphs>
             <rd:DefaultName>Textbox19</rd:DefaultName>
             <Top>0.54168in</Top>
-            <Left>0.49795in</Left>
-            <Height>4.2361in</Height>
-            <Width>4.64584in</Width>
+            <Left>0.49776in</Left>
+            <Height>4.40501in</Height>
+            <Width>4.64603in</Width>
             <ZIndex>80</ZIndex>
             <Style>
               <Border>
@@ -5291,8 +5184,14 @@ End Function
         <Field Name="Shipper_Name">
           <DataField>Shipper_Name</DataField>
         </Field>
-        <Field Name="Shipper_Address">
-          <DataField>Shipper_Address</DataField>
+        <Field Name="Shipper_Address1">
+          <DataField>Shipper_Address1</DataField>
+        </Field>
+        <Field Name="Shipper_Address2">
+          <DataField>Shipper_Address2</DataField>
+        </Field>
+        <Field Name="Shipper_Address3">
+          <DataField>Shipper_Address3</DataField>
         </Field>
         <Field Name="Ship_to_Name">
           <DataField>Ship_to_Name</DataField>
@@ -5338,12 +5237,6 @@ End Function
         </Field>
         <Field Name="Documentry_credit_No">
           <DataField>Documentry_credit_No</DataField>
-        </Field>
-        <Field Name="Other_Documents_RemarksAny">
-          <DataField>Other_Documents_RemarksAny</DataField>
-        </Field>
-        <Field Name="Buyer_Requested_Receipt_Date">
-          <DataField>Buyer_Requested_Receipt_Date</DataField>
         </Field>
         <Field Name="Currency_Code">
           <DataField>Currency_Code</DataField>
@@ -5449,9 +5342,6 @@ End Function
         </Field>
         <Field Name="Discount_AmountFormat">
           <DataField>Discount_AmountFormat</DataField>
-        </Field>
-        <Field Name="Add_FreightOrOtherCharges">
-          <DataField>Add_FreightOrOtherCharges</DataField>
         </Field>
         <Field Name="Final_AmountIn_USD">
           <DataField>Final_AmountIn_USD</DataField>

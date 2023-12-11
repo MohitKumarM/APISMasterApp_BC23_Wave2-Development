@@ -139,7 +139,7 @@ report 50004 "Debit Note-New"
                 txtLocation[2] := recLocation.Address;
                 txtLocation[3] := recLocation."Address 2";
                 txtLocation[4] := recLocation.City;
-                txtLocation[6] := recLocation."Post Code";
+                txtLocation[5] := recLocation."Post Code";
                 COMPRESSARRAY(txtLocation);
                 // For Loaction Name.....................
 

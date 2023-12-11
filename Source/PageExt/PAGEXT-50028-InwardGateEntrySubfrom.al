@@ -1,4 +1,4 @@
-pageextension 50028 InwardGateEntry extends "Inward Gate Entry SubForm"
+pageextension 50028 InwardGateEntrySub extends "Inward Gate Entry SubForm"
 {
     layout
     {

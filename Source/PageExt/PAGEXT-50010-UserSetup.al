@@ -58,6 +58,10 @@ pageextension 50010 UsersSetup extends "User Setup"
             {
                 ApplicationArea = all;
             }
+            field("Flora Visibilty"; Rec."Flora Visibilty")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 

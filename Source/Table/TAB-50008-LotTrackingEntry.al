@@ -24,12 +24,7 @@ table 50008 "Lot Tracking Entry"
             TableRelation = "New Product Group".Code WHERE("Item Category Code" = filter(''));
             DataClassification = ToBeClassified;
         }
-        field(5; "Packing Type"; Option)
-        {
-            OptionCaption = ' ,Drums,Tins,Buckets,Cans';
-            OptionMembers = " ",Drums,Tins,Buckets,Cans;
-            DataClassification = ToBeClassified;
-        }
+
         field(6; "Qty. In Packs"; Decimal)
         {
             DataClassification = ToBeClassified;
@@ -139,6 +134,10 @@ table 50008 "Lot Tracking Entry"
             Editable = false;
             FieldClass = FlowField;
         }
+        field(2004; Tin; Decimal) { }
+        field(2005; Drum; Decimal) { }
+        field(2006; Can; Decimal) { }
+        field(2007; Bucket; Decimal) { }
     }
 
     keys

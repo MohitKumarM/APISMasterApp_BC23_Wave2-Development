@@ -20,7 +20,7 @@ report 50031 "Sales Scheme Exp"
             column(Customer_Area; "Sell-to Post Code") { }
             column(ASM; ASM) { }// 13 no table
             column(RSM; RSM) { }
-            column(Month; '') { }
+            column(Month; "Posting Date") { }
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = field("No.");

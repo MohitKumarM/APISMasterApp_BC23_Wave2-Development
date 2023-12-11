@@ -44,10 +44,7 @@ page 50001 "Released Deal List"
                 {
                     ApplicationArea = All;
                 }
-                field("Packing Type"; rec."Packing Type")
-                {
-                    ApplicationArea = All;
-                }
+
                 field("Deal Qty."; rec."Deal Qty.")
                 {
                     ApplicationArea = All;
@@ -154,6 +151,9 @@ page 50001 "Released Deal List"
                 Caption = 'Submit Dispatch Details';
                 Image = ShipmentLines;
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
 
                 trigger OnAction()
                 begin
@@ -225,6 +225,9 @@ page 50001 "Released Deal List"
                 Caption = 'Short Close';
                 Image = Close;
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
 
                 trigger OnAction()
                 begin
@@ -257,6 +260,9 @@ page 50001 "Released Deal List"
             action("Re-open")
             {
                 Image = ReOpen;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
 
                 trigger OnAction()
                 begin
@@ -294,6 +300,8 @@ page 50001 "Released Deal List"
             action(Delete)
             {
                 Image = Delete;
+                Promoted = true;
+
 
                 trigger OnAction()
                 begin

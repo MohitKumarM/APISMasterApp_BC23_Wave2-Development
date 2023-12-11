@@ -161,6 +161,8 @@ page 50145 "Packing Orders Approval"
                     Caption = 'Approve';
                     Image = Approve;
                     Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
 
                     trigger OnAction()
                     begin

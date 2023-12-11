@@ -64,7 +64,8 @@ page 50016 "Honey Purch. Orders"
                 Caption = 'New';
                 Image = Document;
                 Promoted = true;
-
+                PromotedCategory = Process;
+                PromotedIsBig = true;
                 trigger OnAction()
                 begin
                     recPurchSetup.GET;
@@ -74,7 +75,8 @@ page 50016 "Honey Purch. Orders"
 
                     recOrder.INIT;
                     recOrder.VALIDATE("Document Type", recOrder."Document Type"::Order);
-                    recOrder.VALIDATE("No.", cdOrderCode);
+                    //recOrder.VALIDATE("No.", cdOrderCode);
+                    recOrder."No." := cdOrderCode;
                     recOrder."Order Type" := recOrder."Order Type"::Honey;
                     recOrder.INSERT(TRUE);
 

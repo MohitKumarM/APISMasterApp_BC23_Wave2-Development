@@ -514,6 +514,8 @@ page 50017 "Honey Purchase Order"
                     Caption = 'Submit for GAN Creation';
                     Image = SendTo;
                     Promoted = true;
+                    PromotedCategory = Process;
+                    PromotedIsBig = true;
 
                     trigger OnAction()
                     begin

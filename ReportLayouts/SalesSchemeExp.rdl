@@ -789,7 +789,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Month.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <Format>MMMM, yyyy</Format>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />

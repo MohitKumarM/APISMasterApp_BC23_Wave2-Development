@@ -12,40 +12,42 @@ report 50011 "Sales Order Export\Domestic"
             DataItemTableView = SORTING("Document Type", "No.")
                                 WHERE("Document Type" = CONST("Order"));
             RequestFilterFields = "No.";
-            column(Shipper_Name; '') { }
-            column(Shipper_Address; '') { }
+            column(Shipper_Name; Rec_CompanyInfo.Name) { }
+            column(Shipper_Address1; txtLocation[1]) { }
+            column(Shipper_Address2; txtLocation[2] + ',' + txtLocation[3]) { }
+            column(Shipper_Address3; txtLocation[4] + ',' + txtLocation[5]) { }
             column(Ship_to_Name; "Ship-to Name") { }
             column(Ship_to_Address; "Ship-to Address" + ',' + "Ship-to Address 2") { }
             column(Bill_to_Name; "Bill-to Name") { }
             column(Bill_to_Address; "Bill-to Address" + ',' + "Bill-to Address 2") { }
-            column(Reference_Invoice_No_; "Reference Invoice No.") { }//Invoice No
-            column(Posting_Date; "Posting Date") { }//Invoice Date
+            column(Reference_Invoice_No_; Ref_InvNo) { }//Invoice No
+            column(Posting_Date; Var_Posting_Date) { }//Invoice Date
             column(ERP_Sales_Order_No; "No.") { }
-            column(ERP_Sales_Order_Date; "Document Date") { }
+            column(ERP_Sales_Order_Date; "Order Date") { }
             column(Bill_to_Customer_No_; "Bill-to Customer No.") { }
-            column(Buyer_Order_No; '') { }
+            column(Buyer_Order_No; "External Document No.") { }
             column(Requested_Delivery_Date; "Requested Delivery Date") { }
             column(Buyer_Order_Date; "Order Date") { }
             column(Payment_Terms; "Payment Terms Code") { }
-            column(Incoterm; '') { }
-            column(Documentry_credit_No; '') { }
-            column(Other_Documents_RemarksAny; '') { }
-            column(Buyer_Requested_Receipt_Date; '') { }
+            column(Incoterm; "Shipment Method Code") { }
+            column(Documentry_credit_No; "Reference Invoice No.") { }
+            // column(Other_Documents_RemarksAny; '') { }
+            // column(Buyer_Requested_Receipt_Date; '') { }
             column(Currency_Code; "Currency Code") { }
             column(First_Notify_PartyName; '') { }
             column(First_Notify_Address; '') { }
             column(Second_Notify_PartyName; '') { }
             column(Second_Notify_Address; '') { }
-            column(Pre_Carriage_By; '') { }
-            column(Pre_Carriae_receipt_By; '') { }
-            column(Vessel_Name_Flight_No; '') { }
-            column(GST_Type; '') { }
-            column(Loading_Port_AirPort_Dept; '') { }
-            column(Port_Of_Discharge; '') { }
+            column(Pre_Carriage_By; "Pre-Carriage By") { }
+            column(Pre_Carriae_receipt_By; "Pre-Carriage Receipt Place") { }
+            column(Vessel_Name_Flight_No; "Vessel / Flight No.") { }
+            column(GST_Type; "GST Type on Export") { }
+            column(Loading_Port_AirPort_Dept; "Loading Port / Airport Dep.") { }
+            column(Port_Of_Discharge; "Discharge Port / Airport") { }
             column(Final_Destination; '') { }
-            column(Shipping_Remarks; '') { }
+            column(Shipping_Remarks; "Shipping Marks") { }
             column(Echange_Rate; '') { }
-            column(Pallet_Requirement; '') { }
+            column(Pallet_Requirement; Pallet_Req) { }
             dataitem("Sales Line"; "Sales Line")
             {
                 DataItemLink = "Document Type" = FIELD("Document Type"),
@@ -60,12 +62,11 @@ report 50011 "Sales Order Export\Domestic"
                 column(Order_Qty; Quantity) { }
                 column(Unit_of_Measure; "Unit of Measure") { }
                 column(Unit_Price; "Unit Price") { }
-                column(Line_Amount_Excl_VAT; GetLineAmountExclVAT()) { }
+                column(Line_Amount_Excl_VAT; "Line Amount") { }
                 column(GST_Percent; GST_Percent) { }
                 column(GST_Amount; Total_GSTAmount) { }
                 column(Discount_Percent; "Line Discount %") { }
                 column(Discount_Amount; "Line Discount Amount") { }
-                column(Add_FreightOrOtherCharges; '') { }
                 column(Final_AmountIn_USD; Amount) { }
 
                 trigger OnAfterGetRecord()
@@ -111,12 +112,36 @@ report 50011 "Sales Order Export\Domestic"
                     Clear(Total_GSTAmount);
                     Total_GSTAmount := CAmount1 + SAmount1 + IAmount1;
                 end;
-
-                trigger OnPreDataItem()
-                begin
-                    Item_rec.Get("Sales Line"."No.");
-                end;
             }
+            trigger OnAfterGetRecord()
+            begin
+                // For Loaction Name.....................
+                CLEAR(txtLocation);
+                recLocation.GET("Location Code");
+                txtLocation[1] := recLocation.Name + ' ' + recLocation."Name 2";
+                txtLocation[2] := recLocation.Address;
+                txtLocation[3] := recLocation."Address 2";
+                txtLocation[4] := recLocation.City;
+                txtLocation[5] := recLocation."Post Code";
+                COMPRESSARRAY(txtLocation);
+                // For Loaction Name.....................
+                SIH.Reset();
+                SIH.SetRange("Order No.", "No.");
+                if SIH.FindFirst() then begin
+                    Ref_InvNo := SIH."No.";
+                    Var_Posting_Date := SIH."Posting Date";
+                end;
+
+                //Rec_PrepackingList.Get("Sales Header"."No.");
+                // Rec_PrepackingList.Reset();
+                // Rec_PrepackingList.SetRange("Order No.", "No.");
+                // if Rec_PrepackingList.FindFirst() then begin
+                //     if Rec_PrepackingList."Order No." <> '' then
+                //         Pallet_Req := 'Yes'
+                //     else
+                //         Pallet_Req := 'No';
+                // end;
+            end;
         }
     }
 
@@ -126,8 +151,20 @@ report 50011 "Sales Order Export\Domestic"
 
         actions { }
     }
+    trigger OnPreReport()
+    begin
+        Rec_CompanyInfo.Get();
+    end;
 
     var
+        Rec_CompanyInfo: Record "Company Information";
+        recLocation: Record Location;
+        txtLocation: array[10] of Text[255];
+        SIH: Record "Sales Invoice Header";
+        Ref_InvNo: Code[20];
+        Var_Posting_Date: Date;
+        Rec_PrepackingList: Record "Pre Packing List";
+        Pallet_Req: Text[5];
         DetailedGSTLedgerEntry: Record "Detailed GST Ledger Entry";
         GST_Percent: Decimal;
         GST_Percent1: Decimal;
@@ -140,5 +177,4 @@ report 50011 "Sales Order Export\Domestic"
         IAmount: Decimal;
         IAmount1: Decimal;
         Total_GSTAmount: Decimal;
-        Item_rec: Record Item;
 }

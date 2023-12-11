@@ -55,7 +55,11 @@ page 50031 "Cons. Lot Tracking View"
                             Rec."Item No." := recLotEntry."Item No.";
                             Rec."Lot No." := recLotEntry."Lot No.";
                             Rec.Flora := recLotEntry.Flora;
-                            Rec."Packing Type" := recLotEntry."Packing Type";
+                            // Rec."Packing Type" := recLotEntry."Packing Type";
+                            rec.Tin := recLotEntry.Tin;
+                            rec.Drum := recLotEntry.Drum;
+                            rec.Bucket := recLotEntry.Bucket;
+                            rec.Can := recLotEntry.Can;
                             Rec."Average Qty. In Pack" := recLotEntry."Average Qty. In Pack";
                             Rec."Document No." := cdDocumentNo;
                             Rec."Document Line No." := intLineNo;
@@ -86,10 +90,21 @@ page 50031 "Cons. Lot Tracking View"
                     Editable = false;
                     ApplicationArea = All;
                 }
-                field("Packing Type"; Rec."Packing Type")
+                field(Tin; Rec.Tin)
                 {
-                    Editable = false;
-                    ApplicationArea = All;
+                    ApplicationArea = all;
+                }
+                field(Drum; Rec.Drum)
+                {
+                    ApplicationArea = all;
+                }
+                field(Can; Rec.Can)
+                {
+                    ApplicationArea = all;
+                }
+                field(Bucket; Rec.Bucket)
+                {
+                    ApplicationArea = all;
                 }
                 field("Qty. In Packs"; Rec."Qty. In Packs")
                 {

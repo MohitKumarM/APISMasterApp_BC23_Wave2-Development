@@ -3,7 +3,6 @@ codeunit 50000 Tble83
     trigger OnRun()
     begin
     end;
-    // Table83 Start
 
     var
         MRPPrice: Decimal;
@@ -15,6 +14,24 @@ codeunit 50000 Tble83
         ILENo: Integer;
         Can: Decimal;
 
+
+
+    // Table337 Start
+    [EventSubscriber(ObjectType::Table, Database::"Reservation Entry", 'OnAfterInsertEvent', '', false, false)]
+    local procedure OnAfterInsertEventReservationEntry(var Rec: Record "Reservation Entry"; RunTrigger: Boolean)
+    var
+        PurchNPayable: Record "Purchases & Payables Setup";
+        LotTracking: Record "Lot Tracking Entry";
+    begin
+        PurchNPayable.Get();
+        IF (Rec."Item No." = PurchNPayable."Raw Honey Item") and (Rec."Reservation Status" = Rec."Reservation Status"::Surplus) and (Rec."Source Type" = 39) and (Rec."Source Subtype" = Rec."Source Subtype"::"1") then begin
+            //LotTracking.Init();
+            //LotTracking.
+        end;
+    end;
+    //Table337 End
+
+    // Table83 Start
     [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnBeforeValidateLocationCode', '', false, false)]
     local procedure OnBeforeValidateLocationCode(var ItemJournalLine: Record "Item Journal Line"; xItemJournalLine: Record "Item Journal Line"; var IsHandled: Boolean);
     begin
@@ -75,6 +92,7 @@ codeunit 50000 Tble83
     // end;
 
     // //Table5407
+
 
     //Codeunit99000773
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Calculate Prod. Order", 'OnAfterTransferBOMComponent', '', false, false)]
@@ -234,7 +252,11 @@ codeunit 50000 Tble83
                 ItemJournalLine.TESTFIELD("Qty. in Pack");
                 ItemJournalLine.TESTFIELD("Customer Code");
 
-                recPostedLotTracking."Packing Type" := ItemJournalLine."Packing Type";
+                // 15800  recPostedLotTracking."Packing Type" := ItemJournalLine."Packing Type";
+                recPostedLotTracking.Tin := ItemJournalLine.Tin;
+                recPostedLotTracking.Drum := ItemJournalLine.Drum;
+                recPostedLotTracking.Can := ItemJournalLine.Can;
+                recPostedLotTracking.Bucket := ItemJournalLine.Bucket;
                 recPostedLotTracking."Qty. In Packs" := ItemJournalLine."Qty. in Pack";
                 recPostedLotTracking.Customer := ItemJournalLine."Customer Code";
                 recPostedLotTracking.Quantity := NewItemLedgEntry.Quantity;
@@ -298,7 +320,11 @@ codeunit 50000 Tble83
                     recPostedLotTracking."Item No." := recLotTracking."Item No.";
                     recPostedLotTracking."Lot No." := recLotTracking."Lot No.";
                     recPostedLotTracking.Flora := recLotTracking.Flora;
-                    recPostedLotTracking."Packing Type" := recLotTracking."Packing Type";
+                    //  recPostedLotTracking."Packing Type" := recLotTracking."Packing Type";
+                    recPostedLotTracking.Tin := recLotTracking.Tin;
+                    recPostedLotTracking.Drum := recLotTracking.Drum;
+                    recPostedLotTracking.Can := recLotTracking.Can;
+                    recPostedLotTracking.Bucket := recLotTracking.Bucket;
                     recPostedLotTracking."Qty. In Packs" := -recLotTracking."Qty. In Packs";
                     recPostedLotTracking.Quantity := -recLotTracking.Quantity;
                     recPostedLotTracking."Average Qty. In Pack" := recLotTracking."Average Qty. In Pack";
@@ -346,7 +372,11 @@ codeunit 50000 Tble83
                         recPostedLotTracking."Item No." := recLotTracking."Item No.";
                         recPostedLotTracking."Lot No." := recLotTracking."Lot No.";
                         recPostedLotTracking.Flora := recLotTracking.Flora;
-                        recPostedLotTracking."Packing Type" := recLotTracking."Packing Type";
+                        //  recPostedLotTracking."Packing Type" := recLotTracking."Packing Type";
+                        recPostedLotTracking.Tin := recLotTracking.Tin;
+                        recPostedLotTracking.Drum := recLotTracking.Drum;
+                        recPostedLotTracking.Can := recLotTracking.Can;
+                        recPostedLotTracking.Bucket := recLotTracking.Bucket;
                         recPostedLotTracking."Qty. In Packs" := -recLotTracking."Qty. In Packs";
                         recPostedLotTracking.Quantity := -recLotTracking.Quantity;
                         recPostedLotTracking."Average Qty. In Pack" := recLotTracking."Average Qty. In Pack";
@@ -371,7 +401,11 @@ codeunit 50000 Tble83
                         recPostedLotTracking."Item No." := recLotTracking."Item No.";
                         recPostedLotTracking."Lot No." := recLotTracking."Lot No.";
                         recPostedLotTracking.Flora := recLotTracking.Flora;
-                        recPostedLotTracking."Packing Type" := recLotTracking."Packing Type";
+                        // recPostedLotTracking."Packing Type" := recLotTracking."Packing Type";
+                        recPostedLotTracking.Tin := recLotTracking.Tin;
+                        recPostedLotTracking.Drum := recLotTracking.Drum;
+                        recPostedLotTracking.Can := recLotTracking.Can;
+                        recPostedLotTracking.Bucket := recLotTracking.Bucket;
                         recPostedLotTracking."Qty. In Packs" := recLotTracking."Qty. In Packs";
                         recPostedLotTracking.Quantity := recLotTracking.Quantity;
                         recPostedLotTracking."Average Qty. In Pack" := recLotTracking."Average Qty. In Pack";
@@ -746,6 +780,9 @@ codeunit 50000 Tble83
         Rec_PurchaseSetup: Record "Purchases & Payables Setup";
         Rec_DealDispatch: Record "Deal Dispatch Details";
         Rec_DealCard: Record "Deal Master";
+        recReservationEntry: Record "Reservation Entry";
+        intEntryNo: Integer;
+        recLotTracking: Record "Tran. Lot Tracking";
     begin
         Rec_UserSetup.GET(USERID);
         IF PurchaseHeader."Document Type" IN [PurchaseHeader."Document Type"::Invoice, PurchaseHeader."Document Type"::"Credit Memo"] THEN BEGIN
@@ -786,6 +823,74 @@ codeunit 50000 Tble83
                 UNTIL Rec_PurchLine.NEXT = 0;
         END;
         //Iappc - 12 Jan 16 - Honey Price Validation End
+
+
+        IF (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Order) AND (PurchaseHeader."Order Type" = PurchaseHeader."Order Type"::Honey) THEN BEGIN
+            Rec_PurchLine.RESET;
+            Rec_PurchLine.SETRANGE("Document Type", PurchaseHeader."Document Type");
+            Rec_PurchLine.SETRANGE("Document No.", PurchaseHeader."No.");
+            IF Rec_PurchLine.FINDFIRST THEN
+                REPEAT
+
+                    Rec_PurchLine.TESTFIELD(Type, Rec_PurchLine.Type::Item);
+                    Rec_PurchLine.TESTFIELD("No.");
+                    Rec_PurchLine.TESTFIELD("Location Code");
+                    Rec_PurchLine.TESTFIELD(Quantity);
+                    Rec_PurchLine.TESTFIELD("Deal No.");
+                    Rec_PurchLine.TESTFIELD("Packing Type");
+                    Rec_PurchLine.TESTFIELD("Qty. in Pack");
+
+                    recReservationEntry.RESET;
+                    IF recReservationEntry.FINDLAST THEN
+                        intEntryNo := recReservationEntry."Entry No."
+                    ELSE
+                        intEntryNo := 0;
+
+                    //Iappc - 12 Mar 17 - Create ItemTracking
+                    recLotTracking.RESET;
+                    recLotTracking.SETRANGE("Document No.", Rec_PurchLine."Document No.");
+                    recLotTracking.SETRANGE("Document Line No.", Rec_PurchLine."Line No.");
+                    recLotTracking.SETRANGE("Item No.", Rec_PurchLine."No.");
+                    IF recLotTracking.FINDFIRST THEN BEGIN
+                        recReservationEntry.RESET;
+                        recReservationEntry.SETRANGE("Source Type", 39);
+                        recReservationEntry.SETRANGE("Source Subtype", 1);
+                        recReservationEntry.SETRANGE("Source ID", Rec_PurchLine."Document No.");
+                        recReservationEntry.SETRANGE("Source Ref. No.", Rec_PurchLine."Line No.");
+                        //recReservationEntry.SETRANGE("Lot No.", recLotTracking."Lot No.");
+                        IF recReservationEntry.FINDFIRST THEN
+                            recReservationEntry.DELETEALL;
+
+                        REPEAT
+                            recReservationEntry.INIT;
+                            intEntryNo += 1;
+                            recReservationEntry."Entry No." := intEntryNo;
+                            recReservationEntry.Positive := TRUE;
+                            recReservationEntry."Item No." := Rec_PurchLine."No.";
+                            recReservationEntry."Location Code" := Rec_PurchLine."Location Code";
+                            recReservationEntry."Quantity (Base)" := recLotTracking.Quantity;
+                            recReservationEntry."Reservation Status" := recReservationEntry."Reservation Status"::Surplus;
+                            recReservationEntry."Creation Date" := TODAY;
+                            recReservationEntry."Source Type" := 39;
+                            recReservationEntry."Source Subtype" := 1;
+                            recReservationEntry."Source ID" := Rec_PurchLine."Document No.";
+                            recReservationEntry."Source Ref. No." := Rec_PurchLine."Line No.";
+                            recReservationEntry."Expected Receipt Date" := TODAY;
+                            recReservationEntry."Created By" := USERID;
+                            recReservationEntry."Qty. per Unit of Measure" := 1;
+                            recReservationEntry.Quantity := recLotTracking.Quantity;
+                            recReservationEntry."Qty. to Handle (Base)" := recLotTracking.Quantity;
+                            recReservationEntry."Qty. to Invoice (Base)" := recLotTracking.Quantity;
+                            recReservationEntry."Lot No." := recLotTracking."Lot No.";
+                            recReservationEntry."Item Tracking" := recReservationEntry."Item Tracking"::"Lot No.";
+                            recReservationEntry.INSERT;
+                        UNTIL recLotTracking.NEXT = 0;
+                    END;
+                //Iappc - 12 Mar 17 - Create ItemTracking
+
+                UNTIL Rec_PurchLine.NEXT = 0;
+        END;
+        //Iappc - GAN Validation Begin
     end;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post (Yes/No)", 'OnBeforeSelectPostOrderOption', '', false, false)]
@@ -1503,4 +1608,22 @@ codeunit 50000 Tble83
         CustLedgerEntry."Parent Group" := GenJournalLine."Parent Group";
     end;
     //Codeunit12 End
+
+    //Table39 Start
+    [EventSubscriber(ObjectType::Table, 39, 'OnDeleteOnBeforeTestStatusOpen', '', false, false)]
+    local procedure OnDeleteOnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; var IsHandled: Boolean)
+    var
+        DealDispatchDetails: Record "Deal Dispatch Details";
+    begin
+        DealDispatchDetails.Reset();
+        DealDispatchDetails.SetRange("Sauda No.", PurchaseLine."Deal No.");
+        DealDispatchDetails.SetRange("Line No.", PurchaseLine."Deal Line No.");
+        if DealDispatchDetails.FindFirst() then begin
+            DealDispatchDetails."GAN Created" := false;
+            DealDispatchDetails."GAN No." := '';
+            DealDispatchDetails.Modify();
+        end;
+
+    end;
+    //Table39 End
 }
