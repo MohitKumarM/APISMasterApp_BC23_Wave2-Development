@@ -50,7 +50,9 @@ tableextension 50027 Customer extends Customer
                 Rec.TestField("Parent Group", '');
             end;
         }
+
         field(80006; "Total Group Wise Amount"; Decimal) { }
+        field(80007; "District"; Text[50]) { }
     }
     keys
     {

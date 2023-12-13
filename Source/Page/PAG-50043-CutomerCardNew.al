@@ -58,6 +58,10 @@ page 50043 "Customer Card New"
                 {
                     ApplicationArea = All;
                 }
+                field(District; Rec.District)
+                {
+                    ApplicationArea = all;
+                }
                 field("Country/Region Code"; Rec."Country/Region Code")
                 {
                     ApplicationArea = All;
@@ -203,6 +207,7 @@ page 50043 "Customer Card New"
                 field("FASSAI No."; Rec."FASSAI No.")
                 {
                     ApplicationArea = All;
+                    Caption = 'FSSAI No.';
                     ShowMandatory = true;
                 }
                 field("Assessee Code"; Rec."Assessee Code")

@@ -1626,4 +1626,26 @@ codeunit 50000 Tble83
 
     end;
     //Table39 End
+
+    //Table18 Start
+    [EventSubscriber(ObjectType::Table, 18, 'OnAfterLookupPostCode', '', false, false)]
+    local procedure OnAfterLookupPostCode(var Customer: Record Customer; xCustomer: Record Customer; var PostCodeRec: Record "Post Code")
+    begin
+        PostCodeRec.SetRange(Code, Customer."Post Code");
+        PostCodeRec.SetRange(City, Customer.City);
+        if PostCodeRec.FindFirst() then begin
+            Customer.District := PostCodeRec.District;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, 18, 'OnAfterLookupCity', '', false, false)]
+    local procedure OnAfterLookupCity(var Customer: Record Customer; var PostCodeRec: Record "Post Code")
+    begin
+        PostCodeRec.SetRange(Code, Customer."Post Code");
+        PostCodeRec.SetRange(City, Customer.City);
+        if PostCodeRec.FindFirst() then begin
+            Customer.District := PostCodeRec.District;
+        end;
+    end;
+    //Table18 End
 }
