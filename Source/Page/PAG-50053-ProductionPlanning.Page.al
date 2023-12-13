@@ -34,8 +34,11 @@ page 50053 "Production Planning"
                     begin
                         IF (ProductionFor = ProductionFor::Customer) then
                             ProductionForEnable := true
-                        else
+                        else begin
                             ProductionForEnable := false;
+                            Clear(cdCustomerCode);
+                            txtCustomerName := '';
+                        end;
                     end;
                 }
                 field(cdCustomerCode; cdCustomerCode)
@@ -75,21 +78,7 @@ page 50053 "Production Planning"
                 {
                     Caption = 'Trade Type';
                 }
-                field(cdBulkItemNo; cdBulkItemNo)
-                {
-                    Caption = 'Bulk Item No.';
-                    Visible = false;
 
-                    trigger OnLookup(var Text: Text): Boolean
-                    begin
-                        recItem.RESET;
-                        recItem.SETRANGE("New Product Group Code", 'BULK');
-                        //recItem.SETRANGE("Customer Code", cdCustomerCode);
-                        IF PAGE.RUNMODAL(0, recItem) = ACTION::LookupOK THEN BEGIN
-                            cdBulkItemNo := recItem."No.";
-                        END;
-                    end;
-                }
                 field(Moisture; txtQualityValues) { }
                 field(Color; txtColor) { }
                 field(FG; txtFG) { }
@@ -171,62 +160,55 @@ page 50053 "Production Planning"
                     IF opProductionType = 0 THEN
                         ERROR('Select Production Type');
 
-                    recProductionOrder.RESET;
-                    recProductionOrder.SETRANGE(Status, recProductionOrder.Status::Released);
-                    recProductionOrder.SETRANGE(Refreshed, FALSE);
-                    IF recProductionOrder.FINDFIRST THEN
-                        ERROR('There are production orders to refresh, first refresh them manually.');
+                    // recProductionOrder.RESET;
+                    // recProductionOrder.SETRANGE(Status, recProductionOrder.Status::Released);
+                    // recProductionOrder.SETRANGE(Refreshed, FALSE);
+                    // IF recProductionOrder.FINDFIRST THEN
+                    //     ERROR('There are production orders to refresh, first refresh them manually.');
 
                     if (cdLocationCode = '') then Error('Location is Blank');
+
+                    recRoutingHeader.RESET;
+                    recRoutingHeader.SETRANGE("Production Type", opProductionType);
+                    recRoutingHeader.SETRANGE("Auto Selection", TRUE);
+                    recRoutingHeader.SetRange(Status, recRoutingHeader.Status::Certified);
+                    recRoutingHeader.FINDFIRST;
+
 
                     recProductionOrder.INIT;
                     recProductionOrder.VALIDATE(Status, recProductionOrder.Status::Released);
                     recProductionOrder."No." := '';
                     recProductionOrder.INSERT(TRUE);
                     cdProdOrderCode := recProductionOrder."No.";
-
                     recProductionOrder.VALIDATE("Source Type", recProductionOrder."Source Type"::Item);
-
                     recProductionOrder.VALIDATE("Source No.", recManufacturingSetup."Loose Honey Code");
                     recProductionOrder.VALIDATE(Quantity, decQtyToProduce);
                     recProductionOrder.VALIDATE("Location Code", cdLocationCode);
                     IF cdCustomerCode <> '' THEN
                         recProductionOrder.VALIDATE("Customer Code", cdCustomerCode);
+
+                    IF dtPlanDate <> 0D THEN
+                        recProductionOrder."Creation Date" := dtPlanDate
+                    else
+                        recProductionOrder."Creation Date" := Today;
+
+                    recProductionOrder.VALIDATE("Routing No.", recRoutingHeader."No.");
                     recProductionOrder."Batch No." := dBatchNo;
                     recProductionOrder."Production Type" := opProductionType;
-                    IF dtPlanDate <> 0D THEN
-                        recProductionOrder."Creation Date" := dtPlanDate;
                     recProductionOrder."Production Sub Type" := ProductionSubType_Var;
                     recProductionOrder."Trade Type" := TradeType_Var;
-
-                    recRoutingHeader.RESET;
-                    recRoutingHeader.SETRANGE("Production Type", opProductionType);
-                    recRoutingHeader.SETRANGE("Auto Selection", TRUE);
-                    recRoutingHeader.FINDFIRST;
-                    recProductionOrder.VALIDATE("Routing No.", recRoutingHeader."No.");
                     recProductionOrder.Moisture := txtQualityValues;
                     recProductionOrder.Color := txtColor;
                     recProductionOrder.FG := txtFG;
-
                     recProductionOrder.HMF := txtHMF;
                     recProductionOrder.MODIFY(TRUE);
-                    COMMIT;
 
-                    recProductionOrder.RESET;
-                    recProductionOrder.SETRANGE(Status, recProductionOrder.Status::Released);
-                    recProductionOrder.SETRANGE(Refreshed, FALSE);
-                    IF recProductionOrder.FINDFIRST THEN
-                        REPEAT
+                    recProdOrderToRefresh.RESET;
+                    recProdOrderToRefresh.SETRANGE(Status, recProductionOrder.Status);
+                    recProdOrderToRefresh.SETRANGE("No.", cdProdOrderCode);
+                    recProdOrderToRefresh.FINDFIRST;
+                    REPORT.RUNMODAL(Report::"Refresh Production Order", FALSE, TRUE, recProdOrderToRefresh);
 
-                            recProdOrderToRefresh.RESET;
-                            recProdOrderToRefresh.SETRANGE(Status, recProductionOrder.Status);
-                            recProdOrderToRefresh.SETRANGE("No.", recProductionOrder."No.");
-                            recProdOrderToRefresh.FINDFIRST;
-                            COMMIT;
-
-                            REPORT.RUNMODAL(Report::"Refresh Production Order", FALSE, TRUE, recProdOrderToRefresh);
-                            COMMIT;
-                        UNTIL recProductionOrder.NEXT = 0;
 
                     MESSAGE('Production order %1 created.', cdProdOrderCode);
                     Clear(decQtyToProduce);

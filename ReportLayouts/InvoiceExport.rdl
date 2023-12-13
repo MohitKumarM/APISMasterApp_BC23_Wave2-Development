@@ -2040,8 +2040,46 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=First(Fields!Shipper_Name.Value, "DataSet_Result")
-First(Fields!Shipper_Address.Value, "DataSet_Result")</Value>
+                    <Value>=First(Fields!Shipper_Name.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">
+</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Shipper_Address1.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">
+</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Shipper_Address2.Value, "DataSet_Result")</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">
+</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!Shipper_Address3.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>7pt</FontSize>
                     </Style>
@@ -5251,8 +5289,14 @@ End Function
         <Field Name="Shipper_Name">
           <DataField>Shipper_Name</DataField>
         </Field>
-        <Field Name="Shipper_Address">
-          <DataField>Shipper_Address</DataField>
+        <Field Name="Shipper_Address1">
+          <DataField>Shipper_Address1</DataField>
+        </Field>
+        <Field Name="Shipper_Address2">
+          <DataField>Shipper_Address2</DataField>
+        </Field>
+        <Field Name="Shipper_Address3">
+          <DataField>Shipper_Address3</DataField>
         </Field>
         <Field Name="Sale_Order_no">
           <DataField>Sale_Order_no</DataField>
