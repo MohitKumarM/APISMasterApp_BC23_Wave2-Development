@@ -8,6 +8,7 @@ page 50144 "Packing Location Stock Trf."
     SourceTable = "Item Ledger Entry";
     SourceTableView = SORTING("Item No.", "Entry Type", "Variant Code", "Drop Shipment", "Location Code", "Posting Date")
                       ORDER(Ascending);
+    ApplicationArea = All;
 
 
 

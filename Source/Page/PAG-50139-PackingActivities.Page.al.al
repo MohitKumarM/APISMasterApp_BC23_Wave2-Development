@@ -3,6 +3,7 @@ page 50139 "Packing Activities"
     Caption = 'Activities';
     PageType = CardPart;
     SourceTable = "Purchase Cue";
+    ApplicationArea = All;
 
     layout
     {

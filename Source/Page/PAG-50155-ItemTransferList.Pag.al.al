@@ -5,6 +5,7 @@ page 50155 "Item Transfer List"
     Editable = false;
     PageType = List;
     SourceTable = "Transfer Header";
+    ApplicationArea = All;
 
     layout
     {

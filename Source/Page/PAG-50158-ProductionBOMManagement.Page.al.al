@@ -7,6 +7,7 @@ page 50158 "Production BOM Management"
     Caption = 'Production BOM';
     PageType = ListPlus;
     SourceTable = "Production BOM Header";
+    ApplicationArea = All;
 
     layout
     {

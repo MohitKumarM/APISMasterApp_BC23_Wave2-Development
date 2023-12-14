@@ -3,6 +3,7 @@ page 50034 "Purchase Que"
     PageType = List;
     SourceTable = "Purchase Cue";
     Editable = true;
+    ApplicationArea = All;
 
     layout
     {

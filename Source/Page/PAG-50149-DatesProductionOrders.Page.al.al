@@ -9,6 +9,7 @@ page 50149 "Dates Production Orders"
     SourceTableView = WHERE(Status = CONST(Released),
                             "Order Type" = FILTER(Dates),
                             "Requested Material Issue" = FILTER(False));
+    ApplicationArea = All;
 
     layout
     {

@@ -1,6 +1,6 @@
 page 50050 "Sales Invoice Export List"
 {
-    ApplicationArea = Basic, Suite;
+    ApplicationArea = all, Basic, Suite;
     Caption = 'Sales Invoices Exports';
     CardPageID = "Sales Invoice";
     DataCaptionFields = "Sell-to Customer No.";

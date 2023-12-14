@@ -3,7 +3,7 @@ page 50076 "Production Activity"
     Caption = 'Activities';
     PageType = CardPart;
     SourceTable = "Purchase Cue";
-    ApplicationArea = Basic, Suite;
+    ApplicationArea = All, Basic, Suite;
 
     layout
     {

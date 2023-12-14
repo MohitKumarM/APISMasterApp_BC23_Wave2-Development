@@ -5,6 +5,7 @@ page 50067 "Material Req. SubPage"
     SourceTable = "Material Requisition Line";
     SourceTableView = SORTING("Req. No.", "Line No.")
                       ORDER(Ascending);
+    ApplicationArea = All;
 
     layout
     {

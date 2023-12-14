@@ -7,6 +7,7 @@ page 50141 "Filling Planning"
     Permissions = TableData "Item Ledger Entry" = rm;
     SourceTable = "Item Ledger Entry";
     SourceTableView = SORTING("Item No.", "Entry Type", "Variant Code", "Drop Shipment", "Location Code", "Posting Date") ORDER(Ascending);
+    ApplicationArea = all;
 
     layout
     {
@@ -110,7 +111,7 @@ page 50141 "Filling Planning"
 
                     recItemLedger.RESET;
                     recItemLedger.COPYFILTERS(Rec);
-                    recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
+                    //recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
                     recItemLedger.SETRANGE("Item No.", recManufacturingSetup."Loose Honey Code");
                     recItemLedger.SETFILTER("Remaining Quantity", '<>%1', 0);
                     IF recItemLedger.FINDFIRST THEN
@@ -152,7 +153,7 @@ page 50141 "Filling Planning"
 
                     recItemLedger.RESET;
                     recItemLedger.COPYFILTERS(Rec);
-                    recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
+                    //recItemLedger.SETRANGE("Entry Type", recItemLedger."Entry Type"::Output);
                     recItemLedger.SETRANGE("Item No.", recManufacturingSetup."Loose Honey Code");
                     recItemLedger.SETFILTER("Remaining Quantity", '<>%1', 0);
                     IF recItemLedger.FINDFIRST THEN
@@ -162,7 +163,7 @@ page 50141 "Filling Planning"
                             IF (Location_Loc."Associated Plant" <> Location_Loc."Associated Plant"::" ") then begin
                                 Location_Loc1.Reset();
                                 Location_Loc1.SetRange("Associated Plant", Location_Loc."Associated Plant");
-                                Location_Loc1.SetRange("Production Location", true);
+                                Location_Loc1.SetRange("Packing Location", true);
                                 if not Location_Loc1.FindFirst() then begin
                                     Location_Loc1.SetRange("Associated Plant");
                                     if not Location_Loc1.FindFirst() then
@@ -170,9 +171,9 @@ page 50141 "Filling Planning"
                                 end;
                             end else begin
                                 Location_Loc1.Reset();
-                                Location_Loc1.SetRange("Store Location", true);
+                                Location_Loc1.SetRange("Packing Location", true);
                                 if not Location_Loc1.FindFirst() then
-                                    Error('There is no Store Location');
+                                    Error('There is no packing Location');
                             end;
 
                             IF (recItemLedger."Item to Produce 1" <> '') AND (recItemLedger."Quantity to Produce 1" <> 0) THEN BEGIN
@@ -547,7 +548,7 @@ page 50141 "Filling Planning"
         end;
 
         Rec.FILTERGROUP(2);
-        Rec.SetRange("Entry Type", Rec."Entry Type"::Output);
+        //Rec.SetRange("Entry Type", Rec."Entry Type"::Output);
         Rec.SETRANGE("Item No.", recManufacturingSetup."Loose Honey Code");
         Rec.SetFilter("Location Code", LocationText);
         Rec.SetFilter("Remaining Quantity", '<>%1', 0);

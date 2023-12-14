@@ -6,6 +6,7 @@ page 50157 "Item Approval Card"
     LinksAllowed = false;
     PageType = Card;
     SourceTable = "Nonstock Item";
+    ApplicationArea = All;
 
     layout
     {

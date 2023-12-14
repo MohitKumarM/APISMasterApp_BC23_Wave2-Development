@@ -5,6 +5,7 @@ page 50059 "Plan Weight Register Card"
     LinksAllowed = false;
     PageType = Card;
     SourceTable = "Batch Process Header";
+    ApplicationArea = All;
 
     layout
     {

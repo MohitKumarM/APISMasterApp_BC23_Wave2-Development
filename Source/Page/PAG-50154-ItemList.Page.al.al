@@ -10,6 +10,7 @@ page 50154 "Item  List"
     LinksAllowed = false;
     PageType = List;
     SourceTable = Item;
+    ApplicationArea = All;
 
     layout
     {

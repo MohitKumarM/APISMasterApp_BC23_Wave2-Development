@@ -7,6 +7,7 @@ page 50156 "Item Management"
     PageType = Card;
     RefreshOnActivate = true;
     SourceTable = Item;
+    ApplicationArea = All;
 
     layout
     {

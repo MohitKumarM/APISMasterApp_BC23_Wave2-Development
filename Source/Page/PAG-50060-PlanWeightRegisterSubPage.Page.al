@@ -4,6 +4,7 @@ page 50060 "Plan Weight Register Sub Page"
     LinksAllowed = false;
     PageType = ListPart;
     SourceTable = "Batch Process Line";
+    ApplicationArea = All;
 
     layout
     {

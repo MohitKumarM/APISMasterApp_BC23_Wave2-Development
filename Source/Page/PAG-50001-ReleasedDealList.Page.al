@@ -136,7 +136,7 @@ page 50001 "Released Deal List"
             {
                 SubPageLink = "Sauda No." = FIELD("No.");
                 SubPageView = SORTING("Sauda No.", "Line No.")
-                              ORDER(Ascending);
+                               ORDER(Ascending);
                 ApplicationArea = All;
             }
         }

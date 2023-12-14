@@ -13,6 +13,7 @@ page 50069 "Production BOM Lines View"
     PageType = List;
     SaveValues = true;
     SourceTable = "Production BOM Line";
+    ApplicationArea = All;
 
     layout
     {

@@ -1,6 +1,6 @@
 page 50049 "Sales Order Export List"
 {
-    ApplicationArea = Basic, Suite, Assembly;
+    ApplicationArea = all, Basic, Suite, Assembly;
     Caption = 'Sales Orders Exports';
     CardPageID = "Sales Order Export";
     DataCaptionFields = "Sell-to Customer No.";

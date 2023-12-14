@@ -11,6 +11,7 @@ page 50147 "Packing Orders Material Req."
                             "Order Type" = FILTER(Packing),
                             "Requested Material Issue" = FILTER(false),
                             "Packing Approved" = FILTER(true));
+    ApplicationArea = All;
 
     layout
     {

@@ -6,6 +6,7 @@ page 50073 "Cons. Lot Tracking Entry"
     SourceTable = "Tran. Lot Tracking";
     SourceTableView = SORTING("Document No.", "Document Line No.", "Item No.", "Lot No.")
                       ORDER(Ascending);
+    ApplicationArea = all;
 
     layout
     {
@@ -15,6 +16,7 @@ page 50073 "Cons. Lot Tracking Entry"
             {
                 field("Ref. Entry No."; Rec."Ref. Entry No.")
                 {
+                    ApplicationArea = all;
                     trigger OnLookup(var Text: Text): Boolean
                     begin
                         recLotEntry.RESET;
@@ -65,14 +67,17 @@ page 50073 "Cons. Lot Tracking Entry"
                 field("Lot No."; Rec."Lot No.")
                 {
                     Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Flora; Rec.Flora)
                 {
                     Editable = false;
+                    ApplicationArea = all;
                 }
                 field(Tin; Rec.Tin)
                 {
                     ApplicationArea = all;
+
                 }
                 field(Drum; Rec.Drum)
                 {
@@ -88,10 +93,11 @@ page 50073 "Cons. Lot Tracking Entry"
                 }
                 field("Qty. In Packs"; Rec."Qty. In Packs")
                 {
+                    ApplicationArea = all;
                     trigger OnValidate()
                     begin
-                        IF Rec."Remaining Qty. In Packs" - Rec."Qty. In Packs" < 0 THEN
-                            ERROR('Can not use more than %1 quantity', Rec."Remaining Qty. In Packs");
+                        // IF Rec."Remaining Qty. In Packs" - Rec."Qty. In Packs" < 0 THEN
+                        //     ERROR('Can not use more than %1 quantity', Rec."Remaining Qty. In Packs");
                         recLotEntry.GET(Rec."Ref. Entry No.");
                         Rec."Average Qty. In Pack" := recLotEntry."Average Qty. In Pack";
                         IF Rec."Qty. In Packs" = Rec."Remaining Qty. In Packs" THEN
@@ -103,13 +109,21 @@ page 50073 "Cons. Lot Tracking Entry"
                 field(Quantity; Rec.Quantity)
                 {
                     Editable = false;
+                    ApplicationArea = all;
                 }
                 field("Average Qty. In Pack"; Rec."Average Qty. In Pack")
                 {
                     Editable = false;
+                    ApplicationArea = all;
                 }
-                field("Remaining Qty. In Packs"; Rec."Remaining Qty. In Packs") { }
-                field("Remaining Quantity"; Rec."Remaining Quantity") { }
+                field("Remaining Qty. In Packs"; Rec."Remaining Qty. In Packs")
+                {
+                    ApplicationArea = all;
+                }
+                field("Remaining Quantity"; Rec."Remaining Quantity")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

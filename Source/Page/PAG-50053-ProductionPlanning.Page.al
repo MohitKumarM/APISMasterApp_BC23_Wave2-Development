@@ -202,7 +202,7 @@ page 50053 "Production Planning"
                     recProductionOrder.FG := txtFG;
                     recProductionOrder.HMF := txtHMF;
                     recProductionOrder.MODIFY(TRUE);
-
+                    Commit();
                     recProdOrderToRefresh.RESET;
                     recProdOrderToRefresh.SETRANGE(Status, recProductionOrder.Status);
                     recProdOrderToRefresh.SETRANGE("No.", cdProdOrderCode);

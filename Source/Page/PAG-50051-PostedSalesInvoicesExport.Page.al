@@ -1,7 +1,7 @@
 page 50051 "Posted Sales Invoices Export"
 {
     AdditionalSearchTerms = 'posted bill';
-    ApplicationArea = Basic, Suite;
+    ApplicationArea = All, Basic, Suite;
     Caption = 'Posted Sales Invoices Exports';
     CardPageID = "Posted Sales Invoice";
     Editable = false;

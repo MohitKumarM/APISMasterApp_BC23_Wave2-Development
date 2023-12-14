@@ -11,6 +11,7 @@ page 50159 "Nonstock Item List"
                       ORDER(Ascending)
                       WHERE("Pending Approval" = FILTER(false),
                             Approved = FILTER(false));
+    ApplicationArea = All;
 
     layout
     {

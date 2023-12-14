@@ -1647,5 +1647,31 @@ codeunit 50000 Tble83
             Customer.District := PostCodeRec.District;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Table, 18, 'OnAfterValidatePostCode', '', false, false)]
+    local procedure OnAfterValidatePostCode(var Customer: Record Customer; xCustomer: Record Customer)
+    var
+        PostCode: Record "Post Code";
+    begin
+        PostCode.Reset();
+        PostCode.SetRange(Code, Customer."Post Code");
+        PostCode.SetRange(City, Customer.City);
+        if PostCode.FindFirst() then begin
+            Customer.District := PostCode.District;
+        end;
+    end;
+
+    [EventSubscriber(ObjectType::Table, 18, 'OnAfterValidateCity', '', false, false)]
+    local procedure OnAfterValidateCity(var Customer: Record Customer; xCustomer: Record Customer)
+    var
+        PostCode: Record "Post Code";
+    begin
+        PostCode.Reset();
+        PostCode.SetRange(Code, Customer."Post Code");
+        PostCode.SetRange(City, Customer.City);
+        if PostCode.FindFirst() then begin
+            Customer.District := PostCode.District;
+        end;
+    end;
     //Table18 End
 }

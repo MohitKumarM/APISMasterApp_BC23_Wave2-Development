@@ -11,5 +11,6 @@ enum 50003 "Customer Type"
     value(8; "HoReCa") { }
     value(9; B2B) { }
     value(10; B2C) { }
+    value(11; "General Trade") { }
 
 }

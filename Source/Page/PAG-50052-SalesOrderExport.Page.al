@@ -7,7 +7,7 @@ page 50052 "Sales Order Export"
     SourceTableView = WHERE("Document Type" = FILTER(Order), "GST Customer Type" = filter(Export));
     AboutTitle = 'About sales order details';
     AboutText = 'Choose the order details and fill in order lines with quantities of what you are selling. Post the order when you are ready to ship or invoice. This creates posted sales shipments and posted sales invoices.';
-
+    ApplicationArea = All;
     layout
     {
         area(content)

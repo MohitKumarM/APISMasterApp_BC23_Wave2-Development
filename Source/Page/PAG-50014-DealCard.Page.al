@@ -153,7 +153,7 @@ page 50014 "Deal Card"
                     Rec.TESTFIELD(Date);
                     Rec.TESTFIELD("Purchaser Code");
                     Rec.TESTFIELD(Flora);
-                    Rec.TESTFIELD("Packing Type");
+
                     Rec.TESTFIELD("Deal Qty.");
                     Rec.TESTFIELD("Unit Rate in Kg.");
                     Rec.TESTFIELD("Per Unit Qty. (Kg.)");

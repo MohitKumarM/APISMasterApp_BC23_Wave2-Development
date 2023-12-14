@@ -11,6 +11,7 @@ page 50153 "Item Approval List"
                       ORDER(Ascending)
                       WHERE("Pending Approval" = FILTER(true),
                             Approved = FILTER(false));
+    ApplicationArea = All;
 
     layout
     {

@@ -7,6 +7,7 @@ page 50043 "Customer Card New"
     LinksAllowed = false;
     AboutTitle = 'About customer details';
     AboutText = 'With the **Customer Card** you manage information about a customer and specify the terms of business, such as payment terms, prices and discounts. From here you can also drill down on past and ongoing sales activity.';
+    ApplicationArea = All;
 
     layout
     {
@@ -398,7 +399,6 @@ page 50043 "Customer Card New"
                 }
                 action("Bank Accounts")
                 {
-                    Visible = false;
                     ApplicationArea = Basic, Suite;
                     Caption = 'Bank Accounts';
                     Image = BankAccount;
@@ -1264,6 +1264,7 @@ page 50043 "Customer Card New"
                         Rec.TestField("GST Customer Type");
                         Rec.TestField("Phone No.");
                         rec.TestField("E-Mail");
+                        rec.TestField("Post Code");
 
                         if ApprovalsMgmt.CheckCustomerApprovalsWorkflowEnabled(Rec) then
                             ApprovalsMgmt.OnSendCustomerForApproval(Rec);

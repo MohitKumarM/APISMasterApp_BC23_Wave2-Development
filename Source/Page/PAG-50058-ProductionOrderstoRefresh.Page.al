@@ -5,7 +5,7 @@ page 50058 "Production Orders to Refresh"
     PageType = List;
     SourceTable = "Production Order";
     SourceTableView = WHERE(Status = filter(Released), Refreshed = FILTER(false));
-    ApplicationArea = Manufacturing;
+    ApplicationArea = Manufacturing, all;
     UsageCategory = Lists;
 
     layout

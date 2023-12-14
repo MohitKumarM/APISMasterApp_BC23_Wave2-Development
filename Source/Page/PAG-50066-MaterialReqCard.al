@@ -3,7 +3,7 @@ page 50066 "Material Req. Card"
     LinksAllowed = false;
     PageType = Card;
     SourceTable = "Material Requisition Header";
-
+    ApplicationArea = All;
     layout
     {
         area(content)

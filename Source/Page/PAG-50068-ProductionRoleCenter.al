@@ -2,7 +2,7 @@ page 50068 "Production Role Center"
 {
     Caption = 'Production Role Center';
     PageType = RoleCenter;
-    ApplicationArea = Basic, Suite;
+    ApplicationArea = All, Basic, Suite;
 
     layout
     {

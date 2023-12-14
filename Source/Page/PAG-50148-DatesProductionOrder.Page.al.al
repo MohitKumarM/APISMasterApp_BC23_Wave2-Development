@@ -7,6 +7,7 @@ page 50148 "Dates Production Order"
     SourceTable = "Production Order";
     SourceTableView = WHERE(Status = CONST(Released),
                             "Order Type" = FILTER(Dates));
+    ApplicationArea = All;
 
     layout
     {

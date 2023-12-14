@@ -38,6 +38,7 @@ pageextension 50044 ConsumptionJournalExt extends "Consumption Journal"
                 Promoted = true;
                 PromotedIsBig = true;
                 PromotedCategory = Process;
+                ApplicationArea = all;
 
                 trigger OnAction()
                 var

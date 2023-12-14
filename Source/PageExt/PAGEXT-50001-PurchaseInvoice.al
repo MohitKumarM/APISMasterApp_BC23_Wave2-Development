@@ -1,5 +1,7 @@
 pageextension 50001 Purchase_Invoice extends "Purchase Invoice"
 {
+
+
     layout
     {
         modify("Campaign No.")

@@ -5,6 +5,7 @@ page 50152 "Production BOM  List"
     Editable = false;
     PageType = List;
     SourceTable = "Production BOM Header";
+    ApplicationArea = All;
 
     layout
     {

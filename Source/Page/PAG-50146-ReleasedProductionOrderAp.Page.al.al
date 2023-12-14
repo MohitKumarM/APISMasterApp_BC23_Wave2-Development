@@ -7,7 +7,7 @@ page 50146 "Released Production Order Ap"
     PageType = Document;
     SourceTable = "Production Order";
     SourceTableView = WHERE(Status = CONST(Released));
-
+    ApplicationArea = All;
     layout
     {
         area(content)

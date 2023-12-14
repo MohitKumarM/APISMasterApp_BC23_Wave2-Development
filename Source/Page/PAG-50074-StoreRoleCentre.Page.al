@@ -2,7 +2,7 @@ page 50074 "Store Role Centre"
 {
     Caption = 'Store Role Centre';
     PageType = RoleCenter;
-    ApplicationArea = Basic, Suite;
+    ApplicationArea = all, Basic, Suite;
 
     layout
     {

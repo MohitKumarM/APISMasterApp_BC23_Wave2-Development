@@ -10,6 +10,7 @@ page 50070 "Incoming Material Report"
     SourceTableView = ORDER(Ascending)
                       WHERE("Entry Type" = FILTER('Purchase'),
                             "Document Type" = FILTER('Purchase Receipt'));
+    ApplicationArea = All;
 
     layout
     {

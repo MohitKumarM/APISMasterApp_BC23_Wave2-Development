@@ -3,6 +3,7 @@ page 50140 "QC Partly4"
     Caption = 'Activities';
     PageType = CardPart;
     SourceTable = "Purchase Cue";
+    ApplicationArea = All;
 
     layout
     {

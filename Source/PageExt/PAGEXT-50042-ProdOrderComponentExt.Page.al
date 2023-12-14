@@ -85,7 +85,7 @@ pageextension 50042 MyExtension extends "Prod. Order Components"
                     LocationCode_Loc1.Get(Rec."Location Code");
                     LocationCode_Loc2.Reset();
                     LocationCode_Loc2.SetRange("Associated Plant", LocationCode_Loc1."Associated Plant");
-                    LocationCode_Loc2.SetRange("Store Location", true);
+                    LocationCode_Loc2.SetRange("Production Location", true);
                     IF not LocationCode_Loc2.FindFirst() then begin
                         LocationCode_Loc2.SetRange("Associated Plant");
                         LocationCode_Loc2.FindFirst();

@@ -12,6 +12,7 @@ pageextension 50064 "Item reclass Ext." extends "Item Reclass. Journal"
             action("Container Information")
             {
                 Image = Order;
+                Visible = VisibleContainerInfo;
                 Caption = 'Container Information';
                 Promoted = true;
                 PromotedIsBig = true;
@@ -46,6 +47,8 @@ pageextension 50064 "Item reclass Ext." extends "Item Reclass. Journal"
                 Location_loc: Record Location;
                 Location_loc1: Record Location;
                 ProdOrder_Loc: Record "Production Order";
+                PurchPaybleSetup_Loc: Record "Purchases & Payables Setup";
+                ItemJnlLine_Loc: Record "Item Journal Line";
             begin
                 ProdOrder_Loc.Reset();
                 ProdOrder_Loc.SetRange("No.", Rec."Document No.");
@@ -62,14 +65,20 @@ pageextension 50064 "Item reclass Ext." extends "Item Reclass. Journal"
                 end;
 
                 ManfactSetup.Get();
-
-                ItemLedgerEntries.Reset();
-                ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
-                ItemLedgerEntries.SetRange("Location Code", Location_loc1.Code);
-                ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
-                ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"Issued RM");
-                if not ItemLedgerEntries.FindFirst() then
-                    Error('Plesae Fill and Post Container Information before posting Consumption.');
+                PurchPaybleSetup_Loc.Get();
+                ItemJnlLine_Loc.Reset();
+                ItemJnlLine_Loc.SetRange("Journal Template Name", Rec."Journal Template Name");
+                ItemJnlLine_Loc.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+                ItemJnlLine_Loc.SetRange("Item No.", PurchPaybleSetup_Loc."Raw Honey Item");
+                IF ItemJnlLine_Loc.FindFirst() then begin
+                    ItemLedgerEntries.Reset();
+                    ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
+                    ItemLedgerEntries.SetRange("Location Code", Location_loc1.Code);
+                    ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
+                    ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"Issued RM");
+                    if not ItemLedgerEntries.FindFirst() then
+                        Error('Plesae Fill and Post Container Information before posting Consumption.');
+                end;
             end;
 
             trigger OnAfterAction()
@@ -86,6 +95,38 @@ pageextension 50064 "Item reclass Ext." extends "Item Reclass. Journal"
         }
     }
 
+    trigger OnOpenPage()
+    var
+        PurchPaybleSetup_Loc: Record "Purchases & Payables Setup";
+        ItemJnlLine_Loc: Record "Item Journal Line";
+    begin
+        PurchPaybleSetup_Loc.Get();
+        ItemJnlLine_Loc.Reset();
+        ItemJnlLine_Loc.SetRange("Journal Template Name", Rec."Journal Template Name");
+        ItemJnlLine_Loc.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+        ItemJnlLine_Loc.SetRange("Item No.", PurchPaybleSetup_Loc."Raw Honey Item");
+        IF ItemJnlLine_Loc.FindFirst() then
+            VisibleContainerInfo := true
+        else
+            VisibleContainerInfo := false;
+    end;
+
+    trigger OnAfterGetCurrRecord()
+    var
+        PurchPaybleSetup_Loc: Record "Purchases & Payables Setup";
+        ItemJnlLine_Loc: Record "Item Journal Line";
+    begin
+        PurchPaybleSetup_Loc.Get();
+        ItemJnlLine_Loc.Reset();
+        ItemJnlLine_Loc.SetRange("Journal Template Name", Rec."Journal Template Name");
+        ItemJnlLine_Loc.SetRange("Journal Batch Name", Rec."Journal Batch Name");
+        ItemJnlLine_Loc.SetRange("Item No.", PurchPaybleSetup_Loc."Raw Honey Item");
+        IF ItemJnlLine_Loc.FindFirst() then
+            VisibleContainerInfo := true
+        else
+            VisibleContainerInfo := false;
+    end;
+
     procedure ProdOrderNo(DocNo_Loc: Code[20])
     begin
         GlobDocNo := DocNo_Loc;
@@ -93,6 +134,7 @@ pageextension 50064 "Item reclass Ext." extends "Item Reclass. Journal"
 
     var
         GlobDocNo: Code[20];
+        VisibleContainerInfo: Boolean;
 
 
 
