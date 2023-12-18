@@ -16,11 +16,11 @@ tableextension 50009 ItemLedgerEntry extends "Item Ledger Entry"
             OptionMembers = " ",Drums,Tins,Buckets,Cans;
         }
         field(50003; "Qty. in Pack"; Decimal) { }
-        field(50004; "Deal Line No."; Integer)
-        {
-            TableRelation = "Deal Dispatch Details"."Line No." WHERE("Sauda No." = FIELD("Deal No."),
-                                                                      "GAN Created" = FILTER(false));
-        }
+        /*  field(50004; "Deal Line No."; Integer)
+         {
+             TableRelation = "Deal Dispatch Details"."Line No." WHERE("Sauda No." = FIELD("Deal No."),
+                                                                       "GAN Created" = FILTER(false));
+         } */ // 15800 Dispatch Discontinue
         field(50005; "Dispatched Qty. in Kg."; Decimal)
         {
             Editable = false;

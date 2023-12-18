@@ -8,10 +8,10 @@ pageextension 50021 PostedPurchaseCrMemoSubform extends "Posted Purch. Cr. Memo 
             {
                 ApplicationArea = all;
             }
-            field("Deal Line No."; Rec."Deal Line No.")
-            {
-                ApplicationArea = All;
-            }
+            /*             field("Deal Line No."; Rec."Deal Line No.")
+                        {
+                            ApplicationArea = All;
+                        } */ // // 15800 Dispatch Discontinue
             field(Flora; Rec.Flora)
             {
                 ApplicationArea = All;

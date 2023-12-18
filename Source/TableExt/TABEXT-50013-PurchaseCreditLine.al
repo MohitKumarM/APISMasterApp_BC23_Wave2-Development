@@ -15,11 +15,11 @@ tableextension 50013 PurchaseCreditLine extends "Purch. Cr. Memo Line"
             DecimalPlaces = 0 : 0;
             Editable = false;
         }
-        field(50004; "Deal Line No."; Integer)
+        /* field(50004; "Deal Line No."; Integer)
         {
             TableRelation = "Deal Dispatch Details"."Line No." WHERE("Sauda No." = FIELD("Deal No."),
                                                                       "GAN Created" = FILTER(false));
-        }
+        } */ // 15800 Dispatch Discontinue
         field(50005; "Dispatched Qty. in Kg."; Decimal)
         {
             Editable = false;

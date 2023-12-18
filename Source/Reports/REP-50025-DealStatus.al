@@ -24,8 +24,8 @@ report 50025 "Deal Status"
             column(SupplierLbl; SupplierLbl) { }
             column(Date_DealMaster; "Date") { }
             column(DealQty_DealMaster; "Deal Qty.") { }
-            column(DispatchedQty_DealMaster; "Dispatched Qty.") { }
-            column(DispatchedQtyKg_DealMaster; "Dispatched Qty. (Kg.)") { }
+            column(DispatchedQty_DealMaster; '') { } // 15800 Dispatch Discontinue
+            column(DispatchedQtyKg_DealMaster; '') { } // 15800 Dispatch Discontinue
             column(Flora_DealMaster; Flora) { }
             column(PerUnitQtyKg_DealMaster; "Per Unit Qty. (Kg.)") { }
             column(PurchaserName_DealMaster; "Purchaser Name") { }
@@ -45,11 +45,11 @@ report 50025 "Deal Status"
             trigger OnAfterGetRecord()
             begin
                 ReamainigQty := 0;
-                ReamainigQty := ("Deal Qty." - "Dispatched Qty.");
+                // 15800 Dispatch Discontinue    ReamainigQty := ("Deal Qty." - "Dispatched Qty.");
                 DealNetWt := 0;
                 DealNetWt := ("Deal Qty." * "Per Unit Qty. (Kg.)");
                 BalanceNetWt := 0;
-                BalanceNetWt := (DealNetWt - "Dispatched Qty. (Kg.)");
+                // 15800 Dispatch Discontinue BalanceNetWt := (DealNetWt - "Dispatched Qty. (Kg.)");
 
                 SrNo := SrNo + 1;
             end;

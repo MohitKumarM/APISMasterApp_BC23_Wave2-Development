@@ -509,124 +509,162 @@ page 50017 "Honey Purchase Order"
                         // PurchLine.CalculateTDS(Rec);
                     end;
                 }
-                action("Submit for GAN Creation")
+                group("Request Approval")
                 {
-                    Caption = 'Submit for GAN Creation';
-                    Image = SendTo;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    PromotedIsBig = true;
+                    Caption = 'Request Approval';
+                    action(SendApprovalRequest)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Send A&pproval Request';
+                        Enabled = NOT OpenApprovalEntriesExist AND CanRequestApprovalForFlow;
+                        Image = SendApprovalRequest;
+                        ToolTip = 'Request approval of the document.';
 
-                    trigger OnAction()
-                    begin
-                        Rec.TESTFIELD("Buy-from Vendor No.");
-                        Rec.TESTFIELD("Location Code");
-                        Rec.TESTFIELD("Shortcut Dimension 1 Code");
+                        trigger OnAction()
+                        var
+                            ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                        begin
+                            if ApprovalsMgmt.CheckPurchaseApprovalPossible(Rec) then
+                                ApprovalsMgmt.OnSendPurchaseDocForApproval(Rec);
+                        end;
+                    }
+                    action(CancelApprovalRequest)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Cancel Approval Re&quest';
+                        Enabled = CanCancelApprovalForRecord OR CanCancelApprovalForFlow;
+                        Image = CancelApprovalRequest;
+                        ToolTip = 'Cancel the approval request.';
 
-                        IF NOT CONFIRM('Do you want to submit the order for GAN creation?', FALSE) THEN
-                            EXIT;
+                        trigger OnAction()
+                        var
+                            ApprovalsMgmt: Codeunit "Approvals Mgmt.";
+                            WorkflowWebhookMgt: Codeunit "Workflow Webhook Management";
+                        begin
+                            ApprovalsMgmt.OnCancelPurchaseApprovalRequest(Rec);
+                            WorkflowWebhookMgt.FindAndCancel(Rec.RecordId);
+                        end;
+                    }
 
-                        PurchLine.RESET;
-                        PurchLine.SETRANGE("Document Type", Rec."Document Type");
-                        PurchLine.SETRANGE("Document No.", Rec."No.");
-                        IF PurchLine.FINDFIRST THEN
-                            REPEAT
-                                PurchLine.TESTFIELD(Type, PurchLine.Type::Item);
-                                PurchLine.TESTFIELD("No.");
+                    action("Submit for GAN Creation")
+                    {
+                        Caption = 'Submit for GAN Creation';
+                        Image = SendTo;
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        PromotedIsBig = true;
+                        Visible = false;
+                        trigger OnAction()
+                        begin
+                            Rec.TESTFIELD("Buy-from Vendor No.");
+                            Rec.TESTFIELD("Location Code");
+                            Rec.TESTFIELD("Shortcut Dimension 1 Code");
 
-                                recProductGroup.GET(PurchLine."New Product Group Code", PurchLine."Item Category Code");
-                                IF NOT recProductGroup."Allow Direct Purch. Order" THEN
-                                    ERROR('Selected Item is not allowed in direct purchase order.');
+                            IF NOT CONFIRM('Do you want to submit the order for GAN creation?', FALSE) THEN
+                                EXIT;
 
-                                PurchLine.TESTFIELD("Location Code");
-                                PurchLine.TESTFIELD(Quantity);
-                                PurchLine.TESTFIELD("Deal No.");
-                                PurchLine.TESTFIELD("Deal Line No.");
-                                PurchLine.TESTFIELD("Dispatched Qty. in Kg.");
-                                PurchLine.TESTFIELD(Quantity);
-                                PurchLine.TESTFIELD("Packing Type");
-                                PurchLine.TESTFIELD("Qty. in Pack");
-                            UNTIL PurchLine.NEXT = 0 ELSE
-                            ERROR('Nothing to Submit.');
+                            PurchLine.RESET;
+                            PurchLine.SETRANGE("Document Type", Rec."Document Type");
+                            PurchLine.SETRANGE("Document No.", Rec."No.");
+                            IF PurchLine.FINDFIRST THEN
+                                REPEAT
+                                    PurchLine.TESTFIELD(Type, PurchLine.Type::Item);
+                                    PurchLine.TESTFIELD("No.");
 
-                        Rec."Order Approval Pending" := TRUE;
-                        Rec.MODIFY;
+                                    recProductGroup.GET(PurchLine."New Product Group Code", PurchLine."Item Category Code");
+                                    IF NOT recProductGroup."Allow Direct Purch. Order" THEN
+                                        ERROR('Selected Item is not allowed in direct purchase order.');
 
-                        MESSAGE('The Order is successfully submitted for GAN Creation.');
-                        CurrPage.CLOSE;
-                    end;
+                                    PurchLine.TESTFIELD("Location Code");
+                                    PurchLine.TESTFIELD(Quantity);
+                                    PurchLine.TESTFIELD("Deal No.");
+                                    // 15800 Dispatch Discontinue PurchLine.TESTFIELD("Deal Line No.");
+                                    // 15800 Dispatch Discontinue  PurchLine.TESTFIELD("Dispatched Qty. in Kg.");
+                                    PurchLine.TESTFIELD(Quantity);
+                                    // // 15800 Dispatch Discontinue PurchLine.TESTFIELD("Packing Type");
+                                    PurchLine.TESTFIELD("Qty. in Pack");
+                                UNTIL PurchLine.NEXT = 0 ELSE
+                                ERROR('Nothing to Submit.');
+
+                            Rec."Order Approval Pending" := TRUE;
+                            Rec.MODIFY;
+
+                            MESSAGE('The Order is successfully submitted for GAN Creation.');
+                            CurrPage.CLOSE;
+                        end;
+                    }
+                    action("Short Closed")
+                    {
+                        Caption = 'Short Closed';
+                        Image = Close;
+                        Promoted = true;
+                        PromotedCategory = Process;
+                        ApplicationArea = all;
+                        trigger OnAction()
+                        var
+                            PurchasePayableSetup: Record "Purchases & Payables Setup";
+                        begin
+
+                            PurchasePayableSetup.get;
+                            PurchasePayableSetup.TestField("Archive Orders", true);
+                            rec.TestField("Short Close Comment");
+                            IF NOT CONFIRM('Do you want to Short Close the selected Order?', FALSE) THEN
+                                EXIT;
+                            Rec."Short Close" := true;
+                            Rec.Modify();
+                            ArchiveManagement.AutoArchivePurchDocument(Rec);
+                            CurrPage.Close();
+                        end;
+                    }
                 }
-                action("Short Closed")
+                group(Print)
                 {
-                    Caption = 'Short Closed';
-                    Image = Close;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    ApplicationArea = all;
-                    trigger OnAction()
-                    var
-                        PurchasePayableSetup: Record "Purchases & Payables Setup";
-                    begin
-
-                        PurchasePayableSetup.get;
-                        PurchasePayableSetup.TestField("Archive Orders", true);
-                        rec.TestField("Short Close Comment");
-                        IF NOT CONFIRM('Do you want to Short Close the selected Order?', FALSE) THEN
-                            EXIT;
-                        Rec."Short Close" := true;
-                        Rec.Modify();
-                        ArchiveManagement.AutoArchivePurchDocument(Rec);
-                        CurrPage.Close();
-                    end;
-                }
-            }
-            group(Print)
-            {
-                Caption = 'Print';
-                Image = Print;
-                action("&Print")
-                {
-                    Caption = '&Print';
-                    Ellipsis = true;
+                    Caption = 'Print';
                     Image = Print;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                    action("&Print")
+                    {
+                        Caption = '&Print';
+                        Ellipsis = true;
+                        Image = Print;
+                        Promoted = true;
+                        PromotedCategory = Process;
 
-                    trigger OnAction()
-                    begin
-                        //DocPrint.PrintPurchHeader(Rec);
-                        recPurchHeader.RESET;
-                        recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
-                        recPurchHeader.SETRANGE("No.", Rec."No.");
+                        trigger OnAction()
+                        begin
+                            //DocPrint.PrintPurchHeader(Rec);
+                            recPurchHeader.RESET;
+                            recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
+                            recPurchHeader.SETRANGE("No.", Rec."No.");
 
-                        REPORT.RUN(50062, TRUE, TRUE, recPurchHeader);
-                    end;
-                }
-                action("&Print GST")
-                {
-                    Caption = '&Print GST';
-                    Ellipsis = true;
-                    Image = Print;
-                    Promoted = true;
-                    PromotedCategory = Process;
+                            REPORT.RUN(50062, TRUE, TRUE, recPurchHeader);
+                        end;
+                    }
+                    action("&Print GST")
+                    {
+                        Caption = '&Print GST';
+                        Ellipsis = true;
+                        Image = Print;
+                        Promoted = true;
+                        PromotedCategory = Process;
 
-                    trigger OnAction()
-                    begin
-                        //DocPrint.PrintPurchHeader(Rec);
-                        recPurchHeader.RESET;
-                        recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
-                        recPurchHeader.SETRANGE("No.", Rec."No.");
+                        trigger OnAction()
+                        begin
+                            //DocPrint.PrintPurchHeader(Rec);
+                            recPurchHeader.RESET;
+                            recPurchHeader.SETRANGE("Document Type", Rec."Document Type"::Order);
+                            recPurchHeader.SETRANGE("No.", Rec."No.");
 
-                        REPORT.RUN(50061, TRUE, TRUE, recPurchHeader);
-                    end;
+                            REPORT.RUN(50061, TRUE, TRUE, recPurchHeader);
+                        end;
+                    }
                 }
             }
         }
     }
-
     trigger OnAfterGetRecord()
     begin
         JobQueueVisible := Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting";
+        SetControlAppearance;
     end;
 
     trigger OnDeleteRecord(): Boolean
@@ -752,6 +790,7 @@ page 50017 "Honey Purchase Order"
 
         OnAfterSetControlAppearance();
     end;
+
 
     local procedure SetExtDocNoMandatoryCondition()
     begin

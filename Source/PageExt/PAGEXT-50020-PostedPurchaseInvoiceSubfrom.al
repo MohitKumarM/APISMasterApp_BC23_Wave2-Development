@@ -8,10 +8,10 @@ pageextension 50020 PostedPurchaseInvoiceSubform extends "Posted Purch. Invoice 
             {
                 ApplicationArea = all;
             }
-            field("Deal Line No."; Rec."Deal Line No.")
+            /* field("Deal Line No."; Rec."Deal Line No.")
             {
                 ApplicationArea = All;
-            }
+            } */ // // 15800 Dispatch Discontinue
             field(Flora; Rec.Flora)
             {
                 ApplicationArea = All;

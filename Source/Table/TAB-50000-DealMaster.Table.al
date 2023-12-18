@@ -61,12 +61,12 @@ table 50000 "Deal Master"
             OptionCaption = 'Open,Release,Close';
             OptionMembers = Open,Release,Close;
         }
-        field(10; "Dispatched Qty."; Decimal)
-        {
-            CalcFormula = Sum("Deal Dispatch Details"."Dispatched Tins / Buckets" WHERE("Sauda No." = FIELD("No.")));
-            Editable = false;
-            FieldClass = FlowField;
-        }
+        /*  field(10; "Dispatched Qty."; Decimal)
+         {
+             CalcFormula = Sum("Deal Dispatch Details"."Dispatched Tins / Buckets" WHERE("Sauda No." = FIELD("No.")));
+             Editable = false;
+             FieldClass = FlowField;
+         } */ // 15800 Dispatch Discontinue
         field(11; "Pending Approval"; Boolean)
         {
             DataClassification = ToBeClassified;
@@ -87,26 +87,17 @@ table 50000 "Deal Master"
         {
             DataClassification = ToBeClassified;
         }
-        field(16; "Dispatched Qty. (Kg.)"; Decimal)
+        /* field(16; "Dispatched Qty. (Kg.)"; Decimal)
         {
             CalcFormula = Sum("Deal Dispatch Details"."Qty. in Kg." WHERE("Sauda No." = FIELD("No.")));
             Editable = false;
             FieldClass = FlowField;
-        }
+        } */ // 15800 Dispatch Discontinue
         field(17; "Item Code"; Code[20])
         {
             TableRelation = Item."No." where("Item Category Code" = const('PACK HONEY'));
             DataClassification = ToBeClassified;
-            // This trigger is added by Amar Start----
-            // trigger OnValidate()
-            // var
-            //     itemcate: Record "Item Category";
-            //     item: Record Item;
-            // begin
-            //     if item.Get("Item Code") then
-            //         rec.Flora := item."New Product Group Code";
-            // end;
-            // end----
+
         }
         field(50000; "Payment Terms Code"; Code[10])
         {

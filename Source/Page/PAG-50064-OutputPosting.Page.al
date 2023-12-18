@@ -461,8 +461,8 @@ page 50064 "Output Posting"
                     recItemJournalLines.SETFILTER("No.", '<>%1', '');
                     IF recItemJournalLines.FINDFIRST THEN
                         REPEAT
-                            recMachineCenter.GET(recItemJournalLines."No.");
-                            recRoutingHeader.GET(recItemJournalLines."Routing No.");
+                            if recMachineCenter.GET(recItemJournalLines."No.") then
+                                recRoutingHeader.GET(recItemJournalLines."Routing No.");
                             IF (recMachineCenter."QC Mandatory") AND (recMachineCenter."QC Type" = recMachineCenter."QC Type"::Quality) THEN BEGIN
                                 recQualityProcess.RESET;
                                 recQualityProcess.SETRANGE("Document Type", recQualityProcess."Document Type"::Output);

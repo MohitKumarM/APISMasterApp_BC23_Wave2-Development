@@ -24,16 +24,20 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
             var
                 DealMaster: Record "Deal Master";
             begin
-                IF Rec."Deal No." = '' THEN
-                    Rec.VALIDATE("Deal Line No.", 0)
-                ELSE BEGIN
-                    recDealDetails.GET(Rec."Deal No.");
-                    // IF recDealDetails."Item Code" <> "No." THEN
-                    //     ERROR('Item code on deal and purchase line does not match.');
-                END;
+                /*   IF Rec."Deal No." = '' THEN
+                      Rec.VALIDATE("Deal Line No.", 0)
+                  ELSE BEGIN */
+                recDealDetails.GET(Rec."Deal No.");
+                // IF recDealDetails."Item Code" <> "No." THEN
+                //     ERROR('Item code on deal and purchase line does not match.');
+                //  END; // 15800 Dispatch Discontinue
                 if DealMaster.Get(Rec."Deal No.") then begin
                     Rec.Validate("No.", DealMaster."Item Code");
                     rec."Deal No." := DealMaster."No.";
+                    rec."Qty. in Pack" := DealMaster."Deal Qty.";
+                    rec.Flora := DealMaster.Flora;
+                    rec.Validate(Quantity, (DealMaster."Deal Qty." * DealMaster."Per Unit Qty. (Kg.)"));
+                    rec.Validate("Dispatched Qty. in Kg.", (DealMaster."Deal Qty." * DealMaster."Per Unit Qty. (Kg.)"));
                 end;
             end;
         }
@@ -48,7 +52,7 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
             DecimalPlaces = 0 : 0;
             Editable = false;
         }
-        field(50004; "Deal Line No."; Integer)
+        /* field(50004; "Deal Line No."; Integer)
         {
             TableRelation = "Deal Dispatch Details"."Line No." WHERE("Sauda No." = FIELD("Deal No."),
                                                                       "GAN Created" = const(false));
@@ -85,11 +89,7 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
                     Rec.VALIDATE("Qty. in Pack", recDealDispatch."Dispatched Tins / Buckets");
                     Rec.VALIDATE("Packing Type", recDealDispatch."Packing Type");
                     Rec.VALIDATE("Dispatched Qty. in Kg.", recDealDispatch."Qty. in Kg.");
-                    /*
-                    IF recItemCategory.GET("Item Category Code") THEN
-                      decTempQty := recDealDispatch."Qty. in Kg." + (recDealDispatch."Qty. in Kg." * recItemCategory."GAN Tolerance %" / 100)
-                    ELSE
-                    *///Will be handled in quantity validate
+            
                     decTempQty := recDealDispatch."Qty. in Kg.";
 
                     decTempQty := ROUND(decTempQty, 1, '>');
@@ -131,7 +131,7 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
                     END;
                 END;
             end;
-        }
+        } */ // 15800 Dispatch Discontinue
         field(50005; "Dispatched Qty. in Kg."; Decimal)
         {
             Editable = false;
@@ -193,7 +193,7 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
     }
 
     var
-        recDealDispatch: Record "Deal Dispatch Details";
+        //recDealDispatch: Record "Deal Dispatch Details"; // 15800 Dispatch Discontinue
         recDealDetails: Record "Deal Master";
         decTempQty: Decimal;
         recDealMaster: Record "Deal Master";

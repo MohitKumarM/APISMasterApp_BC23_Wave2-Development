@@ -52,10 +52,10 @@ page 50010 "Deal History List"
                 {
                     ApplicationArea = All;
                 }
-                field("Dispatched Qty."; Rec."Dispatched Qty.")
+                /* field("Dispatched Qty."; Rec."Dispatched Qty.")
                 {
                     ApplicationArea = All;
-                }
+                } */ // // 15800 Dispatch Discontinue
                 field(decRemQuantity; decRemQuantity)
                 {
                     Caption = 'Remaining Qty.';
@@ -63,12 +63,12 @@ page 50010 "Deal History List"
                     ApplicationArea = All;
                 }
             }
-            part(Line; "Deal Dispatch Subform")
-            {
-                SubPageLink = "Sauda No." = FIELD("No.");
-                SubPageView = SORTING("Sauda No.", "Line No.")
-                              ORDER(Ascending);
-            }
+            /*  part(Line; "Deal Dispatch Subform")
+             {
+                 SubPageLink = "Sauda No." = FIELD("No.");
+                 SubPageView = SORTING("Sauda No.", "Line No.")
+                               ORDER(Ascending);
+             } */ // 15800 Dispatch Discontinue
         }
     }
 
@@ -76,9 +76,9 @@ page 50010 "Deal History List"
 
     trigger OnAfterGetRecord()
     begin
-        Rec.CALCFIELDS("Dispatched Qty.");
+        /* Rec.CALCFIELDS("Dispatched Qty.");
 
-        decRemQuantity := Rec."Deal Qty." - Rec."Dispatched Qty.";
+        decRemQuantity := Rec."Deal Qty." - Rec."Dispatched Qty."; */ // 15800 Dispatch Discontinue
     end;
 
     var

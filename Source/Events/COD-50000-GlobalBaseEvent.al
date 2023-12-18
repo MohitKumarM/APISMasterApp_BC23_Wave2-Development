@@ -42,20 +42,20 @@ codeunit 50000 Tble83
     [EventSubscriber(ObjectType::Table, Database::"Item Journal Line", 'OnAfterCopyItemJnlLineFromPurchLine', '', false, false)]
     local procedure OnAfterCopyItemJnlLineFromPurchLine(var ItemJnlLine: Record "Item Journal Line"; PurchLine: Record "Purchase Line")
     var
-        recDeal: Record "Deal Dispatch Details";
+        // 15800 Dispatch Discontinue recDeal: Record "Deal Dispatch Details";
         recSalespersonPurchaser: Record "Salesperson/Purchaser";
     begin
         //Iappc - 16 Jan 16 - Deals Details Begin
         ItemJnlLine."Deal No." := PurchLine."Deal No.";
-        ItemJnlLine."Deal Line No." := PurchLine."Deal Line No.";
+        // 15800 Dispatch DiscontinueItemJnlLine."Deal Line No." := PurchLine."Deal Line No.";
         ItemJnlLine."Packing Type" := PurchLine."Packing Type";
         ItemJnlLine."Qty. in Pack" := PurchLine."Qty. in Pack";
         ItemJnlLine."Dispatched Qty. in Kg." := PurchLine."Dispatched Qty. in Kg.";
         ItemJnlLine.Flora := PurchLine.Flora;
         ItemJnlLine."New Product Group Code" := PurchLine."New Product Group Code";
 
-        IF recDeal.GET(PurchLine."Deal No.", PurchLine."Deal Line No.") THEN
-            ItemJnlLine."Vehicle No." := recDeal."Vehicle No.";
+        /*  IF recDeal.GET(PurchLine."Deal No.", PurchLine."Deal Line No.") THEN
+             ItemJnlLine."Vehicle No." := recDeal."Vehicle No."; */ // 15800 Dispatch Discontinue
         ItemJnlLine."Purchaser Code" := PurchLine."Purchaser Code";
         IF recSalespersonPurchaser.GET(PurchLine."Purchaser Code") THEN
             ItemJnlLine."Purchaser Name" := recSalespersonPurchaser.Name;
@@ -138,7 +138,7 @@ codeunit 50000 Tble83
         Location_Loc1: Record Location;
     begin
         NewItemLedgEntry."Deal No." := ItemJournalLine."Deal No.";
-        NewItemLedgEntry."Deal Line No." := ItemJournalLine."Deal Line No.";
+        // 15800 Dispatch Discontinue NewItemLedgEntry."Deal Line No." := ItemJournalLine."Deal Line No.";
         NewItemLedgEntry."Dispatched Qty. in Kg." := ItemJournalLine."Dispatched Qty. in Kg.";
         NewItemLedgEntry.Flora := ItemJournalLine.Flora;
         NewItemLedgEntry."Vehicle No." := ItemJournalLine."Vehicle No.";
@@ -248,7 +248,7 @@ codeunit 50000 Tble83
                 recPostedLotTracking."Lot No." := NewItemLedgEntry."Lot No.";
                 recPostedLotTracking.Flora := '';
 
-                ItemJournalLine.TESTFIELD("Packing Type");
+                // 15800  ItemJournalLine.TESTFIELD("Packing Type");
                 ItemJournalLine.TESTFIELD("Qty. in Pack");
                 ItemJournalLine.TESTFIELD("Customer Code");
 
@@ -432,7 +432,7 @@ codeunit 50000 Tble83
 
         //Iappc - 16 Jan 16 - Deals Details Begin
         NewItemLedgEntry."Deal No." := ItemJournalLine."Deal No.";
-        NewItemLedgEntry."Deal Line No." := ItemJournalLine."Deal Line No.";
+        // 15800 Dispatch Discontinue NewItemLedgEntry."Deal Line No." := ItemJournalLine."Deal Line No.";
         NewItemLedgEntry."Dispatched Qty. in Kg." := ItemJournalLine."Dispatched Qty. in Kg.";
         NewItemLedgEntry.Flora := ItemJournalLine.Flora;
         NewItemLedgEntry."Moisture (%)" := ItemJournalLine."Moisture (%)";
@@ -630,7 +630,7 @@ codeunit 50000 Tble83
             BeekeeperLedgerEntries."Document Date" := PurchInvLine."Posting Date";
             BeekeeperLedgerEntries."External Document No." := PurchInvHeader."Vendor Invoice No.";
             BeekeeperLedgerEntries."Deal No." := PurchInvLine."Deal No.";
-            BeekeeperLedgerEntries."Deal Dispatch No." := PurchInvLine."Deal Line No.";
+            // 15800 Dispatch Discontinue BeekeeperLedgerEntries."Deal Dispatch No." := PurchInvLine."Deal Line No.";
             BeekeeperLedgerEntries.Flora := PurchInvLine.Flora;
             BeekeeperLedgerEntries."Dispatched Qty." := PurchInvLine."Qty. in Pack";
             BeekeeperLedgerEntries."Packing Type" := PurchInvLine."Packing Type";
@@ -679,7 +679,7 @@ codeunit 50000 Tble83
             BeekeeperLedgerEntries."Document Date" := PurchCrMemoLine."Posting Date";
             BeekeeperLedgerEntries."External Document No." := PurchCrMemoHdr."Vendor Cr. Memo No.";
             BeekeeperLedgerEntries."Deal No." := PurchCrMemoLine."Deal No.";
-            BeekeeperLedgerEntries."Deal Dispatch No." := PurchCrMemoLine."Deal Line No.";
+            // 15800 Dispatch Discontinue BeekeeperLedgerEntries."Deal Dispatch No." := PurchCrMemoLine."Deal Line No.";
             BeekeeperLedgerEntries.Flora := PurchCrMemoLine.Flora;
             BeekeeperLedgerEntries."Dispatched Qty." := PurchCrMemoLine."Qty. in Pack";
             BeekeeperLedgerEntries."Packing Type" := PurchCrMemoLine."Packing Type";
@@ -766,7 +766,7 @@ codeunit 50000 Tble83
                     Rec_PurchLine.TESTFIELD("Location Code");
                     Rec_PurchLine.TESTFIELD(Quantity);
                     Rec_PurchLine.TESTFIELD("Deal No.");
-                    Rec_PurchLine.TESTFIELD("Packing Type");
+                    // 15800  Rec_PurchLine.TESTFIELD("Packing Type");
                     Rec_PurchLine.TESTFIELD("Qty. in Pack");
                 UNTIL Rec_PurchLine.NEXT = 0;
         END;
@@ -778,7 +778,7 @@ codeunit 50000 Tble83
         Rec_UserSetup: Record "User Setup";
         Rec_PurchLine: Record "Purchase Line";
         Rec_PurchaseSetup: Record "Purchases & Payables Setup";
-        Rec_DealDispatch: Record "Deal Dispatch Details";
+        // 15800 Dispatch Discontinue Rec_DealDispatch: Record "Deal Dispatch Details";
         Rec_DealCard: Record "Deal Master";
         recReservationEntry: Record "Reservation Entry";
         intEntryNo: Integer;
@@ -806,20 +806,20 @@ codeunit 50000 Tble83
             Rec_PurchLine.SETFILTER("No.", '%1', Rec_PurchaseSetup."Raw Honey Item");
             IF Rec_PurchLine.FINDFIRST THEN
                 REPEAT
-                    Rec_DealDispatch.RESET;
-                    Rec_DealDispatch.SETRANGE("Sauda No.", Rec_PurchLine."Deal No.");
-                    Rec_DealDispatch.SETRANGE("Line No.", Rec_PurchLine."Deal Line No.");
-                    Rec_DealDispatch.FINDFIRST;
+                /* Rec_DealDispatch.RESET;
+                Rec_DealDispatch.SETRANGE("Sauda No.", Rec_PurchLine."Deal No.");
+                Rec_DealDispatch.SETRANGE("Line No.", Rec_PurchLine."Deal Line No.");
+                Rec_DealDispatch.FINDFIRST;
 
-                    Rec_DealCard.GET(Rec_PurchLine."Deal No.");
+                Rec_DealCard.GET(Rec_PurchLine."Deal No.");
 
-                    IF Rec_PurchLine.Quantity <= Rec_DealDispatch."Qty. in Kg." THEN BEGIN
-                        IF Rec_PurchLine."Line Amount" <> (Rec_PurchLine.Quantity * Rec_DealCard."Unit Rate in Kg.") THEN
-                            ERROR('Line amount must be %1 for line no. %2', (Rec_PurchLine.Quantity * Rec_DealCard."Unit Rate in Kg."), Rec_PurchLine."Line No.");
-                    END ELSE BEGIN
-                        IF Rec_PurchLine."Line Amount" <> (Rec_DealDispatch."Qty. in Kg." * Rec_DealCard."Unit Rate in Kg.") THEN
-                            ERROR('Line amount must be %1 for line no. %2', (Rec_DealDispatch."Qty. in Kg." * Rec_DealCard."Unit Rate in Kg."), Rec_PurchLine."Line No.");
-                    END;
+                IF Rec_PurchLine.Quantity <= Rec_DealDispatch."Qty. in Kg." THEN BEGIN
+                    IF Rec_PurchLine."Line Amount" <> (Rec_PurchLine.Quantity * Rec_DealCard."Unit Rate in Kg.") THEN
+                        ERROR('Line amount must be %1 for line no. %2', (Rec_PurchLine.Quantity * Rec_DealCard."Unit Rate in Kg."), Rec_PurchLine."Line No.");
+                END ELSE BEGIN
+                    IF Rec_PurchLine."Line Amount" <> (Rec_DealDispatch."Qty. in Kg." * Rec_DealCard."Unit Rate in Kg.") THEN
+                        ERROR('Line amount must be %1 for line no. %2', (Rec_DealDispatch."Qty. in Kg." * Rec_DealCard."Unit Rate in Kg."), Rec_PurchLine."Line No.");
+                END; */ // 15800 Dispatch Discontinue
                 UNTIL Rec_PurchLine.NEXT = 0;
         END;
         //Iappc - 12 Jan 16 - Honey Price Validation End
@@ -837,7 +837,7 @@ codeunit 50000 Tble83
                     Rec_PurchLine.TESTFIELD("Location Code");
                     Rec_PurchLine.TESTFIELD(Quantity);
                     Rec_PurchLine.TESTFIELD("Deal No.");
-                    Rec_PurchLine.TESTFIELD("Packing Type");
+                    // 15800   Rec_PurchLine.TESTFIELD("Packing Type");
                     Rec_PurchLine.TESTFIELD("Qty. in Pack");
 
                     recReservationEntry.RESET;
@@ -1610,22 +1610,22 @@ codeunit 50000 Tble83
     //Codeunit12 End
 
     //Table39 Start
-    [EventSubscriber(ObjectType::Table, 39, 'OnDeleteOnBeforeTestStatusOpen', '', false, false)]
-    local procedure OnDeleteOnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; var IsHandled: Boolean)
-    var
-        DealDispatchDetails: Record "Deal Dispatch Details";
-    begin
-        DealDispatchDetails.Reset();
-        DealDispatchDetails.SetRange("Sauda No.", PurchaseLine."Deal No.");
-        DealDispatchDetails.SetRange("Line No.", PurchaseLine."Deal Line No.");
-        if DealDispatchDetails.FindFirst() then begin
-            DealDispatchDetails."GAN Created" := false;
-            DealDispatchDetails."GAN No." := '';
-            DealDispatchDetails.Modify();
-        end;
+    /*  [EventSubscriber(ObjectType::Table, 39, 'OnDeleteOnBeforeTestStatusOpen', '', false, false)]
+     local procedure OnDeleteOnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; var IsHandled: Boolean)
+     var
+         DealDispatchDetails: Record "Deal Dispatch Details";
+     begin
+         DealDispatchDetails.Reset();
+         DealDispatchDetails.SetRange("Sauda No.", PurchaseLine."Deal No.");
+         DealDispatchDetails.SetRange("Line No.", PurchaseLine."Deal Line No.");
+         if DealDispatchDetails.FindFirst() then begin
+             DealDispatchDetails."GAN Created" := false;
+             DealDispatchDetails."GAN No." := '';
+             DealDispatchDetails.Modify();
+         end;
 
-    end;
-    //Table39 End
+     end; */ // 15800 Dispatch Discontinue
+             //Table39 End
 
     //Table18 Start
     [EventSubscriber(ObjectType::Table, 18, 'OnAfterLookupPostCode', '', false, false)]

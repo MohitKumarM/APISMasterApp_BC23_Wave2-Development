@@ -53,10 +53,10 @@ page 50001 "Released Deal List"
                 {
                     ApplicationArea = All;
                 }
-                field("Dispatched Qty."; rec."Dispatched Qty.")
+                /* field("Dispatched Qty."; rec."Dispatched Qty.")
                 {
                     ApplicationArea = All;
-                }
+                } */ // 15800 Dispatch Discontinue
                 field(decRemQuantity; decRemQuantity)
                 {
                     Caption = 'Remaining Qty.';
@@ -67,78 +67,78 @@ page 50001 "Released Deal List"
                 {
                     ApplicationArea = All;
                 }
-                field("Dispatched Qty. (Kg.)"; rec."Dispatched Qty. (Kg.)")
-                {
-                    ApplicationArea = All;
-                }
+                /*  field("Dispatched Qty. (Kg.)"; rec."Dispatched Qty. (Kg.)")
+                 {
+                     ApplicationArea = All;
+                 } */ // 15800 Dispatch Discontinue
                 field("Rem. Qty. (Kg.)"; decRemQtyKg)
                 {
                     Editable = false;
                     ApplicationArea = All;
                 }
             }
-            group("Dispatch Details")
-            {
-                Caption = 'Dispatch Details';
-                field(cdDispatchDate; cdDispatchDate)
-                {
-                    Caption = 'Dispatch Date';
+            /*  group("Dispatch Details")
+             {
+                 Caption = 'Dispatch Details';
+                 field(cdDispatchDate; cdDispatchDate)
+                 {
+                     Caption = 'Dispatch Date';
 
-                    trigger OnValidate()
-                    begin
-                        IF cdDispatchDate < rec.Date THEN
-                            ERROR('The dispatch date can not be less than the deal date.');
-                    end;
-                }
-                field(decDispatchedQty; decDispatchedQty)
-                {
-                    Caption = 'Dispatched Qty.';
-                    ApplicationArea = All;
-                }
-                field(decQtyinKg; decQtyinKg)
-                {
-                    Caption = 'Qty. in Kg.';
-                    MinValue = 0;
-                    ApplicationArea = All;
+                     trigger OnValidate()
+                     begin
+                         IF cdDispatchDate < rec.Date THEN
+                             ERROR('The dispatch date can not be less than the deal date.');
+                     end;
+                 }
+                 field(decDispatchedQty; decDispatchedQty)
+                 {
+                     Caption = 'Dispatched Qty.';
+                     ApplicationArea = All;
+                 }
+                 field(decQtyinKg; decQtyinKg)
+                 {
+                     Caption = 'Qty. in Kg.';
+                     MinValue = 0;
+                     ApplicationArea = All;
 
-                    trigger OnValidate()
-                    begin
-                        recPurchSetup.GET;
-                        Rec.CALCFIELDS("Dispatched Qty. (Kg.)");
-                        decRemDisQty := rec."Deal Qty." * rec."Per Unit Qty. (Kg.)";
-                        decRemDisQty := decRemDisQty + (decRemDisQty * recPurchSetup."Deal Tolerance" / 100) - rec."Dispatched Qty. (Kg.)";
-                        IF decQtyinKg > decRemDisQty THEN
-                            ERROR('Can only dispatch %1 quantity.', decRemDisQty);
-                    end;
-                }
-                field(cdVehicleNo; cdVehicleNo)
-                {
-                    Caption = 'Vehicle No.';
-                    ApplicationArea = All;
-                }
-                field(txtVendorName; txtVendorName)
-                {
-                    Caption = 'Vendor Name';
-                    ApplicationArea = All;
-                }
-                field(txtLocationName; txtLocationName)
-                {
-                    Caption = 'Location Name';
-                    ApplicationArea = All;
-                }
-                field("Dispatch Line No."; intDispatchLineNo)
-                {
-                    BlankZero = true;
-                    ApplicationArea = All;
-                }
-            }
-            part("Deal Dispatch Details"; "Deal Dispatch Subform")
-            {
-                SubPageLink = "Sauda No." = FIELD("No.");
-                SubPageView = SORTING("Sauda No.", "Line No.")
-                               ORDER(Ascending);
-                ApplicationArea = All;
-            }
+                     trigger OnValidate()
+                     begin
+                         recPurchSetup.GET;
+                         Rec.CALCFIELDS("Dispatched Qty. (Kg.)");
+                         decRemDisQty := rec."Deal Qty." * rec."Per Unit Qty. (Kg.)";
+                         decRemDisQty := decRemDisQty + (decRemDisQty * recPurchSetup."Deal Tolerance" / 100) - rec."Dispatched Qty. (Kg.)";
+                         IF decQtyinKg > decRemDisQty THEN
+                             ERROR('Can only dispatch %1 quantity.', decRemDisQty);
+                     end;
+                 }
+                 field(cdVehicleNo; cdVehicleNo)
+                 {
+                     Caption = 'Vehicle No.';
+                     ApplicationArea = All;
+                 }
+                 field(txtVendorName; txtVendorName)
+                 {
+                     Caption = 'Vendor Name';
+                     ApplicationArea = All;
+                 }
+                 field(txtLocationName; txtLocationName)
+                 {
+                     Caption = 'Location Name';
+                     ApplicationArea = All;
+                 }
+                 field("Dispatch Line No."; intDispatchLineNo)
+                 {
+                     BlankZero = true;
+                     ApplicationArea = All;
+                 }
+             }
+             part("Deal Dispatch Details"; "Deal Dispatch Subform")
+             {
+                 SubPageLink = "Sauda No." = FIELD("No.");
+                 SubPageView = SORTING("Sauda No.", "Line No.")
+                                ORDER(Ascending);
+                 ApplicationArea = All;
+             } */ // 15800 Dispatch Discontinue
         }
     }
 
@@ -146,80 +146,81 @@ page 50001 "Released Deal List"
     {
         area(processing)
         {
-            action("Submit Dispatch Details")
-            {
-                Caption = 'Submit Dispatch Details';
-                Image = ShipmentLines;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+            /*  action("Submit Dispatch Details")
+             {
+                 Caption = 'Submit Dispatch Details';
+                 Image = ShipmentLines;
+                 Visible = false; // 15800 Dispatch Discontinue
+                 Promoted = true;
+                 PromotedCategory = Process;
+                 PromotedIsBig = true;
 
 
-                trigger OnAction()
-                begin
-                    IF rec.Status <> rec.Status::Release THEN
-                        EXIT;
+                 trigger OnAction()
+                 begin
+                     IF rec.Status <> rec.Status::Release THEN
+                         EXIT;
 
-                    recPurchSetup.GET;
-                    Rec.CALCFIELDS("Dispatched Qty. (Kg.)");
-                    decRemDisQty := rec."Deal Qty." * rec."Per Unit Qty. (Kg.)";
-                    decRemDisQty := decRemDisQty + (decRemDisQty * recPurchSetup."Deal Tolerance" / 100) - rec."Dispatched Qty. (Kg.)";
-                    IF decQtyinKg > decRemDisQty THEN
-                        ERROR('Can only dispatch %1 quantity.', decRemDisQty);
+                     recPurchSetup.GET;
+                     Rec.CALCFIELDS("Dispatched Qty. (Kg.)");
+                     decRemDisQty := rec."Deal Qty." * rec."Per Unit Qty. (Kg.)";
+                     decRemDisQty := decRemDisQty + (decRemDisQty * recPurchSetup."Deal Tolerance" / 100) - rec."Dispatched Qty. (Kg.)";
+                     IF decQtyinKg > decRemDisQty THEN
+                         ERROR('Can only dispatch %1 quantity.', decRemDisQty);
 
-                    IF cdDispatchDate = 0D THEN
-                        ERROR('Enter Dispatch Date.');
+                     IF cdDispatchDate = 0D THEN
+                         ERROR('Enter Dispatch Date.');
 
-                    IF decDispatchedQty = 0 THEN
-                        ERROR('Enter Dispatched Quantity.');
+                     IF decDispatchedQty = 0 THEN
+                         ERROR('Enter Dispatched Quantity.');
 
-                    IF decQtyinKg = 0 THEN
-                        ERROR('Quantity in Kg. must not be blank.');
+                     IF decQtyinKg = 0 THEN
+                         ERROR('Quantity in Kg. must not be blank.');
 
-                    IF cdVehicleNo = '' THEN
-                        ERROR('Vehicle no. must not be blank.');
+                     IF cdVehicleNo = '' THEN
+                         ERROR('Vehicle no. must not be blank.');
 
-                    IF txtVendorName = '' THEN
-                        ERROR('Vendor name must not be blank.');
+                     IF txtVendorName = '' THEN
+                         ERROR('Vendor name must not be blank.');
 
-                    IF txtLocationName = '' THEN
-                        ERROR('Location name must not be blank.');
+                     IF txtLocationName = '' THEN
+                         ERROR('Location name must not be blank.');
 
-                    IF NOT CONFIRM('Do you want to submit the dispatch details against the selected Deal No.?', FALSE) THEN
-                        EXIT;
+                     IF NOT CONFIRM('Do you want to submit the dispatch details against the selected Deal No.?', FALSE) THEN
+                         EXIT;
 
-                    recSaudaDetails.RESET;
-                    recSaudaDetails.SETRANGE("Sauda No.", Rec."No.");
-                    IF recSaudaDetails.FINDLAST THEN
-                        intLineNo := recSaudaDetails."Line No."
-                    ELSE
-                        intLineNo := 0;
+                     recSaudaDetails.RESET;
+                     recSaudaDetails.SETRANGE("Sauda No.", Rec."No.");
+                     IF recSaudaDetails.FINDLAST THEN
+                         intLineNo := recSaudaDetails."Line No."
+                     ELSE
+                         intLineNo := 0;
 
-                    recSaudaDetails.INIT;
-                    recSaudaDetails."Sauda No." := Rec."No.";
-                    intLineNo += 10000;
-                    recSaudaDetails."Line No." := intLineNo;
-                    recSaudaDetails."Dispatch Date" := cdDispatchDate;
-                    recSaudaDetails."Dispatched Tins / Buckets" := decDispatchedQty;
-                    recSaudaDetails.Flora := Rec.Flora;
-                    recSaudaDetails."Packing Type" := Rec."Packing Type";
-                    recSaudaDetails."Vehicle No." := cdVehicleNo;
-                    recSaudaDetails."Beekeeper Name Name" := txtVendorName;
-                    recSaudaDetails."Qty. in Kg." := decQtyinKg;
-                    recSaudaDetails."Location Name" := txtLocationName;
-                    recSaudaDetails.INSERT;
+                     recSaudaDetails.INIT;
+                     recSaudaDetails."Sauda No." := Rec."No.";
+                     intLineNo += 10000;
+                     recSaudaDetails."Line No." := intLineNo;
+                     recSaudaDetails."Dispatch Date" := cdDispatchDate;
+                     recSaudaDetails."Dispatched Tins / Buckets" := decDispatchedQty;
+                     recSaudaDetails.Flora := Rec.Flora;
+                     recSaudaDetails."Packing Type" := Rec."Packing Type";
+                     recSaudaDetails."Vehicle No." := cdVehicleNo;
+                     recSaudaDetails."Beekeeper Name Name" := txtVendorName;
+                     recSaudaDetails."Qty. in Kg." := decQtyinKg;
+                     recSaudaDetails."Location Name" := txtLocationName;
+                     recSaudaDetails.INSERT;
 
-                    cdDispatchDate := 0D;
-                    decDispatchedQty := 0;
-                    decQtyinKg := 0;
-                    cdVehicleNo := '';
-                    txtVendorName := '';
-                    txtLocationName := '';
+                     cdDispatchDate := 0D;
+                     decDispatchedQty := 0;
+                     decQtyinKg := 0;
+                     cdVehicleNo := '';
+                     txtVendorName := '';
+                     txtLocationName := '';
 
-                    MESSAGE('The dispatch details is submitted successfully.');
-                    CurrPage.UPDATE;
-                end;
-            }
+                     MESSAGE('The dispatch details is submitted successfully.');
+                     CurrPage.UPDATE;
+                 end;
+             } */ // 15800 Dispatch Discontinue
             action("Short Close")
             {
                 Caption = 'Short Close';
@@ -257,98 +258,98 @@ page 50001 "Released Deal List"
                     REPORT.RUN(Report::"Deal Print", TRUE, TRUE, recDeal);
                 end;
             }
-            action("Re-open")
-            {
-                Image = ReOpen;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
+            /*  action("Re-open")
+             {
+                 Image = ReOpen;
+                 Promoted = true;
+                 PromotedCategory = Process;
+                 PromotedIsBig = true;
 
-                trigger OnAction()
-                begin
-                    IF intDispatchLineNo = 0 THEN
-                        ERROR('Dispatch line no. must not be 0');
+                 trigger OnAction()
+                 begin
+                     IF intDispatchLineNo = 0 THEN
+                         ERROR('Dispatch line no. must not be 0');
 
-                    recSaudaDetails.RESET;
-                    recSaudaDetails.SETRANGE("Sauda No.", Rec."No.");
-                    recSaudaDetails.SETRANGE("Line No.", intDispatchLineNo);
-                    IF NOT recSaudaDetails.FINDFIRST THEN
-                        ERROR('Invalid dispatch line no., enter the correct line no.');
+                     recSaudaDetails.RESET;
+                     recSaudaDetails.SETRANGE("Sauda No.", Rec."No.");
+                     recSaudaDetails.SETRANGE("Line No.", intDispatchLineNo);
+                     IF NOT recSaudaDetails.FINDFIRST THEN
+                         ERROR('Invalid dispatch line no., enter the correct line no.');
 
-                    IF NOT CONFIRM('Do you want to re-open the selected dispatch?', FALSE) THEN
-                        EXIT;
+                     IF NOT CONFIRM('Do you want to re-open the selected dispatch?', FALSE) THEN
+                         EXIT;
 
-                    recPurchLine.RESET;
-                    recPurchLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
-                    recPurchLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
-                    IF recPurchLine.FINDFIRST THEN
-                        ERROR('The dispatch is already linked to order no. %1, hence can not be re-opened.', recPurchLine."Document No.");
+                     recPurchLine.RESET;
+                     recPurchLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
+                     recPurchLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
+                     IF recPurchLine.FINDFIRST THEN
+                         ERROR('The dispatch is already linked to order no. %1, hence can not be re-opened.', recPurchLine."Document No.");
 
-                    recPurchRcptLine.RESET;
-                    recPurchRcptLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
-                    recPurchRcptLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
-                    IF recPurchRcptLine.FINDFIRST THEN
-                        ERROR('GAN %1 is already posted for the selected dispatch, hence can not be re-opened.', recPurchRcptLine."Document No.");
+                     recPurchRcptLine.RESET;
+                     recPurchRcptLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
+                     recPurchRcptLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
+                     IF recPurchRcptLine.FINDFIRST THEN
+                         ERROR('GAN %1 is already posted for the selected dispatch, hence can not be re-opened.', recPurchRcptLine."Document No.");
 
-                    intDispatchLineNo := 0;
-                    recSaudaDetails."GAN Created" := FALSE;
-                    recSaudaDetails."GAN No." := '';
-                    recSaudaDetails.MODIFY;
-                    CurrPage.UPDATE;
-                end;
-            }
-            action(Delete)
-            {
-                Image = Delete;
-                Promoted = true;
+                     intDispatchLineNo := 0;
+                     recSaudaDetails."GAN Created" := FALSE;
+                     recSaudaDetails."GAN No." := '';
+                     recSaudaDetails.MODIFY;
+                     CurrPage.UPDATE;
+                 end;
+             } */ // 15800 Dispatch Discontinue
+                  /*  action(Delete)
+                   {
+                       Image = Delete;
+                       Promoted = true;
 
 
-                trigger OnAction()
-                begin
-                    IF intDispatchLineNo = 0 THEN
-                        ERROR('Dispatch line no. must not be 0');
+                       trigger OnAction()
+                       begin
+                           IF intDispatchLineNo = 0 THEN
+                               ERROR('Dispatch line no. must not be 0');
 
-                    recSaudaDetails.RESET;
-                    recSaudaDetails.SETRANGE("Sauda No.", Rec."No.");
-                    recSaudaDetails.SETRANGE("Line No.", intDispatchLineNo);
-                    IF NOT recSaudaDetails.FINDFIRST THEN
-                        ERROR('Invalid dispatch line no., enter the correct line no.');
+                           recSaudaDetails.RESET;
+                           recSaudaDetails.SETRANGE("Sauda No.", Rec."No.");
+                           recSaudaDetails.SETRANGE("Line No.", intDispatchLineNo);
+                           IF NOT recSaudaDetails.FINDFIRST THEN
+                               ERROR('Invalid dispatch line no., enter the correct line no.');
 
-                    IF NOT CONFIRM('Do you want to delete the selected dispatch?', FALSE) THEN
-                        EXIT;
+                           IF NOT CONFIRM('Do you want to delete the selected dispatch?', FALSE) THEN
+                               EXIT;
 
-                    recPurchLine.RESET;
-                    recPurchLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
-                    recPurchLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
-                    IF recPurchLine.FINDFIRST THEN
-                        ERROR('The dispatch is already linked to order no. %1, hence can not be deleted.', recPurchLine."Document No.");
+                           recPurchLine.RESET;
+                           recPurchLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
+                           recPurchLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
+                           IF recPurchLine.FINDFIRST THEN
+                               ERROR('The dispatch is already linked to order no. %1, hence can not be deleted.', recPurchLine."Document No.");
 
-                    recPurchRcptLine.RESET;
-                    recPurchRcptLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
-                    recPurchRcptLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
-                    IF recPurchRcptLine.FINDFIRST THEN
-                        ERROR('GAN %1 is already posted for the selected dispatch, hence can not be deleted.', recPurchRcptLine."Document No.");
+                           recPurchRcptLine.RESET;
+                           recPurchRcptLine.SETRANGE("Deal No.", recSaudaDetails."Sauda No.");
+                           recPurchRcptLine.SETRANGE("Deal Line No.", recSaudaDetails."Line No.");
+                           IF recPurchRcptLine.FINDFIRST THEN
+                               ERROR('GAN %1 is already posted for the selected dispatch, hence can not be deleted.', recPurchRcptLine."Document No.");
 
-                    intDispatchLineNo := 0;
-                    recSaudaDetails.DELETE;
-                    CurrPage.UPDATE;
-                end;
-            }
+                           intDispatchLineNo := 0;
+                           recSaudaDetails.DELETE;
+                           CurrPage.UPDATE;
+                       end;
+                   }*/ // 15800 Dispatch Discontinue
         }
     }
 
     trigger OnAfterGetRecord()
     begin
-        Rec.CALCFIELDS("Dispatched Qty.", "Dispatched Qty. (Kg.)");
+        /*  Rec.CALCFIELDS("Dispatched Qty.", "Dispatched Qty. (Kg.)");
 
-        decRemQuantity := rec."Deal Qty." - rec."Dispatched Qty.";
-        decRemQtyKg := (rec."Deal Qty." * rec."Per Unit Qty. (Kg.)") - rec."Dispatched Qty. (Kg.)";
+         decRemQuantity := rec."Deal Qty." - rec."Dispatched Qty.";
+         decRemQtyKg := (rec."Deal Qty." * rec."Per Unit Qty. (Kg.)") - rec."Dispatched Qty. (Kg.)"; */ // 15800 Dispatch Discontinue
     end;
 
     var
         cdDispatchDate: Date;
         decDispatchedQty: Decimal;
-        recSaudaDetails: Record "Deal Dispatch Details";
+        // 15800 Dispatch Discontinue   recSaudaDetails: Record "Deal Dispatch Details";
         intLineNo: Integer;
         decQtyinKg: Decimal;
         cdVehicleNo: Code[20];

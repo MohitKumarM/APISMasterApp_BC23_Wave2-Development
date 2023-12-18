@@ -13,9 +13,9 @@ page 50160 "Store Honey PO List"
     SourceTableView = SORTING("Document Type", "No.")
                       ORDER(Ascending)
                       WHERE("Document Type" = FILTER(Order),
-                            Status = FILTER(Open),
-                            "Order Type" = FILTER(Honey),
-                            "Order Approval Pending" = FILTER(false));
+                            Status = FILTER(Released),
+                            "Order Type" = FILTER(Honey));
+    //"Order Approval Pending" = FILTER(true));
 
     layout
     {
@@ -66,6 +66,7 @@ page 50160 "Store Honey PO List"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                Visible = false;
                 trigger OnAction()
                 begin
                     recPurchSetup.GET;

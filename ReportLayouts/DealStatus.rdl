@@ -1479,14 +1479,8 @@ End Function
         <Field Name="DispatchedQty_DealMaster">
           <DataField>DispatchedQty_DealMaster</DataField>
         </Field>
-        <Field Name="DispatchedQty_DealMasterFormat">
-          <DataField>DispatchedQty_DealMasterFormat</DataField>
-        </Field>
         <Field Name="DispatchedQtyKg_DealMaster">
           <DataField>DispatchedQtyKg_DealMaster</DataField>
-        </Field>
-        <Field Name="DispatchedQtyKg_DealMasterFormat">
-          <DataField>DispatchedQtyKg_DealMasterFormat</DataField>
         </Field>
         <Field Name="Flora_DealMaster">
           <DataField>Flora_DealMaster</DataField>

@@ -417,21 +417,21 @@ page 50021 "Output QC"
                         recItemJournalLines.SETFILTER("No.", '<>%1', '');
                         IF recItemJournalLines.FINDFIRST THEN
                             REPEAT
-                                recMachineCenter.GET(recItemJournalLines."No.");
-                                IF (recMachineCenter."QC Mandatory") AND ((recMachineCenter."QC Type" = recMachineCenter."QC Type"::Quality) OR
-                                                                                (recMachineCenter."QC Type" = recMachineCenter."QC Type"::"Final QC")) THEN BEGIN
-                                    recQualityProcess.RESET;
-                                    recQualityProcess.SETRANGE("Document Type", recQualityProcess."Document Type"::Output);
-                                    recQualityProcess.SETRANGE("Document No.", recItemJournalLines."Document No.");
-                                    recQualityProcess.SETRANGE("Document Line No.", recItemJournalLines."Order Line No.");
-                                    recQualityProcess.SETRANGE(Posted, FALSE);
-                                    recQualityProcess.SETRANGE("Machine No.", recMachineCenter."No.");
-                                    IF NOT recQualityProcess.FINDFIRST THEN
-                                        ERROR('No Quality information is available for %1', recMachineCenter.Name)
-                                    ELSE
-                                        IF recQualityProcess."Output Quality Status" = recQualityProcess."Output Quality Status"::" " THEN
-                                            ERROR('Output Quality Status must not be blank for %1', recMachineCenter.Name);
-                                END;
+                                IF recMachineCenter.GET(recItemJournalLines."No.") then
+                                    IF (recMachineCenter."QC Mandatory") AND ((recMachineCenter."QC Type" = recMachineCenter."QC Type"::Quality) OR
+                                                                                    (recMachineCenter."QC Type" = recMachineCenter."QC Type"::"Final QC")) THEN BEGIN
+                                        recQualityProcess.RESET;
+                                        recQualityProcess.SETRANGE("Document Type", recQualityProcess."Document Type"::Output);
+                                        recQualityProcess.SETRANGE("Document No.", recItemJournalLines."Document No.");
+                                        recQualityProcess.SETRANGE("Document Line No.", recItemJournalLines."Order Line No.");
+                                        recQualityProcess.SETRANGE(Posted, FALSE);
+                                        recQualityProcess.SETRANGE("Machine No.", recMachineCenter."No.");
+                                        IF NOT recQualityProcess.FINDFIRST THEN
+                                            ERROR('No Quality information is available for %1', recMachineCenter.Name)
+                                        ELSE
+                                            IF recQualityProcess."Output Quality Status" = recQualityProcess."Output Quality Status"::" " THEN
+                                                ERROR('Output Quality Status must not be blank for %1', recMachineCenter.Name);
+                                    END;
                             UNTIL recItemJournalLines.NEXT = 0;
 
                         TrySetApplyToEntries;

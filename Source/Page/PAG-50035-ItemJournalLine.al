@@ -91,10 +91,10 @@ page 50035 ItemJournalLine
                 {
                     ToolTip = 'Specifies the value of the Customer Code field.';
                 }
-                field("Deal Line No."; Rec."Deal Line No.")
+                /* field("Deal Line No."; Rec."Deal Line No.")
                 {
                     ToolTip = 'Specifies the value of the Deal Line No. field.';
-                }
+                } */ // 15800 Dispatch Discontinue
                 field("Deal No."; Rec."Deal No.")
                 {
                     ToolTip = 'Specifies the value of the Deal No. field.';

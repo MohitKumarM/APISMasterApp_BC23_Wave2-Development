@@ -54,10 +54,10 @@ page 50018 "Honey Purchase Order Subform"
                 {
                     ApplicationArea = All;
                 }
-                field("Deal Line No."; Rec."Deal Line No.")
+                /* field("Deal Line No."; Rec."Deal Line No.")
                 {
                     ApplicationArea = All;
-                }
+                } */ // 15800 Dispatch Discontinue
                 field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;

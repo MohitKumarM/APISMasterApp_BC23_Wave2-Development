@@ -4,11 +4,11 @@ pageextension 50014 "Purch. Invoice Subform Page" extends "Purch. Invoice Subfor
     {
         addafter(Description)
         {
-            field("Deal Line No."; Rec."Deal Line No.")
+            /* field("Deal Line No."; Rec."Deal Line No.")
             {
                 ApplicationArea = All;
                 Visible = false;
-            }
+            } */ // 15800 Dispatch Discontinue
             field("Deal No."; Rec."Deal No.")
             {
                 ApplicationArea = All;

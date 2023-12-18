@@ -32,11 +32,11 @@ pageextension 50017 ItemLedgerEntry extends "Item Ledger Entries"
             {
                 ApplicationArea = all;
             }
-            field("Deal Line No."; Rec."Deal Line No.")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Deal Line No. field.';
-            }
+            /*  field("Deal Line No."; Rec."Deal Line No.")
+             {
+                 ApplicationArea = All;
+                 ToolTip = 'Specifies the value of the Deal Line No. field.';
+             } */ // // 15800 Dispatch Discontinue
             field("Qty. in Pack"; Rec."Qty. in Pack")
             {
                 ApplicationArea = All;

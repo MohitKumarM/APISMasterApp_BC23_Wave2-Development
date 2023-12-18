@@ -104,13 +104,13 @@ pageextension 50044 ConsumptionJournalExt extends "Consumption Journal"
 
                 ManfactSetup.Get();
 
-                ItemLedgerEntries.Reset();
-                ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
-                ItemLedgerEntries.SetRange("Location Code", Location_loc1.Code);
-                ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
-                ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"Issued RM");
-                if not ItemLedgerEntries.FindFirst() then
-                    Error('Plesae Fill and Post Container Information before posting Consumption.');
+                // ItemLedgerEntries.Reset();
+                // ItemLedgerEntries.SetRange("Entry Type", ItemLedgerEntries."Entry Type"::Transfer);
+                // ItemLedgerEntries.SetRange("Location Code", Location_loc1.Code);
+                // ItemLedgerEntries.SetRange("Document No.", Rec."Document No.");
+                // ItemLedgerEntries.SetRange("Container Trasfer Stage", ItemLedgerEntries."Container Trasfer Stage"::"Issued RM");
+                // if not ItemLedgerEntries.FindFirst() then
+                //     Error('Plesae Fill and Post Container Information before posting Consumption.');
             end;
 
             trigger OnAfterAction()

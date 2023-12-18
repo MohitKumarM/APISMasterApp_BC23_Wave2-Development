@@ -357,7 +357,16 @@ page 50161 "Store Honey PO"
                 ToolTip = 'Finalize the document or journal by posting the amounts and quantities to the related accounts in your company books.';
 
                 trigger OnAction()
+                var
+                    GateEntryAttachment: Record "Gate Entry Attachment";
                 begin
+                    GateEntryAttachment.Reset();
+                    GateEntryAttachment.SetRange("Source Type", GateEntryAttachment."Source Type"::"Purchase Order");
+                    GateEntryAttachment.SetRange("Entry Type", GateEntryAttachment."Entry Type"::Inward);
+                    GateEntryAttachment.SetRange("Source No.", rec."No.");
+                    if not GateEntryAttachment.FindFirst() then
+                        Error('Gate Entry Must be Attached.');
+
                     PostDocument(CODEUNIT::"Purch.-Post (Yes/No)", Enum::"Navigate After Posting"::"Posted Document");
                 end;
             }
@@ -478,6 +487,26 @@ page 50161 "Store Honey PO"
                         CLEAR(CopyPurchDoc);
                     end;
                 }
+                action("Get Gate Entry Lines")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Image = GetLines;
+                    ToolTip = 'View available gate entry lines for attachment.';
+                    trigger OnAction()
+                    var
+                        GateEntryHandler: Codeunit "Gate Entry Handler";
+                    begin
+                        GateEntryHandler.GetPurchaseGateEntryLines(Rec);
+                    end;
+                }
+                action("Attached Gate Entry")
+                {
+                    ApplicationArea = Basic, Suite;
+                    Image = InwardEntry;
+                    RunObject = page "Gate Entry Attachment List";
+                    RunPageLink = "Source No." = field("No."), "Source Type" = const("Purchase Order"), "Entry Type" = const(Inward);
+                    ToolTip = 'View attached gate entry list.';
+                }
                 // action("St&ructure")
                 // {
                 //     Caption = 'St&ructure';
@@ -535,6 +564,7 @@ page 50161 "Store Honey PO"
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
+                    Visible = false;
 
                     trigger OnAction()
                     begin
@@ -560,10 +590,10 @@ page 50161 "Store Honey PO"
                                 PurchLine.TESTFIELD("Location Code");
                                 PurchLine.TESTFIELD(Quantity);
                                 PurchLine.TESTFIELD("Deal No.");
-                                PurchLine.TESTFIELD("Deal Line No.");
-                                PurchLine.TESTFIELD("Dispatched Qty. in Kg.");
+                                // 15800 Dispatch DiscontinuePurchLine.TESTFIELD("Deal Line No.");
+                                // 15800 Dispatch Discontinue  PurchLine.TESTFIELD("Dispatched Qty. in Kg.");
                                 PurchLine.TESTFIELD(Quantity);
-                                PurchLine.TESTFIELD("Packing Type");
+                                // 15800 Dispatch Discontinue  PurchLine.TESTFIELD("Packing Type");
                                 PurchLine.TESTFIELD("Qty. in Pack");
                             UNTIL PurchLine.NEXT = 0 ELSE
                             ERROR('Nothing to Submit.');

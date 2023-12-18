@@ -65,6 +65,7 @@ pageextension 50013 PurchaOrderSubform extends "Purchase Order Subform"
             {
                 ApplicationArea = All;
                 Image = CreateLinesFromJob;
+                Visible = false;
 
                 trigger OnAction()
                 var
