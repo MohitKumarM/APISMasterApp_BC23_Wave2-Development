@@ -92,8 +92,8 @@ pageextension 50019 PurchaseOrder extends "Purchase Order"
                 ReservationEntry.SetRange("Source ID", Rec."No.");
                 ReservationEntry.CalcSums(ReservationEntry.Tin, ReservationEntry.Drum, ReservationEntry.Bucket, ReservationEntry.Can);
                 if (ReservationEntry.Tin <> 0) or (ReservationEntry.Drum <> 0) or (ReservationEntry.Bucket <> 0) or (ReservationEntry.Can <> 0) then
-                    if not rec."Creation Tin&Drum&Bucket Item" then
-                        Error('Please first Click the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                    /*  if not rec."Creation Tin&Drum&Bucket Item" then
+                        Error('Please first Click the "Get Tin,Drum & Bucket" Button on Purchase Line');  */
                 TotalQuantity := (ReservationEntry.Tin + ReservationEntry.Drum + ReservationEntry.Can + ReservationEntry.Bucket);
                 PurchasePayableSetup.Get();
                 PurchasePayableSetup.TestField("Tin Item");
@@ -110,7 +110,7 @@ pageextension 50019 PurchaseOrder extends "Purchase Order"
                         Error('Tin Item Quantity Must be Match Total Tin Qty. value In Reservation Entry.');
                 end else begin
                     if (ReservationEntry.Tin <> 0) then begin
-                        Error('You have Define Tin Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        Error('You have Define Tin Quantity in Tracking Lines But Not get the PO So Please Define 0 Quantity in Tin in Tracking Lines Page.');
                     end;
                 end;
 
@@ -123,7 +123,7 @@ pageextension 50019 PurchaseOrder extends "Purchase Order"
                         Error('Drum Item Quantity Must be Match Total Drum Qty. value In Reservation Entry.');
                 end else begin
                     if (ReservationEntry.Drum <> 0) then begin
-                        Error('You have Define Drum Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        Error('You have Define Drum Quantity in Tracking Lines But Not get the  PO So Please Define 0 Quantity in Drum in Tracking Lines Page.');
                     end;
                 end;
                 PurchaseLine.Reset();
@@ -135,7 +135,7 @@ pageextension 50019 PurchaseOrder extends "Purchase Order"
                         Error('Bucket Item Quantity Must be Match Total Bucket Qty. value In Reservation Entry.');
                 end else begin
                     if (ReservationEntry.Bucket <> 0) then begin
-                        Error('You have Define Bucket Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        Error('You have Define Bucket Quantity in Tracking Lines But Not get the PO So Please Define 0 Quantity in Bucket in Tracking Lines Page.');
                     end;
                 end;
 
@@ -148,7 +148,7 @@ pageextension 50019 PurchaseOrder extends "Purchase Order"
                         Error('Can Item Quantity Must be Match Total Can Qty. value In Reservation Entry.');
                 end else begin
                     if (ReservationEntry.Can <> 0) then begin
-                        Error('You have Define Can Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        Error('You have Define Can Quantity in Tracking Lines But Not get the PO So Please Define 0 Quantity in Can in Tracking Lines Page.');
                     end;
                 end;
 

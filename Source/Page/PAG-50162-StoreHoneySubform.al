@@ -54,7 +54,7 @@ page 50162 "Store Honey Subform"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
-                    Visible = false;
+
 
                     trigger OnValidate()
                     begin
@@ -62,16 +62,7 @@ page 50162 "Store Honey Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field("Honey Item No."; Rec."Honey Item No.")
-                {
-                    ApplicationArea = All;
-                    Caption = 'No.';
-                    trigger OnValidate()
-                    begin
-                        Rec.ShowShortcutDimCode(ShortcutDimCode);
-                        NoOnAfterValidate;
-                    end;
-                }
+
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
@@ -94,6 +85,27 @@ page 50162 "Store Honey Subform"
                 {
                     ApplicationArea = All;
                 }
+                field("Direct Unit Cost"; Rec."Direct Unit Cost")
+                {
+                    ApplicationArea = all;
+                }
+                field("Line Amount"; Rec."Line Amount")
+                {
+                    ApplicationArea = all;
+                }
+                field("GST Group Code"; Rec."GST Group Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("HSN/SAC Code"; Rec."HSN/SAC Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("GST Credit"; Rec."GST Credit")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Packing Type"; Rec."Packing Type")
                 {
                     ApplicationArea = All;
@@ -115,10 +127,7 @@ page 50162 "Store Honey Subform"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                field("HSN/SAC Code"; Rec."HSN/SAC Code")
-                {
-                    ApplicationArea = All;
-                }
+
                 // field("Tax Group Code"; Rec."Tax Group Code")
                 // {
                 //     ApplicationArea = All;
@@ -128,10 +137,7 @@ page 50162 "Store Honey Subform"
                 // {
                 //     Editable = false;
                 // }
-                field("GST Group Code"; Rec."GST Group Code")
-                {
-                    ApplicationArea = All;
-                }
+
                 field("GST Jurisdiction Type"; Rec."GST Jurisdiction Type")
                 {
                     ApplicationArea = All;
@@ -140,6 +146,10 @@ page 50162 "Store Honey Subform"
                 {
                     ApplicationArea = All;
                     Editable = false;
+                }
+                field("Unit Price (LCY)"; Rec."Unit Price (LCY)")
+                {
+                    ApplicationArea = all;
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
@@ -242,6 +252,16 @@ page 50162 "Store Honey Subform"
                     trigger OnValidate()
                     begin
                         Rec.ValidateShortcutDimCode(8, ShortcutDimCode[8]);
+                    end;
+                }
+                field("Honey Item No."; Rec."Honey Item No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'No.';
+                    trigger OnValidate()
+                    begin
+                        Rec.ShowShortcutDimCode(ShortcutDimCode);
+                        NoOnAfterValidate;
                     end;
                 }
             }
@@ -393,7 +413,13 @@ page 50162 "Store Honey Subform"
                         PurchasePayableSetup: Record "Purchases & Payables Setup";
                         ReserVationEntry2: Record "Reservation Entry";
                         PurchaseHeader: Record "Purchase Header";
+                        Rec_PurchaseHeader: Record "Purchase Header";
+                        Rec_PurchaseHeader2: Record "Purchase Header";
                     begin
+                        if Rec_PurchaseHeader.get(rec."Document Type", Rec."Document No.") then begin
+                            Rec_PurchaseHeader.Status := Rec_PurchaseHeader.Status::Open;
+                            Rec_PurchaseHeader.Modify();
+                        end;
                         PurchasePayableSetup.Get();
                         Clear(i);
                         ReservationEntry.SetRange("Source Type", Database::"Purchase Line");
@@ -472,6 +498,11 @@ page 50162 "Store Honey Subform"
                                 PurchaseHeader."Creation Tin&Drum&Bucket Item" := true;
                                 PurchaseHeader.Modify();
                             end;
+                        end;
+
+                        if Rec_PurchaseHeader2.get(rec."Document Type", Rec."Document No.") then begin
+                            Rec_PurchaseHeader2.Status := Rec_PurchaseHeader2.Status::Released;
+                            Rec_PurchaseHeader2.Modify();
                         end;
                     end;
                 }

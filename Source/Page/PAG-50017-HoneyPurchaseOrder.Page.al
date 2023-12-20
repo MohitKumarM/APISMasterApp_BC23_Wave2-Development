@@ -73,6 +73,10 @@ page 50017 "Honey Purchase Order"
                     {
                         ApplicationArea = All;
                     }
+                    field("Short Close Comment"; Rec."Short Close Comment")
+                    {
+                        ApplicationArea = all;
+                    }
                 }
                 group("General ")
                 {
@@ -152,10 +156,6 @@ page 50017 "Honey Purchase Order"
                         Importance = Promoted;
                         ApplicationArea = All;
                     }
-                    field("Shipping Agent Code"; Rec."Shipping Agent Code")
-                    {
-                        ApplicationArea = All;
-                    }
                     field("Valid Till"; Rec."Valid Till")
                     {
                         ApplicationArea = All;
@@ -223,15 +223,111 @@ page 50017 "Honey Purchase Order"
                     {
                         ApplicationArea = All;
                     }
-                    field("GST Vendor Type"; Rec."GST Vendor Type")
-                    {
-                        ApplicationArea = All;
-                    }
+
                 }
             }
             part(PurchLines; "Honey Purchase Order Subform")
             {
                 SubPageLink = "Document No." = FIELD("No.");
+            }
+            group("Tax Information")
+            {
+                Caption = 'Tax Information';
+
+                field("GST Vendor Type"; Rec."GST Vendor Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Bill of Entry Date"; Rec."Bill of Entry Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Bill of Entry No."; Rec."Bill of Entry No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Without Bill Of Entry"; Rec."Without Bill Of Entry")
+                {
+                    ApplicationArea = All;
+                }
+                field("Bill of Entry Value"; Rec."Bill of Entry Value")
+                {
+                    ApplicationArea = All;
+                }
+                field("Invoice Type"; Rec."Invoice Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("GST Invoice"; Rec."GST Invoice")
+                {
+                    ApplicationArea = All;
+                }
+                field("POS Out Of India"; Rec."POS Out Of India")
+                {
+                    ApplicationArea = All;
+                }
+                field("POS as Vendor State"; Rec."POS as Vendor State")
+                {
+                    ApplicationArea = All;
+                }
+                field("Associated Enterprises"; Rec."Associated Enterprises")
+                {
+                    ApplicationArea = All;
+                }
+                field("Location State Code"; Rec."Location State Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Location GST Reg. No."; Rec."Location GST Reg. No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Vendor GST Reg. No."; Rec."Vendor GST Reg. No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Order Address GST Reg. No."; Rec."Order Address GST Reg. No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("GST Order Address State"; Rec."GST Order Address State")
+                {
+                    ApplicationArea = All;
+                }
+                field("Nature of Supply"; Rec."Nature of Supply")
+                {
+                    ApplicationArea = All;
+                }
+                field("Vehicle No."; Rec."Vehicle No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Vehicle Type"; Rec."Vehicle Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Distance (Km)"; Rec."Distance (Km)")
+                {
+                    ApplicationArea = All;
+                }
+                field("Shipping Agent Code"; Rec."Shipping Agent Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Rate Change Applicable"; Rec."Rate Change Applicable")
+                {
+                    ApplicationArea = All;
+                }
+                field("Supply Finish Date"; Rec."Supply Finish Date")
+                {
+                    ApplicationArea = All;
+
+                }
+                field("Payment Date"; Rec."Payment Date")
+                {
+                    ApplicationArea = All;
+                }
+
             }
         }
         area(factboxes)
@@ -428,8 +524,48 @@ page 50017 "Honey Purchase Order"
                 }
             }
         }
+
         area(processing)
         {
+            group(Action13)
+            {
+                Caption = 'Release';
+                Image = ReleaseDoc;
+                action(Release)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Re&lease';
+                    Image = ReleaseDoc;
+                    ShortCutKey = 'Ctrl+F9';
+                    ToolTip = 'Release the document to the next stage of processing. You must reopen the document before you can make changes to it.';
+
+                    trigger OnAction()
+                    var
+                        ReleasePurchDoc: Codeunit "Release Purchase Document";
+                    begin
+                        //Rec.PerformManualRelease();
+                        ReleasePurchDoc.PerformManualRelease(Rec);
+                        CurrPage.PurchLines.PAGE.ClearTotalPurchaseHeader();
+
+                    end;
+                }
+                action(Reopen)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Re&open';
+                    Enabled = rec.Status <> Status::Open;
+                    Image = ReOpen;
+                    ToolTip = 'Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed';
+
+                    trigger OnAction()
+                    var
+                        ReleasePurchDoc: Codeunit "Release Purchase Document";
+                    begin
+                        ReleasePurchDoc.PerformManualReopen(Rec);
+                        CurrPage.PurchLines.PAGE.ClearTotalPurchaseHeader();
+                    end;
+                }
+            }
             group("F&unctions")
             {
                 Caption = 'F&unctions';
@@ -519,6 +655,9 @@ page 50017 "Honey Purchase Order"
                         Enabled = NOT OpenApprovalEntriesExist AND CanRequestApprovalForFlow;
                         Image = SendApprovalRequest;
                         ToolTip = 'Request approval of the document.';
+                        PromotedCategory = Process;
+                        PromotedIsBig = true;
+                        Promoted = true;
 
                         trigger OnAction()
                         var
@@ -535,6 +674,9 @@ page 50017 "Honey Purchase Order"
                         Enabled = CanCancelApprovalForRecord OR CanCancelApprovalForFlow;
                         Image = CancelApprovalRequest;
                         ToolTip = 'Cancel the approval request.';
+                        PromotedCategory = Process;
+                        PromotedIsBig = true;
+                        Promoted = true;
 
                         trigger OnAction()
                         var
@@ -659,6 +801,7 @@ page 50017 "Honey Purchase Order"
                     }
                 }
             }
+
         }
     }
     trigger OnAfterGetRecord()

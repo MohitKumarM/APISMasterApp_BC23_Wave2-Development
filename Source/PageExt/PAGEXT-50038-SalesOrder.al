@@ -49,6 +49,31 @@ pageextension 50038 "SalesOrder" extends "Sales Order"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Transaction Type field.';
             }
+            field("Transporter Name"; Rec."Transporter Name")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Transaction Type field.';
+            }
+            field("Vehichle No."; Rec."Vehichle No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Transaction Type field.';
+            }
+            field("Driver Name"; Rec."Driver Name")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Transaction Type field.';
+            }
+            field("Driver Mob No."; Rec."Driver Mob No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Transaction Type field.';
+            }
+            field("Driver Adhar No."; Rec."Driver Adhar No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Transaction Type field.';
+            }
         }
     }
 

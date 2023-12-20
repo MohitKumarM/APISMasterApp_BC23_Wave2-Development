@@ -68,6 +68,14 @@ page 50018 "Honey Purchase Order Subform"
                 {
                     ApplicationArea = All;
                 }
+                field("Direct Unit Cost"; Rec."Direct Unit Cost")// 16630
+                {
+                    ApplicationArea = All;
+                }
+                field("Line Amount"; Rec."Line Amount")//16630
+                {
+                    ApplicationArea = All;
+                }
                 field("Packing Type"; Rec."Packing Type")
                 {
                     ApplicationArea = All;
@@ -89,6 +97,10 @@ page 50018 "Honey Purchase Order Subform"
                     ApplicationArea = All;
                     Editable = true;
                 }
+                field("GST Group Code"; Rec."GST Group Code")
+                {
+                    ApplicationArea = All;
+                }
                 field("HSN/SAC Code"; Rec."HSN/SAC Code")
                 {
                     ApplicationArea = All;
@@ -102,7 +114,7 @@ page 50018 "Honey Purchase Order Subform"
                 // {
                 //     Editable = false;
                 // }
-                field("GST Group Code"; Rec."GST Group Code")
+                field("GST Credit"; Rec."GST Credit")
                 {
                     ApplicationArea = All;
                 }
@@ -476,5 +488,13 @@ page 50018 "Honey Purchase Order Subform"
     procedure ForceTotalsCalculation()
     begin
         DocumentTotals.PurchaseDocTotalsNotUpToDate();
+    end;
+
+    procedure ClearTotalPurchaseHeader();
+    var
+        TotalPurchaseHeader: Record "Purchase Header";
+    begin
+        if TotalPurchaseHeader.get(rec."Document Type", rec."Document No.") then
+            Clear(TotalPurchaseHeader);
     end;
 }

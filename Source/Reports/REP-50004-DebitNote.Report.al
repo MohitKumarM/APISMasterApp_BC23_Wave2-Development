@@ -38,7 +38,7 @@ report 50004 "Debit Note-New"
             column(HOME_PAGE; Home_Page) { }
             column(EMAIL; '') { }
             column(PaymentTerm_Remarks; '') { }
-            column(BuyerOrder_No; '')// External Doc No
+            column(BuyerOrder_No; '' )// External Doc No
             {
             }
             column(BuyerOrder_Date; '')// External Doc Date

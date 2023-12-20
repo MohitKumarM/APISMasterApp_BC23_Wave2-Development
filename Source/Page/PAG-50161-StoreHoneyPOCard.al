@@ -4,6 +4,7 @@ page 50161 "Store Honey PO"
     DeleteAllowed = false;
     InsertAllowed = false;
     LinksAllowed = false;
+    Editable = false;
     PageType = Document;
     ApplicationArea = All;
     RefreshOnActivate = true;
@@ -229,9 +230,9 @@ page 50161 "Store Honey PO"
                     }
                 }
             }
-            part(PurchLines; "Honey Purchase Order Subform")
+            part(PurchLines; "Store Honey Subform")
             {
-                SubPageLink = "Document No." = FIELD("No.");
+                SubPageLink = "Document No." = field("No.");
             }
         }
         area(factboxes)
@@ -359,14 +360,84 @@ page 50161 "Store Honey PO"
                 trigger OnAction()
                 var
                     GateEntryAttachment: Record "Gate Entry Attachment";
+                    ReservationEntry: Record "Reservation Entry";
+                    PurchaseLine: Record "Purchase Line";
+                    PurchasePayableSetup: Record "Purchases & Payables Setup";
+                    TotalQuantity: Decimal;
                 begin
+                    ReservationEntry.Reset();
+                    ReservationEntry.SetRange("Source Type", Database::"Purchase Line");
+                    ReservationEntry.SetRange("Source ID", Rec."No.");
+                    ReservationEntry.CalcSums(ReservationEntry.Tin, ReservationEntry.Drum, ReservationEntry.Bucket, ReservationEntry.Can);
+                    if (ReservationEntry.Tin <> 0) or (ReservationEntry.Drum <> 0) or (ReservationEntry.Bucket <> 0) or (ReservationEntry.Can <> 0) then
+                        if not rec."Creation Tin&Drum&Bucket Item" then
+                            Error('Please first Click the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                    TotalQuantity := (ReservationEntry.Tin + ReservationEntry.Drum + ReservationEntry.Can + ReservationEntry.Bucket);
+                    PurchasePayableSetup.Get();
+                    PurchasePayableSetup.TestField("Tin Item");
+                    PurchasePayableSetup.TestField("Drum Item");
+                    PurchasePayableSetup.TestField("Bucket Item");
+                    PurchasePayableSetup.TestField("CAN Item");
+
+                    PurchaseLine.Reset();
+                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetRange("Document No.", Rec."No.");
+                    PurchaseLine.SetRange("No.", PurchasePayableSetup."Tin Item");
+                    if PurchaseLine.FindFirst() then begin
+                        if PurchaseLine.Quantity <> ReservationEntry.Tin then
+                            Error('Tin Item Quantity Must be Match Total Tin Qty. value In Reservation Entry.');
+                    end else begin
+                        if (ReservationEntry.Tin <> 0) then begin
+                            Error('You have Define Tin Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        end;
+                    end;
+
+                    PurchaseLine.Reset();
+                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetRange("Document No.", Rec."No.");
+                    PurchaseLine.SetRange("No.", PurchasePayableSetup."Drum Item");
+                    if PurchaseLine.FindFirst() then begin
+                        if PurchaseLine.Quantity <> ReservationEntry.Drum then
+                            Error('Drum Item Quantity Must be Match Total Drum Qty. value In Reservation Entry.');
+                    end else begin
+                        if (ReservationEntry.Drum <> 0) then begin
+                            Error('You have Define Drum Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        end;
+                    end;
+                    PurchaseLine.Reset();
+                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetRange("Document No.", Rec."No.");
+                    PurchaseLine.SetRange("No.", PurchasePayableSetup."Bucket Item");
+                    if PurchaseLine.FindFirst() then begin
+                        if PurchaseLine.Quantity <> ReservationEntry.Bucket then
+                            Error('Bucket Item Quantity Must be Match Total Bucket Qty. value In Reservation Entry.');
+                    end else begin
+                        if (ReservationEntry.Bucket <> 0) then begin
+                            Error('You have Define Bucket Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        end;
+                    end;
+
+                    PurchaseLine.Reset();
+                    PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
+                    PurchaseLine.SetRange("Document No.", Rec."No.");
+                    PurchaseLine.SetRange("No.", PurchasePayableSetup."CAN Item");
+                    if PurchaseLine.FindFirst() then begin
+                        if PurchaseLine.Quantity <> ReservationEntry.Can then
+                            Error('Can Item Quantity Must be Match Total Can Qty. value In Reservation Entry.');
+                    end else begin
+                        if (ReservationEntry.Can <> 0) then begin
+                            Error('You have Define Can Quantity in Tracking Lines But Not get the PO So Please Click again the "Get Tin,Drum & Bucket" Button on Purchase Line');
+                        end;
+                    end;
+
                     GateEntryAttachment.Reset();
                     GateEntryAttachment.SetRange("Source Type", GateEntryAttachment."Source Type"::"Purchase Order");
                     GateEntryAttachment.SetRange("Entry Type", GateEntryAttachment."Entry Type"::Inward);
                     GateEntryAttachment.SetRange("Source No.", rec."No.");
                     if not GateEntryAttachment.FindFirst() then
                         Error('Gate Entry Must be Attached.');
-
+                    if not CONFIRM('Do you want to Receive the selected Order?', false) then
+                        Error('');
                     PostDocument(CODEUNIT::"Purch.-Post (Yes/No)", Enum::"Navigate After Posting"::"Posted Document");
                 end;
             }
@@ -612,6 +683,7 @@ page 50161 "Store Honey PO"
                     Promoted = true;
                     PromotedCategory = Process;
                     ApplicationArea = all;
+                    Visible = false;
                     trigger OnAction()
                     var
                         PurchasePayableSetup: Record "Purchases & Payables Setup";
@@ -626,6 +698,23 @@ page 50161 "Store Honey PO"
                         Rec.Modify();
                         ArchiveManagement.AutoArchivePurchDocument(Rec);
                         CurrPage.Close();
+                    end;
+                }
+                action(Reopen)
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Re&open';
+                    Enabled = rec.Status <> Status::Open;
+                    Image = ReOpen;
+                    ToolTip = 'Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    trigger OnAction()
+                    var
+                        ReleasePurchDoc: Codeunit "Release Purchase Document";
+                    begin
+                        ReleasePurchDoc.PerformManualReopen(Rec);
+                        CurrPage.PurchLines.PAGE.ClearTotalPurchaseHeader();
                     end;
                 }
             }
