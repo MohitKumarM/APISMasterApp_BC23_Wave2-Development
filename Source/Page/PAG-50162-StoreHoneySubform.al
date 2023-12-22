@@ -479,6 +479,7 @@ page 50162 "Store Honey Subform"
                                         PurchaseLine2."Line No." := LineNo;
                                         PurchaseLine2.Validate(Type, PurchaseLine2.Type::Item);
                                         PurchaseLine2.Validate("No.", ItemNo);
+                                        PurchaseLine2."Honey Item No." := ItemNo;
                                         PurchaseLine2.Validate(Quantity, Qty);
                                         PurchaseLine2.Insert(true);
                                     end else begin

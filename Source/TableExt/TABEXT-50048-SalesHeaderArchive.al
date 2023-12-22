@@ -37,14 +37,14 @@ tableextension 50048 SalesHeaderArchive extends "Sales Header Archive"
             TableRelation = "Salesperson/Purchaser";
             DataClassification = ToBeClassified;
         }
-        field(80007; "Transporter Name"; Text[50])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(80008; "Vehichle No."; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
+        // field(80007; "Transporter Name"; Text[50])
+        // {
+        //     DataClassification = ToBeClassified;
+        // }
+        // field(80008; "Vehichle No."; Code[20])
+        // {
+        //     DataClassification = ToBeClassified;
+        // }
         field(80009; "Driver Name"; Text[50])
         {
             DataClassification = ToBeClassified;
@@ -53,8 +53,9 @@ tableextension 50048 SalesHeaderArchive extends "Sales Header Archive"
         {
             DataClassification = ToBeClassified;
         }
-        field(80011; "Driver Adhar No."; Integer)
+        field(80011; "Driver Adhar No."; Code[12])
         {
+            Width = 12;
             DataClassification = ToBeClassified;
         }
         field(80012; "Loading Start Time"; DateTime)

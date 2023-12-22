@@ -49,31 +49,46 @@ pageextension 50038 "SalesOrder" extends "Sales Order"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Transaction Type field.';
             }
-            field("Transporter Name"; Rec."Transporter Name")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Transaction Type field.';
-            }
-            field("Vehichle No."; Rec."Vehichle No.")
-            {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Transaction Type field.';
-            }
+
+        }
+        addafter("Shipping Agent Code")
+        {
             field("Driver Name"; Rec."Driver Name")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Transaction Type field.';
+                ToolTip = 'Specifies the value of the Driver Name field.';
             }
             field("Driver Mob No."; Rec."Driver Mob No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Transaction Type field.';
+                ToolTip = 'Specifies the value of the Driver Mob No. field.';
             }
             field("Driver Adhar No."; Rec."Driver Adhar No.")
             {
                 ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Transaction Type field.';
+                ToolTip = 'Specifies the value of the Driver Adhar No. field.';
             }
+            field("Loading Start Time"; Rec."Loading Start Time")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Loading Start Time field.';
+            }
+            field("Loading End Time"; Rec."Loading End Time")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Loading End Time field.';
+            }
+            field("Stock In Hand"; Rec."Stock In Hand")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Stock In Hand field.';
+            }
+            field("Quantity Loaded"; Rec."Quantity Loaded")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Stock In Hand field.';
+            }
+
         }
     }
 

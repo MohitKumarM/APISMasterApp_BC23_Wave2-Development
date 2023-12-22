@@ -369,6 +369,7 @@ page 50161 "Store Honey PO"
                     ReservationEntry.SetRange("Source Type", Database::"Purchase Line");
                     ReservationEntry.SetRange("Source ID", Rec."No.");
                     ReservationEntry.CalcSums(ReservationEntry.Tin, ReservationEntry.Drum, ReservationEntry.Bucket, ReservationEntry.Can);
+
                     if (ReservationEntry.Tin <> 0) or (ReservationEntry.Drum <> 0) or (ReservationEntry.Bucket <> 0) or (ReservationEntry.Can <> 0) then
                         if not rec."Creation Tin&Drum&Bucket Item" then
                             Error('Please first Click the "Get Tin,Drum & Bucket" Button on Purchase Line');
@@ -676,30 +677,30 @@ page 50161 "Store Honey PO"
                         CurrPage.CLOSE;
                     end;
                 }
-                action("Short Closed")
-                {
-                    Caption = 'Short Closed';
-                    Image = Close;
-                    Promoted = true;
-                    PromotedCategory = Process;
-                    ApplicationArea = all;
-                    Visible = false;
-                    trigger OnAction()
-                    var
-                        PurchasePayableSetup: Record "Purchases & Payables Setup";
-                    begin
+                // action("Short Closed")
+                // {
+                //     Caption = 'Short Closed';
+                //     Image = Close;
+                //     Promoted = true;
+                //     PromotedCategory = Process;
+                //     ApplicationArea = all;
+                //     Visible = false;
+                //     trigger OnAction()
+                //     var
+                //         PurchasePayableSetup: Record "Purchases & Payables Setup";
+                //     begin
 
-                        PurchasePayableSetup.get;
-                        PurchasePayableSetup.TestField("Archive Orders", true);
-                        rec.TestField("Short Close Comment");
-                        IF NOT CONFIRM('Do you want to Short Close the selected Order?', FALSE) THEN
-                            EXIT;
-                        Rec."Short Close" := true;
-                        Rec.Modify();
-                        ArchiveManagement.AutoArchivePurchDocument(Rec);
-                        CurrPage.Close();
-                    end;
-                }
+                //         PurchasePayableSetup.get;
+                //         PurchasePayableSetup.TestField("Archive Orders", true);
+                //         rec.TestField("Short Close Comment");
+                //         IF NOT CONFIRM('Do you want to Short Close the selected Order?', FALSE) THEN
+                //             EXIT;
+                //         Rec."Short Close" := true;
+                //         Rec.Modify();
+                //         ArchiveManagement.AutoArchivePurchDocument(Rec);
+                //         CurrPage.Close();
+                //     end;
+                // }
                 action(Reopen)
                 {
                     ApplicationArea = Suite;

@@ -168,6 +168,10 @@ table 50000 "Deal Master"
         {
             DataClassification = ToBeClassified;
         }
+        field(50016; "MRN No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

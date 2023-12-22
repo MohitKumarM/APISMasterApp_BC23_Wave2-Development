@@ -2,6 +2,10 @@ tableextension 50036 SalesHeader extends "Sales Header"
 {
     fields
     {
+        modify("LR/RR No.")
+        {
+            Caption = 'Vehichle No.';
+        }
         field(50000; "Pending Approval"; Boolean)
         {
             DataClassification = ToBeClassified;
@@ -118,14 +122,14 @@ tableextension 50036 SalesHeader extends "Sales Header"
         {
             DataClassification = ToBeClassified;
         }
-        field(80007; "Transporter Name"; Text[50])
-        {
-            DataClassification = ToBeClassified;
-        }
-        field(80008; "Vehichle No."; Code[20])
-        {
-            DataClassification = ToBeClassified;
-        }
+        // field(80007; "Transporter Name"; Text[50])
+        // {
+        //     DataClassification = ToBeClassified;
+        // }
+        // field(80008; "Vehichle No."; Code[20])
+        // {
+        //     DataClassification = ToBeClassified;
+        // }
         field(80009; "Driver Name"; Text[50])
         {
             DataClassification = ToBeClassified;
@@ -134,9 +138,17 @@ tableextension 50036 SalesHeader extends "Sales Header"
         {
             DataClassification = ToBeClassified;
         }
-        field(80011; "Driver Adhar No."; Integer)
+        field(80011; "Driver Adhar No."; Code[12])
         {
             DataClassification = ToBeClassified;
+            trigger OnValidate()
+            var
+                i: Integer;
+            begin
+                i := StrLen("Driver Adhar No.");
+                if i <> 12 then
+                    Error('Adhar No should be only 12 Digits');
+            end;
         }
         field(80012; "Loading Start Time"; DateTime)
         {

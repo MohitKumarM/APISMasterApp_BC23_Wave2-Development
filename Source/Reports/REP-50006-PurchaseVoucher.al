@@ -22,8 +22,8 @@ report 50006 "Purchase Voucher"
             column(Shipment_Method_Code; "Shipment Method Code") { }
             column(Location_GST_Reg__No_; "Location GST Reg. No.") { }
             column(Bal__Account_No_; "Bal. Account No.") { }
-            column(Home_Page; '') { }
-            column(Email; '') { }
+            column(Home_Page; recCompInfo."Home Page") { }
+            column(Email; recCompInfo."E-Mail") { }
             column(Location1; txtLocation[1]) { }
             column(Location2; txtLocation[2] + ' ' + txtLocation[3]) { }
             column(Location3; txtLocation[4] + ' ' + txtLocation[5]) { }

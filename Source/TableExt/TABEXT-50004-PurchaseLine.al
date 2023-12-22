@@ -12,6 +12,7 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
                     IF VendorR.GET("Pay-to Vendor No.") THEN
                         "P.A.N. No." := VendorR."P.A.N. No.";
                 end;
+
             end;
         }
         field(50001; "Deal No."; Code[20])
@@ -23,11 +24,16 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
             trigger OnValidate()
             var
                 DealMaster: Record "Deal Master";
+                DealMaster2: Record "Deal Master";
             begin
+                if DealMaster2.get(xRec."Deal No.") then begin
+                    DealMaster2.Status := DealMaster2.Status::Release;
+                    DealMaster2.Modify();
+                end;
                 /*   IF Rec."Deal No." = '' THEN
                       Rec.VALIDATE("Deal Line No.", 0)
                   ELSE BEGIN */
-                recDealDetails.GET(Rec."Deal No.");
+
                 // IF recDealDetails."Item Code" <> "No." THEN
                 //     ERROR('Item code on deal and purchase line does not match.');
                 //  END; // 15800 Dispatch Discontinue
@@ -38,7 +44,10 @@ tableextension 50004 PurchaseLine extends "Purchase Line"
                     rec.Flora := DealMaster.Flora;
                     rec.Validate(Quantity, (DealMaster."Deal Qty." * DealMaster."Per Unit Qty. (Kg.)"));
                     rec.Validate("Dispatched Qty. in Kg.", (DealMaster."Deal Qty." * DealMaster."Per Unit Qty. (Kg.)"));
+                    DealMaster.Status := DealMaster.Status::Close;
+                    DealMaster.Modify();
                 end;
+
             end;
         }
         field(50002; "Packing Type"; Option)

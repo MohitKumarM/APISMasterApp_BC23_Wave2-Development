@@ -4,7 +4,7 @@ page 50001 "Released Deal List"
     DeleteAllowed = false;
     InsertAllowed = false;
     LinksAllowed = false;
-    ModifyAllowed = false;
+    //ModifyAllowed = false;
     SourceTable = "Deal Master";
     ApplicationArea = All;
     PageType = List;
@@ -19,39 +19,47 @@ page 50001 "Released Deal List"
         {
             repeater(Group)
             {
-                Editable = false;
+
                 field("No."; rec."No.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Date; rec.Date)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Item Code"; rec."Item Code")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Purchaser Code"; rec."Purchaser Code")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Purchaser Name"; rec."Purchaser Name")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(Flora; rec.Flora)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
 
                 field("Deal Qty."; rec."Deal Qty.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field("Unit Rate in Kg."; rec."Unit Rate in Kg.")
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 /* field("Dispatched Qty."; rec."Dispatched Qty.")
                 {
@@ -62,10 +70,16 @@ page 50001 "Released Deal List"
                     Caption = 'Remaining Qty.';
                     Editable = false;
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("Per Unit Qty. (Kg.)"; rec."Per Unit Qty. (Kg.)")
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                }
+                field(Comment; Rec.Comment)
+                {
+                    ApplicationArea = all;
                 }
                 /*  field("Dispatched Qty. (Kg.)"; rec."Dispatched Qty. (Kg.)")
                  {
@@ -75,6 +89,7 @@ page 50001 "Released Deal List"
                 {
                     Editable = false;
                     ApplicationArea = All;
+                    Visible = false;
                 }
             }
             /*  group("Dispatch Details")
@@ -234,7 +249,7 @@ page 50001 "Released Deal List"
                 begin
                     IF NOT CONFIRM('Do you want to close the selected deal?', FALSE) THEN
                         EXIT;
-
+                    rec.TestField(Comment);
                     rec.Status := rec.Status::Close;
                     rec.MODIFY;
 

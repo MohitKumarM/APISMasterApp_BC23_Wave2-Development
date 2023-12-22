@@ -753,12 +753,17 @@ codeunit 50000 Tble83
     local procedure OnBeforeConfirmPost_Purch(var PurchaseHeader: Record "Purchase Header"; var HideDialog: Boolean; var IsHandled: Boolean; var DefaultOption: Integer)
     var
         Rec_PurchLine: Record "Purchase Line";
+        PuurchasePayableSetup: Record "Purchases & Payables Setup";
+        ItemNo: Code[20];
     begin
+
         //Iappc - GAN Validation Begin
         IF (PurchaseHeader."Document Type" = PurchaseHeader."Document Type"::Order) AND (PurchaseHeader."Order Type" = PurchaseHeader."Order Type"::Honey) THEN BEGIN
+            PuurchasePayableSetup.Get();
             Rec_PurchLine.RESET;
             Rec_PurchLine.SETRANGE("Document Type", PurchaseHeader."Document Type");
             Rec_PurchLine.SETRANGE("Document No.", PurchaseHeader."No.");
+            Rec_PurchLine.SetFilter("No.", '<>%1&<>%2&<>%3&<>%4', PuurchasePayableSetup."Tin Item", PuurchasePayableSetup."Drum Item", PuurchasePayableSetup."Bucket Item", PuurchasePayableSetup."CAN Item");
             IF Rec_PurchLine.FINDFIRST THEN
                 REPEAT
                     Rec_PurchLine.TESTFIELD(Type, Rec_PurchLine.Type::Item);
@@ -783,7 +788,9 @@ codeunit 50000 Tble83
         recReservationEntry: Record "Reservation Entry";
         intEntryNo: Integer;
         recLotTracking: Record "Tran. Lot Tracking";
+        PuurchasePayableSetup: Record "Purchases & Payables Setup";
     begin
+        PuurchasePayableSetup.Get();
         Rec_UserSetup.GET(USERID);
         IF PurchaseHeader."Document Type" IN [PurchaseHeader."Document Type"::Invoice, PurchaseHeader."Document Type"::"Credit Memo"] THEN BEGIN
             IF NOT Rec_UserSetup."Allow Purchase Invoice" THEN
@@ -829,6 +836,7 @@ codeunit 50000 Tble83
             Rec_PurchLine.RESET;
             Rec_PurchLine.SETRANGE("Document Type", PurchaseHeader."Document Type");
             Rec_PurchLine.SETRANGE("Document No.", PurchaseHeader."No.");
+            Rec_PurchLine.SetFilter("No.", '<>%1&<>%2&<>%3&<>%4', PuurchasePayableSetup."Tin Item", PuurchasePayableSetup."Drum Item", PuurchasePayableSetup."Bucket Item", PuurchasePayableSetup."CAN Item");
             IF Rec_PurchLine.FINDFIRST THEN
                 REPEAT
 
@@ -1610,22 +1618,19 @@ codeunit 50000 Tble83
     //Codeunit12 End
 
     //Table39 Start
-    /*  [EventSubscriber(ObjectType::Table, 39, 'OnDeleteOnBeforeTestStatusOpen', '', false, false)]
-     local procedure OnDeleteOnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; var IsHandled: Boolean)
-     var
-         DealDispatchDetails: Record "Deal Dispatch Details";
-     begin
-         DealDispatchDetails.Reset();
-         DealDispatchDetails.SetRange("Sauda No.", PurchaseLine."Deal No.");
-         DealDispatchDetails.SetRange("Line No.", PurchaseLine."Deal Line No.");
-         if DealDispatchDetails.FindFirst() then begin
-             DealDispatchDetails."GAN Created" := false;
-             DealDispatchDetails."GAN No." := '';
-             DealDispatchDetails.Modify();
-         end;
+    [EventSubscriber(ObjectType::Table, 39, 'OnDeleteOnBeforeTestStatusOpen', '', false, false)]
+    local procedure OnDeleteOnBeforeTestStatusOpen(var PurchaseLine: Record "Purchase Line"; var IsHandled: Boolean)
+    var
+        DealMaster: Record "Deal Master";
+    begin
+        if DealMaster.get(PurchaseLine."Deal No.") then begin
+            DealMaster.Status := DealMaster.Status::Release;
+            DealMaster.Modify();
+        end;
 
-     end; */ // 15800 Dispatch Discontinue
-             //Table39 End
+
+    end;
+    //Table39 End
 
     //Table18 Start
     [EventSubscriber(ObjectType::Table, 18, 'OnAfterLookupPostCode', '', false, false)]
@@ -1674,4 +1679,14 @@ codeunit 50000 Tble83
         end;
     end;
     //Table18 End
+    //Codeunit74 Start
+    [EventSubscriber(ObjectType::Codeunit, 74, 'OnBeforeTransferLineToPurchaseDoc', '', false, false)]
+    local procedure OnBeforeTransferLineToPurchaseDoc(var PurchRcptHeader: Record "Purch. Rcpt. Header"; var PurchRcptLine: Record "Purch. Rcpt. Line"; var PurchaseHeader: Record "Purchase Header"; var TransferLine: Boolean)
+    begin
+        PurchaseHeader."Activity City" := PurchRcptHeader."Activity City";
+        PurchaseHeader."Activity Name" := PurchRcptHeader."Activity Name";
+        PurchaseHeader."Activity State" := PurchRcptHeader."Activity State";
+        PurchaseHeader."Sales Channel" := PurchRcptHeader."Sales Channel";
+    end;
+    //Codeunit74 End 
 }

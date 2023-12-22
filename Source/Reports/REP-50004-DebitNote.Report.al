@@ -36,9 +36,9 @@ report 50004 "Debit Note-New"
             column(PAN_No; PAN_No) { }
             column(CINNO; '') { }
             column(HOME_PAGE; Home_Page) { }
-            column(EMAIL; '') { }
-            column(PaymentTerm_Remarks; '') { }
-            column(BuyerOrder_No; '' )// External Doc No
+            column(EMAIL; recCompInfo."E-Mail") { }
+            column(PaymentTerm_Remarks; "Payment Terms Code") { }
+            column(BuyerOrder_No; '')// External Doc No
             {
             }
             column(BuyerOrder_Date; '')// External Doc Date
